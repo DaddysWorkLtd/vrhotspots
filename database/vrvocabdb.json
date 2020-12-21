@@ -1,0 +1,15 @@
+{
+  "pictures": [
+    {
+      "id": 1,
+      "ParentId": "P2?",
+      "name": "Home Office",
+      "description": "Office with computer, chair, desk etc",
+      "src": "photos/home-office.jpg",
+      "wordSpots": [],
+      "navSpots": []
+    }
+  ],
+  "words": {},
+  "uid": 2
+}
