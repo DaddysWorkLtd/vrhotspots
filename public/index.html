@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Testing aframe collaboration</title>
+
+    <script src="https://aframe.io/releases/1.1.0/aframe.min.js"></script>
+    <script src="aframespots.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/1.7.3/socket.io.js"></script>
+    <script src="collabs.js" defer></script>
+    <link href="aframecollabs.css">
+</head>
+<body>
+
+    <a-scene background="color: #89cff0" id="scene">
+        <a-text id="debuginfo" text="align: center; width: 2;
+               value: Debug info" position="0 2 -3" wrap-count="20"></a-text>
+        <a-entity id="myRig">
+            <a-entity id="head" camera wasd-controls look-controls position="0 1.6 0"></a-entity>
+            <a-entity raylisten id="leftHand" laser-controls="hand: left" raycaster="objects: .collidable"></a-entity>
+            <a-entity id="rightHand" raycaster="objects: .collidable; far:10" oculus-touch-controls="hand: right" input-listen>
+                <a-text value="Trigger: create hotspot\nThumbstick: move hotspot\nA: Remove hotspot" position="0 0.08 0" rotation="-90 0 0" scale="0.1 0.1 0.1" align="center" color="#FFFFFF"></a-text>
+                <a-sphere id="spacecurs" radius=".5" position="0 0 -20" color="cc0000"></a-sphere>
+            </a-entity>
+        </a-entity>
+    </a-scene>
+
+</body>
+</html>
