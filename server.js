@@ -53,9 +53,9 @@ io.on('connection', (socket) => {
                 .write();
             console.log(UID);
         }
-        
+
         //db.get('spo') emits to all client
-        socket.emit('addSpot', data);
+        io.emit('addSpot', data);
 
     });
     // return first picture

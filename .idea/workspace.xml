@@ -2,11 +2,6 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="2efe0905-3a38-4191-b3df-159ab28204d8" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/vrvocabdb.json" beforeDir="false" afterPath="$PROJECT_DIR$/database/vrvocabdb.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/aframespots.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/aframespots.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/collabs.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/collabs.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/public/index.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/server.js" beforeDir="false" afterPath="$PROJECT_DIR$/server.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -73,7 +68,7 @@
       <workItem from="1608369816905" duration="13038000" />
       <workItem from="1608543675050" duration="2969000" />
       <workItem from="1608574131928" duration="4149000" />
-      <workItem from="1608625592849" duration="7752000" />
+      <workItem from="1608625592849" duration="8285000" />
     </task>
     <servers />
   </component>
