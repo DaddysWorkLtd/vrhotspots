@@ -54,6 +54,7 @@ io.on('connection', (socket) => {
             console.log(UID);
         }
 
+
         //db.get('spo') emits to all client
         io.emit('addSpot', data);
 
