@@ -8,7 +8,7 @@ const express=require('express'),
     key = fs.readFileSync('./config/devkey.pem'),
     cert = fs.readFileSync('./config/devcert.pem'),
     app = express(),
-    server = https.createServer({key: key, cert: cert , hostname: SERVER_NAME}, app).listen(SERVER_PORT),
+    server = https.createServer({key: key, cert: cert }, app).listen(SERVER_PORT),
     io = socket(server, {
         cors: {
             origin: "http://" + SERVER_NAME + ":" + SERVER_PORT,
@@ -33,8 +33,8 @@ words - ( : '', { description : '',
 
 //static root is public
 app.use(express.static('public'));
+// start photo hard coded to 1 in connect.
 
-var messages = [];
 io.on('connection', (socket) => {
     console.log('made socket connection', socket.id);
     // output all the exiting items?
@@ -42,19 +42,24 @@ io.on('connection', (socket) => {
     //messages.forEach( function (old) {
     //    socket.emit('chat', old);
     //});
-    console.log( db.get('pictures').find({id:'P1'}).value());
-    db.update('uid', n => n + 1)
-        .write()
+
+
     // Handle chat event
     socket.on('addSpot', function(data){
-        // console.log(data);
+        // save data
+        function getUID () {
+            let UID = db.get('uid').value();
+            db.update('uid', uid => uid + 1)
+                .write();
+            console.log(UID);
+        }
+        
+        //db.get('spo') emits to all client
+        socket.emit('addSpot', data);
 
-
-        io.emit('addSpot', data)
-        messages.push(data);
-        console.log (data, messages.length)
     });
-
+    // return first picture
+    io.emit('photo',db.get('photos').find({id: 1}).value());
 });
 
 io.on('connect_failed', function(){

@@ -31,20 +31,6 @@ AFRAME.registerComponent('raylisten', {
     }
 });
 
-function AppendSpot (point) {
-    //Creating ball entity.
-    var ball = document.createElement('a-sphere'),
-        scene = document.querySelector('a-scene');;
-    ball.setAttribute('class', 'hotspot');
-    ball.setAttribute('class', 'collidable');
-    ball.setAttribute('scale', '0.5 0.5 0.5');
-    ball.setAttribute('opacity', 0.2);
-    ball.setAttribute('color', '#c75252');
-    ball.setAttribute('position', point);
-    //Instantiate ball entity in a-scene
-    scene.appendChild(ball);
-}
-
 AFRAME.registerComponent('input-listen', {
     init:
         function () {
@@ -130,3 +116,21 @@ AFRAME.registerComponent('input-listen', {
         this.el.selectedObj.object3D.position.set(p.x, p.y, p.z);
     }
 });
+// APPLICATION AFRAME MANIPULATION
+function appendSpot (point) {
+    //Creating ball entity.
+    var ball = document.createElement('a-sphere'),
+        scene = document.querySelector('a-scene');;
+    ball.setAttribute('class', 'hotspot');
+    ball.setAttribute('class', 'collidable');
+    ball.setAttribute('scale', '0.5 0.5 0.5');
+    ball.setAttribute('opacity', 0.2);
+    ball.setAttribute('color', '#c75252');
+    ball.setAttribute('position', point);
+    //Instantiate ball entity in a-scene
+    scene.appendChild(ball);
+}
+function setPhoto (src) {
+    // could animate this for a smooth transition
+    document.querySelector('#sky').setAttribute('src',src);
+}

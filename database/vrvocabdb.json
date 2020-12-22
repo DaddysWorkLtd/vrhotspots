@@ -1,5 +1,5 @@
 {
-  "pictures": [
+  "photos": [
     {
       "id": 1,
       "ParentId": "P2?",
@@ -11,5 +11,6 @@
     }
   ],
   "words": {},
-  "uid": 2
+  "uid": 17,
+  "pictures": []
 }
