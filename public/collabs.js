@@ -19,8 +19,11 @@ socket.on('photo', function(data) {
 });
 // Socket event handlers
 socket.on('addSpot', function(data) {
-    console.log('addspot received',data)
-    appendSpot(data.point);
+    console.log('addspot received',data);
+    // check the photo
+    if (gState.photo.id === data.photoId) {
+        appendSpot(data.spot.point);
+    }
 });
 function RemoteSpotAdd( spot ) {
     console.log('remote add spot', spot)
