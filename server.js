@@ -14,7 +14,7 @@ const express=require('express'),
             origin: "http://" + SERVER_NAME + ":" + SERVER_PORT,
             methods: ["GET", "POST"],
         }
-    });
+    }, function(){ console.log('socket.io started')});
 // routes
 const low = require('lowdb'),
     // use synchronous file mode
