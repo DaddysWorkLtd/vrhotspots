@@ -1,0 +1,20 @@
+  
+{
+  "install": {
+    "include": [
+      "^package\\.json$",
+      "^\\.env$"
+    ]
+  },
+"restart": {
+    "exclude": [
+      "^database/",
+      "^node_modules/"
+    ],
+    "include": [
+      "\\.js$",
+      "\\.json"
+    ]
+  },
+  "throttle": 3000
+}
