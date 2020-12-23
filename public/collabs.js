@@ -2,11 +2,13 @@
 // Make connection
 // hostname -- use daddydev locally
 if (window.location.hostname === 'daddydev') {
-    sockurl = 'https://daddydev:3069';
+    const sockurl = 'https://daddydev:3069';
 }else {
-    sockurl = 'https://daddyswork.com:3069';
+// for glitch etc
+  sockurl = 'https://' + window.location.hostname;
+    
+  //sockurl = 'https://daddyswork.com:3069';
 }
-
 const adapter = new LocalStorage('db'),
     db = low(adapter),
     socket = io.connect(sockurl);
