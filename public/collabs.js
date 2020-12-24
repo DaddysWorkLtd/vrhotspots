@@ -27,6 +27,7 @@ socket.on('addSpot', function(data) {
         appendSpot(data.spot.point);
     }
 });
+// send new spot details to server
 function RemoteSpotAdd( spot ) {
     console.log('remote add spot', spot)
     socket.emit('addSpot', {photoId: gState.photo.id, spot: spot} );

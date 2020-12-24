@@ -1,6 +1,7 @@
 AFRAME.registerComponent('raylisten', {
     init: function () {
-        var debugInfo=document.querySelector('#debuginfo');
+        //outputting debug info to bottom panel
+        var debugInfo=document.querySelector('#hud-bot');
         console.log('initialise raycaster listen',this);
         debugInfo.setAttribute('text','value: initialising raycaster-listen');
         // Use events to figure out what raycaster is listening so we don't have to
@@ -116,6 +117,39 @@ AFRAME.registerComponent('input-listen', {
         this.el.selectedObj.object3D.position.set(p.x, p.y, p.z);
     }
 });
+AFRAME.registerComponent('kb-ctrl', {
+    init: function() {
+        console.log('keyboard init', this);
+        var el = this.el,
+            hudInfo=document.querySelector('#hud-top'),
+            debugInfo=document.querySelector('#hud-bot');
+
+        /* set a custom filter example which doesn't seem to be working for me!
+        const kb = this.el.components['super-keyboard'];
+        kb.setCustomFilter(function(str) {
+            return '*'.repeat(str.length);
+        });
+         */
+        el.addEventListener('superkeyboardchange', function(e) {
+            // update the attribute on the keyboard as not sure how to get the value from the component.
+            console.log('keypress');
+            debugInfo.setAttribute('text','value: ' + e.detail.value);
+            el.setAttribute('kbval',e.detail.value);
+        });
+        //return press set the hud top to the value for now
+        this.el.addEventListener('superkeyboardinput', function(e) {
+            console.log('keyboard enter', e);
+            hudInfo.setAttribute('text','value: ' + e.detail.value);
+
+        });
+        //dismiss press
+        this.el.addEventListener('superkeyboarddismiss', function(e) {
+            console.log('superkeyboarddismiss', e);
+        });
+    }
+});
+
+
 // APPLICATION AFRAME MANIPULATION
 function appendSpot (point) {
     //Creating ball entity.
