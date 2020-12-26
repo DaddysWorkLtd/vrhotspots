@@ -21,18 +21,19 @@
             <a-entity id="head" camera wasd-controls look-controls position="0 1.6 0">
                 <!-- HUD elements !-->
                 <a-text id="hud-top" class="hud" text="align: center; width: 2;
-               value: HUD Top Text Panel" position="0 1 -3" wrap-count="20"></a-text>
+               value: " position="0 1 -3" wrap-count="20"></a-text>
                 <!-- HUD elements !-->
                 <a-text id="hud-bot" class="hud" text="align: center; width: 2;
-               value: Hello and welcome back" position="0 -.75 -3"  wrap-count="20"></a-text>
+               value: " position="0 -.75 -3"  wrap-count="20"></a-text>
             </a-entity>
-            <!-- left hand with keyboard !-->
-            <a-entity id="leftHand" laser-controls="hand: left" raycaster="objects: .collidable">
+            <!-- left hand with keyboard, no caster for now as was deleting things  !-->
+            <a-entity id="leftHand" laser-controls="hand: left" raycaster="showLine: false; far: 0;">
                 <a-entity id="keyboard" super-keyboard="hand: #rightHand; multipleInputs: true" kb-ctrl position="0 0.1 0" rotation="-90 0 0" scale="0.2 0.2 0.2"></a-entity>
             </a-entity>
             <!-- right hand with help panel -->
-            <a-entity id="rightHand" raycaster="objects: .collidable" laser-controls="hand: right">
-                <a-text value="Right Trigger: create hotspot\nLeft Trigger: Remove hotspot\nLeft Grip: Keyboard" position="0 0.08 0" rotation="-90 0 0" scale="0.1 0.1 0.1" align="center" color="#FFFFFF"></a-text>
+            <a-entity id="rightHand" raycaster="objects: .collidable; far: 30" laser-controls="hand: right" input-listen>
+                <a-text value="Right Trigger: create hotspot\nLeft Grip: open keyboard" position="0 0.08 0" rotation="-90 0 0" scale="0.1 0.1 0.1" align="center" color="#FFFFFF"></a-text>
+                <a-sphere id="rhPoint" radius="1" position="0 0 -30" color="cc0000" opacity=".1"></a-sphere>
             </a-entity>
         </a-entity>
         <a-sky id="sky"></a-sky>
