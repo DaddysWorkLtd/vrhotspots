@@ -6,11 +6,66 @@
       "name": "Home Office",
       "description": "Office with computer, chair, desk etc",
       "src": "photos/home-office.jpg",
-      "wordSpots": [],
+      "wordSpots": [
+        {
+          "photoId": 1,
+          "pos": {
+            "x": 11.453163787722588,
+            "y": -13.93918913602829,
+            "z": -23.823134124279022
+          },
+          "word": "lock",
+          "id": "323232257559"
+        },
+        {
+          "photoId": 1,
+          "pos": {
+            "x": 11.234652623534203,
+            "y": -11.552383482456207,
+            "z": -25.23288869857788
+          },
+          "word": "handle",
+          "id": "333232257559"
+        },
+        {
+          "photoId": 1,
+          "pos": {
+            "x": -7.694066025316715,
+            "y": -18.2640283703804,
+            "z": 22.033574551343918
+          },
+          "word": "stool",
+          "id": "343232257559"
+        },
+        {
+          "photoId": 1,
+          "pos": {
+            "x": -23.419869273900986,
+            "y": -17.353147625923157,
+            "z": 5.634553434327245
+          },
+          "word": "sofa",
+          "id": "353232257559"
+        }
+      ],
       "navSpots": []
     }
   ],
-  "words": {},
-  "uid": 17,
+  "words": {
+    "sofa": {
+      "description": "do we need a description?",
+      "dutch": {
+        "word": "de bank",
+        "clue": "if we are having cues or descriptions",
+        "audio": "audio/nl/de-bank.mp3"
+      }
+    },
+    "stool": {
+      "dutch": {
+        "word": "de stoel"
+      }
+    }
+  },
+  "uid": 36,
   "pictures": []
 }
