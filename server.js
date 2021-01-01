@@ -41,7 +41,7 @@ const low = require("lowdb"),
   FileSync = require("lowdb/adapters/FileSync"),
   db = low(new FileSync(DATA_FILE));
 
-db.defaults({ pictures: [], words: {}, uid: 0 }).write();
+db.defaults({ photos: [], words: {}, uid: 0 }).write();
 console.log('lowdb started');
 /* Data structure
 pictures -  src:'', name:'', description: '', parentId:'', [ {hotspotId: '', word:'' , x: 0, y: 0, z:0, radius: 10} ] // may need to be able to specify object type eg circle or rectangular hotposts

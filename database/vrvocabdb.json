@@ -356,8 +356,18 @@
       "description": "do we need a description?",
       "dutch": {
         "word": "de bank",
-        "clue": "if we are having cues or descriptions",
+        "clue": "als we aanwijzingen of beschrijvingen hebben",
         "audio": "audio/nl/de-bank.mp3"
+      }
+    },
+    "lock": {
+      "dutch": {
+        "word": "slot"
+      }
+    },
+    "handle": {
+      "dutch": {
+        "word": "handvat"
       }
     },
     "stool": {
@@ -366,6 +376,5 @@
       }
     }
   },
-  "uid": 66,
-  "pictures": []
+  "uid": 66
 }
