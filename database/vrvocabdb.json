@@ -46,8 +46,6 @@
           },
           "word": "sofa",
           "id": "353232257559"
-<<<<<<< HEAD
-=======
         },
         {
           "photoId": 1,
@@ -348,7 +346,6 @@
           },
           "word": "wall",
           "id": "652886795321"
->>>>>>> glitch
         }
       ],
       "navSpots": []
@@ -365,18 +362,10 @@
     },
     "stool": {
       "dutch": {
-<<<<<<< HEAD
-        "word": "de stoel"
-      }
-    }
-  },
-  "uid": 36,
-=======
         "word": "de kruk"
       }
     }
   },
   "uid": 66,
->>>>>>> glitch
   "pictures": []
 }
