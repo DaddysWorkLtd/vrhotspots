@@ -3,7 +3,13 @@
   <component name="ChangeListManager">
     <list default="true" id="2efe0905-3a38-4191-b3df-159ab28204d8" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/vrvocabdb.json" beforeDir="false" afterPath="$PROJECT_DIR$/database/vrvocabdb.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/aframespots.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/aframespots.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/public/collabs.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/collabs.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/public/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server.js" beforeDir="false" afterPath="$PROJECT_DIR$/server.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -69,7 +75,8 @@
       <workItem from="1608369816905" duration="13038000" />
       <workItem from="1608543675050" duration="2969000" />
       <workItem from="1608574131928" duration="4149000" />
-      <workItem from="1608625592849" duration="10788000" />
+      <workItem from="1608625592849" duration="26872000" />
+      <workItem from="1608971768562" duration="11410000" />
     </task>
     <servers />
   </component>

@@ -4,6 +4,7 @@ const express = require("express"),
   SERVER_NAME = process.env.PORT ? 'vr-vocab.glitch.me' : "daddydev",
   DATA_FILE = "./database/vrvocabdb.json",
   fs = require("fs"),
+    ip=require('ip'),
   protocol = process.env.PORT ? require("http") : require("https") , // non secure for glitch which has process.env defined
   key = fs.readFileSync("./config/devkey.pem"),
   cert = fs.readFileSync("./config/devcert.pem"),
@@ -67,10 +68,29 @@ io.on("connection", socket => {
     function getUID() {
       let UID = db.get("uid").value();
       db.update("uid", uid => uid + 1).write();
-      console.log(UID);
+      // also puts the server ip on it. It's in sync mode so db should lock on each request. Ok for now
+      return( UID.toString() + ip.toLong(ip.address()).toString() );
     }
+    // flush the db cashe or it will keep overwriting live edits
+    db.read();
+    //get the photo and update the spot array
+    let rec = db
+        .get("photos")
+        .find({ id: data.photoId }),
+         photo = rec.value();
 
-    //db.get('spo') emits to all client
+    console.log('add spot',JSON.stringify(data));
+    // append spot to array of
+    data.id = getUID()
+    photo.wordSpots.push( data );
+
+    //console.log('spots defined', photo.wordSpots.length,photo)
+
+    // write to database
+    rec.assign(photo).write();
+
+    //console.log ('written photo');
+    //db.get('spo') emits new spot to all clients, including the photoid so all clients get all spots for now
     io.emit("addSpot", data);
   });
   // return first picture
