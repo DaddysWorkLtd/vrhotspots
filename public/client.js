@@ -1,6 +1,5 @@
-// CLIENT socket.io
-// Make connection
-// hostname -- use daddydev locally
+// Frontend CLIENT code
+// contains application logic
 var sockurl;
 if (window.location.hostname === 'daddydev') {
     sockurl = 'https://daddydev:3069';
@@ -9,11 +8,26 @@ if (window.location.hostname === 'daddydev') {
   sockurl = 'https://' + window.location.hostname;
   //sockurl = 'https://daddyswork.com:3069';
 }
+// initialis lowdb
 const adapter = new LocalStorage('db'),
-    db = low(adapter),
     socket = io.connect(sockurl);
 
-var gState= {};
+// dirty global for state management
+var gState= {
+    db: low(adapter)
+};
+gState.db.defaults({ photos: [], words: {}, history: [] }).write();
+// history - timesramp, photoid, targetword, selectedword, correct
+
+// Socket event handlers
+// update record for individual photo
+socket.on('photos', function(data) {
+    gState.db.set('photos',data).write();
+});
+socket.on('words', function(data) {
+    gState.db.set('words',data).write();
+});
+
 socket.on('photo', function(data) {
     console.log('photo', data);
     gState.photo=data;
@@ -21,7 +35,7 @@ socket.on('photo', function(data) {
     // display all the spots
     data.wordSpots.forEach(appendSpot);
 });
-// Socket event handlers
+// add hotspot to current photo
 socket.on('addSpot', function(data) {
     console.log('addspot received',data);
     // check the photo
@@ -29,6 +43,10 @@ socket.on('addSpot', function(data) {
         appendSpot(data);
     }
 });
+
+
+
+// database related functions
 // send new spot details to server - where should this live
 function remoteSpotAdd( pos ) {
     // get the name of the spot
@@ -43,7 +61,6 @@ function remoteSpotAdd( pos ) {
         document.querySelector('#hud-bot').setAttribute('text', 'value: To add a new spot enter a word first followed by return then point to place');
     }
 }
-
 function remoteSpotDel( spotId ) {
     console.log ('need to add this functionality but can delete in json file easily');
     // emit ('delSpot', spotId[2]) // strip off the VRS or maybe that should be done in the UI layer

@@ -1,3 +1,4 @@
+//NODE SERVER
 const express = require("express"),
   socket = require("socket.io"),
   SERVER_PORT = process.env.PORT || 3069,
@@ -42,13 +43,7 @@ const low = require("lowdb"),
   db = low(new FileSync(DATA_FILE));
 
 db.defaults({ photos: [], words: {}, uid: 0 }).write();
-console.log('lowdb started');
-/* Data structure
-pictures -  src:'', name:'', description: '', parentId:'', [ {hotspotId: '', word:'' , x: 0, y: 0, z:0, radius: 10} ] // may need to be able to specify object type eg circle or rectangular hotposts
-words - ( : '', { description : '',
-                    dutch: { word:'' . description:'' }
 
- */
 
 //static root is public
 app.use(express.static("public"));
@@ -56,13 +51,32 @@ app.use(express.static("public"));
 
 io.on("connection", socket => {
   console.log("made socket connection", socket.id);
-  // output all the exiting items?
-  // need to check it's a new connection
-  //messages.forEach( function (old) {
-  //    socket.emit('chat', old);
-  //});
+  // return first picture on connect - this should update a single photo client side
+  io.emit(
+      "photo",
+      db
+          .get("photos")
+          .find({ id: 1 })
+          .value()
+  );
+  // send back the current database on connect
+  io.emit(
+      "photos",
+      db
+          .get("photos")
+          .value()
+  );
+  console.log('emiting photos', db
+      .get("photos")
+      .value() )
+  io.emit(
+      "words",
+      db
+          .get("words")
+          .value()
+  );
 
-  // Handle chat event
+  // Handle add spot event by recording in database and broadcasting out
   socket.on("addSpot", function(data) {
     // save data
     function getUID() {
@@ -80,27 +94,17 @@ io.on("connection", socket => {
          photo = rec.value();
 
     console.log('add spot',JSON.stringify(data));
-    // append spot to array of
+    // append spot to array of wordSpots j
     data.id = getUID()
     photo.wordSpots.push( data );
-
-    //console.log('spots defined', photo.wordSpots.length,photo)
 
     // write to database
     rec.assign(photo).write();
 
-    //console.log ('written photo');
-    //db.get('spo') emits new spot to all clients, including the photoid so all clients get all spots for now
+    //emits new spot to all clients, including the photoid so all clients get all spots for now
     io.emit("addSpot", data);
   });
-  // return first picture
-  io.emit(
-    "photo",
-    db
-      .get("photos")
-      .find({ id: 1 })
-      .value()
-  );
+
 });
 
 io.on("connect_failed", function() {

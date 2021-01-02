@@ -1,3 +1,4 @@
+//UI Code - AFRAME / UI handling
 AFRAME.registerComponent('raylisten', {
     init: function () {
         //outputting debug info to bottom panel
@@ -159,7 +160,7 @@ function appendSpot (def) {
     var spot = document.createElement('a-sphere'),
         scene = document.querySelector('a-scene');
     console.log (appendSpot,def,def.pos,def.word,def.id);
-    spot.setAttribute('class', 'hotspot');
+    spot.setAttribute('class', 'wordspot');
     spot.setAttribute('class', 'collidable');
     spot.setAttribute('scale', '1 1 1');
     spot.setAttribute('opacity', 0.2);
