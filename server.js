@@ -66,16 +66,12 @@ io.on("connection", socket => {
           .get("photos")
           .value()
   );
-  console.log('emiting photos', db
-      .get("photos")
-      .value() )
   io.emit(
       "words",
       db
           .get("words")
           .value()
   );
-
   // Handle add spot event by recording in database and broadcasting out
   socket.on("addSpot", function(data) {
     // save data
