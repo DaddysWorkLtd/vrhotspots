@@ -104,7 +104,7 @@
             "y": -18.524222314357758,
             "z": 18.79437232017517
           },
-          "word": "pillow",
+          "word": "cushion",
           "id": "412886795311"
         },
         {
@@ -356,16 +356,170 @@
       "description": "do we need a description?",
       "dutch": {
         "word": "de bank",
-        "clue": "if we are having cues or descriptions",
+        "clue": "als we aanwijzingen of beschrijvingen hebben",
         "audio": "audio/nl/de-bank.mp3"
+      }
+    },
+    "lock": {
+      "dutch": {
+        "word": "het slot"
+      }
+    },
+    "handle": {
+      "dutch": {
+        "word": "het handvat"
       }
     },
     "stool": {
       "dutch": {
         "word": "de kruk"
       }
+    },
+    "box": {
+      "dutch": {
+        "word": "de doos"
+      }
+    },
+    "painting": {
+      "dutch": {
+        "word": "het schilderij"
+      }
+    },
+    "candle": {
+      "dutch": {
+        "word": "de kaars"
+      }
+    },
+    "vase": {
+      "dutch": {
+        "word": "de vaas"
+      }
+    },
+    "chair": {
+      "dutch": {
+        "word": "de stoel"
+      }
+    },
+    "cushion": {
+      "dutch": {
+        "word": "het kussen"
+      }
+    },
+    "printer": {
+      "dutch": {
+        "word": "de printer"
+      }
+    },
+    "ironing board": {
+      "dutch": {
+        "word": "de strijkplank"
+      }
+    },
+    "drawer": {
+      "dutch": {
+        "word": "de lade"
+      }
+    },
+    "cabinet": {
+      "dutch": {
+        "word": "de ladekast"
+      }
+    },
+    "lamp": {
+      "dutch": {
+        "word": "de lamp"
+      }
+    },
+    "book": {
+      "dutch": {
+        "word": "het boek"
+      }
+    },
+    "laptop": {
+      "dutch": {
+        "word": "de laptop"
+      }
+    },
+    "calculator": {
+      "dutch": {
+        "word": "de rekenmachine"
+      }
+    },
+    "computer mouse": {
+      "dutch": {
+        "word": "de computermuis"
+      }
+    },
+    "cell phone": {
+      "dutch": {
+        "word": "de mobiele telefoon"
+      }
+    },
+    "desk lamp": {
+      "dutch": {
+        "word": "de bureaulamp"
+      }
+    },
+    "desk": {
+      "dutch": {
+        "word": "het bureau"
+      }
+    },
+    "door": {
+      "dutch": {
+        "word": "de deur"
+      }
+    },
+    "light switch": {
+      "dutch": {
+        "word": "de lichtknop"
+      }
+    },
+    "floor": {
+      "dutch": {
+        "word": "de vloer"
+      }
+    },
+    "carpet": {
+      "dutch": {
+        "word": "het tapijt"
+      }
+    },
+    "tablecloth": {
+      "dutch": {
+        "word": "het tafelkleed"
+      }
+    },
+    "ceiling": {
+      "dutch": {
+        "word": "het plafond"
+      }
+    },
+    "curtain": {
+      "dutch": {
+        "word": "het gordijn"
+      }
+    },
+    "power outlet": {
+      "dutch": {
+        "word": "het stopcontact"
+      }
+    },
+    "radiator": {
+      "dutch": {
+        "word": "de radiator"
+      }
+    },
+    "wardrobe": {
+      "dutch": {
+        "word": "de kledingkast"
+      }
+    },
+    "wall": {
+      "dutch": {
+        "word": "de muur"
+      }
     }
   },
-  "uid": 66,
-  "pictures": []
+  "uid": 66
 }
