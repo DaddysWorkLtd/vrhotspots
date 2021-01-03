@@ -1,3 +1,48 @@
+//UI Code - AFRAME / UI handling
+AFRAME.registerComponent('cursor-listen', {
+    init: function () {
+        //outputting debug info to bottom panel
+        const _top=document.querySelector('#hud-top'),
+            _mid=document.querySelector('#hud-mid'),
+            _bot=document.querySelector('#hud-bot');
+        console.log('initialising curor-listen',this);
+       // need a style that makes things appear and then fade out!
+        this.el.addEventListener('raycaster-intersection-cleared', evt => {
+            // clear ingo panel
+            _bot.setAttribute('text','value: ');
+        });
+        this.el.addEventListener('fusing', evt => {
+            _bot.setAttribute('text','value: fusing: ' + evt.detail.intersectedEl.getAttribute('word'));
+            console.log('click',evt);
+        });
+        this.el.addEventListener('click', evt => {
+            //_bot.setAttribute('text','value: click event' + evt.detail.intersectedEl.word);
+            //console.log('click',evt.detail.intersectedEl.getAttribute('word'));
+            // check if the word matches the target and if so delete
+            // find word for this element gState.db
+            // this should be a separate function so it can be tested
+            const el=evt.detail.intersectedEl,
+                fusedWord = gState.db
+                    .get('words')
+                    .value()[el.getAttribute('word')];
+            if (!fusedWord) {
+                setHudText('bot',el.getAttribute('word') + ': not found in dictionary');
+            } else {
+                if (fusedWord[gState.lang].word == gState.word[gState.lang].word) {
+                    evt.detail.intersectedEl.remove();
+                    //TODOneed to log that it was answered correctly etc, trigger next word
+                    gState.correct( fusedWord[gState.lang].word );
+                } else {
+                    gState.incorrect( fusedWord[gState.lang].word );
+                }
+            }
+        });
+    }
+});
+
+
+
+// this was attached to the left control and deleted spots
 AFRAME.registerComponent('raylisten', {
     init: function () {
         //outputting debug info to bottom panel
@@ -39,7 +84,9 @@ AFRAME.registerComponent('input-listen', {
             //which exprains grip button is pressed or not.
             //"this.el" reffers ctlR or L in this function
             this.el.grip = false;
-            setHudText('bot', 'Use the keyboard on left controller to enter word, then enter...\n assigned with right trigger');
+//            setHudText('bot', 'Use the keyboard on left controller to enter word, then enter...\n assigned with right trigger');
+            // not sure why I need to do this??????? as without it i get a blank page
+            setHudText('top', 'Hello and welcome back');
             //Called when trigger is pressed
             this.el.addEventListener('triggerdown', function (e) {
                 //"this" reffers ctlR or L in this function
@@ -155,21 +202,25 @@ AFRAME.registerComponent('kb-ctrl', {
 
 // APPLICATION AFRAME MANIPULATION
 function appendSpot (def) {
-    //Creating ball entity.
-    var spot = document.createElement('a-sphere'),
+    //NEED TO CHECK IT DOES NOT ALREADY EXIST
+    var spot,scene;
+    if ( document.querySelector('#VRH' + def.id) ) {
+        console.log('spot alreay appended', def);
+    } else {
+        spot = document.createElement('a-sphere');
         scene = document.querySelector('a-scene');
-    console.log (appendSpot,def,def.pos,def.word,def.id);
-    spot.setAttribute('class', 'hotspot');
-    spot.setAttribute('class', 'collidable');
-    spot.setAttribute('scale', '1 1 1');
-    spot.setAttribute('opacity', 0.2);
-    spot.setAttribute('color', 'darkorange');
-    spot.setAttribute('position', def.pos);
-    spot.setAttribute('word', def.word);
-    // ids can't start with a number so namespave with VRS - vr spot
-    spot.setAttribute('id', 'VRH' + def.id);
-    //Instantiate ball entity in a-scene
-    scene.appendChild(spot);
+        //console.log(appendSpot, def, def.pos, def.word, def.id);
+        spot.setAttribute('class', 'wordspot collidable fusable');
+        spot.setAttribute('scale', '1 1 1');
+        spot.setAttribute('opacity', 0.2);
+        spot.setAttribute('color', 'darkorange');
+        spot.setAttribute('position', def.pos);
+        spot.setAttribute('word', def.word);
+        // ids can't start with a number so namespave with VRS - vr spot
+        spot.setAttribute('id', 'VRH' + def.id);
+        //Instantiate ball entity in a-scene
+        scene.appendChild(spot);
+    }
 }
 function setPhoto (src) {
     // could animate this for a smooth transition
@@ -177,7 +228,17 @@ function setPhoto (src) {
     document.querySelector('#sky').setAttribute('src',src);
 }
 // could make objects for this and shoulp use a closure to keep the query selector
+
 function setHudText(place,value){
     var target=document.querySelector('#hud-'+place);
     target.setAttribute('text', 'value: ' + value);
+    // making it disolve after a couple of seconds for noe. This shold be switchable
+    // need to create the attribute and work out how to play it.
+    // target.setAttribute('animation', "property: material.opacity; dur: 1000; from: 1; to: 0; repeat: 0");
+}
+// set opacity to zero
+function hideSpots () {
+    [].forEach.call(document.querySelectorAll('.wordspot'), function (el) {
+        el.setAttribute('opacity',0);
+    });
 }
