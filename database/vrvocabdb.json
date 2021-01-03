@@ -354,24 +354,24 @@
   "words": {
     "sofa": {
       "description": "do we need a description?",
-      "dutch": {
+      "nl": {
         "word": "de bank",
         "clue": "als we aanwijzingen of beschrijvingen hebben",
         "audio": "audio/nl/de-bank.mp3"
       }
     },
     "lock": {
-      "dutch": {
+      "nl": {
         "word": "slot"
       }
     },
     "handle": {
-      "dutch": {
+      "nl": {
         "word": "handvat"
       }
     },
     "stool": {
-      "dutch": {
+      "nl": {
         "word": "de kruk"
       }
     }
