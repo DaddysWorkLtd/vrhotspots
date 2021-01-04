@@ -353,171 +353,242 @@
   ],
   "words": {
     "sofa": {
-      "description": "do we need a description?",
+      "description": "do we need a description? no",
       "nl": {
         "word": "de bank",
-        "clue": "als we aanwijzingen of beschrijvingen hebben",
-        "audio": "audio/nl/de-bank.mp3"
+        "clue": "It's very comfortable to sit on",
+        "audio": "audio/de-bank.mp3"
       }
     },
     "lock": {
       "nl": {
-        "word": "het slot"
+        "word": "het slot",
+        "clue": "It makes use of a key",
+        "audio": ""
       }
     },
     "handle": {
       "nl": {
-        "word": "het handvat"
+        "word": "het handvat",
+        "clue": "Useful to get through the door",
+        "audio": ""
       }
     },
     "stool": {
       "nl": {
-        "word": "de kruk"
+        "word": "de kruk",
+        "clue": "You sit on this",
+        "audio": ""
       }
     },
     "box": {
       "nl": {
-        "word": "de doos"
+        "word": "de doos",
+        "clue": "It is used to store stuff in",
+        "audio": ""
       }
     },
     "painting": {
       "nl": {
-        "word": "het schilderij"
+        "word": "het schilderij",
+        "clue": "Do you prefer Mondriaan or Rembrandt?",
+        "audio": ""
       }
     },
     "candle": {
       "nl": {
-        "word": "de kaars"
+        "word": "de kaars",
+        "clue": "It lights up the room",
+        "audio": ""
       }
     },
     "vase": {
       "nl": {
-        "word": "de vaas"
+        "word": "de vaas",
+        "clue": "Put flowers in me!",
+        "audio": ""
       }
     },
     "chair": {
       "nl": {
-        "word": "de stoel"
+        "word": "de stoel",
+        "clue": "It's very comfortable to sit in",
+        "audio": ""
       }
     },
     "cushion": {
       "nl": {
-        "word": "het kussen"
+        "word": "het kussen",
+        "clue": "Often found on the couch or in the lazy chair",
+        "audio": ""
       }
     },
     "printer": {
       "nl": {
-        "word": "de printer"
+        "word": "de printer",
+        "clue": "It, well, prints... Connected to the laptop!",
+        "audio": ""
       }
     },
     "ironing board": {
       "nl": {
-        "word": "de strijkplank"
+        "word": "de strijkplank",
+        "clue": "A large object, so it's stored behind the cabinet in this small room",
+        "audio": ""
       }
     },
     "drawer": {
       "nl": {
-        "word": "de lade"
+        "word": "de lade",
+        "clue": "Part of the cabinet",
+        "audio": ""
       }
     },
     "cabinet": {
       "nl": {
-        "word": "de ladekast"
+        "word": "de ladekast",
+        "clue": "A large piece of furniture to store things in",
+        "audio": ""
       }
     },
     "lamp": {
       "nl": {
-        "word": "de lamp"
+        "word": "de lamp",
+        "clue": "It lights up the room",
+        "audio": ""
       }
     },
     "book": {
       "nl": {
-        "word": "het boek"
+        "word": "het boek",
+        "clue": "Do you like to read these?",
+        "audio": ""
       }
     },
     "laptop": {
       "nl": {
-        "word": "de laptop"
+        "word": "de laptop",
+        "clue": "Familiar word, have a look at the desk!",
+        "audio": ""
       }
     },
     "calculator": {
       "nl": {
-        "word": "de rekenmachine"
+        "word": "de rekenmachine",
+        "clue": "Where would this be used? Look at the desk!",
+        "audio": ""
       }
     },
     "computer mouse": {
       "nl": {
-        "word": "de computermuis"
+        "word": "de computermuis",
+        "clue": "An extra device for computers and laptops",
+        "audio": ""
       }
     },
     "cell phone": {
       "nl": {
-        "word": "de mobiele telefoon"
+        "word": "de mobiele telefoon",
+        "clue": "It's somewhere on the desk...",
+        "audio": ""
       }
     },
     "desk lamp": {
       "nl": {
-        "word": "de bureaulamp"
+        "word": "de bureaulamp",
+        "clue": "It lights up the desk",
+        "audio": ""
       }
     },
     "desk": {
       "nl": {
-        "word": "het bureau"
+        "word": "het bureau",
+        "clue": "There are so many piles of paperwork on this object!",
+        "audio": ""
       }
     },
     "door": {
       "nl": {
-        "word": "de deur"
+        "word": "de deur",
+        "clue": "How did you get into this room?",
+        "audio": ""
       }
     },
     "light switch": {
       "nl": {
-        "word": "de lichtknop"
+        "word": "de lichtknop",
+        "clue": "Used to turn on the light",
+        "audio": ""
       }
     },
     "floor": {
       "nl": {
-        "word": "de vloer"
+        "word": "de vloer",
+        "clue": "Don't forget to look up and down",
+        "audio": ""
       }
     },
     "carpet": {
       "nl": {
-        "word": "het tapijt"
+        "word": "het tapijt",
+        "clue": "You're 'standing' on it right now!",
+        "audio": ""
       }
     },
     "tablecloth": {
       "nl": {
-        "word": "het tafelkleed"
+        "word": "het tafelkleed",
+        "clue": "It keeps the table nice and clean",
+        "audio": ""
       }
     },
     "ceiling": {
       "nl": {
-        "word": "het plafond"
+        "word": "het plafond",
+        "clue": "Don't forget to look up and down",
+        "audio": ""
       }
     },
     "curtain": {
       "nl": {
-        "word": "het gordijn"
+        "word": "het gordijn",
+        "clue": "It hangs next to the window",
+        "audio": ""
       }
     },
     "power outlet": {
       "nl": {
-        "word": "het stopcontact"
+        "word": "het stopcontact",
+        "clue": "The source for electricity in this room... and the hallway!",
+        "audio": ""
       }
     },
     "radiator": {
       "nl": {
-        "word": "de radiator"
+        "word": "de radiator",
+        "clue": "It keeps the tempemperature on point here",
+        "audio": ""
       }
     },
     "wardrobe": {
       "nl": {
-        "word": "de kledingkast"
+        "word": "de kledingkast",
+        "clue": "How much clothing would fit in this big boy?",
+        "audio": ""
+      }
+    },
+    "window": {
+      "nl": {
+        "word": "het raam",
+        "clue": "Used to look outside when the blinds aren't down",
+        "audio": ""
       }
     },
     "wall": {
       "nl": {
-        "word": "de muur"
+        "word": "de muur",
+        "clue": "There are four in this room: all around you",
+        "audio": ""
       }
     }
   },
