@@ -3,7 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <title>Testing aframe collaboration</title>
-
+    <!-- blank favicon -->
+    <link href="data:image/x-icon;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQEAYAAABPYyMiAAAABmJLR0T///////8JWPfcAAAACXBIWXMAAABIAAAASABGyWs+AAAAF0lEQVRIx2NgGAWjYBSMglEwCkbBSAcACBAAAeaR9cIAAAAASUVORK5CYII=" rel="icon" type="image/x-icon" />
     <script src="https://aframe.io/releases/1.1.0/aframe.min.js"></script>
     <script src="aframe-super-keyboard.js"></script>
     <script src="aframespots.js"></script>
@@ -17,6 +18,16 @@
 <body>
 
     <a-scene background="color: #89cff0" id="scene">
+        <a-assets>
+            <audio
+                    id="correct"
+                    src="audio/grunz-success.mp3"
+            ></audio>
+            <audio
+                    id="incorrect"
+                    src="audio/duck-quack.mp3"
+            ></audio>
+        </a-assets>
         <a-entity id="myRig">
             <a-entity id="head" camera wasd-controls look-controls position="0 1.6 0">
                 <!-- HUD elements !-->
