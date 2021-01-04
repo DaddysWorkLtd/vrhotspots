@@ -25,15 +25,15 @@ var gState= {
     },
     // history - timesramp, photoid, targetword, guess, correct
     correct: function(answer) {
+        document.querySelector('#correct').play(); //should be calling a method in the ui code
         // choose a new word
         this.history = this.history || [];
         this.history.push([{date: new Date(), photoid: this.photo.id, word: this.word, correct: 1}]);
         setHudText('bot','Yes! It is: ' + answer);
-        this.word='correct';
         this.nextWord();
     },
     incorrect: function(answer) {
-        // choose a new word
+        document.querySelector('#incorrect').play();
         this.history = this.history || [];
         this.history.push([{date: new Date(), photoid: this.photo.id, word: this.word, guess: answer}]);
         setHudText('bot','Incorrect: ' + answer);

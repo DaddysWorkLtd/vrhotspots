@@ -17,6 +17,16 @@
 <body>
 
     <a-scene background="color: #89cff0" id="scene">
+        <a-assets>
+            <audio
+                    id="correct"
+                    src="audio/grunz-success.mp3"
+            ></audio>
+            <audio
+                    id="incorrect"
+                    src="audio/duck-quack.mp3"
+            ></audio>
+        </a-assets>
         <a-entity id="myRig">
             <a-entity id="head" camera wasd-controls look-controls position="0 1.6 0">
                 <!-- HUD elements !-->

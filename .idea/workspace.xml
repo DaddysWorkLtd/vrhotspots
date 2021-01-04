@@ -2,12 +2,12 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="2efe0905-3a38-4191-b3df-159ab28204d8" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/public/audio/duck-quack.mp3" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/audio/grunz-success.mp3" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/vrvocabdb.json" beforeDir="false" afterPath="$PROJECT_DIR$/database/vrvocabdb.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/aframespots.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/aframespots.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/public/client.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/client.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/public/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/public/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server.js" beforeDir="false" afterPath="$PROJECT_DIR$/server.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
