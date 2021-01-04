@@ -17,6 +17,8 @@ var gState= {
     db: low(adapter),
     lang: 'nl',
     word: {},
+    // how many attempts on current word
+    attempt: 1,
     setPhoto: function () {
         setPhoto(this.photo.src);
     },
@@ -28,15 +30,33 @@ var gState= {
         document.querySelector('#correct').play(); //should be calling a method in the ui code
         // choose a new word
         this.history = this.history || [];
-        this.history.push([{date: new Date(), photoid: this.photo.id, word: this.word, correct: 1}]);
-        setHudText('bot','Yes! It is: ' + answer);
+        this.history.push({date: new Date(), photoid: this.photo.id, word: this.word, correct: 1});
+        let score=this.getScore();
         this.nextWord();
+        setHudText('bot','Correct: ' + answer + ' (' + score.correct + '/' + score.attempts +')' );
+        // don't clear the bottom hud when the spot is removed ending the intersection
+        this.stickyBot = true;
+        this.attempt=1;
     },
+    getScore: function() {
+       let correct=   _.countBy(this.history,{correct: 1}),
+            score = { elapsed: new Date() - this.history[0].date};
+            score.correct = correct.true;
+            score.attempts = correct.true + correct.false;
+            // incorrect nattempts on current word _.countBy(gState.history,{word: gState.word}).true
+            return score;
+        },
     incorrect: function(answer) {
         document.querySelector('#incorrect').play();
         this.history = this.history || [];
-        this.history.push([{date: new Date(), photoid: this.photo.id, word: this.word, guess: answer}]);
+        this.history.push({date: new Date(), photoid: this.photo.id, word: this.word, guess: answer});
         setHudText('bot','Incorrect: ' + answer);
+        // increase the attempt
+        this.attempt += 1;
+        // after 3 incorrect give a clue...
+        if (this.attempt > 3 && this.word.clue) {
+            setHudText('top','Find: ' + this.word[this.lang].word + ' (' + this.word.clue + ')' );
+        }
     },
     nextWord: function () {
         var words = this.db.get('words').value(),
@@ -47,7 +67,7 @@ var gState= {
                 nextWord = nextWord || words[spotEl.getAttribute('word')];
             });
         if (nextWord) {
-            setHudText('top', 'Find: ' + nextWord[gState.lang].word);
+            setHudText('top', 'Find: ' + nextWord[this.lang].word);
         } else {
             setHudText('top', 'Completed. Refresh to play again');
         }
