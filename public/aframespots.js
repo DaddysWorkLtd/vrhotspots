@@ -89,7 +89,7 @@ AFRAME.registerComponent('input-listen', {
             this.el.grip = false;
 //            setHudText('bot', 'Use the keyboard on left controller to enter word, then enter...\n assigned with right trigger');
             // not sure why I need to do this??????? as without it i get a blank page
-            setHudText('top', 'Hello and welcome back');
+            //setHudText('top', 'Hello and welcome back');
             //Called when trigger is pressed
             this.el.addEventListener('triggerdown', function (e) {
                 //"this" reffers ctlR or L in this function
