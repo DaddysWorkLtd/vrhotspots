@@ -5,6 +5,7 @@
       "ParentId": "P2?",
       "name": "Home Office",
       "description": "Office with computer, chair, desk etc",
+      "welcome": "Use this gaze-cursor to find the items (enable audio)",
       "src": "photos/home-office.jpg",
       "wordSpots": [
         {
@@ -356,14 +357,14 @@
       "clue": "It's very comfortable to sit on",
       "nl": {
         "word": "de bank",
-        "audio": "audio/de-bank.mp3"
+        "audio": "audio/nl/de-bank.mp3"
       }
     },
     "lock": {
       "clue": "It makes use of a key",
       "nl": {
         "word": "het slot",
-        "audio": ""
+        "audio": "audio/nl/het-slot.mp3"
       }
     },
     "handle": {
@@ -591,5 +592,5 @@
       }
     }
   },
-  "uid": 66
+  "uid": 68
 }
