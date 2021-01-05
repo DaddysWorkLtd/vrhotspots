@@ -57,6 +57,8 @@ var gState= {
         if (this.attempt > 3 && this.word.clue) {
             setHudText('top','Find: ' + this.word[this.lang].word + ' (' + this.word.clue + ')' );
         }
+        // repeat word out loud
+        this.playWord();
     },
     nextWord: function () {
         var words = this.db.get('words').value(),
@@ -72,6 +74,14 @@ var gState= {
             setHudText('top', 'Completed. Refresh to play again');
         }
         this.word=nextWord;
+        this.playWord();
+    },
+    playWord: function() {
+      // we might want a delay on this, we could also write it as a method so that it is call cached
+        let trans=this.word[this.lang];
+        if (trans.audio) {
+            new Audio( trans.audio).play();
+        }
     },
     initGame: function() {
         // scoping isse with
