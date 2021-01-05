@@ -99,8 +99,15 @@ var gState= {
       // we might want a delay on this, we could also write it as a method so that it is call cached
         let trans=this.word[this.lang];
         if (trans.audio) {
-            new Audio( "audio/" + this.lang + "/where-is.mp3" ).play();
-            new Audio( trans.audio).play();
+            let audio = new Audio( "audio/" + this.lang + "/where-is.mp3" ),
+                wordPlay = function () {
+                    // now play the word
+                    audio.removeEventListener('ended', wordPlay); // otherwise it repeats for ever!
+                    audio.src = trans.audio;
+                    audio.play();
+                };
+            audio.play();
+            audio.addEventListener('ended', wordPlay );
         }
     },
     initGame: function() {
