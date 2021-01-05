@@ -20,7 +20,7 @@ var gState= {
     // how many attempts on current word
     attempt: 1,
     setPhoto: function () {
-        setPhoto(this.photo.src);
+        setPhoto(this.photo);
     },
     addWordSpots: function () {
         this.photo.wordSpots.forEach(appendSpot);
