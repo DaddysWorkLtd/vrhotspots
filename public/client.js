@@ -42,7 +42,7 @@ var gState= {
        let correct=   _.countBy(this.history,{correct: 1}),
             score = { elapsed: new Date() - this.history[0].date};
             score.correct = correct.true;
-            score.attempts = correct.true + correct.false;
+            score.attempts = correct.true + (correct.false || 0);
             // incorrect nattempts on current word _.countBy(gState.history,{word: gState.word}).true
             return score;
         },
@@ -61,6 +61,11 @@ var gState= {
         this.playWord();
     },
     nextWord: function () {
+        function _secShow (secs) {
+            let basedate = new Date(0);
+            basedate.setSeconds(secs);// specify value for SECONDS here
+            return basedate.toISOString().substr(14, 5) + 's';
+        }
         var words = this.db.get('words').value(),
             nextWord;
         // just loop through spots with words defined
@@ -71,7 +76,7 @@ var gState= {
         if (nextWord) {
             setHudText('top', 'Find: ' + nextWord[this.lang].word);
         } else {
-            setHudText('top', 'Completed. Refresh to play again');
+            setHudText('top', 'Completed in ' + _secShow(this.getScore().elapsed / 1000) + ' Refresh to play again');
         }
         this.word=nextWord;
         this.playWord();
