@@ -8,12 +8,15 @@ AFRAME.registerComponent('cursor-listen', {
         console.log('initialising curor-listen',this);
        // need a style that makes things appear and then fade out!
         this.el.addEventListener('raycaster-intersection-cleared', evt => {
-            // clear ingo panel
-            _bot.setAttribute('text','value: ');
+            // clear ingo panel if it is not due to a spot being deleted where we set the sticky bottom flag
+            if (!gState.stickyBot) {
+                _bot.setAttribute('text', 'value: ');
+            }
+            gState.stickyBot = false;
         });
         this.el.addEventListener('fusing', evt => {
             _bot.setAttribute('text','value: fusing: ' + evt.detail.intersectedEl.getAttribute('word'));
-            console.log('click',evt);
+ //           console.log('click',evt);
         });
         this.el.addEventListener('click', evt => {
             //_bot.setAttribute('text','value: click event' + evt.detail.intersectedEl.word);
@@ -232,7 +235,7 @@ function setPhoto (src) {
 function setHudText(place,value){
     var target=document.querySelector('#hud-'+place);
     target.setAttribute('text', 'value: ' + value);
-    // making it disolve after a couple of seconds for noe. This shold be switchable
+    // making it disolve after a couple of seconds for noe. This shold be switchable - do it to mid by default
     // need to create the attribute and work out how to play it.
     // target.setAttribute('animation', "property: material.opacity; dur: 1000; from: 1; to: 0; repeat: 0");
 }
