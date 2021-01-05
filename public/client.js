@@ -19,11 +19,13 @@ var gState= {
     word: {},
     // how many attempts on current word
     attempt: 1,
+    NUM_SPOTS: 15,
     setPhoto: function () {
         setPhoto(this.photo);
     },
+    // this creates NUM_SPOTS
     addWordSpots: function () {
-        this.photo.wordSpots.forEach(appendSpot);
+        _.forEach(_.sampleSize(this.photo.wordSpots, this.NUM_SPOTS),appendSpot);
     },
     // history - timesramp, photoid, targetword, guess, correct
     correct: function(answer) {
@@ -39,13 +41,17 @@ var gState= {
         this.attempt=1;
     },
     getScore: function() {
-       let correct=   _.countBy(this.history,{correct: 1}),
-            score = { elapsed: new Date() - this.history[0].date};
+        try {
+            let correct = _.countBy(this.history, {correct: 1}),
+                score = {elapsed: new Date() - this.history[0].date};
             score.correct = correct.true;
-            score.attempts = correct.true + correct.false;
+            score.attempts = correct.true + (correct.false || 0);
             // incorrect nattempts on current word _.countBy(gState.history,{word: gState.word}).true
             return score;
-        },
+        } catch (err) {
+            return {};
+        }
+    },
     incorrect: function(answer) {
         document.querySelector('#incorrect').play();
         this.history = this.history || [];
@@ -61,20 +67,33 @@ var gState= {
         this.playWord();
     },
     nextWord: function () {
+        function _secShow (secs) {
+            let basedate = new Date(0);
+            basedate.setSeconds(secs);// specify value for SECONDS here
+            return basedate.toISOString().substr(14, 5) + 's';
+        }
         var words = this.db.get('words').value(),
+            _candidates = [],
             nextWord;
-        // just loop through spots with words defined
+        // build an array of candidates that have words (ie translations defined)
         document.querySelectorAll('.wordspot').forEach( function (spotEl) {
                 // would actually need to check it is defined for the language
-                nextWord = nextWord || words[spotEl.getAttribute('word')];
+                let _word = spotEl.getAttribute('word');
+                // notice the coping here, this does not refer to parent object so explicitly reference gstate
+                if (words[_word] && words[_word][gState.lang]) {
+                    _candidates.push(words[_word]);
+                };
             });
-        if (nextWord) {
+        if ( _candidates.length ) {
+            // could just as well use sampleSize to get multiple words
+            nextWord = _.sample(_candidates);
             setHudText('top', 'Find: ' + nextWord[this.lang].word);
+            this.word=nextWord;
+            this.playWord();
         } else {
-            setHudText('top', 'Completed. Refresh to play again');
+            setHudText('top', 'Completed in ' + _secShow(this.getScore().elapsed / 1000) + ' Refresh to play again');
         }
-        this.word=nextWord;
-        this.playWord();
+
     },
     playWord: function() {
       // we might want a delay on this, we could also write it as a method so that it is call cached
