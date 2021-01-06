@@ -35,7 +35,7 @@ var gState= {
         this.history.push({date: new Date(), photoid: this.photo.id, word: this.word, correct: 1});
         let score=this.getScore();
         this.nextWord();
-        setHudText('bot','Correct: ' + answer + ' (' + score.correct + '/' + score.attempts +')' );
+        setHudText('bot','Correct: ' + answer + ' (' + score.correct + ' of ' + this.NUM_SPOTS +')' );
         // don't clear the bottom hud when the spot is removed ending the intersection
         this.stickyBot = true;
         this.attempt=1;
@@ -85,13 +85,15 @@ var gState= {
                 };
             });
         if ( _candidates.length ) {
-            // could just as well use sampleSize to get multiple words
+            // could just as well use
+            // sampleSize to get multiple words
             nextWord = _.sample(_candidates);
             setHudText('top', 'Find: ' + nextWord[this.lang].word);
             this.word=nextWord;
             this.playWord();
         } else {
-            setHudText('top', 'Completed in ' + _secShow(this.getScore().elapsed / 1000) + ' Refresh to play again');
+            let score = this.getScore();
+            setHudText('top', 'Accuracy: ' + Math.round(score.correct*100/score.attempts) + '% Completed in ' + _secShow(score.elapsed / 1000) + ' Refresh to play again');
         }
 
     },
@@ -99,7 +101,15 @@ var gState= {
       // we might want a delay on this, we could also write it as a method so that it is call cached
         let trans=this.word[this.lang];
         if (trans.audio) {
-            new Audio( trans.audio).play();
+            let audio = new Audio( "audio/" + this.lang + "/where-is.mp3" ),
+                wordPlay = function () {
+                    // now play the word
+                    audio.removeEventListener('ended', wordPlay); // otherwise it repeats for ever!
+                    audio.src = trans.audio;
+                    audio.play();
+                };
+            audio.play();
+            audio.addEventListener('ended', wordPlay );
         }
     },
     initGame: function() {

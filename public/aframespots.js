@@ -242,7 +242,15 @@ function setHudText(place,value){
     // if there is an animation then trigger it. Note that this is limited to one item, to support multiple
     // items search the components for anything that starts with animation.
     if ( target.components && target.components.animation) {
+        setTimeout(function () {
+            target.setAttribute('text', 'value: ');
+            // hack mc hackface - repeat current word
+            gState.playWord();
+        }, target.components.animation.data.dur);
+
         target.components.animation.beginAnimation();
+        // reser the text once animation ends or it ghosts
+
     }
 }
 // set opacity to zero
