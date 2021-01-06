@@ -571,7 +571,7 @@
       }
     },
     "wardrobe": {
-      "clue": "How much clothing would fit in this big boy?",
+      "clue": "Where you put what you wear",
       "nl": {
         "word": "de kledingkast",
         "audio": "audio/nl/de-kledingkast.mp3"
