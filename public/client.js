@@ -35,7 +35,7 @@ var gState= {
         this.history.push({date: new Date(), photoid: this.photo.id, word: this.word, correct: 1});
         let score=this.getScore();
         this.nextWord();
-        setHudText('bot','Correct: ' + answer + ' (' + score.correct + '/' + this.NUM_SPOTS +')' );
+        setHudText('bot','Correct: ' + answer + ' (' + score.correct + ' of ' + this.NUM_SPOTS +')' );
         // don't clear the bottom hud when the spot is removed ending the intersection
         this.stickyBot = true;
         this.attempt=1;
@@ -85,7 +85,8 @@ var gState= {
                 };
             });
         if ( _candidates.length ) {
-            // could just as well use sampleSize to get multiple words
+            // could just as well use
+            // sampleSize to get multiple words
             nextWord = _.sample(_candidates);
             setHudText('top', 'Find: ' + nextWord[this.lang].word);
             this.word=nextWord;
