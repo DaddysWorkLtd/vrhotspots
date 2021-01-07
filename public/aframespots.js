@@ -89,7 +89,7 @@ AFRAME.registerComponent('input-listen', {
             this.el.grip = false;
 //            setHudText('bot', 'Use the keyboard on left controller to enter word, then enter...\n assigned with right trigger');
             // not sure why I need to do this??????? as without it i get a blank page
-            setHudText('top', 'Hello and welcome back');
+            //setHudText('top', 'Hello and welcome back');
             //Called when trigger is pressed
             this.el.addEventListener('triggerdown', function (e) {
                 //"this" reffers ctlR or L in this function
@@ -225,19 +225,33 @@ function appendSpot (def) {
         scene.appendChild(spot);
     }
 }
-function setPhoto (src) {
+function setPhoto (photo) {
     // could animate this for a smooth transition
-    // need to
-    document.querySelector('#sky').setAttribute('src',src);
+    // we may need to use assets to stop weird 3js errors which leave a blank screen when not cached.
+    document.querySelector('#sky').setAttribute('src',photo.src);
+    // display the welcome (intro) message.
+    if (photo.welcome) {
+        setHudText('mid',photo.welcome);
+    }
 }
 // could make objects for this and shoulp use a closure to keep the query selector
 
 function setHudText(place,value){
     var target=document.querySelector('#hud-'+place);
     target.setAttribute('text', 'value: ' + value);
-    // making it disolve after a couple of seconds for noe. This shold be switchable - do it to mid by default
-    // need to create the attribute and work out how to play it.
-    // target.setAttribute('animation', "property: material.opacity; dur: 1000; from: 1; to: 0; repeat: 0");
+    // if there is an animation then trigger it. Note that this is limited to one item, to support multiple
+    // items search the components for anything that starts with animation.
+    if ( target.components && target.components.animation) {
+        setTimeout(function () {
+            target.setAttribute('text', 'value: ');
+            // hack mc hackface - repeat current word
+            gState.playWord();
+        }, target.components.animation.data.dur);
+
+        target.components.animation.beginAnimation();
+        // reser the text once animation ends or it ghosts
+
+    }
 }
 // set opacity to zero
 function hideSpots () {

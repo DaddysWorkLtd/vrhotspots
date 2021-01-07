@@ -19,11 +19,13 @@ var gState= {
     word: {},
     // how many attempts on current word
     attempt: 1,
+    NUM_SPOTS: 15,
     setPhoto: function () {
-        setPhoto(this.photo.src);
+        setPhoto(this.photo);
     },
+    // this creates NUM_SPOTS
     addWordSpots: function () {
-        this.photo.wordSpots.forEach(appendSpot);
+        _.forEach(_.sampleSize(this.photo.wordSpots, this.NUM_SPOTS),appendSpot);
     },
     // history - timesramp, photoid, targetword, guess, correct
     correct: function(answer) {
@@ -33,19 +35,23 @@ var gState= {
         this.history.push({date: new Date(), photoid: this.photo.id, word: this.word, correct: 1});
         let score=this.getScore();
         this.nextWord();
-        setHudText('bot','Correct: ' + answer + ' (' + score.correct + '/' + score.attempts +')' );
+        setHudText('bot','Correct: ' + answer + '\n(' + score.correct + ' of ' + this.NUM_SPOTS +')' );
         // don't clear the bottom hud when the spot is removed ending the intersection
         this.stickyBot = true;
         this.attempt=1;
     },
     getScore: function() {
-       let correct=   _.countBy(this.history,{correct: 1}),
-            score = { elapsed: new Date() - this.history[0].date};
+        try {
+            let correct = _.countBy(this.history, {correct: 1}),
+                score = {elapsed: new Date() - this.history[0].date};
             score.correct = correct.true;
-            score.attempts = correct.true + correct.false;
+            score.attempts = correct.true + (correct.false || 0);
             // incorrect nattempts on current word _.countBy(gState.history,{word: gState.word}).true
             return score;
-        },
+        } catch (err) {
+            return {};
+        }
+    },
     incorrect: function(answer) {
         document.querySelector('#incorrect').play();
         this.history = this.history || [];
@@ -57,21 +63,56 @@ var gState= {
         if (this.attempt > 3 && this.word.clue) {
             setHudText('top','Find: ' + this.word[this.lang].word + ' (' + this.word.clue + ')' );
         }
+        // repeat word out loud
+        this.playWord();
     },
     nextWord: function () {
+        function _secShow (secs) {
+            let basedate = new Date(0);
+            basedate.setSeconds(secs);// specify value for SECONDS here
+            return basedate.toISOString().substr(14, 5) + 's';
+        }
         var words = this.db.get('words').value(),
+            _candidates = [],
             nextWord;
-        // just loop through spots with words defined
+        // build an array of candidates that have words (ie translations defined)
         document.querySelectorAll('.wordspot').forEach( function (spotEl) {
                 // would actually need to check it is defined for the language
-                nextWord = nextWord || words[spotEl.getAttribute('word')];
+                let _word = spotEl.getAttribute('word');
+                // notice the coping here, this does not refer to parent object so explicitly reference gstate
+                if (words[_word] && words[_word][gState.lang]) {
+                    _candidates.push(words[_word]);
+                };
             });
-        if (nextWord) {
+        if ( _candidates.length ) {
+            // could just as well use
+            // sampleSize to get multiple words
+            nextWord = _.sample(_candidates);
             setHudText('top', 'Find: ' + nextWord[this.lang].word);
+            this.word=nextWord;
+            this.playWord();
         } else {
-            setHudText('top', 'Completed. Refresh to play again');
+            let score = this.getScore();
+            this.word={};
+            setHudText('top', 'Accuracy: ' + Math.round(score.correct*100/score.attempts) + '% Completed in ' + _secShow(score.elapsed / 1000));
+            setHudText('mid', 'Refresh to play again');
         }
-        this.word=nextWord;
+
+    },
+    playWord: function() {
+      // we might want a delay on this, we could also write it as a method so that it is call cached
+        let trans=this.word[this.lang];
+        if (trans.audio) {
+            let audio = new Audio( "audio/" + this.lang + "/where-is.mp3" ),
+                wordPlay = function () {
+                    // now play the word
+                    audio.removeEventListener('ended', wordPlay); // otherwise it repeats for ever!
+                    audio.src = trans.audio;
+                    audio.play();
+                };
+            audio.play();
+            audio.addEventListener('ended', wordPlay );
+        }
     },
     initGame: function() {
         // scoping isse with
