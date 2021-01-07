@@ -35,7 +35,7 @@ var gState= {
         this.history.push({date: new Date(), photoid: this.photo.id, word: this.word, correct: 1});
         let score=this.getScore();
         this.nextWord();
-        setHudText('bot','Correct: ' + answer + ' (' + score.correct + ' of ' + this.NUM_SPOTS +')' );
+        setHudText('bot','Correct: ' + answer + '\n(' + score.correct + ' of ' + this.NUM_SPOTS +')' );
         // don't clear the bottom hud when the spot is removed ending the intersection
         this.stickyBot = true;
         this.attempt=1;
@@ -93,7 +93,9 @@ var gState= {
             this.playWord();
         } else {
             let score = this.getScore();
-            setHudText('top', 'Accuracy: ' + Math.round(score.correct*100/score.attempts) + '% Completed in ' + _secShow(score.elapsed / 1000) + ' Refresh to play again');
+            this.word={};
+            setHudText('top', 'Accuracy: ' + Math.round(score.correct*100/score.attempts) + '% Completed in ' + _secShow(score.elapsed / 1000));
+            setHudText('mid', 'Refresh to play again');
         }
 
     },
