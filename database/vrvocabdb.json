@@ -592,5 +592,72 @@
       }
     }
   },
-  "uid": 80
+  "uid": 80,
+  "log": [
+    {
+      "date": "2021-01-09T13:34:37.175Z",
+      "photoid": 1,
+      "word": {
+        "clue": "You sit on this, briefly",
+        "nl": {
+          "word": "de kruk",
+          "audio": "audio/nl/de-kruk.mp3"
+        }
+      },
+      "guess": "het stopcontact",
+      "id": "P3VzDcj1gK4pz9_CAAAA"
+    },
+    {
+      "date": "2021-01-09T13:36:11.612Z",
+      "photoid": 1,
+      "word": {
+        "clue": "You sit on this, briefly",
+        "nl": {
+          "word": "de kruk",
+          "audio": "audio/nl/de-kruk.mp3"
+        }
+      },
+      "correct": 1,
+      "id": "eygUolGiBxrCs1CLAAAA"
+    },
+    {
+      "date": "2021-01-09T13:44:06.397Z",
+      "photoid": 1,
+      "word": {
+        "clue": "You're 'standing' on it right now!",
+        "nl": {
+          "word": "het tapijt",
+          "audio": "audio/nl/het-tapijt.mp3"
+        }
+      },
+      "correct": 1,
+      "id": "4EFGHtDoEomOxiuUAAAA"
+    },
+    {
+      "date": "2021-01-09T13:44:11.683Z",
+      "photoid": 1,
+      "word": {
+        "clue": "It keeps the tempemperature on point here",
+        "nl": {
+          "word": "de radiator",
+          "audio": "audio/nl/de-radiator.mp3"
+        }
+      },
+      "guess": "het tafelkleed",
+      "id": "4EFGHtDoEomOxiuUAAAA"
+    },
+    {
+      "date": "2021-01-09T13:44:15.395Z",
+      "photoid": 1,
+      "word": {
+        "clue": "It keeps the tempemperature on point here",
+        "nl": {
+          "word": "de radiator",
+          "audio": "audio/nl/de-radiator.mp3"
+        }
+      },
+      "correct": 1,
+      "id": "4EFGHtDoEomOxiuUAAAA"
+    }
+  ]
 }

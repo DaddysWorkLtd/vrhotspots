@@ -31,8 +31,7 @@ var gState= {
     correct: function(answer) {
         document.querySelector('#correct').play(); //should be calling a method in the ui code
         // choose a new word
-        this.history = this.history || [];
-        this.history.push({date: new Date(), photoid: this.photo.id, word: this.word, correct: 1});
+        this.log({date: new Date(), photoid: this.photo.id, word: this.word, correct: 1});
         let score=this.getScore();
         this.nextWord();
         setHudText('bot','Correct: ' + answer + ' (' + score.correct + ' of ' + this.NUM_SPOTS +')' );
@@ -54,8 +53,7 @@ var gState= {
     },
     incorrect: function(answer) {
         document.querySelector('#incorrect').play();
-        this.history = this.history || [];
-        this.history.push({date: new Date(), photoid: this.photo.id, word: this.word, guess: answer});
+        this.log({date: new Date(), photoid: this.photo.id, word: this.word, guess: answer});
         setHudText('bot','Incorrect: ' + answer);
         // increase the attempt
         this.attempt += 1;
@@ -65,6 +63,13 @@ var gState= {
         }
         // repeat word out loud
         this.playWord();
+    },
+    log: function(entry) {
+        // we have a local history and a remote log db
+        this.history = this.history || [];
+        this.history.push(entry);
+        // remote log
+        socket.emit('log',entry);
     },
     nextWord: function () {
         function _secShow (secs) {
@@ -132,8 +137,8 @@ socket.on('photos', function(data) {
 });
 socket.on('words', function(data) {
     gState.db.set('words',data).write();
-// THIS IS WHERE WE INIT THE GAME
-    gState.initGame();
+// THIS IS WHERE WE INIT THE GAME IF NOT ALREADY (eg socket reconnects)
+    if ( _.isEmpty(gState.word) ) gState.initGame();
 });
 // this should really add or update a photo?
 /*socket.on('photo', function(data) {

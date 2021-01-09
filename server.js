@@ -9,7 +9,11 @@ const express = require("express"),
     protocol = process.env.PORT ? require("http") : require("https") , // non secure for glitch which has process.env defined
     key = fs.readFileSync("./config/devkey.pem"),
     cert = fs.readFileSync("./config/devcert.pem"),
-    app = express();
+    app = express(),
+    requestIp = require('request-ip');
+//getting the IP address
+app.use(requestIp.mw())
+
 var server;
 // if on glitch dont create a secure server as their proxy does that and it will cause hang ups
 if (!process.env.PORT)
@@ -42,7 +46,7 @@ const low = require("lowdb"),
     FileSync = require("lowdb/adapters/FileSync"),
     db = low(new FileSync(DATA_FILE));
 
-db.defaults({ photos: [], words: {}, uid: 0 }).write();
+db.defaults({ photos: [], words: {}, log: [], uid: 0 }).write();
 
 
 //static root is public
@@ -72,6 +76,12 @@ io.on("connection", socket => {
             .get("words")
             .value()
     );
+    // handle logging send everything to db
+    socket.on("log", function(entry) {
+        entry.id=socket.id;
+        // NEED TO IMPLEMENT SOCKET HANDLER AS MIDDLEWARE TO GET IP from clientIP entry.ip=requestIp.get
+        db.get("log").push(entry).write();
+    })
     // Handle add spot event by recording in database and broadcasting out
     socket.on("addSpot", function(data) {
         // save data
