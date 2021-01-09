@@ -65,6 +65,11 @@ AFRAME.registerComponent('raylisten', {
             //Convert local position into world coordinate.
         });
 
+        this.el.addEventListener('gripdown', function (e) {
+            console.log('grip squeeze',e)
+            // the idea is right up left down but for not this is on the right controller
+            gState.changePhoto(-1);
+        });
         this.el.addEventListener('raycaster-intersection', evt => {
             this.raycaster = evt.detail.el;
             debugInfo.setAttribute('text','value:intersection');
@@ -77,6 +82,7 @@ AFRAME.registerComponent('raylisten', {
             this.raycaster = null;
             debugInfo.setAttribute('text','value: ');
         });
+
     }
 });
 
@@ -100,7 +106,10 @@ AFRAME.registerComponent('input-listen', {
 
             //Grip Pressed
             this.el.addEventListener('gripdown', function (e) {
-                //Setting grip flag as true.
+                console.log('grip squeeze',e.id)
+                // the idea is right up left down but for not this is on the right controller
+                gState.changePhoto();
+                //Setting grip flag as true, this is for gripping to hold on to something
                 this.grip = true;
             });
             //Grip Released
@@ -257,5 +266,11 @@ function setHudText(place,value){
 function hideSpots () {
     [].forEach.call(document.querySelectorAll('.wordspot'), function (el) {
         el.setAttribute('opacity',0);
+    });
+}
+// set opacity to zero
+function removeSpots () {
+    [].forEach.call(document.querySelectorAll('.wordspot'), function (el) {
+        el.remove();
     });
 }

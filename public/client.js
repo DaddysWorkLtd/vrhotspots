@@ -20,13 +20,17 @@ var gState= {
     // how many attempts on current word
     attempt: 1,
     NUM_SPOTS: 15,
-    setPhoto: function () {
+    setPhoto: function (photo) {
+        if (photo) {
+            this.photo = photo;
+        }
         setPhoto(this.photo);
     },
     // this creates NUM_SPOTS
     addWordSpots: function () {
         _.forEach(_.sampleSize(this.photo.wordSpots, this.NUM_SPOTS),appendSpot);
     },
+    // this deletes wordSpots
     // history - timesramp, photoid, targetword, guess, correct
     correct: function(answer) {
         document.querySelector('#correct').play(); //should be calling a method in the ui code
@@ -34,7 +38,7 @@ var gState= {
         this.log({date: new Date(), photoid: this.photo.id, word: this.word, correct: 1});
         let score=this.getScore();
         this.nextWord();
-        setHudText('bot','Correct: ' + answer + ' (' + score.correct + ' of ' + this.NUM_SPOTS +')' );
+        setHudText('bot','Correct: ' + answer + '\n(' + score.correct + ' of ' + this.NUM_SPOTS +')' );
         // don't clear the bottom hud when the spot is removed ending the intersection
         this.stickyBot = true;
         this.attempt=1;
@@ -120,6 +124,19 @@ var gState= {
     initGame: function() {
         // scoping isse with
         this.nextWord();
+    },
+    changePhoto: function(offset) {
+        const off=offset || 1,
+            nextPhoto = gState.db.get('photos').find( {id:this.photo.id+off}).value();
+        if (nextPhoto) {
+            removeSpots();
+            setHudText('top','');
+            setHudText('mid', nextPhoto.name);
+            this.setPhoto(nextPhoto);
+            this.word={};
+            this.addWordSpots();
+            this.initGame();
+        }
     }
 };
 gState.db.defaults({ photos: [], words: {}, history: [] }).write();

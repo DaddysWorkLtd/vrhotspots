@@ -350,6 +350,32 @@
         }
       ],
       "navSpots": []
+    },
+    {
+      "id": 2,
+      "name": "Gourmet Dinner",
+      "description": "The aftermath of a gourmet/raclette dinner",
+      "src": "photos/gourmet.jpg",
+      "wordSpots": [],
+      "navSpots": []
+    },
+    {
+      "id": 3,
+      "name": "Kitchen",
+      "description": "Kitchen with appliances and food items",
+      "welcome": "",
+      "src": "photos/kitchen.jpg",
+      "wordSpots": [],
+      "navSpots": []
+    },
+    {
+      "id": 4,
+      "name": "Viewpoint",
+      "description": "Family walk to the dunes",
+      "welcome": "",
+      "src": "photos/viewpoint.jpg",
+      "wordSpots": [],
+      "navSpots": []
     }
   ],
   "words": {
@@ -658,6 +684,110 @@
       },
       "correct": 1,
       "id": "4EFGHtDoEomOxiuUAAAA"
+    },
+    {
+      "date": "2021-01-09T16:53:05.323Z",
+      "photoid": 1,
+      "word": {
+        "clue": "You put things in one, behind the door",
+        "nl": {
+          "word": "de doos",
+          "audio": "audio/nl/de-doos.mp3"
+        }
+      },
+      "guess": "de deur",
+      "id": "4LUW3P1GiElUfNwLAAAB"
+    },
+    {
+      "date": "2021-01-09T16:55:08.823Z",
+      "photoid": 1,
+      "word": {
+        "clue": "Do you prefer Mondriaan or Rembrandt?",
+        "nl": {
+          "word": "het schilderij",
+          "audio": "audio/nl/het-schilderij.mp3"
+        }
+      },
+      "guess": "de lade",
+      "id": "hHMDdhYGUx6lkgFHAAAB"
+    },
+    {
+      "date": "2021-01-09T16:55:16.141Z",
+      "photoid": 1,
+      "word": {
+        "clue": "Do you prefer Mondriaan or Rembrandt?",
+        "nl": {
+          "word": "het schilderij",
+          "audio": "audio/nl/het-schilderij.mp3"
+        }
+      },
+      "guess": "de lade",
+      "id": "hHMDdhYGUx6lkgFHAAAB"
+    },
+    {
+      "date": "2021-01-09T16:55:21.606Z",
+      "photoid": 1,
+      "word": {
+        "clue": "Do you prefer Mondriaan or Rembrandt?",
+        "nl": {
+          "word": "het schilderij",
+          "audio": "audio/nl/het-schilderij.mp3"
+        }
+      },
+      "guess": "de muur",
+      "id": "hHMDdhYGUx6lkgFHAAAB"
+    },
+    {
+      "date": "2021-01-09T16:55:32.221Z",
+      "photoid": 1,
+      "word": {
+        "clue": "Do you prefer Mondriaan or Rembrandt?",
+        "nl": {
+          "word": "het schilderij",
+          "audio": "audio/nl/het-schilderij.mp3"
+        }
+      },
+      "correct": 1,
+      "id": "hHMDdhYGUx6lkgFHAAAB"
+    },
+    {
+      "date": "2021-01-09T16:56:12.545Z",
+      "photoid": 1,
+      "word": {
+        "clue": "You put your socks in one",
+        "nl": {
+          "word": "de lade",
+          "audio": "audio/nl/de-lade.mp3"
+        }
+      },
+      "guess": "de deur",
+      "id": "XH9Itid7VrsbX2WjAAAB"
+    },
+    {
+      "date": "2021-01-09T16:56:22.362Z",
+      "photoid": 1,
+      "word": {
+        "clue": "You put your socks in one",
+        "nl": {
+          "word": "de lade",
+          "audio": "audio/nl/de-lade.mp3"
+        }
+      },
+      "correct": 1,
+      "id": "XH9Itid7VrsbX2WjAAAB"
+    },
+    {
+      "date": "2021-01-09T16:56:30.541Z",
+      "photoid": 1,
+      "word": {
+        "clue": "Don't forget to look up and down",
+        "nl": {
+          "word": "de vloer",
+          "audio": "audio/nl/de-vloer.mp3"
+        }
+      },
+      "correct": 1,
+      "id": "XH9Itid7VrsbX2WjAAAB"
     }
   ]
 }
