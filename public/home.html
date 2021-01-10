@@ -18,12 +18,16 @@
 </head>
 <body>
 
-<a-scene anti-alias="true">
+<a-scene stats>
     <a-assets>
         <a-asset-item id="star" src="assets/star.glb"></a-asset-item>
         <a-asset-item id="cup" src="assets/cup.glb"></a-asset-item>
         <img id="cardboard" src="assets/cardboard.jpg">
         <img id="cardboard-NRM" src="assets/cardboard_normal.jpg">
+        <img id="paper-nrm" src="assets/paper-normal.jpg">
+        <img id="paper" src="assets/paper.jpg">
+        <img id="stone-nrm" src="assets/cobblestone.jpg">
+        <img id="stone" src="assets/cobblestone.jpg">
         <img id="kitchen" src="photos/kitchen.jpg">
         <img id="gourmet" src="photos/gourmet.jpg">
         <img id="viewpoint" src="photos/viewpoint.jpg">
@@ -37,7 +41,7 @@
 
     </a-assets>
     <a-entity id="myRig">
-        <a-entity id="head" camera="stereocam: eye:left" look-controls wasd-controls position="0 1.6 0">
+        <a-entity id="head" camera="" look-controls wasd-controls position="0 1.6 0">
             <a-entity id="hud-cursor" cursor="fuse: true; fuseTimeout: 2000" position="0 0 -10"
                       raycaster="objects: .wordspot"
                       geometry="primitive: ring; radiusInner:.09; radiusOuter: 0.15"
@@ -69,7 +73,7 @@
     </a-plane>
     <a-entity id="star" gltf-model="#star" position="1.75 0 -1.25"></a-entity>
     <a-entity id="star" gltf-model="#star" position="2 0 -1.25" material="color:#666666"></a-entity>
-    <!--- view-point -->
+
     <a-plane look-at="#head" material="src: #viewpoint; shader:flat; color:#666666; opacity:0.7" rotation="0 0 0" scale="1 .5 .5"
              position="2 1.25 -2">
     </a-plane>
@@ -77,10 +81,10 @@
              text="color: #999999; wrap-count: 20; align: center; position: 0 1 0; value: VIEWPOINT\n\n words: 25\nfound: 0">
     </a-plane>
 
-    <!--- cardboard box --->
+    <!--- cardboard box
     <a-entity geometry="primitive: box;" scale=".5 1.5 1" material="src:#cardboard; normal-map: #cardboard-NRM;" position="4 .5 0">
     </a-entity>
-    <a-plane material="color: #ffffff; shader: flat; opacity: 0" scale="1 1 1" position="3.74 .75 0" rotation="0 -90 0" text="color: black; wrap-count: 20; align: center; value: GOURMET\n\n words: 22\nfound: 0">
+    <a-plane material="color: #ffffff; shader: flat; opacity: 0" scale="1 1 1" position="3.74 .75 0" rotation="0 -90 0" text="color: black; wrap-count: 20; align: center; value: GOURMET\n\n words: 46\nfound: 0">
     </a-plane>
     <a-curvedimage src="#gourmet"
                    rotation="0 40 0"
@@ -92,42 +96,77 @@
                    scale="1 1 1">
     </a-curvedimage>
 
-    <a-sphere material="src: #kitchen;" position="2 1.6 4" rotation="0 0 0" radius=".5"
-              animation__enter="property: rotation;
-                                        from:0 0 0;
-                                        to: 0 360 0;
-                                        dur: 10000;
-                                        easing: linear;
-                                        loop: true"></a-sphere>
-
-    <a-cylinder material="src: #home-office;" colour="#333333" open-ended="true" side="double" position="-3 1.6 5" rotation="0 0 0" radius="1" height="2"></a-cylinder>
+    <a-entity id="box_kitchen" geometry="primitive: box;" scale=".5 1.25 1" material="src:#cardboard; normal-map: #cardboard-NRM;" position="3.5 .65 -1.45" rotation="0 10 0">
+    </a-entity>
+    <a-plane id="text_kitchen" position="3.24 .78 -1.35" rotation="0 -80 0" material="color: #ffffff; shader: flat; opacity: 0" text="color: black; wrap-count: 20; align: center; value:Kitchen\n\n words: 22\nfound: 0">
+    </a-plane>
+    <a-sphere id="img_kitchen" material="src: #kitchen" position="3.43 1.62 -1.4" radius=".4" animation__enter="property: rotation; from: 0 0 0; to: 0 360 0; dur: 10000; easing: linear; loop: NaN; autoplay: false" geometry="radius: 0.35"></a-sphere>
 
 
-    <a-cone src="#viewpoint" position="-1 1.6 5" rotation="180 90 90" sided="double" radius="".5"></a-cone>
+    <a-entity id="box_homeoffice" position="3.5 .65 -2.45" rotation="0 20 0" geometry="primitive: box;" scale=".5 1.25 1" material="src:#cardboard; normal-map: #cardboard-NRM;" >
+    </a-entity>
+    <a-plane id="text_homeoffice" material="color: #ffffff; shader: flat; opacity: 0" position="3.24 .78 -2.35" rotation="0 -70 0" text="color: black; wrap-count: 20; align: center; value: HOME OFFICE\n\n words: 34\nfound: 15">
+    </a-plane>
+    <a-sphere id="img_homeoffice" material="src: #home-office" position="3.43 1.62 -2.4" radius=".4" animation__enter="property: rotation; from: 0 0 0; to: 0 360 0; dur: 10000; easing: linear; loop: NaN; autoplay: false" geometry="radius: 0.35"></a-sphere>
+--->
+
+    <a-curvedimage src="#gourmet" rotation="-4.2456172619194 42.8131253255605 4.357916989765042" theta-length="100" theta-start="360" radius=".5" height="0.5" position="3.54116 1.50695 0.02579" scale="1.35309 1.31613 1.31613" material="" geometry="thetaLength: 100; thetaStart: 360">
+    </a-curvedimage>
+    <a-entity geometry="" scale="0.5 1.5 1" material="src:#cardboard; normal-map: #cardboard-NRM;" position="4 0.5 0">
+    </a-entity>
+    <a-plane material="color: #ffffff; shader: flat; opacity: 0" scale="" position="3.74 0.75 0" rotation="0 -90 0" text="color: black; align: center; value: GOURMET\n\n words: 46\nfound: 0; wrapCount: 20" geometry="">
+    </a-plane>
+
+    <a-sphere id="img_kitchen" material="src: #kitchen" position="3.76761 1.62 -1.35034" radius=".4" animation__enter="property: rotation; from: 0 0 0; to: 0 360 0; dur: 10000; easing: linear; loop: NaN; autoplay: false" geometry="radius: 0.35"></a-sphere>
+    <a-entity id="box_kitchen" geometry="" scale="0.5 1.25 1" material="src:#stone; normal-map: #stone-NRM;"  position="3.81789 0.65 -1.32335" rotation="0 10 0">
+    </a-entity>
+
+    <a-plane id="text_kitchen" material="color: #ffffff; shader: flat; opacity: 0.5" scale="" position="3.56222 0.65 -1.28861" rotation="0 -80 0" text="color: black; align: center; value: Kitchen\n\n words: 22\nfound: 0; wrapCount: 20" geometry="">
+    </a-plane>
+
+    <a-sphere id="img_homeoffice" material="src: #home-office" position="3.5791 1.62 -2.52019" radius=".4" animation__enter="property: rotation; from: 0 0 0; to: 0 360 0; dur: 10000; easing: linear; loop:true; autoplay: true" geometry="radius: 0.35"></a-sphere>
+    <a-entity id="box_homeoffice" geometry="" scale="0.5 1.25 1" material="src:#paper; normal-map: #paper-NRM;" position="3.52542 0.6787 -2.52875" rotation="0 20 0">
+    </a-entity>
+    <a-plane id="text_homeoffice" material="color: #ffffff; shader: flat; opacity: 0.5" scale="" position="3.27354 0.69582 -2.44478" rotation="0 -70 0" text="color: black; align: center; value: HOME OFFICE\n\n words: 34\nfound: 15; wrapCount: 20" geometry="">
+    </a-plane>
+    
+    <a-light type="spot" position="0.69554 2.43826 -0.75504" color="white" target="#text_kitchen&quot;" distance="10" intensity="0.7" light="target: #text_kitchen"></a-light>
+
 
     <!--- black board -->
     <a-plane material="color:#000000; shader: flat; opacity: 1"
-             rotation="0 0 0" scale="5 5 5" position="0 2.5 -8"
+             rotation="0 0 0" scale="5 5 5" position="1.5 3.5 -5.5"
              text="color: #FFFFFF; font: https://raw.githubusercontent.com/etiennepinchon/aframe-fonts/master/fonts/creepster/Creepster-Regular.json; shader:msdf; width: 1; color: white; wrap-count: 25; align: center;
-             value: Find the items in the room\n\nLanguage: Dutch\n\nCurrent: Home Office"
+             value: Find the items in the room\n\nLanguage: Dutch\n\nCurrent: Home Office\n Items per Game: 15\n Text: On"
              look-at="#head">
     </a-plane>
-    <!-- on a pyramid -->
-    <!--- Stats - whiteboard or computer screen?--->
+    <!--- whiteboard or computer screen?
     <a-plane material="color:#FFFFFF; shader: flat; opacity: 1"
-             rotation="0 0 0" scale="5 5 5" position="-4 2 -4"
+             rotation="0 0 0" scale="5 5 5" position="-4 12 -4"
              text="font: roboto; width: 3; color: navy; wrap-count: 30; align: left; width:1; value: Statistics\n\nWords Learned: 0\n\nMastered: \n\nGlobal Ranking: 1"
              look-at="#head"></a-plane>
+--->
 
-    <!--- logo :) --->
-    <a-entity id="authors" rotation="0 0 5" position="4.644 2 -4.8" text-geometry="value: Paul &amp; Pepijn's; font: #dawningFont; bevelEnabled: true; bevelSize: 0.05; bevelThickness: 0.03; curveSegments: 12.01; size: 1; height: 0" material="metalness: .9; roughness: .1; vertexColors: face; dithering: false; emissive: #03249b; emissiveIntensity: 0.75"></a-entity>
 
-    <a-entity id="logo" position="5.1 0.5 -5.5" scale="0.6 1.2 1" text-geometry="value: VR VOCAB; font: #exoFont; bevelEnabled: true; bevelSize: 0.1; bevelThickness: 0.1; curveSegments: 1; size: 1.5; height: 0.5" material="color: #ae00ff; metalness: 0.9; roughness: 0.48; emissive: #242323; "></a-entity>
+    <a-entity id="authors" rotation="0 20 5" scale=".5 .5 .5" position="-5.2 1.6 -4" text-geometry="value: Paul &amp; Pepijn's; font: #dawningFont; bevelEnabled: true; bevelSize: 0.05; bevelThickness: 0.03; curveSegments: 12.01; size: 1; height: 0" material="metalness: 0.9; roughness: 0.1; vertexColors: face; dithering: false; emissive: #03249b; emissiveIntensity: 0.75"></a-entity>
 
-    <a-entity position="5.7 0 -4.7" text-geometry="value: Welcome; font: #exoItalicFont; style: italic; size: 0.8; weight: bold; height: 0" material="color: #ff4000"></a-entity>
+    <a-entity id="logo" rotation="0 20 0" position="-5.1448 0.5 -4.49608" scale="0.37658 0.75972 0.63311" text-geometry="value: VR VOCAB; font: #exoFont; bevelEnabled: true; bevelSize: 0.1; bevelThickness: 0.1; curveSegments: 1; size: 1.5; height: 0.5" material="color: #ae00ff; metalness: 0.9; roughness: 0.48; emissive: #242323" ></a-entity>
 
-    <a-entity position="5.7 0 -4.7" text-geometry="value: Welcome; font: #exoItalicFont; style: italic; size: 0.8; weight: bold; height: 0; bevelEnabled: true; bevelSize: 0.04; bevelThickness: 0.04; curveSegments: 1" material="shader: flat; color: #ffc2c2; transparent: true; opacity: 0.2"></a-entity>
-    <a-entity position ="9 2.5 0.5" light="color:  #ffaaff;  type:  spot;  intensity:  1.5;  target:  #logo;  distance:  9.99;  penumbra:  1"></a-entity>
+    <a-entity position="-4.3 0.36 -4.2" scale=".5 .5 .5" rotation="0 17.5 0"  text-geometry="value: Welcome; font: #exoItalicFont; style: italic; size: 0.8; weight: bold; height: 0" material="color: #e51515"></a-entity>
+
+    <a-entity position="-4.3 0.36 -4.2" scale=".5 .5 .5" rotation="0 17.5 0"  text-geometry="value: Welcome; font: #exoItalicFont; style: italic; size: 0.8; weight: bold; height: 0; bevelEnabled: true; bevelSize: 0.04; bevelThickness: 0.04; curveSegments: 1" material="shader: flat; color: #ffc2c2; transparent: true; opacity: 0.2"></a-entity>
+
+    <a-entity position="-3.31008 3.13324 -0.19125" light="color: #ffaaff; type: spot; intensity: 1.5; target: #logo; distance: 9.99; penumbra: 1"></a-entity>
+
+    <!--- logo :)
+    <a-entity id="authors" rotation="0 0 5" position="-3.644 2 -4.8" text-geometry="value: Paul &amp; Pepijn's; font: #dawningFont; bevelEnabled: true; bevelSize: 0.05; bevelThickness: 0.03; curveSegments: 12.01; size: 1; height: 0" material="metalness: .9; roughness: .1; vertexColors: face; dithering: false; emissive: #03249b; emissiveIntensity: 0.75"></a-entity>
+
+    <a-entity id="logo" position="-5.1 0.5 -5.5" scale="0.6 1.2 1" text-geometry="value: VR VOCAB; font: #exoFont; bevelEnabled: true; bevelSize: 0.1; bevelThickness: 0.1; curveSegments: 1; size: 1.5; height: 0.5" material="color: #ae00ff; metalness: 0.9; roughness: 0.48; emissive: #242323; "></a-entity>
+
+    <a-entity position="-3.7 0 -4.7" text-geometry="value: Welcome; font: #exoItalicFont; style: italic; size: 0.8; weight: bold; height: 0" material="color: #ff4000"></a-entity>
+    Lighting
+    <a-entity position ="2 2.5 0.5" light="color:  #ffaaff;  type:  spot;  intensity:  1.5;  target:  #logo;  distance:  9.99;  penumbra:  1"></a-entity>
+    -->
 </a-scene>
 
 </body>

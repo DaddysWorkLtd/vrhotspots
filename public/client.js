@@ -19,7 +19,7 @@ var gState= {
     word: {},
     // how many attempts on current word
     attempt: 1,
-    NUM_SPOTS: 15,
+    NUM_SPOTS: 5,
     setPhoto: function (photo) {
         if (photo) {
             this.photo = photo;
@@ -78,6 +78,7 @@ var gState= {
     nextWord: function () {
         function _secShow (secs) {
             let basedate = new Date(0);
+            if (!secs) return '';
             basedate.setSeconds(secs);// specify value for SECONDS here
             return basedate.toISOString().substr(14, 5) + 's';
         }
@@ -102,7 +103,10 @@ var gState= {
             this.playWord();
         } else {
             let score = this.getScore();
-            setHudText('top', 'Accuracy: ' + Math.round(score.correct*100/score.attempts) + '% Completed in ' + _secShow(score.elapsed / 1000) + ' Refresh to play again');
+            // make sure there have been words, otherwise when editing you get a broken message in top hud
+            if (score.correct) {
+                setHudText('top', 'Accuracy: ' + Math.round(score.correct * 100 / score.attempts) + '% Completed in ' + _secShow(score.elapsed / 1000) + ' Refresh to play again');
+            }
         }
 
     },
@@ -169,10 +173,13 @@ socket.on('words', function(data) {
 // add hotspot to current photo
 socket.on('addSpot', function(data) {
     console.log('addspot received',data);
-    // check the photo
+    // check the photo matches but what if for another photo? TODO: NEED TO UPDATE PHOTOS COLLECTION
+    if (data.photoId === gState.photo.id) appendSpot (data);
+    /* WTF is this doing here? Hiding the spots!?!=g MAYBE BECAUSE WE DON"T SHOW ALL SPOTS NOW
     [].forEach.call(document.querySelectorAll('.wordspot'), function (el) {
         el.setAttribute('opacity',0);
-    });
+    }); */
+    // Needs to be added to photo
 });
 
 
