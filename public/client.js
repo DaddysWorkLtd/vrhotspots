@@ -103,10 +103,13 @@ var gState= {
             this.playWord();
         } else {
             let score = this.getScore();
+            this.word={};
             // make sure there have been words, otherwise when editing you get a broken message in top hud
             if (score.correct) {
-                setHudText('top', 'Accuracy: ' + Math.round(score.correct * 100 / score.attempts) + '% Completed in ' + _secShow(score.elapsed / 1000) + ' Refresh to play again');
+                setHudText('top', 'Accuracy: ' + Math.round(score.correct*100/score.attempts) + '% Completed in ' + _secShow(score.elapsed / 1000));
+                setHudText('mid', 'Refresh to play again');
             }
+
         }
 
     },
