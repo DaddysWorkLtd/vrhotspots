@@ -210,7 +210,21 @@ AFRAME.registerComponent('kb-ctrl', {
         });
     }
 });
+// just hard coded to the home office
+AFRAME.registerComponent('vocab-room', {
+    init: function() {
+        this.el.addEventListener('fusing', evt => {
+            _bot.setAttribute('text','value: fusing: Home Office');
+        });
+        this.el.addEventListener('click', evt => {
+            _.forEach(document.querySelectorAll('.homeScene'),function (el) {
+                el.setAttribute('visible',false);
+            });
+            gState.init();
+        });
 
+    }
+} );
 
 // APPLICATION AFRAME MANIPULATION
 function appendSpot (def) {
@@ -262,6 +276,7 @@ function setHudText(place,value){
 
     }
 }
+
 // set opacity to zero
 function hideSpots () {
     [].forEach.call(document.querySelectorAll('.wordspot'), function (el) {
