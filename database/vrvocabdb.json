@@ -700,5 +700,71 @@
     }
   },
   "uid": 92,
-  "log": []
+  "log": [
+    {
+      "date": "2021-01-10T20:23:41.489Z",
+      "photoid": 1,
+      "word": {
+        "clue": "It makes use of a key",
+        "nl": {
+          "word": "het slot",
+          "audio": "audio/nl/het-slot.mp3"
+        }
+      },
+      "guess": "het stopcontact",
+      "id": "o3VpfEToK6QBFB2RAAAB"
+    },
+    {
+      "date": "2021-01-10T20:23:47.481Z",
+      "photoid": 1,
+      "word": {
+        "clue": "It makes use of a key",
+        "nl": {
+          "word": "het slot",
+          "audio": "audio/nl/het-slot.mp3"
+        }
+      },
+      "correct": 1,
+      "id": "o3VpfEToK6QBFB2RAAAB"
+    },
+    {
+      "date": "2021-01-10T20:23:52.132Z",
+      "photoid": 1,
+      "word": {
+        "clue": "You put your socks in one",
+        "nl": {
+          "word": "de lade",
+          "audio": "audio/nl/de-lade.mp3"
+        }
+      },
+      "guess": "het stopcontact",
+      "id": "o3VpfEToK6QBFB2RAAAB"
+    },
+    {
+      "date": "2021-01-10T20:23:55.718Z",
+      "photoid": 1,
+      "word": {
+        "clue": "You put your socks in one",
+        "nl": {
+          "word": "de lade",
+          "audio": "audio/nl/de-lade.mp3"
+        }
+      },
+      "correct": 1,
+      "id": "o3VpfEToK6QBFB2RAAAB"
+    },
+    {
+      "date": "2021-01-10T20:31:09.697Z",
+      "photoid": 1,
+      "word": {
+        "clue": "It lights up the room",
+        "nl": {
+          "word": "de kaars",
+          "audio": "audio/nl/de-kaars.mp3"
+        }
+      },
+      "guess": "de muur",
+      "id": "yAAfmsqTUP5w7sjxAAAB"
+    }
+  ]
 }

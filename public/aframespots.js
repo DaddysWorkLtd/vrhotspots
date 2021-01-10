@@ -247,6 +247,7 @@ function appendSpot (def) {
         spot.setAttribute('scale', '1 1 1');
         spot.setAttribute('opacity', 0.2);
         spot.setAttribute('color', 'darkorange');
+        spot.setAttribute('emissive', 'darkorange');
         spot.setAttribute('position', def.pos);
         spot.setAttribute('word', def.word);
         // ids can't start with a number so namespave with VRS - vr spot
@@ -274,8 +275,6 @@ function setHudText(place,value){
     if ( target.components && target.components.animation) {
         setTimeout(function () {
             target.setAttribute('text', 'value: ');
-            // hack mc hackface - repeat current word
-            gState.playWord();
         }, target.components.animation.data.dur);
 
         target.components.animation.beginAnimation();
