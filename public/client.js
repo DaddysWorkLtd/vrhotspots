@@ -19,20 +19,23 @@ var gState= {
     word: {},
     // how many attempts on current word
     attempt: 1,
-    NUM_SPOTS: 15,
-    setPhoto: function () {
+    NUM_SPOTS: 5,
+    setPhoto: function (photo) {
+        if (photo) {
+            this.photo = photo;
+        }
         setPhoto(this.photo);
     },
     // this creates NUM_SPOTS
     addWordSpots: function () {
         _.forEach(_.sampleSize(this.photo.wordSpots, this.NUM_SPOTS),appendSpot);
     },
+    // this deletes wordSpots
     // history - timesramp, photoid, targetword, guess, correct
     correct: function(answer) {
         document.querySelector('#correct').play(); //should be calling a method in the ui code
         // choose a new word
-        this.history = this.history || [];
-        this.history.push({date: new Date(), photoid: this.photo.id, word: this.word, correct: 1});
+        this.log({date: new Date(), photoid: this.photo.id, word: this.word, correct: 1});
         let score=this.getScore();
         this.nextWord();
         setHudText('bot','Correct: ' + answer + '\n(' + score.correct + ' of ' + this.NUM_SPOTS +')' );
@@ -54,8 +57,7 @@ var gState= {
     },
     incorrect: function(answer) {
         document.querySelector('#incorrect').play();
-        this.history = this.history || [];
-        this.history.push({date: new Date(), photoid: this.photo.id, word: this.word, guess: answer});
+        this.log({date: new Date(), photoid: this.photo.id, word: this.word, guess: answer});
         setHudText('bot','Incorrect: ' + answer);
         // increase the attempt
         this.attempt += 1;
@@ -66,9 +68,17 @@ var gState= {
         // repeat word out loud
         this.playWord();
     },
+    log: function(entry) {
+        // we have a local history and a remote log db
+        this.history = this.history || [];
+        this.history.push(entry);
+        // remote log
+        socket.emit('log',entry);
+    },
     nextWord: function () {
         function _secShow (secs) {
             let basedate = new Date(0);
+            if (!secs) return '';
             basedate.setSeconds(secs);// specify value for SECONDS here
             return basedate.toISOString().substr(14, 5) + 's';
         }
@@ -94,8 +104,12 @@ var gState= {
         } else {
             let score = this.getScore();
             this.word={};
-            setHudText('top', 'Accuracy: ' + Math.round(score.correct*100/score.attempts) + '% Completed in ' + _secShow(score.elapsed / 1000));
-            setHudText('mid', 'Refresh to play again');
+            // make sure there have been words, otherwise when editing you get a broken message in top hud
+            if (score.correct) {
+                setHudText('top', 'Accuracy: ' + Math.round(score.correct*100/score.attempts) + '% Completed in ' + _secShow(score.elapsed / 1000));
+                setHudText('mid', 'Refresh to play again');
+            }
+
         }
 
     },
@@ -117,6 +131,19 @@ var gState= {
     initGame: function() {
         // scoping isse with
         this.nextWord();
+    },
+    changePhoto: function(offset) {
+        const off=offset || 1,
+            nextPhoto = gState.db.get('photos').find( {id:this.photo.id+off}).value();
+        if (nextPhoto) {
+            removeSpots();
+            setHudText('top','');
+            setHudText('mid', nextPhoto.name);
+            this.setPhoto(nextPhoto);
+            this.word={};
+            this.addWordSpots();
+            this.initGame();
+        }
     }
 };
 gState.db.defaults({ photos: [], words: {}, history: [] }).write();
@@ -134,8 +161,8 @@ socket.on('photos', function(data) {
 });
 socket.on('words', function(data) {
     gState.db.set('words',data).write();
-// THIS IS WHERE WE INIT THE GAME
-    gState.initGame();
+// THIS IS WHERE WE INIT THE GAME IF NOT ALREADY (eg socket reconnects)
+    if ( _.isEmpty(gState.word) ) gState.initGame();
 });
 // this should really add or update a photo?
 /*socket.on('photo', function(data) {
@@ -149,10 +176,13 @@ socket.on('words', function(data) {
 // add hotspot to current photo
 socket.on('addSpot', function(data) {
     console.log('addspot received',data);
-    // check the photo
+    // check the photo matches but what if for another photo? TODO: NEED TO UPDATE PHOTOS COLLECTION
+    if (data.photoId === gState.photo.id) appendSpot (data);
+    /* WTF is this doing here? Hiding the spots!?!=g MAYBE BECAUSE WE DON"T SHOW ALL SPOTS NOW
     [].forEach.call(document.querySelectorAll('.wordspot'), function (el) {
         el.setAttribute('opacity',0);
-    });
+    }); */
+    // Needs to be added to photo
 });
 
 

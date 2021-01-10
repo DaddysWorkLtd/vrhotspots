@@ -15,7 +15,6 @@
     <script src="https://unpkg.com/lowdb@0.17/dist/low.min.js"></script>
     <script src="https://unpkg.com/lowdb@0.17/dist/LocalStorage.min.js"></script>
     <script src="client.js" defer></script>
-    <link href="aframecollabs.css">
 </head>
 <body>
 
@@ -69,7 +68,7 @@
         </a-entity>
         <!-- right hand with help panel -->
         <a-entity id="rightHand" raycaster="objects: .collidable; far: 30" laser-controls="hand: right" input-listen>
-            <a-text value="Right Trigger: create hotspot\nLeft Grip: open keyboard" position="0 0.08 0"
+            <a-text value="Trigger: create hotspot\nGrip: change photo" position="0 0.08 0"
                     rotation="-90 0 0" scale="0.1 0.1 0.1" align="center" color="#FFFFFF"></a-text>
             <a-sphere id="rhPoint" radius="1" position="0 0 -30" color="cc0000" opacity=".1"></a-sphere>
         </a-entity>
