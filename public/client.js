@@ -19,7 +19,7 @@ var gState= {
     word: {},
     // how many attempts on current word
     attempt: 1,
-    NUM_SPOTS: 5,
+    NUM_SPOTS: 15,
     setPhoto: function (photo) {
         if (photo) {
             this.photo = photo;
