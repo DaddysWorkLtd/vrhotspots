@@ -132,9 +132,8 @@ var gState= {
         // scoping isse with
         this.nextWord();
     },
-    changePhoto: function(offset) {
-        const off=offset || 1,
-            nextPhoto = gState.db.get('photos').find( {id:this.photo.id+off}).value();
+    changePhoto: function(photoId) {
+        const nextPhoto = gState.db.get('photos').find( {id:photoId}).value();
         if (nextPhoto) {
             removeSpots();
             setHudText('top','');
@@ -144,6 +143,14 @@ var gState= {
             this.addWordSpots();
             this.initGame();
         }
+    },
+    nextPhoto: function(offset) {
+        if (!_.isNumber(offset)) {
+            this.changePhoto( this.photo.id+offset );
+        } else {
+            //1 by default
+            this.changePhoto(this.photo.id + 1);
+        }
     }
 };
 gState.db.defaults({ photos: [], words: {}, history: [] }).write();
@@ -152,17 +159,18 @@ gState.db.defaults({ photos: [], words: {}, history: [] }).write();
 // sync a local copy of the remote database
 socket.on('photos', function(data) {
     gState.db.set('photos',data).write();
-    // not currently in use as the photo method works
+    // disabled for home screen
+    /*
     if (!gState.photo) {
         gState.photo = gState.db.get('photos').first().value();
         gState.setPhoto()
         gState.addWordSpots()
-    }
+    } */
 });
 socket.on('words', function(data) {
     gState.db.set('words',data).write();
 // THIS IS WHERE WE INIT THE GAME IF NOT ALREADY (eg socket reconnects)
-    if ( _.isEmpty(gState.word) ) gState.initGame();
+//    if ( _.isEmpty(gState.word) ) gState.initGame();
 });
 // this should really add or update a photo?
 /*socket.on('photo', function(data) {
