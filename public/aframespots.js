@@ -15,7 +15,9 @@ AFRAME.registerComponent('cursor-listen', {
             gState.stickyBot = false;
         });
         this.el.addEventListener('fusing', evt => {
-            _bot.setAttribute('text','value: fusing: ' + evt.detail.intersectedEl.getAttribute('word'));
+            // disable for home screen, target object listens
+            const word = evt.detail.intersectedEl.getAttribute('word');
+            if (word) _bot.setAttribute('text','value: fusing: ' + evt.detail.intersectedEl.getAttribute('word'));
  //           console.log('click',evt);
         });
         this.el.addEventListener('click', evt => {
@@ -24,12 +26,14 @@ AFRAME.registerComponent('cursor-listen', {
             // check if the word matches the target and if so delete
             // find word for this element gState.db
             // this should be a separate function so it can be tested
-            const el=evt.detail.intersectedEl,
+            const word = evt.detail.intersectedEl.getAttribute('word'),
+                el=evt.detail.intersectedEl,
                 fusedWord = gState.db
                     .get('words')
-                    .value()[el.getAttribute('word')];
+                    .value()[word];
             if (!fusedWord) {
-                setHudText('bot',el.getAttribute('word') + ': not found in dictionary');
+                // checking word as getting called by homescreen
+                if (word) setHudText('bot',el.getAttribute('word') + ': not found in dictionary');
             } else {
                 if (fusedWord[gState.lang].word == gState.word[gState.lang].word) {
                     evt.detail.intersectedEl.remove();
@@ -68,7 +72,7 @@ AFRAME.registerComponent('raylisten', {
         this.el.addEventListener('gripdown', function (e) {
             console.log('grip squeeze',e)
             // the idea is right up left down but for not this is on the right controller
-            gState.changePhoto(-1);
+            gState.nextPhoto(-1);
         });
         this.el.addEventListener('raycaster-intersection', evt => {
             this.raycaster = evt.detail.el;
@@ -108,7 +112,7 @@ AFRAME.registerComponent('input-listen', {
             this.el.addEventListener('gripdown', function (e) {
                 console.log('grip squeeze',e.id)
                 // the idea is right up left down but for not this is on the right controller
-                gState.changePhoto();
+                gState.nextPhoto();
                 //Setting grip flag as true, this is for gripping to hold on to something
                 this.grip = true;
             });
@@ -214,13 +218,16 @@ AFRAME.registerComponent('kb-ctrl', {
 AFRAME.registerComponent('vocab-room', {
     init: function() {
         this.el.addEventListener('fusing', evt => {
-            _bot.setAttribute('text','value: fusing: Home Office');
+            setHudText('bot','fusing: Home Office');
         });
         this.el.addEventListener('click', evt => {
+            // transition to 360photo
+            document.getElementById('environment').setAttribute('environment', 'active', false);
             _.forEach(document.querySelectorAll('.homeScene'),function (el) {
                 el.setAttribute('visible',false);
             });
-            gState.init();
+            // hard coded to photoid 1
+            gState.changePhoto(1);
         });
 
     }

@@ -19,7 +19,7 @@
 </head>
 <body>
 
-<a-scene stats>
+<a-scene>
     <a-assets>
         <a-asset-item id="star" src="assets/star.glb"></a-asset-item>
         <a-asset-item id="whiteboard" src="assets/whiteboard.glb"></a-asset-item>
@@ -73,23 +73,26 @@
 
     <a-entity id="environment" class="homeScene" environment="preset: forest;"></a-entity>
 
-    <a-sphere class="homeScene" id="img_gourmet" material="src: #gourmet; opacity=0.75" position="4 1.62 -.012" radius=".4" animation__enter="property: rotation; from: 0 0 0; to: 0 360 0; dur: 10000; easing: linear; loop: NaN; autoplay: false" geometry="radius: 0.35"></a-sphere>
-
+    <a-sphere class="homeScene" id="img_gourmet" material="src: #gourmet; opacity:0.5" position="4 1.62 -.012" radius=".4" animation__enter="property: rotation; from: 0 0 0; to: 0 360 0; dur: 10000; easing: linear; loop: NaN; autoplay: false" geometry="radius: 0.35"></a-sphere>
     <a-box class="homeScene" id="box_gourmet" scale="0.5 1.3 1" material="src:#cardboard; normal-map: #cardboard-NRM;" position="4 0.625 0" >
     </a-box>
     <a-plane class="homeScene" id="text_gourmet" material="color: #ffffff; shader: flat; opacity: 0" scale="" position="3.74 0.7 0" rotation="0 -90 0" text="color: black; align: center; value: GOURMET\n\n words: 46\nfound: 0; wrapCount: 20" geometry="">
     </a-plane>
 
-    <a-sphere class="homeScene" id="img_kitchen" material="src: #kitchen; opacity:.75" position="3.822 1.62 -1.35034" radius=".4" animation__enter="property: rotation; from: 0 0 0; to: 0 360 0; dur: 10000; easing: linear; loop: true; autoplay: false" geometry="radius: 0.35"></a-sphere>
+    <a-sphere class="homeScene" id="img_kitchen" material="src: #kitchen; opacity:.5" position="3.822 1.62 -1.35034" radius=".4" animation__enter="property: rotation; from: 0 0 0; to: 0 360 0; dur: 10000; easing: linear; loop: true; autoplay: false" geometry="radius: 0.35"></a-sphere>
     <a-entity class="homeScene" id="box_kitchen" geometry="" scale="0.5 1.3 1" material="src:#cardboard; normal-map: #cardboard-NRM;"  position="3.81789 0.625 -1.32335" rotation="0 10 0">
     </a-entity>
-
     <a-plane class="homeScene" id="text_kitchen" material="color: #ffffff; shader: flat; opacity: 0" scale="" position="3.56222 0.7 -1.28861" rotation="0 -80 0" text="color: black; align: center; value: KITCHEN\n\n words: 22\nfound: 0; wrapCount: 20" geometry="">
     </a-plane>
 
+    <a-text class="homeScene" position="3.9 .5 0" material="color: #CC0000; font: https://raw.githubusercontent.com/etiennepinchon/aframe-fonts/master/fonts/permanentmarker/PermanentMarker-Regular.json; shader: msdf; value: LOCKED"></a-text>
+    <a-text class="homeScene" position=".3 1 .8" material="color: #CC0000; font: https://raw.githubusercontent.com/etiennepinchon/aframe-fonts/master/fonts/permanentmarker/PermanentMarker-Regular.json; shader: msdf; value: LOCKED"></a-text>
+
+
     <a-sphere vocab-room class="homeScene fusable" id="img_homeoffice" material="src: #home-office" position="3.5791 1.62 -2.52019" radius=".4"
               animation__enter="property: rotation; from: 0 0 0; to: 0 360 0; dur: 15000; easing: linear; loop:false; autoplay: false; startEvents: mouseenter;"
-              geometry="radius: 0.35"></a-sphere>
+              geometry="radius: 0.35"
+                sound="#slidechange" ></a-sphere>
     <a-entity vocab-room class="homeScene fusable" id="box_homeoffice" geometry="" scale="0.5 1.3 1" material="src:#cardboard; normal-map: #cardboard-NRM;" position="3.52542 0.625 -2.52875" rotation="0 20 0">
     </a-entity>
     <a-plane class="homeScene" id="text_homeoffice" material="color: #ffffff; shader: flat; opacity: 0" scale="" position="3.27354 0.7 -2.44478" rotation="0 -70 0" text="color: black; align: center; value: HOME OFFICE\n\n words: 34\nfound: 15; wrapCount: 20" geometry="">
@@ -100,19 +103,28 @@
 
 
     <!--- black board -->
-    <a-plane class="homeScene"
+    <a-plane id="blackboard"
+            class="homeScene"
              material="color:#000000; shader: flat; opacity: 1"
              rotation="0 0 0" scale="5 5 5" position="1.5 3.5 -5.5"
-             text="color: #FFFFFF; font: https://raw.githubusercontent.com/etiennepinchon/aframe-fonts/master/fonts/creepster/Creepster-Regular.json; shader:msdf; width: 1; color: white; wrap-count: 25; align: center;
-             value: Find the items in the room\n\nLanguage: Dutch\n\nCurrent: Home Office\n Items per Game: 15\n Text: On"
+             text="color: #FFFFFF; font: https://raw.githubusercontent.com/etiennepinchon/aframe-fonts/master/fonts/caveatbrush/CaveatBrush-Regular.json; shader:msdf; opacity: 0.9; width: 1; color: white; wrap-count: 40; align: center;
+             value: Welcome to VR Vocab!\n\nThe goal in every room is to find the words presented to you. Select the object by aiming the cursor at the orange ball for a second. Encounter all words to unlock the next level!\n\nCurrent Language: Dutch\nCurrent Level: Home Office\nItems per Game: 15\nWritten Words: on\n\nGood luck and keep practicing!"
              look-at="#head">
     </a-plane>
 
     <a-entity class="homeScene" id="board" gltf-model="#whiteboard" position="-3.45 0 -.5" rotation="0 -25 0"></a-entity>
-    <a-plane class="homeScene" id="whiteboard" material="color: #FFFFFF; shader: flat" scale="1.9 1.1 1" position="-3.4048 1.49655 -0.47111" rotation="0 65 0" text="width: 1; color: navy; value: Statistics\n\nWords Learned: 0\n\nMastered: \n\nGlobal Ranking: 1; wrapCount: 30" geometry="">
+    <a-plane class="homeScene" id="wbtext" material="color: #FFFFFF; shader: flat" scale="1.9 1.1 1" position="-3.4048 1.49655 -0.47111" rotation="0 65 0"
+             text="width: 1; color: navy; font: https://raw.githubusercontent.com/etiennepinchon/aframe-fonts/master/fonts/schoolbell/Schoolbell-Regular.json; shader: msdf; value: Your over-all statistics\n\nWords Learned: 15\nLevels unlocked: 1\nNumber of Stars: 1\nBest Time: --:--\n\nKeep up the good work!; wrapCount: 30" >
     </a-plane>
 
-
+<!--- FONTS
+https://fonts.google.com/?category=Handwriting
+wb.setAttribute('text','font','https://raw.githubusercontent.com/etiennepinchon/aframe-fonts/master/fonts/schoolbell/Schoolbell-Regular.json')
+wb.setAttribute('text','font','https://raw.githubusercontent.com/etiennepinchon/aframe-fonts/master/fonts/permanentmarker/PermanentMarker-Regular.json')
+wb.setAttribute('text','font','https://raw.githubusercontent.com/etiennepinchon/aframe-fonts/master/fonts/nanumbrushscript/NanumBrushScript-Regular.json')
+wb.setAttribute('text','font','https://raw.githubusercontent.com/etiennepinchon/aframe-fonts/master/fonts/caveatbrush/CaveatBrush-Regular.json')
+bb.setAttribute('text','font','https://raw.githubusercontent.com/etiennepinchon/aframe-fonts/master/fonts/nanumbrushscript/NanumBrushScript-Regular.json')
+-->
 
     <a-entity class="homeScene" id="authors" rotation="0 20 5" scale=".5 .5 .5" position="-5.2 1.6 -4" text-geometry="value: Paul &amp; Pepijn's; font: #dawningFont; bevelEnabled: true; bevelSize: 0.05; bevelThickness: 0.03; curveSegments: 12.01; size: 1; height: 0" material="metalness: 0.9; roughness: 0.1; vertexColors: face; dithering: false; emissive: #03249b; emissiveIntensity: 0.75"></a-entity>
 
