@@ -18,7 +18,7 @@
 </head>
 <body>
 
-<a-scene background="color: #89cff0" id="scene">
+<a-scene id="scene">
     <a-assets>
         <audio
                 id="correct"
@@ -62,9 +62,9 @@
             </a-entity>
         </a-entity>
         <!-- left hand with keyboard, no caster for now as was deleting things  !-->
-        <a-entity id="leftHand" laser-controls="hand: left" raycaster="showLine: false; far: 0;">
-            <a-entity id="keyboard" super-keyboard="hand: #rightHand; multipleInputs: true" kb-ctrl position="0 0.1 0"
-                      rotation="-90 0 0" scale="0.2 0.2 0.2"></a-entity>
+        <a-entity id="leftHand" laser-controls="hand: left" raycaster="showLine: false; far: 0;" rayleft-ctrl>
+            <a-entity id="keyboard" super-keyboard="hand: #rightHand; multipleInputs: true; handOffsetX: .06; handOffsetY: .02" kb-ctrl position="0 0.1 0"
+                      rotation="-90 0 0" scale="0.3 0.3 0.3"></a-entity>
         </a-entity>
         <!-- right hand with help panel -->
         <a-entity id="rightHand" raycaster="objects: .collidable; far: 30" laser-controls="hand: right" input-listen>
@@ -73,7 +73,7 @@
             <a-sphere id="rhPoint" radius="1" position="0 0 -30" color="cc0000" opacity=".1"></a-sphere>
         </a-entity>
     </a-entity>
-    <a-sky id="sky"></a-sky>
+    <a-sky id="sky" color="#89cff0"></a-sky>
 </a-scene>
 
 </body>
