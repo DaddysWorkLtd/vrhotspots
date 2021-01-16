@@ -347,16 +347,6 @@
           },
           "word": "wall",
           "id": "652886795321"
-        },
-        {
-          "photoId": 1,
-          "pos": {
-            "x": 27.229669615626335,
-            "y": -4.184733420610428,
-            "z": -11.873632863163948
-          },
-          "word": "Find: de mobiele telefoon",
-          "id": "893232257786"
         }
       ],
       "navSpots": []
@@ -700,5 +690,2203 @@
     }
   },
   "uid": 92,
-  "log": []
+  "log": [
+    {
+      "date": "2021-01-10T21:56:27.069Z",
+      "photoid": 1,
+      "word": {
+        "clue": "It hangs next to the window",
+        "nl": {
+          "word": "het gordijn",
+          "audio": "audio/nl/het-gordijn.mp3"
+        }
+      },
+      "correct": 1,
+      "id": "kHfuF7zz81RmP3myAAAB"
+    },
+    {
+      "date": "2021-01-10T21:56:36.869Z",
+      "photoid": 1,
+      "word": {
+        "clue": "You're 'standing' on it right now!",
+        "nl": {
+          "word": "het tapijt",
+          "audio": "audio/nl/het-tapijt.mp3"
+        }
+      },
+      "correct": 1,
+      "id": "kHfuF7zz81RmP3myAAAB"
+    },
+    {
+      "date": "2021-01-10T21:56:44.512Z",
+      "photoid": 1,
+      "word": {
+        "clue": "Needed to operate electrical appliances",
+        "nl": {
+          "word": "het stopcontact",
+          "audio": "audio/nl/het-stopcontact.mp3"
+        }
+      },
+      "correct": 1,
+      "id": "kHfuF7zz81RmP3myAAAB"
+    },
+    {
+      "date": "2021-01-10T21:56:53.722Z",
+      "photoid": 1,
+      "word": {
+        "clue": "Makes a seat more cofortable",
+        "nl": {
+          "word": "het kussen",
+          "audio": "audio/nl/het-kussen.mp3"
+        }
+      },
+      "correct": 1,
+      "id": "kHfuF7zz81RmP3myAAAB"
+    },
+    {
+      "date": "2021-01-10T21:57:07.030Z",
+      "photoid": 1,
+      "word": {
+        "clue": "Used to look outside when the blinds aren't down",
+        "nl": {
+          "word": "het raam",
+          "audio": "audio/nl/het-raam.mp3"
+        }
+      },
+      "correct": 1,
+      "id": "kHfuF7zz81RmP3myAAAB"
+    },
+    {
+      "date": "2021-01-10T21:57:14.836Z",
+      "photoid": 1,
+      "word": {
+        "clue": "There are four in this room: all around you",
+        "nl": {
+          "word": "de muur",
+          "audio": "audio/nl/de-muur.mp3"
+        }
+      },
+      "correct": 1,
+      "id": "kHfuF7zz81RmP3myAAAB"
+    },
+    {
+      "date": "2021-01-10T21:57:22.094Z",
+      "photoid": 1,
+      "word": {
+        "clue": "There are so many piles of paperwork on this object!",
+        "nl": {
+          "word": "het bureau",
+          "audio": "audio/nl/het-bureau.mp3"
+        }
+      },
+      "correct": 1,
+      "id": "kHfuF7zz81RmP3myAAAB"
+    },
+    {
+      "date": "2021-01-10T21:57:29.671Z",
+      "photoid": 1,
+      "word": {
+        "clue": "Put flowers in me!",
+        "nl": {
+          "word": "de vaas",
+          "audio": "audio/nl/de-vaas.mp3"
+        }
+      },
+      "correct": 1,
+      "id": "kHfuF7zz81RmP3myAAAB"
+    },
+    {
+      "date": "2021-01-10T21:57:39.905Z",
+      "photoid": 1,
+      "word": {
+        "clue": "How did you get into this room?",
+        "nl": {
+          "word": "de deur",
+          "audio": "audio/nl/de-deur.mp3"
+        }
+      },
+      "guess": "het handvat",
+      "id": "kHfuF7zz81RmP3myAAAB"
+    },
+    {
+      "date": "2021-01-10T21:57:44.572Z",
+      "photoid": 1,
+      "word": {
+        "clue": "How did you get into this room?",
+        "nl": {
+          "word": "de deur",
+          "audio": "audio/nl/de-deur.mp3"
+        }
+      },
+      "correct": 1,
+      "id": "kHfuF7zz81RmP3myAAAB"
+    },
+    {
+      "date": "2021-01-10T21:57:52.858Z",
+      "photoid": 1,
+      "word": {
+        "clue": "A large piece of furniture to store things in",
+        "nl": {
+          "word": "de ladekast",
+          "audio": "audio/nl/de-ladekast.mp3"
+        }
+      },
+      "correct": 1,
+      "id": "v1Z1WJ-ARc9y2BTFAAAC"
+    },
+    {
+      "date": "2021-01-10T21:58:02.041Z",
+      "photoid": 1,
+      "word": {
+        "clue": "It's somewhere on the desk...",
+        "nl": {
+          "word": "de mobiele telefoon",
+          "audio": "audio/nl/de-mobiele-telefoon.mp3"
+        }
+      },
+      "correct": 1,
+      "id": "v1Z1WJ-ARc9y2BTFAAAC"
+    },
+    {
+      "date": "2021-01-10T21:58:11.373Z",
+      "photoid": 1,
+      "word": {
+        "clue": "You sit on this, briefly",
+        "nl": {
+          "word": "de kruk",
+          "audio": "audio/nl/de-kruk.mp3"
+        }
+      },
+      "correct": 1,
+      "id": "v1Z1WJ-ARc9y2BTFAAAC"
+    },
+    {
+      "date": "2021-01-10T21:58:21.022Z",
+      "photoid": 1,
+      "word": {
+        "clue": "Useful to get through the door",
+        "nl": {
+          "word": "het handvat",
+          "audio": "audio/nl/het-handvat.mp3"
+        }
+      },
+      "correct": 1,
+      "id": "v1Z1WJ-ARc9y2BTFAAAC"
+    },
+    {
+      "date": "2021-01-10T21:58:30.657Z",
+      "photoid": 1,
+      "word": {
+        "clue": "Do you like to read these?",
+        "nl": {
+          "word": "het boek",
+          "audio": "audio/nl/het-boek.mp3"
+        }
+      },
+      "correct": 1,
+      "id": "BV03zTjzBiXNHx2lAAAD"
+    },
+    {
+      "date": "2021-01-10T21:58:38.897Z",
+      "photoid": 1,
+      "word": {
+        "clue": "Don't forget to look up and down",
+        "nl": {
+          "word": "de vloer",
+          "audio": "audio/nl/de-vloer.mp3"
+        }
+      },
+      "correct": 1,
+      "id": "BV03zTjzBiXNHx2lAAAD"
+    },
+    {
+      "date": "2021-01-11T10:40:24.896Z",
+      "photoid": 1,
+      "word": {
+        "clue": "Point and click",
+        "nl": {
+          "word": "de computermuis",
+          "audio": "audio/nl/de-computermuis.mp3"
+        }
+      },
+      "correct": 1,
+      "id": "3te14qivD3IK47Z3AAAA"
+    },
+    {
+      "date": "2021-01-11T19:17:02.656Z",
+      "photoid": 1,
+      "word": {
+        "clue": "Something adds up, on the desk!",
+        "nl": {
+          "word": "de rekenmachine",
+          "audio": "audio/nl/de-rekenmachine.mp3"
+        }
+      },
+      "correct": 1,
+      "id": "x1KzEXOSSAM23WBxAAAA"
+    },
+    {
+      "date": "2021-01-11T19:17:08.907Z",
+      "photoid": 1,
+      "word": {
+        "clue": "It lights up the desk",
+        "nl": {
+          "word": "de bureaulamp",
+          "audio": "audio/nl/de-bureaulamp.mp3"
+        }
+      },
+      "correct": 1,
+      "id": "x1KzEXOSSAM23WBxAAAA"
+    },
+    {
+      "date": "2021-01-11T19:17:13.374Z",
+      "photoid": 1,
+      "word": {
+        "clue": "It makes hard copies",
+        "nl": {
+          "word": "de printer",
+          "audio": "audio/nl/de-printer.mp3"
+        }
+      },
+      "correct": 1,
+      "id": "x1KzEXOSSAM23WBxAAAA"
+    },
+    {
+      "date": "2021-01-11T19:17:23.905Z",
+      "photoid": 1,
+      "word": {
+        "clue": "You put things in one, behind the door",
+        "nl": {
+          "word": "de doos",
+          "audio": "audio/nl/de-doos.mp3"
+        }
+      },
+      "correct": 1,
+      "id": "x1KzEXOSSAM23WBxAAAA"
+    },
+    {
+      "date": "2021-01-11T19:17:31.031Z",
+      "photoid": 1,
+      "word": {
+        "clue": "Put flowers in me!",
+        "nl": {
+          "word": "de vaas",
+          "audio": "audio/nl/de-vaas.mp3"
+        }
+      },
+      "correct": 1,
+      "id": "x1KzEXOSSAM23WBxAAAA"
+    },
+    {
+      "date": "2021-01-11T19:17:34.571Z",
+      "photoid": 1,
+      "word": {
+        "clue": "It keeps the tempemperature on point here",
+        "nl": {
+          "word": "de radiator",
+          "audio": "audio/nl/de-radiator.mp3"
+        }
+      },
+      "correct": 1,
+      "id": "x1KzEXOSSAM23WBxAAAA"
+    },
+    {
+      "date": "2021-01-11T19:17:39.087Z",
+      "photoid": 1,
+      "word": {
+        "clue": "You're 'standing' on it right now!",
+        "nl": {
+          "word": "het tapijt",
+          "audio": "audio/nl/het-tapijt.mp3"
+        }
+      },
+      "correct": 1,
+      "id": "x1KzEXOSSAM23WBxAAAA"
+    },
+    {
+      "date": "2021-01-11T19:17:44.036Z",
+      "photoid": 1,
+      "word": {
+        "clue": "Familiar word, have a look at the desk!",
+        "nl": {
+          "word": "de laptop",
+          "audio": "audio/nl/de-laptop.mp3"
+        }
+      },
+      "correct": 1,
+      "id": "x1KzEXOSSAM23WBxAAAA"
+    },
+    {
+      "date": "2021-01-11T19:17:49.519Z",
+      "photoid": 1,
+      "word": {
+        "clue": "This one is over your head",
+        "nl": {
+          "word": "het plafond",
+          "audio": "audio/nl/het-plafond.mp3"
+        }
+      },
+      "correct": 1,
+      "id": "x1KzEXOSSAM23WBxAAAA"
+    },
+    {
+      "date": "2021-01-11T19:17:58.617Z",
+      "photoid": 1,
+      "word": {
+        "clue": "Useful to get through the door",
+        "nl": {
+          "word": "het handvat",
+          "audio": "audio/nl/het-handvat.mp3"
+        }
+      },
+      "correct": 1,
+      "id": "x1KzEXOSSAM23WBxAAAA"
+    },
+    {
+      "date": "2021-01-11T19:18:03.118Z",
+      "photoid": 1,
+      "word": {
+        "clue": "It hangs next to the window",
+        "nl": {
+          "word": "het gordijn",
+          "audio": "audio/nl/het-gordijn.mp3"
+        }
+      },
+      "correct": 1,
+      "id": "x1KzEXOSSAM23WBxAAAA"
+    },
+    {
+      "date": "2021-01-11T19:18:08.333Z",
+      "photoid": 1,
+      "word": {
+        "clue": "A large piece of furniture to store things in",
+        "nl": {
+          "word": "de ladekast",
+          "audio": "audio/nl/de-ladekast.mp3"
+        }
+      },
+      "correct": 1,
+      "id": "x1KzEXOSSAM23WBxAAAA"
+    },
+    {
+      "date": "2021-01-11T19:18:13.183Z",
+      "photoid": 1,
+      "word": {
+        "clue": "It makes use of a key",
+        "nl": {
+          "word": "het slot",
+          "audio": "audio/nl/het-slot.mp3"
+        }
+      },
+      "correct": 1,
+      "id": "x1KzEXOSSAM23WBxAAAA"
+    },
+    {
+      "date": "2021-01-11T19:18:16.949Z",
+      "photoid": 1,
+      "word": {
+        "clue": "Needed to operate electrical appliances",
+        "nl": {
+          "word": "het stopcontact",
+          "audio": "audio/nl/het-stopcontact.mp3"
+        }
+      },
+      "correct": 1,
+      "id": "x1KzEXOSSAM23WBxAAAA"
+    },
+    {
+      "date": "2021-01-11T19:18:22.915Z",
+      "photoid": 1,
+      "word": {
+        "clue": "It's very comfortable to sit on",
+        "nl": {
+          "word": "de stoel",
+          "audio": "audio/nl/de-stoel.mp3"
+        }
+      },
+      "correct": 1,
+      "id": "x1KzEXOSSAM23WBxAAAA"
+    },
+    {
+      "date": "2021-01-11T19:58:59.870Z",
+      "photoid": 1,
+      "word": {
+        "clue": "Where you put what you wear",
+        "nl": {
+          "word": "de kledingkast",
+          "audio": "audio/nl/de-kledingkast.mp3"
+        }
+      },
+      "correct": 1,
+      "id": "muPOBM2oC2szwbcWAAAC"
+    },
+    {
+      "date": "2021-01-11T19:59:34.769Z",
+      "photoid": 1,
+      "word": {
+        "clue": "It lights up the room",
+        "nl": {
+          "word": "de kaars",
+          "audio": "audio/nl/de-kaars.mp3"
+        }
+      },
+      "correct": 1,
+      "id": "muPOBM2oC2szwbcWAAAC"
+    },
+    {
+      "date": "2021-01-11T19:59:46.402Z",
+      "photoid": 1,
+      "word": {
+        "clue": "It lights up the desk",
+        "nl": {
+          "word": "de bureaulamp",
+          "audio": "audio/nl/de-bureaulamp.mp3"
+        }
+      },
+      "correct": 1,
+      "id": "muPOBM2oC2szwbcWAAAC"
+    },
+    {
+      "date": "2021-01-11T20:00:17.927Z",
+      "photoid": 1,
+      "word": {
+        "clue": "Do you like to read these?",
+        "nl": {
+          "word": "het boek",
+          "audio": "audio/nl/het-boek.mp3"
+        }
+      },
+      "guess": "het handvat",
+      "id": "muPOBM2oC2szwbcWAAAC"
+    },
+    {
+      "date": "2021-01-11T20:00:56.074Z",
+      "photoid": 1,
+      "word": {
+        "clue": "Do you like to read these?",
+        "nl": {
+          "word": "het boek",
+          "audio": "audio/nl/het-boek.mp3"
+        }
+      },
+      "correct": 1,
+      "id": "muPOBM2oC2szwbcWAAAC"
+    },
+    {
+      "date": "2021-01-11T20:01:02.397Z",
+      "photoid": 1,
+      "word": {
+        "clue": "Used to look outside when the blinds aren't down",
+        "nl": {
+          "word": "het raam",
+          "audio": "audio/nl/het-raam.mp3"
+        }
+      },
+      "correct": 1,
+      "id": "muPOBM2oC2szwbcWAAAC"
+    },
+    {
+      "date": "2021-01-11T20:01:14.449Z",
+      "photoid": 1,
+      "word": {
+        "clue": "You put your socks in one",
+        "nl": {
+          "word": "de lade",
+          "audio": "audio/nl/de-lade.mp3"
+        }
+      },
+      "correct": 1,
+      "id": "muPOBM2oC2szwbcWAAAC"
+    },
+    {
+      "date": "2021-01-11T20:01:23.469Z",
+      "photoid": 1,
+      "word": {
+        "clue": "It keeps the table nice and clean",
+        "nl": {
+          "word": "het tafelkleed",
+          "audio": "audio/nl/het-tafelkleed.mp3"
+        }
+      },
+      "correct": 1,
+      "id": "muPOBM2oC2szwbcWAAAC"
+    },
+    {
+      "date": "2021-01-11T20:01:29.159Z",
+      "photoid": 1,
+      "word": {
+        "clue": "Familiar word, have a look at the desk!",
+        "nl": {
+          "word": "de laptop",
+          "audio": "audio/nl/de-laptop.mp3"
+        }
+      },
+      "correct": 1,
+      "id": "muPOBM2oC2szwbcWAAAC"
+    },
+    {
+      "date": "2021-01-11T20:01:35.753Z",
+      "photoid": 1,
+      "word": {
+        "clue": "There are so many piles of paperwork on this object!",
+        "nl": {
+          "word": "het bureau",
+          "audio": "audio/nl/het-bureau.mp3"
+        }
+      },
+      "correct": 1,
+      "id": "muPOBM2oC2szwbcWAAAC"
+    },
+    {
+      "date": "2021-01-11T20:01:46.549Z",
+      "photoid": 1,
+      "word": {
+        "clue": "There are four in this room: all around you",
+        "nl": {
+          "word": "de muur",
+          "audio": "audio/nl/de-muur.mp3"
+        }
+      },
+      "correct": 1,
+      "id": "muPOBM2oC2szwbcWAAAC"
+    },
+    {
+      "date": "2021-01-11T20:01:55.760Z",
+      "photoid": 1,
+      "word": {
+        "clue": "How did you get into this room?",
+        "nl": {
+          "word": "de deur",
+          "audio": "audio/nl/de-deur.mp3"
+        }
+      },
+      "correct": 1,
+      "id": "muPOBM2oC2szwbcWAAAC"
+    },
+    {
+      "date": "2021-01-11T20:02:00.387Z",
+      "photoid": 1,
+      "word": {
+        "clue": "Useful to get through the door",
+        "nl": {
+          "word": "het handvat",
+          "audio": "audio/nl/het-handvat.mp3"
+        }
+      },
+      "correct": 1,
+      "id": "muPOBM2oC2szwbcWAAAC"
+    },
+    {
+      "date": "2021-01-11T20:02:10.130Z",
+      "photoid": 1,
+      "word": {
+        "clue": "It's very comfortable to sit on",
+        "nl": {
+          "word": "de bank",
+          "audio": "audio/nl/de-bank.mp3"
+        }
+      },
+      "correct": 1,
+      "id": "muPOBM2oC2szwbcWAAAC"
+    },
+    {
+      "date": "2021-01-11T20:02:18.666Z",
+      "photoid": 1,
+      "word": {
+        "clue": "You sit on this, briefly",
+        "nl": {
+          "word": "de kruk",
+          "audio": "audio/nl/de-kruk.mp3"
+        }
+      },
+      "correct": 1,
+      "id": "muPOBM2oC2szwbcWAAAC"
+    },
+    {
+      "date": "2021-01-11T20:02:26.531Z",
+      "photoid": 1,
+      "word": {
+        "clue": "Put flowers in me!",
+        "nl": {
+          "word": "de vaas",
+          "audio": "audio/nl/de-vaas.mp3"
+        }
+      },
+      "correct": 1,
+      "id": "muPOBM2oC2szwbcWAAAC"
+    },
+    {
+      "date": "2021-01-11T22:08:23.128Z",
+      "photoid": 1,
+      "word": {
+        "clue": "It's very comfortable to sit on",
+        "nl": {
+          "word": "de stoel",
+          "audio": "audio/nl/de-stoel.mp3"
+        }
+      },
+      "guess": "het kussen",
+      "id": "5Dor8b2iV9Ljue4bAAAC"
+    },
+    {
+      "date": "2021-01-11T22:08:29.535Z",
+      "photoid": 1,
+      "word": {
+        "clue": "It's very comfortable to sit on",
+        "nl": {
+          "word": "de stoel",
+          "audio": "audio/nl/de-stoel.mp3"
+        }
+      },
+      "correct": 1,
+      "id": "5Dor8b2iV9Ljue4bAAAC"
+    },
+    {
+      "date": "2021-01-11T22:08:52.224Z",
+      "photoid": 1,
+      "word": {
+        "clue": "Do you like to read these?",
+        "nl": {
+          "word": "het boek",
+          "audio": "audio/nl/het-boek.mp3"
+        }
+      },
+      "correct": 1,
+      "id": "5Dor8b2iV9Ljue4bAAAC"
+    },
+    {
+      "date": "2021-01-11T22:08:57.173Z",
+      "photoid": 1,
+      "word": {
+        "clue": "Don't forget to look up and down",
+        "nl": {
+          "word": "de vloer",
+          "audio": "audio/nl/de-vloer.mp3"
+        }
+      },
+      "correct": 1,
+      "id": "5Dor8b2iV9Ljue4bAAAC"
+    },
+    {
+      "date": "2021-01-11T22:09:01.672Z",
+      "photoid": 1,
+      "word": {
+        "clue": "Useful to get through the door",
+        "nl": {
+          "word": "het handvat",
+          "audio": "audio/nl/het-handvat.mp3"
+        }
+      },
+      "correct": 1,
+      "id": "5Dor8b2iV9Ljue4bAAAC"
+    },
+    {
+      "date": "2021-01-11T22:09:07.638Z",
+      "photoid": 1,
+      "word": {
+        "clue": "This one is over your head",
+        "nl": {
+          "word": "het plafond",
+          "audio": "audio/nl/het-plafond.mp3"
+        }
+      },
+      "correct": 1,
+      "id": "5Dor8b2iV9Ljue4bAAAC"
+    },
+    {
+      "date": "2021-01-11T22:09:15.170Z",
+      "photoid": 1,
+      "word": {
+        "clue": "Do you prefer Mondriaan or Rembrandt?",
+        "nl": {
+          "word": "het schilderij",
+          "audio": "audio/nl/het-schilderij.mp3"
+        }
+      },
+      "correct": 1,
+      "id": "5Dor8b2iV9Ljue4bAAAC"
+    },
+    {
+      "date": "2021-01-11T22:09:19.220Z",
+      "photoid": 1,
+      "word": {
+        "clue": "There are four in this room: all around you",
+        "nl": {
+          "word": "de muur",
+          "audio": "audio/nl/de-muur.mp3"
+        }
+      },
+      "correct": 1,
+      "id": "5Dor8b2iV9Ljue4bAAAC"
+    },
+    {
+      "date": "2021-01-11T22:09:22.919Z",
+      "photoid": 1,
+      "word": {
+        "clue": "Used to look outside when the blinds aren't down",
+        "nl": {
+          "word": "het raam",
+          "audio": "audio/nl/het-raam.mp3"
+        }
+      },
+      "correct": 1,
+      "id": "5Dor8b2iV9Ljue4bAAAC"
+    },
+    {
+      "date": "2021-01-12T13:16:14.208Z",
+      "photoid": 1,
+      "word": {
+        "clue": "Don't forget to look up and down",
+        "nl": {
+          "word": "de vloer",
+          "audio": "audio/nl/de-vloer.mp3"
+        }
+      },
+      "correct": 1,
+      "id": "Cy4N_STKtlnJc0IjAAAB"
+    },
+    {
+      "date": "2021-01-12T14:10:23.208Z",
+      "photoid": 1,
+      "word": {
+        "clue": "There are so many piles of paperwork on this object!",
+        "nl": {
+          "word": "het bureau",
+          "audio": "audio/nl/het-bureau.mp3"
+        }
+      },
+      "guess": "de laptop",
+      "id": "UReJytssJVk4qeBvAAAB"
+    },
+    {
+      "date": "2021-01-12T14:10:31.011Z",
+      "photoid": 1,
+      "word": {
+        "clue": "There are so many piles of paperwork on this object!",
+        "nl": {
+          "word": "het bureau",
+          "audio": "audio/nl/het-bureau.mp3"
+        }
+      },
+      "correct": 1,
+      "id": "UReJytssJVk4qeBvAAAB"
+    },
+    {
+      "date": "2021-01-12T14:10:39.473Z",
+      "photoid": 1,
+      "word": {
+        "clue": "It makes use of a key",
+        "nl": {
+          "word": "het slot",
+          "audio": "audio/nl/het-slot.mp3"
+        }
+      },
+      "correct": 1,
+      "id": "UReJytssJVk4qeBvAAAB"
+    },
+    {
+      "date": "2021-01-12T14:10:46.655Z",
+      "photoid": 1,
+      "word": {
+        "clue": "It keeps the table nice and clean",
+        "nl": {
+          "word": "het tafelkleed",
+          "audio": "audio/nl/het-tafelkleed.mp3"
+        }
+      },
+      "correct": 1,
+      "id": "UReJytssJVk4qeBvAAAB"
+    },
+    {
+      "date": "2021-01-12T14:10:52.855Z",
+      "photoid": 1,
+      "word": {
+        "clue": "Used to look outside when the blinds aren't down",
+        "nl": {
+          "word": "het raam",
+          "audio": "audio/nl/het-raam.mp3"
+        }
+      },
+      "correct": 1,
+      "id": "UReJytssJVk4qeBvAAAB"
+    },
+    {
+      "date": "2021-01-12T14:10:58.039Z",
+      "photoid": 1,
+      "word": {
+        "clue": "Point and click",
+        "nl": {
+          "word": "de computermuis",
+          "audio": "audio/nl/de-computermuis.mp3"
+        }
+      },
+      "correct": 1,
+      "id": "UReJytssJVk4qeBvAAAB"
+    },
+    {
+      "date": "2021-01-12T14:11:03.455Z",
+      "photoid": 1,
+      "word": {
+        "clue": "You sit on this, briefly",
+        "nl": {
+          "word": "de kruk",
+          "audio": "audio/nl/de-kruk.mp3"
+        }
+      },
+      "correct": 1,
+      "id": "UReJytssJVk4qeBvAAAB"
+    },
+    {
+      "date": "2021-01-12T14:11:08.405Z",
+      "photoid": 1,
+      "word": {
+        "clue": "It's very comfortable to sit on",
+        "nl": {
+          "word": "de bank",
+          "audio": "audio/nl/de-bank.mp3"
+        }
+      },
+      "correct": 1,
+      "id": "UReJytssJVk4qeBvAAAB"
+    },
+    {
+      "date": "2021-01-12T14:11:18.157Z",
+      "photoid": 1,
+      "word": {
+        "clue": "It keeps the tempemperature on point here",
+        "nl": {
+          "word": "de radiator",
+          "audio": "audio/nl/de-radiator.mp3"
+        }
+      },
+      "correct": 1,
+      "id": "UReJytssJVk4qeBvAAAB"
+    },
+    {
+      "date": "2021-01-12T14:11:26.120Z",
+      "photoid": 1,
+      "word": {
+        "clue": "You're 'standing' on it right now!",
+        "nl": {
+          "word": "het tapijt",
+          "audio": "audio/nl/het-tapijt.mp3"
+        }
+      },
+      "correct": 1,
+      "id": "UReJytssJVk4qeBvAAAB"
+    },
+    {
+      "date": "2021-01-12T14:11:52.802Z",
+      "photoid": 1,
+      "word": {
+        "clue": "You put your socks in one",
+        "nl": {
+          "word": "de lade",
+          "audio": "audio/nl/de-lade.mp3"
+        }
+      },
+      "correct": 1,
+      "id": "UReJytssJVk4qeBvAAAB"
+    },
+    {
+      "date": "2021-01-12T14:12:26.816Z",
+      "photoid": 1,
+      "word": {
+        "clue": "For making your shirt look nice",
+        "nl": {
+          "word": "de strijkplank",
+          "audio": "audio/nl/de-strijkplank.mp3"
+        }
+      },
+      "correct": 1,
+      "id": "UReJytssJVk4qeBvAAAB"
+    },
+    {
+      "date": "2021-01-12T14:12:32.083Z",
+      "photoid": 1,
+      "word": {
+        "clue": "Something adds up, on the desk!",
+        "nl": {
+          "word": "de rekenmachine",
+          "audio": "audio/nl/de-rekenmachine.mp3"
+        }
+      },
+      "correct": 1,
+      "id": "UReJytssJVk4qeBvAAAB"
+    },
+    {
+      "date": "2021-01-12T14:12:38.101Z",
+      "photoid": 1,
+      "word": {
+        "clue": "It hangs next to the window",
+        "nl": {
+          "word": "het gordijn",
+          "audio": "audio/nl/het-gordijn.mp3"
+        }
+      },
+      "correct": 1,
+      "id": "UReJytssJVk4qeBvAAAB"
+    },
+    {
+      "date": "2021-01-12T14:12:43.315Z",
+      "photoid": 1,
+      "word": {
+        "clue": "Familiar word, have a look at the desk!",
+        "nl": {
+          "word": "de laptop",
+          "audio": "audio/nl/de-laptop.mp3"
+        }
+      },
+      "correct": 1,
+      "id": "UReJytssJVk4qeBvAAAB"
+    },
+    {
+      "date": "2021-01-12T14:12:51.564Z",
+      "photoid": 1,
+      "word": {
+        "clue": "Makes a seat more cofortable",
+        "nl": {
+          "word": "het kussen",
+          "audio": "audio/nl/het-kussen.mp3"
+        }
+      },
+      "correct": 1,
+      "id": "UReJytssJVk4qeBvAAAB"
+    },
+    {
+      "date": "2021-01-12T14:32:00.403Z",
+      "photoid": 1,
+      "word": {
+        "clue": "You put your socks in one",
+        "nl": {
+          "word": "de lade",
+          "audio": "audio/nl/de-lade.mp3"
+        }
+      },
+      "correct": 1,
+      "id": "gCZ1zeWpdoU6na28AAAC"
+    },
+    {
+      "date": "2021-01-12T14:32:05.416Z",
+      "photoid": 1,
+      "word": {
+        "clue": "Do you really need illuminating?",
+        "nl": {
+          "word": "de lamp",
+          "audio": "audio/nl/de-lamp.mp3"
+        }
+      },
+      "correct": 1,
+      "id": "gCZ1zeWpdoU6na28AAAC"
+    },
+    {
+      "date": "2021-01-12T14:32:09.932Z",
+      "photoid": 1,
+      "word": {
+        "clue": "It's very comfortable to sit on",
+        "nl": {
+          "word": "de bank",
+          "audio": "audio/nl/de-bank.mp3"
+        }
+      },
+      "correct": 1,
+      "id": "gCZ1zeWpdoU6na28AAAC"
+    },
+    {
+      "date": "2021-01-12T14:32:19.017Z",
+      "photoid": 1,
+      "word": {
+        "clue": "This one is over your head",
+        "nl": {
+          "word": "het plafond",
+          "audio": "audio/nl/het-plafond.mp3"
+        }
+      },
+      "correct": 1,
+      "id": "gCZ1zeWpdoU6na28AAAC"
+    },
+    {
+      "date": "2021-01-12T14:32:29.200Z",
+      "photoid": 1,
+      "word": {
+        "clue": "Don't forget to look up and down",
+        "nl": {
+          "word": "de vloer",
+          "audio": "audio/nl/de-vloer.mp3"
+        }
+      },
+      "correct": 1,
+      "id": "gCZ1zeWpdoU6na28AAAC"
+    },
+    {
+      "date": "2021-01-12T14:32:37.717Z",
+      "photoid": 1,
+      "word": {
+        "clue": "Makes a seat more cofortable",
+        "nl": {
+          "word": "het kussen",
+          "audio": "audio/nl/het-kussen.mp3"
+        }
+      },
+      "correct": 1,
+      "id": "gCZ1zeWpdoU6na28AAAC"
+    },
+    {
+      "date": "2021-01-12T14:32:42.082Z",
+      "photoid": 1,
+      "word": {
+        "clue": "Put flowers in me!",
+        "nl": {
+          "word": "de vaas",
+          "audio": "audio/nl/de-vaas.mp3"
+        }
+      },
+      "correct": 1,
+      "id": "gCZ1zeWpdoU6na28AAAC"
+    },
+    {
+      "date": "2021-01-12T14:32:45.883Z",
+      "photoid": 1,
+      "word": {
+        "clue": "It's very comfortable to sit on",
+        "nl": {
+          "word": "de stoel",
+          "audio": "audio/nl/de-stoel.mp3"
+        }
+      },
+      "correct": 1,
+      "id": "gCZ1zeWpdoU6na28AAAC"
+    },
+    {
+      "date": "2021-01-12T14:32:55.617Z",
+      "photoid": 1,
+      "word": {
+        "clue": "It lights up the room",
+        "nl": {
+          "word": "de kaars",
+          "audio": "audio/nl/de-kaars.mp3"
+        }
+      },
+      "correct": 1,
+      "id": "gCZ1zeWpdoU6na28AAAC"
+    },
+    {
+      "date": "2021-01-12T14:32:59.534Z",
+      "photoid": 1,
+      "word": {
+        "clue": "Familiar word, have a look at the desk!",
+        "nl": {
+          "word": "de laptop",
+          "audio": "audio/nl/de-laptop.mp3"
+        }
+      },
+      "correct": 1,
+      "id": "gCZ1zeWpdoU6na28AAAC"
+    },
+    {
+      "date": "2021-01-12T14:33:24.617Z",
+      "photoid": 1,
+      "word": {
+        "clue": "For making your shirt look nice",
+        "nl": {
+          "word": "de strijkplank",
+          "audio": "audio/nl/de-strijkplank.mp3"
+        }
+      },
+      "correct": 1,
+      "id": "gCZ1zeWpdoU6na28AAAC"
+    },
+    {
+      "date": "2021-01-12T14:33:28.666Z",
+      "photoid": 1,
+      "word": {
+        "clue": "Used to turn on the light",
+        "nl": {
+          "word": "het lichtknopje",
+          "audio": "audio/nl/het-lichtknopje.mp3"
+        }
+      },
+      "correct": 1,
+      "id": "gCZ1zeWpdoU6na28AAAC"
+    },
+    {
+      "date": "2021-01-12T14:33:34.266Z",
+      "photoid": 1,
+      "word": {
+        "clue": "Useful to get through the door",
+        "nl": {
+          "word": "het handvat",
+          "audio": "audio/nl/het-handvat.mp3"
+        }
+      },
+      "correct": 1,
+      "id": "gCZ1zeWpdoU6na28AAAC"
+    },
+    {
+      "date": "2021-01-12T14:33:37.884Z",
+      "photoid": 1,
+      "word": {
+        "clue": "It makes use of a key",
+        "nl": {
+          "word": "het slot",
+          "audio": "audio/nl/het-slot.mp3"
+        }
+      },
+      "correct": 1,
+      "id": "gCZ1zeWpdoU6na28AAAC"
+    },
+    {
+      "date": "2021-01-12T14:33:41.199Z",
+      "photoid": 1,
+      "word": {
+        "clue": "Needed to operate electrical appliances",
+        "nl": {
+          "word": "het stopcontact",
+          "audio": "audio/nl/het-stopcontact.mp3"
+        }
+      },
+      "correct": 1,
+      "id": "gCZ1zeWpdoU6na28AAAC"
+    },
+    {
+      "date": "2021-01-12T14:56:11.335Z",
+      "photoid": 1,
+      "word": {
+        "clue": "A large piece of furniture to store things in",
+        "nl": {
+          "word": "de ladekast",
+          "audio": "audio/nl/de-ladekast.mp3"
+        }
+      },
+      "guess": "de lade",
+      "id": "TlU06MCN905efGN2AAAG"
+    },
+    {
+      "date": "2021-01-12T14:56:20.154Z",
+      "photoid": 1,
+      "word": {
+        "clue": "A large piece of furniture to store things in",
+        "nl": {
+          "word": "de ladekast",
+          "audio": "audio/nl/de-ladekast.mp3"
+        }
+      },
+      "guess": "de kledingkast",
+      "id": "TlU06MCN905efGN2AAAG"
+    },
+    {
+      "date": "2021-01-12T14:56:29.881Z",
+      "photoid": 1,
+      "word": {
+        "clue": "A large piece of furniture to store things in",
+        "nl": {
+          "word": "de ladekast",
+          "audio": "audio/nl/de-ladekast.mp3"
+        }
+      },
+      "correct": 1,
+      "id": "TlU06MCN905efGN2AAAG"
+    },
+    {
+      "date": "2021-01-12T14:56:36.303Z",
+      "photoid": 1,
+      "word": {
+        "clue": "Where you put what you wear",
+        "nl": {
+          "word": "de kledingkast",
+          "audio": "audio/nl/de-kledingkast.mp3"
+        }
+      },
+      "correct": 1,
+      "id": "TlU06MCN905efGN2AAAG"
+    },
+    {
+      "date": "2021-01-12T14:56:41.908Z",
+      "photoid": 1,
+      "word": {
+        "clue": "This one is over your head",
+        "nl": {
+          "word": "het plafond",
+          "audio": "audio/nl/het-plafond.mp3"
+        }
+      },
+      "correct": 1,
+      "id": "TlU06MCN905efGN2AAAG"
+    },
+    {
+      "date": "2021-01-12T14:56:47.396Z",
+      "photoid": 1,
+      "word": {
+        "clue": "Used to look outside when the blinds aren't down",
+        "nl": {
+          "word": "het raam",
+          "audio": "audio/nl/het-raam.mp3"
+        }
+      },
+      "correct": 1,
+      "id": "TlU06MCN905efGN2AAAG"
+    },
+    {
+      "date": "2021-01-12T14:56:52.713Z",
+      "photoid": 1,
+      "word": {
+        "clue": "Do you prefer Mondriaan or Rembrandt?",
+        "nl": {
+          "word": "het schilderij",
+          "audio": "audio/nl/het-schilderij.mp3"
+        }
+      },
+      "correct": 1,
+      "id": "TlU06MCN905efGN2AAAG"
+    },
+    {
+      "date": "2021-01-12T14:57:14.133Z",
+      "photoid": 1,
+      "word": {
+        "clue": "There are so many piles of paperwork on this object!",
+        "nl": {
+          "word": "het bureau",
+          "audio": "audio/nl/het-bureau.mp3"
+        }
+      },
+      "correct": 1,
+      "id": "TlU06MCN905efGN2AAAG"
+    },
+    {
+      "date": "2021-01-12T14:57:20.911Z",
+      "photoid": 1,
+      "word": {
+        "clue": "Put flowers in me!",
+        "nl": {
+          "word": "de vaas",
+          "audio": "audio/nl/de-vaas.mp3"
+        }
+      },
+      "correct": 1,
+      "id": "TlU06MCN905efGN2AAAG"
+    },
+    {
+      "date": "2021-01-12T14:57:40.544Z",
+      "photoid": 1,
+      "word": {
+        "clue": "Needed to operate electrical appliances",
+        "nl": {
+          "word": "het stopcontact",
+          "audio": "audio/nl/het-stopcontact.mp3"
+        }
+      },
+      "correct": 1,
+      "id": "TlU06MCN905efGN2AAAG"
+    },
+    {
+      "date": "2021-01-12T14:57:49.322Z",
+      "photoid": 1,
+      "word": {
+        "clue": "It keeps the tempemperature on point here",
+        "nl": {
+          "word": "de radiator",
+          "audio": "audio/nl/de-radiator.mp3"
+        }
+      },
+      "correct": 1,
+      "id": "TlU06MCN905efGN2AAAG"
+    },
+    {
+      "date": "2021-01-12T14:57:55.098Z",
+      "photoid": 1,
+      "word": {
+        "clue": "Useful to get through the door",
+        "nl": {
+          "word": "het handvat",
+          "audio": "audio/nl/het-handvat.mp3"
+        }
+      },
+      "correct": 1,
+      "id": "TlU06MCN905efGN2AAAG"
+    },
+    {
+      "date": "2021-01-12T14:58:05.842Z",
+      "photoid": 1,
+      "word": {
+        "clue": "It's very comfortable to sit on",
+        "nl": {
+          "word": "de stoel",
+          "audio": "audio/nl/de-stoel.mp3"
+        }
+      },
+      "correct": 1,
+      "id": "TlU06MCN905efGN2AAAG"
+    },
+    {
+      "date": "2021-01-12T14:58:26.667Z",
+      "photoid": 1,
+      "word": {
+        "clue": "You put things in one, behind the door",
+        "nl": {
+          "word": "de doos",
+          "audio": "audio/nl/de-doos.mp3"
+        }
+      },
+      "correct": 1,
+      "id": "TlU06MCN905efGN2AAAG"
+    },
+    {
+      "date": "2021-01-12T14:58:31.742Z",
+      "photoid": 1,
+      "word": {
+        "clue": "It lights up the room",
+        "nl": {
+          "word": "de kaars",
+          "audio": "audio/nl/de-kaars.mp3"
+        }
+      },
+      "correct": 1,
+      "id": "TlU06MCN905efGN2AAAG"
+    },
+    {
+      "date": "2021-01-12T14:58:42.865Z",
+      "photoid": 1,
+      "word": {
+        "clue": "You put your socks in one",
+        "nl": {
+          "word": "de lade",
+          "audio": "audio/nl/de-lade.mp3"
+        }
+      },
+      "correct": 1,
+      "id": "TlU06MCN905efGN2AAAG"
+    },
+    {
+      "date": "2021-01-12T14:58:47.446Z",
+      "photoid": 1,
+      "word": {
+        "clue": "It makes use of a key",
+        "nl": {
+          "word": "het slot",
+          "audio": "audio/nl/het-slot.mp3"
+        }
+      },
+      "correct": 1,
+      "id": "TlU06MCN905efGN2AAAG"
+    },
+    {
+      "date": "2021-01-12T20:16:13.311Z",
+      "photoid": 1,
+      "word": {
+        "clue": "Something adds up, on the desk!",
+        "nl": {
+          "word": "de rekenmachine",
+          "audio": "audio/nl/de-rekenmachine.mp3"
+        }
+      },
+      "correct": 1,
+      "id": "xPH0rEfaMtej1az1AAAw"
+    },
+    {
+      "date": "2021-01-12T20:16:21.457Z",
+      "photoid": 1,
+      "word": {
+        "clue": "There are so many piles of paperwork on this object!",
+        "nl": {
+          "word": "het bureau",
+          "audio": "audio/nl/het-bureau.mp3"
+        }
+      },
+      "correct": 1,
+      "id": "xPH0rEfaMtej1az1AAAw"
+    },
+    {
+      "date": "2021-01-12T20:17:20.735Z",
+      "photoid": 1,
+      "word": {
+        "clue": "You put things in one, behind the door",
+        "nl": {
+          "word": "de doos",
+          "audio": "audio/nl/de-doos.mp3"
+        }
+      },
+      "correct": 1,
+      "id": "xPH0rEfaMtej1az1AAAw"
+    },
+    {
+      "date": "2021-01-12T22:49:35.246Z",
+      "photoid": 1,
+      "word": {
+        "clue": "This one is over your head",
+        "nl": {
+          "word": "het plafond",
+          "audio": "audio/nl/het-plafond.mp3"
+        }
+      },
+      "correct": 1,
+      "id": "-EUUzdKObe5-nhDpAAAA"
+    },
+    {
+      "date": "2021-01-12T22:49:43.170Z",
+      "photoid": 1,
+      "word": {
+        "clue": "Used to look outside when the blinds aren't down",
+        "nl": {
+          "word": "het raam",
+          "audio": "audio/nl/het-raam.mp3"
+        }
+      },
+      "correct": 1,
+      "id": "-EUUzdKObe5-nhDpAAAA"
+    },
+    {
+      "date": "2021-01-12T22:49:52.434Z",
+      "photoid": 1,
+      "word": {
+        "clue": "You sit on this, briefly",
+        "nl": {
+          "word": "de kruk",
+          "audio": "audio/nl/de-kruk.mp3"
+        }
+      },
+      "correct": 1,
+      "id": "-EUUzdKObe5-nhDpAAAA"
+    },
+    {
+      "date": "2021-01-12T22:50:03.248Z",
+      "photoid": 1,
+      "word": {
+        "clue": "How did you get into this room?",
+        "nl": {
+          "word": "de deur",
+          "audio": "audio/nl/de-deur.mp3"
+        }
+      },
+      "correct": 1,
+      "id": "-EUUzdKObe5-nhDpAAAA"
+    },
+    {
+      "date": "2021-01-12T22:50:12.102Z",
+      "photoid": 1,
+      "word": {
+        "clue": "Used to turn on the light",
+        "nl": {
+          "word": "het lichtknopje",
+          "audio": "audio/nl/het-lichtknopje.mp3"
+        }
+      },
+      "correct": 1,
+      "id": "-EUUzdKObe5-nhDpAAAA"
+    },
+    {
+      "date": "2021-01-12T22:50:20.066Z",
+      "photoid": 1,
+      "word": {
+        "clue": "For making your shirt look nice",
+        "nl": {
+          "word": "de strijkplank",
+          "audio": "audio/nl/de-strijkplank.mp3"
+        }
+      },
+      "correct": 1,
+      "id": "-EUUzdKObe5-nhDpAAAA"
+    },
+    {
+      "date": "2021-01-12T22:50:29.244Z",
+      "photoid": 1,
+      "word": {
+        "clue": "Needed to operate electrical appliances",
+        "nl": {
+          "word": "het stopcontact",
+          "audio": "audio/nl/het-stopcontact.mp3"
+        }
+      },
+      "correct": 1,
+      "id": "-EUUzdKObe5-nhDpAAAA"
+    },
+    {
+      "date": "2021-01-12T22:50:38.321Z",
+      "photoid": 1,
+      "word": {
+        "clue": "There are so many piles of paperwork on this object!",
+        "nl": {
+          "word": "het bureau",
+          "audio": "audio/nl/het-bureau.mp3"
+        }
+      },
+      "correct": 1,
+      "id": "-EUUzdKObe5-nhDpAAAA"
+    },
+    {
+      "date": "2021-01-12T22:50:46.017Z",
+      "photoid": 1,
+      "word": {
+        "clue": "Do you like to read these?",
+        "nl": {
+          "word": "het boek",
+          "audio": "audio/nl/het-boek.mp3"
+        }
+      },
+      "correct": 1,
+      "id": "-EUUzdKObe5-nhDpAAAA"
+    },
+    {
+      "date": "2021-01-12T22:50:53.681Z",
+      "photoid": 1,
+      "word": {
+        "clue": "It lights up the desk",
+        "nl": {
+          "word": "de bureaulamp",
+          "audio": "audio/nl/de-bureaulamp.mp3"
+        }
+      },
+      "correct": 1,
+      "id": "-EUUzdKObe5-nhDpAAAA"
+    },
+    {
+      "date": "2021-01-12T22:51:03.315Z",
+      "photoid": 1,
+      "word": {
+        "clue": "Makes a seat more cofortable",
+        "nl": {
+          "word": "het kussen",
+          "audio": "audio/nl/het-kussen.mp3"
+        }
+      },
+      "correct": 1,
+      "id": "-EUUzdKObe5-nhDpAAAA"
+    },
+    {
+      "date": "2021-01-12T22:51:16.290Z",
+      "photoid": 1,
+      "word": {
+        "clue": "It keeps the tempemperature on point here",
+        "nl": {
+          "word": "de radiator",
+          "audio": "audio/nl/de-radiator.mp3"
+        }
+      },
+      "correct": 1,
+      "id": "-EUUzdKObe5-nhDpAAAA"
+    },
+    {
+      "date": "2021-01-12T22:51:29.098Z",
+      "photoid": 1,
+      "word": {
+        "clue": "You put things in one, behind the door",
+        "nl": {
+          "word": "de doos",
+          "audio": "audio/nl/de-doos.mp3"
+        }
+      },
+      "correct": 1,
+      "id": "-EUUzdKObe5-nhDpAAAA"
+    },
+    {
+      "date": "2021-01-12T22:51:37.397Z",
+      "photoid": 1,
+      "word": {
+        "clue": "Something adds up, on the desk!",
+        "nl": {
+          "word": "de rekenmachine",
+          "audio": "audio/nl/de-rekenmachine.mp3"
+        }
+      },
+      "correct": 1,
+      "id": "-EUUzdKObe5-nhDpAAAA"
+    },
+    {
+      "date": "2021-01-12T22:51:44.814Z",
+      "photoid": 1,
+      "word": {
+        "clue": "Put flowers in me!",
+        "nl": {
+          "word": "de vaas",
+          "audio": "audio/nl/de-vaas.mp3"
+        }
+      },
+      "correct": 1,
+      "id": "-EUUzdKObe5-nhDpAAAA"
+    },
+    {
+      "date": "2021-01-13T18:09:43.214Z",
+      "photoid": 1,
+      "word": {
+        "clue": "There are so many piles of paperwork on this object!",
+        "nl": {
+          "word": "het bureau",
+          "audio": "audio/nl/het-bureau.mp3"
+        }
+      },
+      "correct": 1,
+      "id": "CRSvyIeA5oab4fgsAAAC"
+    },
+    {
+      "date": "2021-01-13T18:09:52.471Z",
+      "photoid": 1,
+      "word": {
+        "clue": "It's very comfortable to sit on",
+        "nl": {
+          "word": "de stoel",
+          "audio": "audio/nl/de-stoel.mp3"
+        }
+      },
+      "correct": 1,
+      "id": "CRSvyIeA5oab4fgsAAAC"
+    },
+    {
+      "date": "2021-01-13T18:10:00.233Z",
+      "photoid": 1,
+      "word": {
+        "clue": "You sit on this, briefly",
+        "nl": {
+          "word": "de kruk",
+          "audio": "audio/nl/de-kruk.mp3"
+        }
+      },
+      "correct": 1,
+      "id": "CRSvyIeA5oab4fgsAAAC"
+    },
+    {
+      "date": "2021-01-13T18:10:09.010Z",
+      "photoid": 1,
+      "word": {
+        "clue": "Put flowers in me!",
+        "nl": {
+          "word": "de vaas",
+          "audio": "audio/nl/de-vaas.mp3"
+        }
+      },
+      "correct": 1,
+      "id": "CRSvyIeA5oab4fgsAAAC"
+    },
+    {
+      "date": "2021-01-13T18:10:17.096Z",
+      "photoid": 1,
+      "word": {
+        "clue": "It hangs next to the window",
+        "nl": {
+          "word": "het gordijn",
+          "audio": "audio/nl/het-gordijn.mp3"
+        }
+      },
+      "correct": 1,
+      "id": "CRSvyIeA5oab4fgsAAAC"
+    },
+    {
+      "date": "2021-01-13T18:10:25.204Z",
+      "photoid": 1,
+      "word": {
+        "clue": "It keeps the table nice and clean",
+        "nl": {
+          "word": "het tafelkleed",
+          "audio": "audio/nl/het-tafelkleed.mp3"
+        }
+      },
+      "correct": 1,
+      "id": "CRSvyIeA5oab4fgsAAAC"
+    },
+    {
+      "date": "2021-01-13T18:10:35.684Z",
+      "photoid": 1,
+      "word": {
+        "clue": "Do you like to read these?",
+        "nl": {
+          "word": "het boek",
+          "audio": "audio/nl/het-boek.mp3"
+        }
+      },
+      "correct": 1,
+      "id": "CRSvyIeA5oab4fgsAAAC"
+    },
+    {
+      "date": "2021-01-13T18:10:45.418Z",
+      "photoid": 1,
+      "word": {
+        "clue": "Useful to get through the door",
+        "nl": {
+          "word": "het handvat",
+          "audio": "audio/nl/het-handvat.mp3"
+        }
+      },
+      "correct": 1,
+      "id": "CRSvyIeA5oab4fgsAAAC"
+    },
+    {
+      "date": "2021-01-13T18:10:54.240Z",
+      "photoid": 1,
+      "word": {
+        "clue": "Makes a seat more cofortable",
+        "nl": {
+          "word": "het kussen",
+          "audio": "audio/nl/het-kussen.mp3"
+        }
+      },
+      "correct": 1,
+      "id": "CRSvyIeA5oab4fgsAAAC"
+    },
+    {
+      "date": "2021-01-13T18:11:03.217Z",
+      "photoid": 1,
+      "word": {
+        "clue": "Where you put what you wear",
+        "nl": {
+          "word": "de kledingkast",
+          "audio": "audio/nl/de-kledingkast.mp3"
+        }
+      },
+      "correct": 1,
+      "id": "CRSvyIeA5oab4fgsAAAC"
+    },
+    {
+      "date": "2021-01-13T18:11:14.177Z",
+      "photoid": 1,
+      "word": {
+        "clue": "A large piece of furniture to store things in",
+        "nl": {
+          "word": "de ladekast",
+          "audio": "audio/nl/de-ladekast.mp3"
+        }
+      },
+      "correct": 1,
+      "id": "CRSvyIeA5oab4fgsAAAC"
+    },
+    {
+      "date": "2021-01-13T18:11:22.575Z",
+      "photoid": 1,
+      "word": {
+        "clue": "Do you really need illuminating?",
+        "nl": {
+          "word": "de lamp",
+          "audio": "audio/nl/de-lamp.mp3"
+        }
+      },
+      "correct": 1,
+      "id": "CRSvyIeA5oab4fgsAAAC"
+    },
+    {
+      "date": "2021-01-13T18:11:32.064Z",
+      "photoid": 1,
+      "word": {
+        "clue": "It's somewhere on the desk...",
+        "nl": {
+          "word": "de mobiele telefoon",
+          "audio": "audio/nl/de-mobiele-telefoon.mp3"
+        }
+      },
+      "correct": 1,
+      "id": "CRSvyIeA5oab4fgsAAAC"
+    },
+    {
+      "date": "2021-01-13T18:11:46.444Z",
+      "photoid": 1,
+      "word": {
+        "clue": "Used to turn on the light",
+        "nl": {
+          "word": "het lichtknopje",
+          "audio": "audio/nl/het-lichtknopje.mp3"
+        }
+      },
+      "correct": 1,
+      "id": "CRSvyIeA5oab4fgsAAAC"
+    },
+    {
+      "date": "2021-01-13T18:11:54.685Z",
+      "photoid": 1,
+      "word": {
+        "clue": "It makes hard copies",
+        "nl": {
+          "word": "de printer",
+          "audio": "audio/nl/de-printer.mp3"
+        }
+      },
+      "correct": 1,
+      "id": "CRSvyIeA5oab4fgsAAAC"
+    },
+    {
+      "date": "2021-01-14T11:08:52.489Z",
+      "photoid": 1,
+      "word": {
+        "clue": "Makes a seat more cofortable",
+        "nl": {
+          "word": "het kussen",
+          "audio": "audio/nl/het-kussen.mp3"
+        }
+      },
+      "correct": 1,
+      "id": "fe6UDljO4xjKZp2GAAAB"
+    },
+    {
+      "date": "2021-01-14T11:09:00.621Z",
+      "photoid": 1,
+      "word": {
+        "clue": "There are four in this room: all around you",
+        "nl": {
+          "word": "de muur",
+          "audio": "audio/nl/de-muur.mp3"
+        }
+      },
+      "correct": 1,
+      "id": "fe6UDljO4xjKZp2GAAAB"
+    },
+    {
+      "date": "2021-01-14T11:09:11.293Z",
+      "photoid": 1,
+      "word": {
+        "clue": "It makes use of a key",
+        "nl": {
+          "word": "het slot",
+          "audio": "audio/nl/het-slot.mp3"
+        }
+      },
+      "correct": 1,
+      "id": "fe6UDljO4xjKZp2GAAAB"
+    },
+    {
+      "date": "2021-01-14T11:09:20.057Z",
+      "photoid": 1,
+      "word": {
+        "clue": "It's very comfortable to sit on",
+        "nl": {
+          "word": "de bank",
+          "audio": "audio/nl/de-bank.mp3"
+        }
+      },
+      "correct": 1,
+      "id": "fe6UDljO4xjKZp2GAAAB"
+    },
+    {
+      "date": "2021-01-14T11:09:29.424Z",
+      "photoid": 1,
+      "word": {
+        "clue": "You're 'standing' on it right now!",
+        "nl": {
+          "word": "het tapijt",
+          "audio": "audio/nl/het-tapijt.mp3"
+        }
+      },
+      "correct": 1,
+      "id": "fe6UDljO4xjKZp2GAAAB"
+    },
+    {
+      "date": "2021-01-14T11:09:39.671Z",
+      "photoid": 1,
+      "word": {
+        "clue": "Do you prefer Mondriaan or Rembrandt?",
+        "nl": {
+          "word": "het schilderij",
+          "audio": "audio/nl/het-schilderij.mp3"
+        }
+      },
+      "correct": 1,
+      "id": "fe6UDljO4xjKZp2GAAAB"
+    },
+    {
+      "date": "2021-01-14T11:09:47.089Z",
+      "photoid": 1,
+      "word": {
+        "clue": "It keeps the table nice and clean",
+        "nl": {
+          "word": "het tafelkleed",
+          "audio": "audio/nl/het-tafelkleed.mp3"
+        }
+      },
+      "correct": 1,
+      "id": "fe6UDljO4xjKZp2GAAAB"
+    },
+    {
+      "date": "2021-01-14T11:09:55.809Z",
+      "photoid": 1,
+      "word": {
+        "clue": "You put your socks in one",
+        "nl": {
+          "word": "de lade",
+          "audio": "audio/nl/de-lade.mp3"
+        }
+      },
+      "correct": 1,
+      "id": "fe6UDljO4xjKZp2GAAAB"
+    },
+    {
+      "date": "2021-01-14T11:10:04.386Z",
+      "photoid": 1,
+      "word": {
+        "clue": "It's very comfortable to sit on",
+        "nl": {
+          "word": "de stoel",
+          "audio": "audio/nl/de-stoel.mp3"
+        }
+      },
+      "correct": 1,
+      "id": "fe6UDljO4xjKZp2GAAAB"
+    },
+    {
+      "date": "2021-01-14T11:10:13.730Z",
+      "photoid": 1,
+      "word": {
+        "clue": "Something adds up, on the desk!",
+        "nl": {
+          "word": "de rekenmachine",
+          "audio": "audio/nl/de-rekenmachine.mp3"
+        }
+      },
+      "correct": 1,
+      "id": "fe6UDljO4xjKZp2GAAAB"
+    },
+    {
+      "date": "2021-01-14T11:10:22.262Z",
+      "photoid": 1,
+      "word": {
+        "clue": "Where you put what you wear",
+        "nl": {
+          "word": "de kledingkast",
+          "audio": "audio/nl/de-kledingkast.mp3"
+        }
+      },
+      "correct": 1,
+      "id": "fe6UDljO4xjKZp2GAAAB"
+    },
+    {
+      "date": "2021-01-14T11:10:29.669Z",
+      "photoid": 1,
+      "word": {
+        "clue": "Familiar word, have a look at the desk!",
+        "nl": {
+          "word": "de laptop",
+          "audio": "audio/nl/de-laptop.mp3"
+        }
+      },
+      "correct": 1,
+      "id": "fe6UDljO4xjKZp2GAAAB"
+    },
+    {
+      "date": "2021-01-14T11:10:38.434Z",
+      "photoid": 1,
+      "word": {
+        "clue": "This one is over your head",
+        "nl": {
+          "word": "het plafond",
+          "audio": "audio/nl/het-plafond.mp3"
+        }
+      },
+      "correct": 1,
+      "id": "fe6UDljO4xjKZp2GAAAB"
+    },
+    {
+      "date": "2021-01-14T11:10:47.345Z",
+      "photoid": 1,
+      "word": {
+        "clue": "It hangs next to the window",
+        "nl": {
+          "word": "het gordijn",
+          "audio": "audio/nl/het-gordijn.mp3"
+        }
+      },
+      "correct": 1,
+      "id": "fe6UDljO4xjKZp2GAAAB"
+    },
+    {
+      "date": "2021-01-14T11:10:56.322Z",
+      "photoid": 1,
+      "word": {
+        "clue": "Do you really need illuminating?",
+        "nl": {
+          "word": "de lamp",
+          "audio": "audio/nl/de-lamp.mp3"
+        }
+      },
+      "correct": 1,
+      "id": "fe6UDljO4xjKZp2GAAAB"
+    },
+    {
+      "date": "2021-01-15T18:25:06.600Z",
+      "photoid": 1,
+      "word": {
+        "clue": "Useful to get through the door",
+        "nl": {
+          "word": "het handvat",
+          "audio": "audio/nl/het-handvat.mp3"
+        }
+      },
+      "correct": 1,
+      "id": "FxewrQIPz5sxWizlAAAB"
+    },
+    {
+      "date": "2021-01-15T18:25:13.152Z",
+      "photoid": 1,
+      "word": {
+        "clue": "Do you like to read these?",
+        "nl": {
+          "word": "het boek",
+          "audio": "audio/nl/het-boek.mp3"
+        }
+      },
+      "correct": 1,
+      "id": "FxewrQIPz5sxWizlAAAB"
+    },
+    {
+      "date": "2021-01-15T18:25:24.847Z",
+      "photoid": 1,
+      "word": {
+        "clue": "It lights up the desk",
+        "nl": {
+          "word": "de bureaulamp",
+          "audio": "audio/nl/de-bureaulamp.mp3"
+        }
+      },
+      "correct": 1,
+      "id": "FxewrQIPz5sxWizlAAAB"
+    },
+    {
+      "date": "2021-01-15T18:25:33.389Z",
+      "photoid": 1,
+      "word": {
+        "clue": "You sit on this, briefly",
+        "nl": {
+          "word": "de kruk",
+          "audio": "audio/nl/de-kruk.mp3"
+        }
+      },
+      "correct": 1,
+      "id": "FxewrQIPz5sxWizlAAAB"
+    },
+    {
+      "date": "2021-01-15T18:25:41.264Z",
+      "photoid": 1,
+      "word": {
+        "clue": "It keeps the table nice and clean",
+        "nl": {
+          "word": "het tafelkleed",
+          "audio": "audio/nl/het-tafelkleed.mp3"
+        }
+      },
+      "correct": 1,
+      "id": "FxewrQIPz5sxWizlAAAB"
+    },
+    {
+      "date": "2021-01-15T18:25:52.580Z",
+      "photoid": 1,
+      "word": {
+        "clue": "It's somewhere on the desk...",
+        "nl": {
+          "word": "de mobiele telefoon",
+          "audio": "audio/nl/de-mobiele-telefoon.mp3"
+        }
+      },
+      "correct": 1,
+      "id": "FxewrQIPz5sxWizlAAAB"
+    },
+    {
+      "date": "2021-01-15T18:26:00.120Z",
+      "photoid": 1,
+      "word": {
+        "clue": "There are four in this room: all around you",
+        "nl": {
+          "word": "de muur",
+          "audio": "audio/nl/de-muur.mp3"
+        }
+      },
+      "correct": 1,
+      "id": "FxewrQIPz5sxWizlAAAB"
+    },
+    {
+      "date": "2021-01-15T18:26:11.893Z",
+      "photoid": 1,
+      "word": {
+        "clue": "It keeps the tempemperature on point here",
+        "nl": {
+          "word": "de radiator",
+          "audio": "audio/nl/de-radiator.mp3"
+        }
+      },
+      "correct": 1,
+      "id": "FxewrQIPz5sxWizlAAAB"
+    },
+    {
+      "date": "2021-01-15T18:26:19.890Z",
+      "photoid": 1,
+      "word": {
+        "clue": "For making your shirt look nice",
+        "nl": {
+          "word": "de strijkplank",
+          "audio": "audio/nl/de-strijkplank.mp3"
+        }
+      },
+      "correct": 1,
+      "id": "FxewrQIPz5sxWizlAAAB"
+    },
+    {
+      "date": "2021-01-15T18:26:28.125Z",
+      "photoid": 1,
+      "word": {
+        "clue": "Put flowers in me!",
+        "nl": {
+          "word": "de vaas",
+          "audio": "audio/nl/de-vaas.mp3"
+        }
+      },
+      "correct": 1,
+      "id": "FxewrQIPz5sxWizlAAAB"
+    },
+    {
+      "date": "2021-01-15T18:26:33.861Z",
+      "photoid": 1,
+      "word": {
+        "clue": "It makes hard copies",
+        "nl": {
+          "word": "de printer",
+          "audio": "audio/nl/de-printer.mp3"
+        }
+      },
+      "correct": 1,
+      "id": "FxewrQIPz5sxWizlAAAB"
+    },
+    {
+      "date": "2021-01-15T18:26:41.903Z",
+      "photoid": 1,
+      "word": {
+        "clue": "Needed to operate electrical appliances",
+        "nl": {
+          "word": "het stopcontact",
+          "audio": "audio/nl/het-stopcontact.mp3"
+        }
+      },
+      "correct": 1,
+      "id": "FxewrQIPz5sxWizlAAAB"
+    },
+    {
+      "date": "2021-01-15T18:26:47.784Z",
+      "photoid": 1,
+      "word": {
+        "clue": "Do you really need illuminating?",
+        "nl": {
+          "word": "de lamp",
+          "audio": "audio/nl/de-lamp.mp3"
+        }
+      },
+      "correct": 1,
+      "id": "FxewrQIPz5sxWizlAAAB"
+    },
+    {
+      "date": "2021-01-15T18:26:53.398Z",
+      "photoid": 1,
+      "word": {
+        "clue": "Used to turn on the light",
+        "nl": {
+          "word": "het lichtknopje",
+          "audio": "audio/nl/het-lichtknopje.mp3"
+        }
+      },
+      "correct": 1,
+      "id": "FxewrQIPz5sxWizlAAAB"
+    },
+    {
+      "date": "2021-01-15T18:27:01.629Z",
+      "photoid": 1,
+      "word": {
+        "clue": "Something adds up, on the desk!",
+        "nl": {
+          "word": "de rekenmachine",
+          "audio": "audio/nl/de-rekenmachine.mp3"
+        }
+      },
+      "correct": 1,
+      "id": "FxewrQIPz5sxWizlAAAB"
+    }
+  ]
 }
