@@ -20,6 +20,7 @@ var gState= {
     // how many attempts on current word
     attempt: 1,
     NUM_SPOTS: 15,
+    mode:'testing',
     setPhoto: function (photo) {
         if (photo) {
             this.photo = photo;
@@ -98,7 +99,10 @@ var gState= {
             // could just as well use
             // sampleSize to get multiple words
             nextWord = _.sample(_candidates);
-            setHudText('top', 'Find: ' + nextWord[this.lang].word);
+            // if in learning mode show text from the offset
+            if (this.mode==='learning') {
+                setHudText('top', 'Find: ' + nextWord[this.lang].word);
+            }
             this.word=nextWord;
             this.playWord();
         } else {
@@ -145,7 +149,9 @@ var gState= {
         }
     },
     nextPhoto: function(offset) {
-        if (!_.isNumber(offset)) {
+        if (!this.photo) {
+            this.changePhoto(1);
+        } else if (_.isNumber(offset)) {
             this.changePhoto( this.photo.id+offset );
         } else {
             //1 by default

@@ -50,43 +50,13 @@ AFRAME.registerComponent('cursor-listen', {
 
 
 // this was attached to the left control and deleted spots
-AFRAME.registerComponent('raylisten', {
+AFRAME.registerComponent('rayleft-ctrl', {
     init: function () {
-        //outputting debug info to bottom panel
-        var debugInfo=document.querySelector('#hud-bot');
-        console.log('initialise raycaster listen',this);
-        debugInfo.setAttribute('text','value: initialising raycaster-listen');
-        // Use events to figure out what raycaster is listening so we don't have to
-        this.el.addEventListener('triggerdown', function (e) {
-            console.log('triggerdown',e)
-            debugInfo.setAttribute('text','value: trigger down - ' + e.target.id);
-            console.log('trigger down');
-            var ray = this.getAttribute("raycaster").direction;
-            //setting tip of raycaster as 1.1m forward of controller.
-            var p = new THREE.Vector3(ray.x, ray.y, ray.z);
-            p.normalize();
-            p.multiplyScalar(1.2);
-            //Convert local position into world coordinate.
-        });
-
         this.el.addEventListener('gripdown', function (e) {
-            console.log('grip squeeze',e)
+//            console.log('grip squeeze left',e)
             // the idea is right up left down but for not this is on the right controller
             gState.nextPhoto(-1);
         });
-        this.el.addEventListener('raycaster-intersection', evt => {
-            this.raycaster = evt.detail.el;
-            debugInfo.setAttribute('text','value:intersection');
-            console.log('intersected',evt,evt.detail.els[0]);
-            console.log('intersection object',evt.detail.intersections[0])
-            //remove with left controller
-            evt.detail.els[0].remove();
-        });
-        this.el.addEventListener('raycaster-intersection-cleared', evt => {
-            this.raycaster = null;
-            debugInfo.setAttribute('text','value: ');
-        });
-
     }
 });
 
@@ -104,15 +74,15 @@ AFRAME.registerComponent('input-listen', {
             this.el.addEventListener('triggerdown', function (e) {
                 //"this" reffers ctlR or L in this function
                 var point = document.querySelector('#rhPoint').object3D.getWorldPosition();
-                console.log('create spot', point);
+//                console.log('create spot', point);
                 remoteSpotAdd(point);
             });
 
             //Grip Pressed
             this.el.addEventListener('gripdown', function (e) {
-                console.log('grip squeeze',e.id)
+                console.log('grip squeeze right',e);
                 // the idea is right up left down but for not this is on the right controller
-                gState.nextPhoto();
+//                gState.nextPhoto();
                 //Setting grip flag as true, this is for gripping to hold on to something
                 this.grip = true;
             });
@@ -125,7 +95,7 @@ AFRAME.registerComponent('input-listen', {
             //Raycaster intersected with something.
             this.el.addEventListener('raycaster-intersection', function (e) {
                 //Store first selected object as selectedObj
-                console.log('intesection',e);
+  //              console.log('intesection',e);
                 // intersecting keyboard makes null appear!
                 let word = e.detail.els[0].getAttribute('word') || '';
                 setHudText('bot',word);
