@@ -1,24 +1,22 @@
 //UI Code - AFRAME / UI handling
 AFRAME.registerComponent('cursor-listen', {
     init: function () {
-        //outputting debug info to bottom panel
-        const _top=document.querySelector('#hud-top'),
-            _mid=document.querySelector('#hud-mid'),
-            _bot=document.querySelector('#hud-bot');
-        console.log('initialising curor-listen',this);
        // need a style that makes things appear and then fade out!
         this.el.addEventListener('raycaster-intersection-cleared', evt => {
+            // chage for state experiment
             // clear ingo panel if it is not due to a spot being deleted where we set the sticky bottom flag
             if (!gState.stickyBot) {
-                _bot.setAttribute('text', 'value: ');
+                this.el.sceneEl.emit('changeHudText',{target:'bot',text:''});
             }
             gState.stickyBot = false;
         });
         this.el.addEventListener('fusing', evt => {
             // disable for home screen, target object listens
             const word = evt.detail.intersectedEl.getAttribute('word');
-            if (word) _bot.setAttribute('text','value: fusing: ' + evt.detail.intersectedEl.getAttribute('word'));
- //           console.log('click',evt);
+            // word implies this is fushing into a hotspot - could just check what location we are in
+            if (word) this.el.sceneEl.emit('changeHudText',{target:'bot',
+                text:'fusing: ' + evt.detail.intersectedEl.getAttribute('word')
+            });
         });
         this.el.addEventListener('click', evt => {
             //_bot.setAttribute('text','value: click event' + evt.detail.intersectedEl.word);
@@ -33,13 +31,16 @@ AFRAME.registerComponent('cursor-listen', {
                     .value()[word];
             if (!fusedWord) {
                 // checking word as getting called by homescreen
-                if (word) setHudText('bot',el.getAttribute('word') + ': not found in dictionary');
+                if (word) this.el.sceneEl.emit('changeHudText',{target:'bot',
+                    text: el.getAttribute('word') + ': not found in dictionary'});
             } else {
                 if (fusedWord[gState.lang].word == gState.word[gState.lang].word) {
+                    //remove the element
                     evt.detail.intersectedEl.remove();
                     //TODOneed to log that it was answered correctly etc, trigger next word
                     gState.correct( fusedWord[gState.lang].word );
-                } else {
+                    this.el.sceneEl.emit('wordCorrect', { word: fusedWord[gState.lang].word });
+                    } else {
                     gState.incorrect( fusedWord[gState.lang].word );
                 }
             }
@@ -159,13 +160,6 @@ AFRAME.registerComponent('kb-ctrl', {
         var el = this.el,
             hudInfo=document.querySelector('#hud-top'),
             debugInfo=document.querySelector('#hud-bot');
-
-        /* set a custom filter example which doesn't seem to be working for me!
-        const kb = this.el.components['super-keyboard'];
-        kb.setCustomFilter(function(str) {
-            return '*'.repeat(str.length);
-        });
-         */
         el.addEventListener('superkeyboardchange', function(e) {
             // update the attribute on the keyboard as not sure how to get the value from the component.
             console.log('keypress');
@@ -189,13 +183,11 @@ AFRAME.registerComponent('vocab-room', {
     init: function() {
         this.el.addEventListener('fusing', evt => {
             setHudText('bot','fusing: Home Office');
+            this.el.sceneEl.emit('changeHudText',{target:'bot',text:'fusing: Home Office'}); // this.photo.name
         });
         this.el.addEventListener('click', evt => {
             // transition to 360photo
-            document.getElementById('environment').setAttribute('environment', 'active', false);
-            _.forEach(document.querySelectorAll('.homeScene'),function (el) {
-                el.setAttribute('visible',false);
-            });
+            this.el.sceneEl.emit('enterPhoto');
             // hard coded to photoid 1
             gState.changePhoto(1);
         });
@@ -203,11 +195,11 @@ AFRAME.registerComponent('vocab-room', {
     }
 } );
 
-// APPLICATION AFRAME MANIPULATION
+
 function appendSpot (def) {
-    //NEED TO CHECK IT DOES NOT ALREADY EXIST
     var spot,scene;
     if ( document.querySelector('#VRH' + def.id) ) {
+        // this could be due to socket reconnects refreshing data etc
         console.log('spot alreay appended', def);
     } else {
         spot = document.createElement('a-sphere');
@@ -238,19 +230,9 @@ function setPhoto (photo) {
 // could make objects for this and shoulp use a closure to keep the query selector
 
 function setHudText(place,value){
-    var target=document.querySelector('#hud-'+place);
-    target.setAttribute('text', 'value: ' + value);
-    // if there is an animation then trigger it. Note that this is limited to one item, to support multiple
-    // items search the components for anything that starts with animation.
-    if ( target.components && target.components.animation) {
-        setTimeout(function () {
-            target.setAttribute('text', 'value: ');
-        }, target.components.animation.data.dur);
-
-        target.components.animation.beginAnimation();
-        // reser the text once animation ends or it ghosts
-
-    }
+    // disabled for testing state binding
+    document.getElementsByTagName('a-scene')[0].emit('changeHudText',{target:place, text: value, animate: place==='mid'});
+    return;
 }
 
 // set opacity to zero

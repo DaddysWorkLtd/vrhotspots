@@ -20,7 +20,9 @@ var gState= {
     // how many attempts on current word
     attempt: 1,
     NUM_SPOTS: 15,
-    mode:'testing',
+    mode:'testing', // learning - written word on 1st attempt, testing - on 2nd attempt, practice - pick any spot, reads out word
+                    // might only what NUM_SPOTS in testing mode otherwise do all of them
+                    // learning mode - single word, testing mode multiple words, practice mode - all words
     setPhoto: function (photo) {
         if (photo) {
             this.photo = photo;
@@ -65,6 +67,8 @@ var gState= {
         // after 3 incorrect give a clue...
         if (this.attempt > 3 && this.word.clue) {
             setHudText('top','Find: ' + this.word[this.lang].word + ' (' + this.word.clue + ')' );
+        } else {
+            setHudText('top','Find: ' + this.word[this.lang].word );
         }
         // repeat word out loud
         this.playWord();
@@ -132,10 +136,6 @@ var gState= {
             audio.addEventListener('ended', wordPlay );
         }
     },
-    initGame: function() {
-        // scoping isse with
-        this.nextWord();
-    },
     changePhoto: function(photoId) {
         const nextPhoto = gState.db.get('photos').find( {id:photoId}).value();
         if (nextPhoto) {
@@ -145,7 +145,7 @@ var gState= {
             this.setPhoto(nextPhoto);
             this.word={};
             this.addWordSpots();
-            this.initGame();
+            this.nextWord();
         }
     },
     nextPhoto: function(offset) {
@@ -198,8 +198,6 @@ socket.on('addSpot', function(data) {
     }); */
     // Needs to be added to photo
 });
-
-
 
 // database related functions
 // send new spot details to server - where should this live
