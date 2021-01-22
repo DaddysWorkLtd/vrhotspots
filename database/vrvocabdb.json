@@ -1093,6 +1093,71 @@
       },
       "guess": "de deur",
       "id": "X7JIVBNcNKTAiVzuAAAF"
+    },
+    {
+      "date": "2021-01-22T09:27:37.795Z",
+      "photoid": 1,
+      "word": {
+        "clue": "It hangs next to the window",
+        "nl": {
+          "word": "het gordijn",
+          "audio": "audio/nl/het-gordijn.mp3"
+        }
+      },
+      "guess": "het stopcontact",
+      "id": "nakeUjO4KSA6nWhMAAAB"
+    },
+    {
+      "date": "2021-01-22T09:27:43.001Z",
+      "photoid": 1,
+      "word": {
+        "clue": "It hangs next to the window",
+        "nl": {
+          "word": "het gordijn",
+          "audio": "audio/nl/het-gordijn.mp3"
+        }
+      },
+      "guess": "de vloer",
+      "id": "nakeUjO4KSA6nWhMAAAB"
+    },
+    {
+      "date": "2021-01-22T09:27:49.015Z",
+      "photoid": 1,
+      "word": {
+        "clue": "It hangs next to the window",
+        "nl": {
+          "word": "het gordijn",
+          "audio": "audio/nl/het-gordijn.mp3"
+        }
+      },
+      "guess": "de muur",
+      "id": "nakeUjO4KSA6nWhMAAAB"
+    },
+    {
+      "date": "2021-01-22T09:27:55.461Z",
+      "photoid": 1,
+      "word": {
+        "clue": "It hangs next to the window",
+        "nl": {
+          "word": "het gordijn",
+          "audio": "audio/nl/het-gordijn.mp3"
+        }
+      },
+      "correct": 1,
+      "id": "nakeUjO4KSA6nWhMAAAB"
+    },
+    {
+      "date": "2021-01-22T09:28:05.921Z",
+      "photoid": 1,
+      "word": {
+        "clue": "There are so many piles of paperwork on this object!",
+        "nl": {
+          "word": "het bureau",
+          "audio": "audio/nl/het-bureau.mp3"
+        }
+      },
+      "correct": 1,
+      "id": "nakeUjO4KSA6nWhMAAAB"
     }
   ]
 }

@@ -28,7 +28,7 @@ var vrVocabConfig = {
     }
   },
   stateHandler = {
-    nonBindedStateKeys: ['fbToken','scEl'],
+    nonBindedStateKeys: ['fbToken','scEl', 'uiText'],
     // Initial state of our application. We have the current environment and the active menu.
     initialState: {
       location: 'home',
@@ -45,8 +45,9 @@ var vrVocabConfig = {
       adminUser: false,
       fbUserId: '',
       fbToken: '',
-      sceneEl: '',
-      homeFusable: 'fusable'
+      sceneEl: document.getElementsByTagName('a-scene')[0], // needs to be deferred
+      homeFusable: 'fusable', // class to control fusing of home page objects
+      uiText: {welcome: 'Welcome to VR Vocab!\n\nThe goal in every room is to find the items for the words given to you. Select an object by aiming the gaze cursor at an orange hotspot for a second. Find all the items to unlock the next level \n\nCurrent Language: DUTCH\nCurrent Level: HOME OFFICE\nItems per Game: 15\nWritten Words: ON\n\nGood luck and keep practicing!'}
     },
 
 
@@ -64,7 +65,7 @@ var vrVocabConfig = {
         },
         // really for setting HUD text and playing animations (animate:true) prop
         changeHudText: (state,what) => {
-          var _this = this;
+          var _state = state;
           state['hudText' + what.target.toUpperCase()] = what.text;
           // play the animation for the middle one
           if (what.animate) {
@@ -74,7 +75,7 @@ var vrVocabConfig = {
               setTimeout(function () {
                 //target.setAttribute('text', 'value: ');
                 //_this.state.changeHudText({target: what.target, text: ''});
-                document.getElementsByTagName('a-scene')[0].emit('changeHudText',{target:what.target, text: what.text, animate:false});
+                _state.sceneEl.emit('changeHudText',{target:what.target, text: what.text, animate:false});
               }, target.components.animation.data.dur);
               target.components.animation.beginAnimation();
             }
@@ -90,3 +91,7 @@ var vrVocabConfig = {
 // aframe-state-component definition.
 AFRAME.registerState( stateHandler);
 
+// where do I integrate with google translate - just in admin interface?
+// need connection to store history
+// can people play from local storage
+// can you show / hide the enter VR button

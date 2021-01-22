@@ -46,15 +46,21 @@
         <img id="cardboard" src="assets/cardboard.jpg">
         <img id="cardboard-NRM" src="assets/cardboard_normal.jpg">
 
-        <img id="kitchen" src="photos/kitchen.jpg">
-        <img id="gourmet" src="photos/gourmet.jpg">
-        <img id="viewpoint" src="photos/viewpoint.jpg">
-        <img id="home-office" src="photos/home-office.jpg">
+        <img id="kitchen" src="photos/kitchen.jpg" />
+        <img id="gourmet" src="photos/gourmet.jpg" />
+        <img id="viewpoint" src="photos/viewpoint.jpg" />
+        <img id="home-office" src="photos/home-office.jpg" />
 
         <a-asset-item id="dawningFont" src="assets/dawningOfANewDayRegular.typeface.json"></a-asset-item>
         <a-asset-item id="exoFont" src="assets/exo2Black.typeface.json"></a-asset-item>
         <a-asset-item id="exoItalicFont" src="assets/exo2BlackItalic.typeface.json"></a-asset-item>
-        <a-asset-item id="chalkboardFont" src="assets/chalk-board-msdf.json"></a-asset-item>
+
+        <!-- cant seem to preload fonts from another domain or something but you can use them as mixins which is neater if not faster -->
+        <a-mixin id="blackboard-font" text="font: https://raw.githubusercontent.com/etiennepinchon/aframe-fonts/master/fonts/caveatbrush/CaveatBrush-Regular.json; shader: msdf;"></a-mixin>
+        <a-mixin id="whiteboard-font" text="font: https://raw.githubusercontent.com/etiennepinchon/aframe-fonts/master/fonts/schoolbell/Schoolbell-Regular.json; shader: msdf;"></a-mixin>
+        <a-mixin id="marker-font" text="font: https://raw.githubusercontent.com/etiennepinchon/aframe-fonts/master/fonts/permanentmarker/PermanentMarker-Regular.json; shader: msdf;"></a-mixin>
+        <a-mixin id="box-locked" material="color: #ffffff; shader: flat; opacity: 0"
+             text="material: color: #FFFFFF; wrapCount: 8; value: LOCKED" mixin="marker-font"></a-mixin>
         <audio
                 id="correct"
                 src="audio/grunz-success.mp3"
@@ -116,20 +122,16 @@
     </a-plane>
 
 
-    <a-plane bind__visible="location == 'home'" material="color: #ffffff; shader: flat; opacity: 0"
-             scale=""
+    <a-plane bind__visible="location == 'home'"
              position="3.7 .6 0.112"
              rotation="0 -90 50"
-             text="material: color: #FFFFFF; wrapCount: 8; font: https://raw.githubusercontent.com/etiennepinchon/aframe-fonts/master/fonts/permanentmarker/PermanentMarker-Regular.json; shader: msdf;
-            value: LOCKED" >
+            mixin="box-locked">
     </a-plane>
 
-    <a-plane bind__visible="location == 'home'" material="color: #ffffff; shader: flat; opacity: 0"
-             scale=""
+    <a-plane bind__visible="location == 'home'"
              position="3.5 .7 -1.107"
              rotation="0 -80 50"
-             text="material: color: #FFFFFF; wrapCount: 8; font: https://raw.githubusercontent.com/etiennepinchon/aframe-fonts/master/fonts/permanentmarker/PermanentMarker-Regular.json; shader: msdf;
-            value: LOCKED" >
+            mixin="box-locked">
     </a-plane>
 
 
@@ -151,14 +153,17 @@
              bind__visible="location == 'home'"
              material="color:#000000; shader: flat; opacity: 1"
              rotation="0 0 0" scale="4.5 4.5 4.5" position="1.5 3 -5.5"
-             text="color: #FFFFFF; font: https://raw.githubusercontent.com/etiennepinchon/aframe-fonts/master/fonts/caveatbrush/CaveatBrush-Regular.json; shader:msdf; opacity: 0.9; width: 1; color: white; wrap-count: 45; align: center;
-             value: Welcome to VR Vocab!\n\nThe goal in every room is to find the items for the words given to you. Select an object by aiming the gaze cursor at an orange hotspot for a second. Find all the items to unlock the next level (coming soon!)\n\nCurrent Language: DUTCH\nCurrent Level: HOME OFFICE\nItems per Game: 15\nWritten Words: ON\n\nGood luck and keep practicing!"
+             mixin="blackboard-font"
+             text="color: #FFFFFF; opacity: 0.9; width: 1; color: white; wrap-count: 45; align: center;"
+             bind__text="value: uiText.welcome"
              look-at="#head">
     </a-plane>
 
     <a-entity bind__visible="location == 'home'" id="board" gltf-model="#whiteboard" position="-3.45 0 -.5" rotation="0 -25 0"></a-entity>
     <a-plane bind__visible="location == 'home'" id="wbtext" material="color: #FFFFFF; shader: flat" scale="1.9 1.1 1" position="-3.4048 1.49655 -0.47111" rotation="0 65 0"
-             text="width: 1; color: navy; align: center; font: https://raw.githubusercontent.com/etiennepinchon/aframe-fonts/master/fonts/schoolbell/Schoolbell-Regular.json; shader: msdf; lineHeight:55; value: YOUR PROGRESS\n\nItems Discovered: 15\nLevels unlocked: 0\nNumber of Stars: 1\nBest Time: 01:35s\nWorld Rank: 11,248\n\nKeep up the good work!; wrapCount: 30" >
+             mixin = "whiteboard-font"
+             text="width: 1; color: navy; align: center; lineHeight:55;
+             value: YOUR PROGRESS\n\nItems Discovered: 15\nLevels unlocked: 0\nNumber of Stars: 1\nBest Time: 01:35s\nWorld Rank: 11,248\n\nKeep up the good work!; wrapCount: 30" >
     </a-plane>
 
     <!--- FONTS
