@@ -33,7 +33,7 @@ var vrVocabConfig = {
     initialState: {
       location: 'home',
       lang: 'nl',
-      game: 'test',
+      gameMode: 'TEST',
       wordsPerRound: 1,
       wordsPerGame: 15,
       attempt: 1,
@@ -45,9 +45,10 @@ var vrVocabConfig = {
       adminUser: false,
       fbUserId: '',
       fbToken: '',
+      userName: 'Guest',
       sceneEl: document.getElementsByTagName('a-scene')[0], // needs to be deferred
       homeFusable: 'fusable', // class to control fusing of home page objects
-      uiText: {welcome: 'Welcome to VR Vocab!\n\nThe goal in every room is to find the items for the words given to you. Select an object by aiming the gaze cursor at an orange hotspot for a second. Find all the items to unlock the next level \n\nCurrent Language: DUTCH\nCurrent Level: HOME OFFICE\nItems per Game: 15\nWritten Words: ON\n\nGood luck and keep practicing!'}
+      uiText: {welcome: 'Welcome to VR Vocab!\n\nThe goal in every room is to find the items for the words given to you. Select an object by aiming the gaze cursor at an orange hotspot for a second. Find all the items to unlock the next level'}
     },
 
 
@@ -84,6 +85,15 @@ var vrVocabConfig = {
         wordCorrect: (state, word) => {
           console.log('hotpot answered correct but do we need the element?');
           state.hudTextTOP='Correct: ' + word.word;
+        },
+        changeMode: (state) => {
+          state.gameMode = 'PRACTICE';
+        },
+        changeWordsPerGame: (state) => {
+          state.wordsPerGame = "Unlimited";
+        },
+        changeUser: state => {
+          state.userName = "how to log into facebook from vr";
         }
       }
   }

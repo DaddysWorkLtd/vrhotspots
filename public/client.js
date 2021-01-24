@@ -20,7 +20,7 @@ var gState= {
     // how many attempts on current word
     attempt: 1,
     NUM_SPOTS: 15,
-    mode:'testing', // learning - written word on 1st attempt, testing - on 2nd attempt, practice - pick any spot, reads out word
+    gameMode:'TESTING', // learning - written word on 1st attempt, testing - on 2nd attempt, practice - pick any spot, reads out word
                     // might only what NUM_SPOTS in testing mode otherwise do all of them
                     // learning mode - single word, testing mode multiple words, practice mode - all words
     setPhoto: function (photo) {
@@ -104,7 +104,7 @@ var gState= {
             // sampleSize to get multiple words
             nextWord = _.sample(_candidates);
             // if in learning mode show text from the offset
-            if (this.mode==='learning') {
+            if (this.gameMode==='LEARNING') {
                 setHudText('top', 'Find: ' + nextWord[this.lang].word);
             }
             this.word=nextWord;

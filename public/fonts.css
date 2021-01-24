@@ -1,0 +1,23 @@
+@font-face {
+    font-family: 'Buree Chalk Personal Use';
+    src: url('assets/font-kit/BureeChalk-Regular.eot');
+    src: url('assets/font-kit/BureeChalk-Regular.eot?#iefix') format('embedded-opentype'),
+    url('assets/font-kit/BureeChalk-Regular.woff') format('woff'),
+    url('assets/font-kit/BureeChalk-Regular.woff2') format('woff2'),
+    url('assets/font-kit/BureeChalk-Regular.ttf') format('truetype'),
+    url('assets/font-kit/BureeChalk-Regular.svg#BureeChalk-Regular') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Fira Sans';
+    src: url('assets/font-kit/FiraSans-Medium.eot');
+    src: url('assets/font-kit/FiraSans-Medium.eot?#iefix') format('embedded-opentype'),
+    url('assets/font-kit/FiraSans-Medium.woff') format('woff'),
+    url('assets/font-kit/FiraSans-Medium.woff2') format('woff2'),
+    url('assets/font-kit/FiraSans-Medium.ttf') format('truetype'),
+    url('assets/font-kit/FiraSans-Medium.svg#FiraSans-Medium') format('svg');
+    font-weight: 500;
+    font-style: normal;
+}

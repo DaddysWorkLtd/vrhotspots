@@ -34,13 +34,17 @@ AFRAME.registerComponent('cursor-listen', {
                 if (word) this.el.sceneEl.emit('changeHudText',{target:'bot',
                     text: el.getAttribute('word') + ': not found in dictionary'});
             } else {
+                if (gState.gameMode==='PRACTICE') {
+                    gState.word = fusedWord;
+                    gState.playWord();
+                }
                 if (fusedWord[gState.lang].word == gState.word[gState.lang].word) {
                     //remove the element
                     evt.detail.intersectedEl.remove();
                     //TODOneed to log that it was answered correctly etc, trigger next word
                     gState.correct( fusedWord[gState.lang].word );
                     this.el.sceneEl.emit('wordCorrect', { word: fusedWord[gState.lang].word });
-                    } else {
+                } else {
                     gState.incorrect( fusedWord[gState.lang].word );
                 }
             }
@@ -191,7 +195,6 @@ AFRAME.registerComponent('vocab-room', {
             // hard coded to photoid 1
             gState.changePhoto(1);
         });
-
     }
 } );
 

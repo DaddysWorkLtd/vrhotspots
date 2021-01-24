@@ -6,6 +6,7 @@
     <!-- blank favicon -->
     <link href="data:image/x-icon;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQEAYAAABPYyMiAAAABmJLR0T///////8JWPfcAAAACXBIWXMAAABIAAAASABGyWs+AAAAF0lEQVRIx2NgGAWjYBSMglEwCkbBSAcACBAAAeaR9cIAAAAASUVORK5CYII="
           rel="icon" type="image/x-icon"/>
+    <link href="assets/font-kit/stylesheet.css" rel="stylesheet">
     <script src="https://aframe.io/releases/1.1.0/aframe.min.js"></script>
     <script src="https://unpkg.com/aframe-look-at-component@0.8.0/dist/aframe-look-at-component.min.js"></script>
     <script src="https://unpkg.com/aframe-environment-component@2.0.0/dist/aframe-environment-component.min.js"></script>
@@ -20,14 +21,14 @@
     <script src="https://unpkg.com/aframe-render-order-component@1.0.0/dist/aframe-render-order-component.min.js"></script>
     <!-- state: Manage application state and bind it to parts of the application to automatically react to state changes. -->
     <script src="https://unpkg.com/aframe-state-component@6.6.0/dist/aframe-state-component.js"></script>
+    <script src="aframe-gui.js"></script>
+
 
     <!-- backend communication to node for language data (for now) -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/1.7.3/socket.io.js"></script>
     <script src="https://unpkg.com/lodash@4/lodash.min.js"></script>
     <script src="https://unpkg.com/lowdb@0.17/dist/low.min.js"></script>
     <script src="https://unpkg.com/lowdb@0.17/dist/LocalStorage.min.js"></script>
-
-
 
 
     <!-- State definition. -->
@@ -38,8 +39,11 @@
     <script src="aframespots.js"></script>
 </head>
 <body>
+<!-- load the font for canvas -->
+<div style="font-family: 'Fira Sans'; font-weight:500; font-style: normal">&nbsp;</div>
+<div style="font-family: 'Buree Chalk Personal Use'; font-weight: normal; font-style: normal;">&nbsp;</div>
 
-<a-scene render-order="menuBackground, menuItem, control">
+<a-scene render-order="menuBackground, menuItem, button">
     <a-assets>
         <a-asset-item id="star" src="assets/star.glb"></a-asset-item>
         <a-asset-item id="whiteboard" src="assets/whiteboard.glb"></a-asset-item>
@@ -70,6 +74,23 @@
                 src="audio/duck-quack.mp3"
         ></audio>
         <a-mixin id="home" bind__visible="location === 'come'"></a-mixin>
+        <!--- from kevin ngo's menu example -->
+        <!-- Images. -->
+        <img id="sliceImg" src="https://cdn.glitch.com/0ddef241-2c1a-4bc2-8d47-58192c718908%2Fslice.png?1557308835598" crossorigin>
+
+        <!-- Base mixins. -->
+        <a-mixin id="font" text="font: roboto"></a-mixin>
+        <a-mixin id="slice" slice9="color: #050505; transparent: true; opacity: 0.9; src: #sliceImg; left: 50; right: 52; top: 50; bottom: 52; padding: 0.15"></a-mixin>
+
+        <!-- Menu and button mixins. Mixins can be composed from other mixins. -->
+        <a-mixin id="buttonBackground" mixin="slice" slice9="width: 1.5; height: 0.3; color: #030303" render-order="button"></a-mixin>
+        <a-mixin
+                id="buttonHoverEffect"
+                animation__mouseenter="property: components.slice9.material.color; type: color; from: #030303; to: #333; easing: easeOutCubic; dur: 150; startEvents: mouseenter"
+                animation__mouseleave="property: components.slice9.material.color; type: color; from: #333; to: #030303; easing: easeOutCubic; dur: 150; startEvents: mouseleave"></a-mixin>
+        <a-mixin id="buttonText" text="align: center; width: 2.5; zOffset: 0.01; color: #333"></a-mixin>
+        <a-mixin id="button" mixin="buttonBackground buttonHoverEffect buttonText" render-order="button" proxy-event="event: click; to: a-scene; captureBubbles: true"></a-mixin>
+
     </a-assets>
     <a-entity id="myRig">
         <a-entity id="head" camera="" look-controls wasd-controls position="0 1.6 0">
@@ -83,7 +104,7 @@
             ></a-text>
             <a-text id="hud-bot" class="hud" text="align: center; width: 2;  color: #FFFFFF;" bind__value="hudTextBOT"
                position="0 -.75 -3" opacity="0.85" rotation="-20 0 0" wrap-count="20"></a-text>
-            <!-- Cursor !-->
+            <!-- Cursor
             <a-entity id="hud-cursor" cursor="fuse: true; fuseTimeout: 2000" position="0 0 -3"
                       raycaster="objects: .fusable"
                       geometry="primitive: ring; radiusInner:.025; radiusOuter: 0.04"
@@ -101,13 +122,114 @@
                                         easing: linear;
                                         startEvents: mouseleave">
             </a-entity>
+            !-->
+            <a-gui-cursor id="hud-cursor"
+                          raycaster="objects: .fusable"
+                          fuse="true" fuse-timeout="2000"
+                          design="cross"
+                          distance="-3"
+                          scaling="2"
+                          cursor-listen
+            >
+            </a-gui-cursor> <!-- /cursor -->
+
         </a-entity>
     </a-entity>
     <!-- Home interface -->
 
     <a-entity id="environment" environment="preset: forest;" bind__environment="active: location == 'home'"></a-entity>
 
-    <a-sphere bind__visible="location == 'home'" id="img_gourmet"  material="src: #gourmet; opacity:0.5" position="4 1.62 -.012" radius=".4" animation__enter="property: rotation; from: 0 0 0; to: 0 360 0; dur: 10000; easing: linear; loop: NaN; autoplay: false" geometry="radius: 0.35"></a-sphere>
+
+
+    <a-gui-flex-container bind__visible="location == 'home'" look-at="#hud-cursor"
+            flex-direction="column" justify-content="left" item-padding="0.1" opacity=".9" width="4" height="4.5"
+            position="-1.9 4 -3.6" rotation="0 0 0"
+    >
+        <a-gui-flex-container flex-direction="row" width="4" height="1" justify-content="left">
+            <a-gui-label
+                    width="1.5" height="0.75"
+                    font-size="125px"
+                    value="Game Mode:" font-color="white"
+                    font-family="Buree Chalk Personal Use"
+                    opacity="0"
+                    margin="0 0 0 0"
+            >
+            </a-gui-label>
+
+            <a-gui-button
+                    width="1.5" height="0.5"
+                    proxy-event="event: click; to: a-scene; as: changeMode"
+                    bind__value="gameMode"
+                    border-color="#38386b"
+                    active-color="darkorange"
+                    font-family="Fira Sans"
+                    font-weight="500"
+                    font-style="normal"
+                    font-size="100px"
+                    margin="0.2 0 0 0"
+                    bind__class="homeFusable"
+            >
+            </a-gui-button>
+        </a-gui-flex-container>
+        <a-gui-flex-container flex-direction="row" width="4" height="1" justify-content="center">
+            <a-gui-label
+                    width="2" height="0.75"
+                    value="Player" font-color="#fcfcfc"
+                    font-family="Fira Sans"
+                    opacity="0.2"
+                    margin="0 0 0 0"
+            >
+            </a-gui-label>
+
+            <a-gui-radio
+                    width="1.75" height="0.5"
+                    onclick="testToggleAction"
+                    font-family="Fira Sans"
+                    font-size="100px"
+                    value="logged in"
+                    margin="0.2 0 0.05 0"
+                    class="homeFusable"
+                    background-color="black"
+                    font-color="yellow"
+                    checked="false"
+                    bind__class="homeFusable"
+            >
+            </a-gui-radio>
+        </a-gui-flex-container>
+        <a-gui-flex-container flex-direction="row" item-padding="0.5" width="4" height="1" justify-content="center">
+            <a-gui-progressbar
+                    width="2.5" height="0.25"
+                    margin="0.5 0 0.05 0"
+                    background-color="white"
+            >
+            </a-gui-progressbar>
+        </a-gui-flex-container>
+        <a-gui-flex-container flex-direction="row" item-padding="0.5" width="4" height="1" justify-content="center">
+        <a-gui-circle-timer
+                id="timer"
+                height="0.75"
+                count-down="69"
+                callback="timedout"
+                margin="0 0 0.05 0"
+        >
+        </a-gui-circle-timer>
+
+        <a-gui-slider
+                width="2.5" height="0.75"
+                onclick="testSliderAction"
+                percent="0.29"
+                margin="0 0 0.05 0"
+                bind__class="homeFusable"
+        >
+        </a-gui-slider>
+        </a-gui-flex-container>
+
+    </a-gui-flex-container>
+
+
+
+
+    <a-sphere bind__visible="location == 'home'" id="img_gourmet"  material="src: #gourmet; opacity:0.5" position="4 1.62 -.012" radius=".4" animation__enter="property: rotation; from: 0 0 0; to: 0 360 0; dur: 10000; easing: linear; loop; autoplay: false" geometry="radius: 0.35"></a-sphere>
 
     <a-box bind__visible="location == 'home'" id="box_gourmet" scale="0.5 1.3 1" material="opacity:.8; src:#cardboard; normal-map: #cardboard-NRM;" position="4 0.625 0" >
 
@@ -148,16 +270,39 @@
     <a-light bind__visible="location == 'home'" type="spot" position="0.69554 2.43826 -0.75504" color="white" target="#text_kitchen" distance="10" intensity="0.7" light="target: #text_kitchen"></a-light>
 
 
-    <!--- black board -->
-    <a-plane id="blackboard"
-             bind__visible="location == 'home'"
-             material="color:#000000; shader: flat; opacity: 1"
-             rotation="0 0 0" scale="4.5 4.5 4.5" position="1.5 3 -5.5"
+    <!--- black board 10 -10 0 rot-->
+    <a-entity position="2.5 3.5 -5.5" mixin="slice" slice9="height: 4; width: 3.5; color: #171717" render-order="menuBackground"
+              bind__visible="location == 'home'">
+        <a-plane id="blackboard" position = "0 1.365 0"
+             height="2"
+                 width=3.5"
+             render-order="menuBackground"
+             material="color:#171717; shader: flat; opacity: 1"
              mixin="blackboard-font"
-             text="color: #FFFFFF; opacity: 0.9; width: 1; color: white; wrap-count: 45; align: center;"
-             bind__text="value: uiText.welcome"
-             look-at="#head">
-    </a-plane>
+             text="color: #FFFFFF; opacity: 1; width: 3; color: white; wrap-count: 45; align: center;"
+             bind__text="value: uiText.welcome">
+        </a-plane>
+        <a-plane
+                position="0 0 0" mixin="slice" slice9="height: 2; width: 3.5; color: #171717"
+                id="menu"
+                 width="3.5" height="2"
+                 material="color: #171717; shader: flat; opacity: 1"
+                 mixin="marker-font"
+                 text="color: white; baseline: bottom;opacity: 1; width: 3; color: white; wrap-count: 25; align: center; value: OPTIONS">
+        </a-plane>
+        <a-text position="-1.3 -.3 0" mixin="blackboard-font" value="Game mode:" width="3"></a-text>
+        <a-entity id="mode_butt"  position=".75 -.2 .01"
+                  mixin="button" bind__text="value: gameMode" text="color: #a3a3a3;"
+                bind__class="homeFusable" proxy-event="as: changeMode"></a-entity>
+        <a-text position="-1.3 -.6 0" mixin="blackboard-font" value="Words per Game:" width="3"></a-text>
+        <a-entity id="wpg_butt"  position=".75 -.5 .01"
+                  mixin="button" bind__text="value: wordsPerGame" text="color: #a3a3a3;"
+                  bind__class="homeFusable" proxy-event="as: changeWordsPerGame"></a-entity>
+        <a-text position="-1.3 -.9 0" mixin="blackboard-font" value="Player:" width="3"></a-text>
+        <a-entity id="user_butt"  position=".75 -.8 .01"
+                  mixin="button" bind__text="value: userName" text="color: #a3a3a3;"
+                  bind__class="homeFusable" proxy-event="as: changeUser"></a-entity>
+    </a-entity>
 
     <a-entity bind__visible="location == 'home'" id="board" gltf-model="#whiteboard" position="-3.45 0 -.5" rotation="0 -25 0"></a-entity>
     <a-plane bind__visible="location == 'home'" id="wbtext" material="color: #FFFFFF; shader: flat" scale="1.9 1.1 1" position="-3.4048 1.49655 -0.47111" rotation="0 65 0"
@@ -174,9 +319,9 @@
     wb.setAttribute('text','font','https://raw.githubusercontent.com/etiennepinchon/aframe-fonts/master/fonts/caveatbrush/CaveatBrush-Regular.json')
     bb.setAttribute('text','font','https://raw.githubusercontent.com/etiennepinchon/aframe-fonts/master/fonts/nanumbrushscript/NanumBrushScript-Regular.json')
     -->
-
+<!--
     <a-entity bind__visible="location == 'home'" id="authors" rotation="0 20 5" scale=".5 .5 .5" position="-5.2 1.6 -4" text-geometry="value: Paul &amp; Pepijn's; font: #dawningFont; bevelEnabled: true; bevelSize: 0.05; bevelThickness: 0.03; curveSegments: 12.01; size: 1; height: 0" material="metalness: 0.9; roughness: 0.1; vertexColors: face; dithering: false; emissive: #03249b; emissiveIntensity: 0.75"></a-entity>
-
+-->
     <a-entity bind__visible="location == 'home'" id="logo" rotation="0 20 0" position="-5.1448 0.5 -4.49608" scale="0.37658 0.75972 0.63311" text-geometry="value: VR VOCAB; font: #exoFont; bevelEnabled: true; bevelSize: 0.1; bevelThickness: 0.1; curveSegments: 1; size: 1.5; height: 0.5" material="color: #ae00ff; metalness: 0.9; roughness: 0.48; emissive: #242323" ></a-entity>
 
     <a-entity bind__visible="location == 'home'" position="-4.3 0.36 -4.2" scale=".5 .5 .5" rotation="0 17.5 0"  text-geometry="value: Welcome; font: #exoItalicFont; style: italic; size: 0.8; weight: bold; height: 0" material="color: #e51515"></a-entity>
