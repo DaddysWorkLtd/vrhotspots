@@ -93,7 +93,7 @@ var vrVocabConfig = {
           state.wordsPerGame = "Unlimited";
         },
         changeUser: state => {
-          state.userName = "how to log into facebook from vr";
+          state.userName = "PAUL COOK";
         }
       }
   }

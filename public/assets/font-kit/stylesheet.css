@@ -1,4 +1,55 @@
 @font-face {
+    font-family: 'Exo 2';
+    src: url('Exo2-Medium.eot');
+    src: url('Exo2-Medium.eot?#iefix') format('embedded-opentype'),
+        url('Exo2-Medium.woff2') format('woff2'),
+        url('Exo2-Medium.woff') format('woff'),
+        url('Exo2-Medium.ttf') format('truetype'),
+        url('Exo2-Medium.svg#Exo2-Medium') format('svg');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Audrey Med';
+    src: url('Audrey-Medium.eot');
+    src: url('Audrey-Medium.eot?#iefix') format('embedded-opentype'),
+        url('Audrey-Medium.woff2') format('woff2'),
+        url('Audrey-Medium.woff') format('woff'),
+        url('Audrey-Medium.ttf') format('truetype'),
+        url('Audrey-Medium.svg#Audrey-Medium') format('svg');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Dense';
+    src: url('Dense-Regular.eot');
+    src: url('Dense-Regular.eot?#iefix') format('embedded-opentype'),
+        url('Dense-Regular.woff2') format('woff2'),
+        url('Dense-Regular.woff') format('woff'),
+        url('Dense-Regular.ttf') format('truetype'),
+        url('Dense-Regular.svg#Dense-Regular') format('svg');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Signika';
+    src: url('Signika-Regular.eot');
+    src: url('Signika-Regular.eot?#iefix') format('embedded-opentype'),
+        url('Signika-Regular.woff2') format('woff2'),
+        url('Signika-Regular.woff') format('woff'),
+        url('Signika-Regular.ttf') format('truetype'),
+        url('Signika-Regular.svg#Signika-Regular') format('svg');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
+@font-face {
     font-family: 'Buree Chalk Personal Use';
     src: url('BureeChalk-Regular.eot');
     src: url('BureeChalk-Regular.eot?#iefix') format('embedded-opentype'),

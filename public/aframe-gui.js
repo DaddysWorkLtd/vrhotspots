@@ -960,7 +960,8 @@ AFRAME.registerPrimitive('a-gui-cursor', {
         'active-color': 'gui-cursor.activeColor',
         'distance': 'gui-cursor.distance',
         'design': 'gui-cursor.design',
-        'scaling': 'gui-cursor.scaling'
+        'scaling': 'gui-cursor.scaling',
+        'interval' : 'gui-cursor.interval'
     }
 });
 

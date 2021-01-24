@@ -1262,6 +1262,32 @@
       },
       "guess": "de muur",
       "id": "aQ2wf0hS53U-JxZTAAAC"
+    },
+    {
+      "date": "2021-01-24T13:35:24.578Z",
+      "photoid": 1,
+      "word": {
+        "clue": "It lights up the desk",
+        "nl": {
+          "word": "de bureaulamp",
+          "audio": "audio/nl/de-bureaulamp.mp3"
+        }
+      },
+      "guess": "de deur",
+      "id": "gdk8kZiLgy_hlCn9AAAI"
+    },
+    {
+      "date": "2021-01-24T13:35:34.627Z",
+      "photoid": 1,
+      "word": {
+        "clue": "It lights up the desk",
+        "nl": {
+          "word": "de bureaulamp",
+          "audio": "audio/nl/de-bureaulamp.mp3"
+        }
+      },
+      "guess": "de bank",
+      "id": "gdk8kZiLgy_hlCn9AAAI"
     }
   ]
 }
