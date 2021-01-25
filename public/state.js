@@ -25,6 +25,14 @@ var vrVocabConfig = {
         sayTarget: false
       },
 
+      },
+    utils: {
+      // picks the next option in an array / if current not set then returns first, needs an array
+      nextOption (options, current) {
+        let currI = options.findIndex( (deze) => { return deze == current });
+        if ( currI === options.length-1 ) currI = -1;
+        return options[currI + 1];
+      }
     }
   },
   stateHandler = {
@@ -33,7 +41,7 @@ var vrVocabConfig = {
     initialState: {
       location: 'home',
       lang: 'nl',
-      gameMode: 'TEST',
+      gameMode: 'Testing',
       wordsPerRound: 1,
       wordsPerGame: 15,
       attempt: 1,
@@ -48,9 +56,8 @@ var vrVocabConfig = {
       userName: 'Guest',
       sceneEl: document.getElementsByTagName('a-scene')[0], // needs to be deferred
       homeFusable: 'fusable', // class to control fusing of home page objects
-      uiText: {welcome: 'Welcome to VR Vocab!\n\nThe goal in every room is to find the items for the words given to you. Select an object by holding the gaze cursor at an orange hotspot. Find all the items to unlock the next level.'}
+      uiText: {welcome: 'Welcome to VR Vocab!\n\nThe goal in every room is to find the items requested. Select an object by pointing the gaze cursor at an orange hotspot. Find all the items to unlock the next level....'}
     },
-
 
     // State changes are done via events and are handled here.
     handlers:
@@ -87,13 +94,32 @@ var vrVocabConfig = {
           state.hudTextTOP='Correct: ' + word.word;
         },
         changeMode: (state) => {
-          state.gameMode = 'PRACTICE';
+          let options = ['Learning','Testing','Practice'];
+          if (state.adminUser) options.push('Editing');
+          state.gameMode = vrVocabConfig.utils.nextOption(options,state.gameMode)
         },
         changeWordsPerGame: (state) => {
-          state.wordsPerGame = "Unlimited";
+          const options = ['5','15','25',"Unlimited"]
+          state.wordsPerGame = vrVocabConfig.utils.nextOption(options,state.wordsPerGame);
         },
-        changeUser: state => {
-          state.userName = "PAUL COOK";
+        changeUser: (state) => {
+          state.userName = "Paul Cook";
+          state.adminUser = true;
+        }
+      },
+      // save state to local storage
+      computeState: (newState,payload) => {
+        var _newState = newState;
+        if (payload === '@@INIT') {
+          let oldState = gState.db.get('state').value();
+          _.forEach(oldState, (value,key) => {
+            _newState[key] = value;
+          });
+          // need to set home or not set it - location in app needs to reset
+        } else if (payload !== 'changeHudText') {
+          const saveState = _.omit(newState,['location','sceneEl','uiText','homeFusable','targetWords','attempt']);
+           gState.db.set('state',saveState).write();
+           console.log('computeState', newState, payload,saveState);
         }
       }
   }

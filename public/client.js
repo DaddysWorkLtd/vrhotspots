@@ -159,7 +159,7 @@ var gState= {
         }
     }
 };
-gState.db.defaults({ photos: [], words: {}, history: [] }).write();
+gState.db.defaults({ photos: [], words: {}, history: [], state: {} }).write();
 
 // Socket event handlers
 // sync a local copy of the remote database
