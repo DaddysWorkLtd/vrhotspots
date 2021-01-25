@@ -20,7 +20,7 @@ var gState= {
     // how many attempts on current word
     attempt: 1,
     NUM_SPOTS: 15,
-    gameMode:'TESTING', // learning - written word on 1st attempt, testing - on 2nd attempt, practice - pick any spot, reads out word
+    gameMode:'Testing', // learning - written word on 1st attempt, testing - on 2nd attempt, practice - pick any spot, reads out word
                     // might only what NUM_SPOTS in testing mode otherwise do all of them
                     // learning mode - single word, testing mode multiple words, practice mode - all words
     setPhoto: function (photo) {
@@ -104,7 +104,7 @@ var gState= {
             // sampleSize to get multiple words
             nextWord = _.sample(_candidates);
             // if in learning mode show text from the offset
-            if (this.gameMode==='LEARNING') {
+            if (this.gameMode==='Learning') {
                 setHudText('top', 'Find: ' + nextWord[this.lang].word);
             }
             this.word=nextWord;
@@ -121,19 +121,23 @@ var gState= {
         }
 
     },
-    playWord: function() {
+    playWord: function(wordOnly) {
       // we might want a delay on this, we could also write it as a method so that it is call cached
         let trans=this.word[this.lang];
         if (trans.audio) {
             let audio = new Audio( "audio/" + this.lang + "/where-is.mp3" ),
-                wordPlay = function () {
-                    // now play the word
-                    audio.removeEventListener('ended', wordPlay); // otherwise it repeats for ever!
-                    audio.src = trans.audio;
-                    audio.play();
-                };
-            audio.play();
-            audio.addEventListener('ended', wordPlay );
+              wordPlay = function () {
+                  // now play the word
+                  audio.removeEventListener('ended', wordPlay); // otherwise it repeats for ever!
+                  audio.src = trans.audio;
+                  audio.play();
+              };
+            if (wordOnly) {
+                wordPlay();
+            } else {
+                audio.play();
+                audio.addEventListener('ended', wordPlay );
+            }
         }
     },
     changePhoto: function(photoId) {
@@ -192,11 +196,6 @@ socket.on('addSpot', function(data) {
     console.log('addspot received',data);
     // check the photo matches but what if for another photo? TODO: NEED TO UPDATE PHOTOS COLLECTION
     if (data.photoId === gState.photo.id) appendSpot (data);
-    /* WTF is this doing here? Hiding the spots!?!=g MAYBE BECAUSE WE DON"T SHOW ALL SPOTS NOW
-    [].forEach.call(document.querySelectorAll('.wordspot'), function (el) {
-        el.setAttribute('opacity',0);
-    }); */
-    // Needs to be added to photo
 });
 
 // database related functions

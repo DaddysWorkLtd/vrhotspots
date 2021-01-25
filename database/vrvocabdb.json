@@ -5,7 +5,7 @@
       "ParentId": "P2?",
       "name": "Home Office",
       "description": "Office with computer, chair, desk etc",
-      "welcome": "Welcome to VR-Vocab\\n\\nTurn up the volume and find 15 items, good luck!",
+      "welcome": "",
       "src": "photos/home-office.jpg",
       "wordSpots": [
         {
@@ -1288,6 +1288,149 @@
       },
       "guess": "de bank",
       "id": "gdk8kZiLgy_hlCn9AAAI"
+    },
+    {
+      "date": "2021-01-25T16:48:30.573Z",
+      "photoid": 1,
+      "word": {
+        "clue": "This one is over your head",
+        "nl": {
+          "word": "het plafond",
+          "audio": "audio/nl/het-plafond.mp3"
+        }
+      },
+      "guess": "het lichtknopje",
+      "id": "KjDejZr_mRKIb3YUAAAM"
+    },
+    {
+      "date": "2021-01-25T16:55:55.859Z",
+      "photoid": 1,
+      "word": {
+        "clue": "It lights up the desk",
+        "nl": {
+          "word": "de bureaulamp",
+          "audio": "audio/nl/de-bureaulamp.mp3"
+        }
+      },
+      "correct": 1,
+      "id": "bCLKt9dwKkSbz9COAAAC"
+    },
+    {
+      "date": "2021-01-25T16:56:02.440Z",
+      "photoid": 1,
+      "word": {
+        "clue": "You sit on this, briefly",
+        "nl": {
+          "word": "de kruk",
+          "audio": "audio/nl/de-kruk.mp3"
+        }
+      },
+      "correct": 1,
+      "id": "bCLKt9dwKkSbz9COAAAC"
+    },
+    {
+      "date": "2021-01-25T16:57:03.835Z",
+      "photoid": 1,
+      "word": {
+        "clue": "It's somewhere on the desk...",
+        "nl": {
+          "word": "de mobiele telefoon",
+          "audio": "audio/nl/de-mobiele-telefoon.mp3"
+        }
+      },
+      "correct": 1,
+      "id": "bB-tiuJbMyTUhfM3AAAC"
+    },
+    {
+      "date": "2021-01-25T16:57:14.415Z",
+      "photoid": 1,
+      "word": {
+        "clue": "Useful to get through the door",
+        "nl": {
+          "word": "het handvat",
+          "audio": "audio/nl/het-handvat.mp3"
+        }
+      },
+      "correct": 1,
+      "id": "bB-tiuJbMyTUhfM3AAAC"
+    },
+    {
+      "date": "2021-01-25T16:57:25.572Z",
+      "photoid": 1,
+      "word": {
+        "clue": "Used to look outside when the blinds aren't down",
+        "nl": {
+          "word": "het raam",
+          "audio": "audio/nl/het-raam.mp3"
+        }
+      },
+      "correct": 1,
+      "id": "bB-tiuJbMyTUhfM3AAAC"
+    },
+    {
+      "date": "2021-01-25T16:57:35.333Z",
+      "photoid": 1,
+      "word": {
+        "clue": "There are so many piles of paperwork on this object!",
+        "nl": {
+          "word": "het bureau",
+          "audio": "audio/nl/het-bureau.mp3"
+        }
+      },
+      "correct": 1,
+      "id": "bB-tiuJbMyTUhfM3AAAC"
+    },
+    {
+      "date": "2021-01-25T16:57:43.480Z",
+      "photoid": 1,
+      "word": {
+        "clue": "Point and click",
+        "nl": {
+          "word": "de computermuis",
+          "audio": "audio/nl/de-computermuis.mp3"
+        }
+      },
+      "correct": 1,
+      "id": "bB-tiuJbMyTUhfM3AAAC"
+    },
+    {
+      "date": "2021-01-25T16:58:33.282Z",
+      "photoid": 1,
+      "word": {
+        "clue": "It makes hard copies",
+        "nl": {
+          "word": "de printer",
+          "audio": "audio/nl/de-printer.mp3"
+        }
+      },
+      "guess": "het handvat",
+      "id": "WBiwnLfbxRw648VXAAAE"
+    },
+    {
+      "date": "2021-01-25T18:17:12.951Z",
+      "photoid": 1,
+      "word": {
+        "clue": "How did you get into this room?",
+        "nl": {
+          "word": "de deur",
+          "audio": "audio/nl/de-deur.mp3"
+        }
+      },
+      "correct": 1,
+      "id": "Q8fjmtIMRnfFAwX0AAAB"
+    },
+    {
+      "date": "2021-01-25T18:36:17.868Z",
+      "photoid": 1,
+      "word": {
+        "clue": "Do you really need illuminating?",
+        "nl": {
+          "word": "de lamp",
+          "audio": "audio/nl/de-lamp.mp3"
+        }
+      },
+      "guess": "het lichtknopje",
+      "id": "UhZMhTibzMuUT3OFAAAC"
     }
   ]
 }

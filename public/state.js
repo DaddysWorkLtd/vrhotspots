@@ -83,7 +83,7 @@ var vrVocabConfig = {
               setTimeout(function () {
                 //target.setAttribute('text', 'value: ');
                 //_this.state.changeHudText({target: what.target, text: ''});
-                _state.sceneEl.emit('changeHudText',{target:what.target, text: what.text, animate:false});
+                _state.sceneEl.emit('changeHudText',{target:what.target, text: '', animate:false});
               }, target.components.animation.data.dur);
               target.components.animation.beginAnimation();
             }
@@ -96,11 +96,14 @@ var vrVocabConfig = {
         changeMode: (state) => {
           let options = ['Learning','Testing','Practice'];
           if (state.adminUser) options.push('Editing');
-          state.gameMode = vrVocabConfig.utils.nextOption(options,state.gameMode)
+          state.gameMode = vrVocabConfig.utils.nextOption(options,state.gameMode);
+          gState.gameMode = state.gameMode;
         },
         changeWordsPerGame: (state) => {
           const options = ['5','15','25',"Unlimited"]
           state.wordsPerGame = vrVocabConfig.utils.nextOption(options,state.wordsPerGame);
+          // temporary patch, unlimited = 999? What about on init?
+          gState.NUM_SPOTS = (state.wordsPerGame === 'Unlimited' ? 999: state.wordsPerGame) ;
         },
         changeUser: (state) => {
           state.userName = "Paul Cook";
@@ -110,14 +113,18 @@ var vrVocabConfig = {
       // save state to local storage
       computeState: (newState,payload) => {
         var _newState = newState;
+        // on init
         if (payload === '@@INIT') {
+          // load old data.... todo: way of resetting ui!
           let oldState = gState.db.get('state').value();
           _.forEach(oldState, (value,key) => {
             _newState[key] = value;
           });
+          gState.gameMode = newState.gameMode;
+          gState.NUM_SPOTS = (newState.wordsPerGame === 'Unlimited' ? 999: newState.wordsPerGame) ;
           // need to set home or not set it - location in app needs to reset
         } else if (payload !== 'changeHudText') {
-          const saveState = _.omit(newState,['location','sceneEl','uiText','homeFusable','targetWords','attempt']);
+          const saveState = _.omit(newState,['location','sceneEl','uiText','homeFusable','targetWords','attempt','hudTextTOP', 'hudTextMID','hudTextBOT']);
            gState.db.set('state',saveState).write();
            console.log('computeState', newState, payload,saveState);
         }

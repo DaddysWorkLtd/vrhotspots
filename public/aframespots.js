@@ -34,9 +34,11 @@ AFRAME.registerComponent('cursor-listen', {
                 if (word) this.el.sceneEl.emit('changeHudText',{target:'bot',
                     text: el.getAttribute('word') + ': not found in dictionary'});
             } else {
-                if (gState.gameMode==='PRACTICE') {
+                if (gState.gameMode==='Practice') {
                     gState.word = fusedWord;
-                    gState.playWord();
+                    gState.playWord(true);
+                    evt.detail.intersectedEl.remove();
+                    return;
                 }
                 if (fusedWord[gState.lang].word == gState.word[gState.lang].word) {
                     //remove the element
