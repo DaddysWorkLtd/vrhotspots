@@ -48,7 +48,7 @@ var vrVocabConfig = {
       userName: 'Guest',
       sceneEl: document.getElementsByTagName('a-scene')[0], // needs to be deferred
       homeFusable: 'fusable', // class to control fusing of home page objects
-      uiText: {welcome: 'Welcome to VR Vocab!\n\nThe goal in every room is to find the items for the words given to you. Select an object by aiming the gaze cursor at an orange hotspot for a second. Find all the items to unlock the next level'}
+      uiText: {welcome: 'Welcome to VR Vocab!\n\nThe goal in every room is to find the items for the words given to you. Select an object by holding the gaze cursor at an orange hotspot. Find all the items to unlock the next level.'}
     },
 
 
