@@ -190,23 +190,9 @@ AFRAME.registerComponent('kb-ctrl', {
     });
   }
 });
-// just hard coded to the home office
-AFRAME.registerComponent('vocab-room', {
-  init: function () {
-    this.el.addEventListener('fusing', evt => {
-      setHudText('bot', 'fusing: Home Office');
-      this.el.sceneEl.emit('changeHudText', {target: 'bot', text: 'fusing: Home Office'}); // this.photo.name
-    });
-    this.el.addEventListener('click', evt => {
-      // transition to 360photo
-      this.el.sceneEl.emit('enterPhoto');
-      // hard coded to photoid 1
-      gState.changePhoto(1);
-    });
-  }
-});
+
 // need the image, number of stars, text for box
-AFRAME.registerComponent('vocab-level', {
+AFRAME.registerComponent('vocab-room', {
     schema: {
       src: {type: 'string', default: '#nosrcsupplied'},
       enabled: {type: 'boolean', default: false},
@@ -267,6 +253,15 @@ AFRAME.registerComponent('vocab-level', {
             stars += 1;
           }
         });
+      }
+        this.el.addEventListener('fusing', evt => {
+          this.el.sceneEl.emit('changeHudText', {target: 'bot', text: 'fusing: ' + evt.el.getAttribute('name')}); // this.photo.name
+        });
+        this.el.addEventListener('click', evt => {
+          // transition to 360photo
+          this.el.sceneEl.emit('enterPhoto');
+          // hard coded to photoid 1
+          gState.changePhoto( evt.el.getAttribute ('photo-id'));
       }
       console.log('init vocab level')
     }

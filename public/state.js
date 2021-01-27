@@ -56,7 +56,7 @@ var vrVocabConfig = {
       userName: 'Guest',
       sceneEl: document.getElementsByTagName('a-scene')[0], // needs to be deferred
       homeFusable: 'fusable', // class to control fusing of home page objects
-      uiText: {welcome: 'Welcome to VR Vocab!\n\nThe goal in every room is to find the items requested. Select an object by pointing the gaze cursor at an orange hotspot. Find all the items to unlock the next level....'}
+      uiText: {welcome: 'Welcome to VR Vocab!\n\nThe goal in every room is to locate the requested items. Select an object by pointing the gaze cursor at an orange hotspot. Find all the items to unlock the next level....'}
     },
 
     // State changes are done via events and are handled here.
@@ -128,7 +128,11 @@ var vrVocabConfig = {
            gState.db.set('state',saveState).write();
            console.log('computeState', newState, payload,saveState);
         }
-      }
+      },
+    init: (state) => {
+      console.log('state init is called',state);
+    }
+
   }
 
 // aframe-state-component definition.
