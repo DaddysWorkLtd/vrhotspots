@@ -53,7 +53,7 @@ var vrVocabConfig = {
       adminUser: false,
       fbUserId: '',
       fbToken: '',
-      userName: 'Guest',
+      photos: gState.db.get('photos').value(), // this needs to computed....
       sceneEl: document.getElementsByTagName('a-scene')[0], // needs to be deferred
       homeFusable: 'fusable', // class to control fusing of home page objects
       uiText: {welcome: 'Welcome to VR Vocab!\n\nThe goal in every room is to locate the requested items. Select an object by pointing the gaze cursor at an orange hotspot. Find all the items to unlock the next level....'}
@@ -122,16 +122,11 @@ var vrVocabConfig = {
           });
           gState.gameMode = newState.gameMode;
           gState.NUM_SPOTS = (newState.wordsPerGame === 'Unlimited' ? 999: newState.wordsPerGame) ;
-          // need to set home or not set it - location in app needs to reset
         } else if (payload !== 'changeHudText') {
-          const saveState = _.omit(newState,['location','sceneEl','uiText','homeFusable','targetWords','attempt','hudTextTOP', 'hudTextMID','hudTextBOT']);
+          const saveState = _.omit(newState,['location','sceneEl','uiText','homeFusable','targetWords','attempt','hudTextTOP', 'hudTextMID','hudTextBOT', 'photos']);
            gState.db.set('state',saveState).write();
-           console.log('computeState', newState, payload,saveState);
         }
-      },
-    init: (state) => {
-      console.log('state init is called',state);
-    }
+      }
 
   }
 

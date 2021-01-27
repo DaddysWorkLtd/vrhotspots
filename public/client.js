@@ -141,7 +141,7 @@ var gState= {
         }
     },
     changePhoto: function(photoId) {
-        const nextPhoto = gState.db.get('photos').find( {id:photoId}).value();
+        const nextPhoto = gState.db.get('photos').find( {id:_.toNumber(photoId)}).value();
         if (nextPhoto) {
             removeSpots();
             setHudText('top','');

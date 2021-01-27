@@ -194,6 +194,7 @@ AFRAME.registerComponent('kb-ctrl', {
 // need the image, number of stars, text for box
 AFRAME.registerComponent('vocab-room', {
     schema: {
+      photoId: {type: 'number', default: 0},
       src: {type: 'string', default: '#nosrcsupplied'},
       enabled: {type: 'boolean', default: false},
       name: {type: 'string', default: 'BOX NAME'},
@@ -203,20 +204,26 @@ AFRAME.registerComponent('vocab-room', {
     },
     init: function () {
       const data = this.data,
-        el = this.el;
+        el = this.el,
+        pel = el.parentElement;
 
+      el.id = 'photo' + data.photoId;
       // first the box
       el.setAttribute('render-order', 'object');
       el.setAttribute('look-at', '#boxfaces');
       el.setAttribute('geometry', 'primitve:box; width:1; height:1.3; depth:.5;');
       el.setAttribute('material', 'src:#cardboard; normal-map: #cardboard-NRM;');
 
-      let  sp = document.createElement("a-sphere");
+      let sp = document.createElement("a-sphere");
       sp.setAttribute('render-order', 'object');
       sp.setAttribute('radius', .4)
       sp.setAttribute('position', '0 1 0');
       sp.setAttribute('material', 'src: ' + data.src + ' ;')
       el.appendChild(sp);
+
+      //if enabled
+      animation__enter = "property: rotation; from: 0 0 0; to: 0 360 0; dur: 15000; easing: linear; loop:false; autoplay: false; startEvents: mouseenter;"
+
 
       let tr = document.createElement('a-troika-text');
       tr.setAttribute('render-order', 'text');
@@ -254,26 +261,37 @@ AFRAME.registerComponent('vocab-room', {
           }
         });
       }
-        this.el.addEventListener('fusing', evt => {
-          this.el.sceneEl.emit('changeHudText', {target: 'bot', text: 'fusing: ' + evt.el.getAttribute('name')}); // this.photo.name
-        });
-        this.el.addEventListener('click', evt => {
-          // transition to 360photo
-          this.el.sceneEl.emit('enterPhoto');
-          // hard coded to photoid 1
-          gState.changePhoto( evt.el.getAttribute ('photo-id'));
-      }
-      console.log('init vocab level')
+      this.el.addEventListener('fusing', evt => {
+        //scope?
+        this.el.sceneEl.emit('changeHudText', {target: 'bot', text: 'fusing: ' + evt.target.getAttribute('name')}); // this.photo.name
+      });
+      this.el.addEventListener('click', evt => {
+        // transition to 360photo
+        this.el.sceneEl.emit('enterPhoto');
+        gState.changePhoto(evt.target.getAttribute('photo-id'));
+      });
+      el.setAttribute('bind__class','homeFusable');
+      sp.setAttribute('bind__class','homeFusable');
+      // needed for the event handler to work... I supose I could put these in a closure
+      sp.setAttribute('name', data.name);
+      sp.setAttribute('photo-id', data.photoId);
     }
   }
-)
-AFRAME.registerPrimitive('a-vocab-level', {
+);
+AFRAME.registerPrimitive('a-vocab-room', {
   defaultComponents: {
-    'vocab-room': {},
+    'vocab-room': {}
   },
-  mappings: {}
+  mappings: {
+    'photo-id': 'vocab-room.photoId',
+    'src': 'vocab-room.src',
+    'enabled': 'vocab-room.enabled',
+    'name': 'vocab-room.name',
+    'words': 'vocab-room.words',
+    'found': 'vocab-room.found',
+    'stars': 'vocab-room.stars'
+  }
 });
-
 
 function appendSpot(def) {
   var spot, scene;
