@@ -36,12 +36,12 @@ var vrVocabConfig = {
     }
   },
   stateHandler = {
-    nonBindedStateKeys: ['fbToken','scEl', 'uiText'],
+    nonBindedStateKeys: ['fbToken','scEl', 'uiText','photos'],
     // Initial state of our application. We have the current environment and the active menu.
     initialState: {
       location: 'home',
       lang: 'nl',
-      gameMode: 'Testing',
+      gameMode: 'Play',
       wordsPerRound: 1,
       wordsPerGame: 15,
       attempt: 1,
@@ -53,9 +53,9 @@ var vrVocabConfig = {
       adminUser: false,
       fbUserId: '',
       fbToken: '',
-      photos: gState.db.get('photos').value(), // this needs to computed....
-      sceneEl: document.getElementsByTagName('a-scene')[0], // needs to be deferred
-      homeFusable: 'fusable', // class to control fusing of home page objects
+      photos: gState.db.get('photos').value(), // this needs to computed for the player....
+      homeFusable: 'fusable', // class to control fusing of home page objects,
+      photoFusable: '',
       uiText: {welcome: 'Welcome to VR Vocab!\n\nThe goal in every room is to locate the requested items. Select an object by pointing the gaze cursor at an orange hotspot. Find all the items to unlock the next level....'}
     },
 
@@ -71,9 +71,15 @@ var vrVocabConfig = {
         selectSpot: (state) => {
           console.log('depends on game type');
         },
+        goHome: (state) => {
+          // hide spots? could carry on
+          removeSpots();
+          state.location='home';
+          state.homeFusable = 'fusable';
+          state.photoFusable = '';
+        },
         // really for setting HUD text and playing animations (animate:true) prop
         changeHudText: (state,what) => {
-          var _state = state;
           state['hudText' + what.target.toUpperCase()] = what.text;
           // play the animation for the middle one
           if (what.animate) {
@@ -83,7 +89,7 @@ var vrVocabConfig = {
               setTimeout(function () {
                 //target.setAttribute('text', 'value: ');
                 //_this.state.changeHudText({target: what.target, text: ''});
-                _state.sceneEl.emit('changeHudText',{target:what.target, text: '', animate:false});
+                document.getElementsByTagName('a-scene')[0].emit('changeHudText',{target:what.target, text: '', animate:false});
               }, target.components.animation.data.dur);
               target.components.animation.beginAnimation();
             }
@@ -94,8 +100,8 @@ var vrVocabConfig = {
           state.hudTextTOP='Correct: ' + word.word;
         },
         changeMode: (state) => {
-          let options = ['Learning','Testing','Practice'];
-          if (state.adminUser) options.push('Editing');
+          let options = ['Learn','Play','Practice'];
+          if (state.adminUser) options.push('Edit');
           state.gameMode = vrVocabConfig.utils.nextOption(options,state.gameMode);
           gState.gameMode = state.gameMode;
         },
@@ -106,8 +112,8 @@ var vrVocabConfig = {
           gState.NUM_SPOTS = (state.wordsPerGame === 'Unlimited' ? 999: state.wordsPerGame) ;
         },
         changeUser: (state) => {
-          state.userName = "Paul Cook";
-          state.adminUser = true;
+          state.userName = (state.userName === "Paul Cook" ? 'Guest' : 'Paul Cook');
+          state.adminUser = !state.adminUser;
         }
       },
       // save state to local storage
