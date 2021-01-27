@@ -69,7 +69,7 @@ AFRAME.registerComponent('rayleft-ctrl', {
   }
 });
 
-AFRAME.registerComponent('input-listen', {
+AFRAME.registerComponent('rayright-ctl', {
   init:
     function () {
       //Declaration and initialization of flag
@@ -91,9 +91,8 @@ AFRAME.registerComponent('input-listen', {
       this.el.addEventListener('gripdown', function (e) {
         console.log('grip squeeze right', e);
         // the idea is right up left down but for not this is on the right controller
-//                gState.nextPhoto();
+        gState.nextPhoto();
         //Setting grip flag as true, this is for gripping to hold on to something
-        this.grip = true;
       });
       //Grip Released
       this.el.addEventListener('gripup', function (e) {
@@ -141,30 +140,7 @@ AFRAME.registerComponent('input-listen', {
       });
 
       //console.log(this);
-    },
-
-  //called evry frame.
-  tick: function () {
-
-    if (!this.el.selectedObj) {
-      return;
     }
-    if (!this.el.grip) {
-      return;
-    }
-
-    //Getting raycaster component which is attatched to ctlR or L
-    //this.el means entity of ctlR or L in this function.
-    var ray = this.el.getAttribute("raycaster").direction;
-    //setting tip of raycaster as 1.1m forward of controller.
-    var p = new THREE.Vector3(ray.x, ray.y, ray.z);
-    p.normalize();
-    p.multiplyScalar(1.2);
-    //Convert local position into world coordinate.
-    this.el.object3D.localToWorld(p);
-    //Move selected object to follow the tip of raycaster.
-    this.el.selectedObj.object3D.position.set(p.x, p.y, p.z);
-  }
 });
 AFRAME.registerComponent('kb-ctrl', {
   init: function () {
