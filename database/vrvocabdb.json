@@ -1474,6 +1474,810 @@
       },
       "correct": 1,
       "id": "MpRPFq3eYSg5epb-AAAA"
+    },
+    {
+      "date": "2021-01-28T12:30:11.705Z",
+      "photoid": 1,
+      "word": {
+        "clue": "You're 'standing' on it right now!",
+        "nl": {
+          "word": "het tapijt",
+          "audio": "audio/nl/het-tapijt.mp3"
+        }
+      },
+      "guess": "de deur",
+      "id": "QuPNUlxRf1Cfmz1RAAAI"
+    },
+    {
+      "date": "2021-01-28T12:30:18.440Z",
+      "photoid": 1,
+      "word": {
+        "clue": "You're 'standing' on it right now!",
+        "nl": {
+          "word": "het tapijt",
+          "audio": "audio/nl/het-tapijt.mp3"
+        }
+      },
+      "correct": 1,
+      "id": "QuPNUlxRf1Cfmz1RAAAI"
+    },
+    {
+      "date": "2021-01-28T12:31:18.884Z",
+      "photoid": 1,
+      "word": {
+        "clue": "It's somewhere on the desk...",
+        "nl": {
+          "word": "de mobiele telefoon",
+          "audio": "audio/nl/de-mobiele-telefoon.mp3"
+        }
+      },
+      "correct": 1,
+      "id": "QuPNUlxRf1Cfmz1RAAAI"
+    },
+    {
+      "date": "2021-01-28T12:33:21.702Z",
+      "photoid": 1,
+      "word": {
+        "clue": "For making your shirt look nice",
+        "nl": {
+          "word": "de strijkplank",
+          "audio": "audio/nl/de-strijkplank.mp3"
+        }
+      },
+      "guess": "de muur",
+      "id": "QuPNUlxRf1Cfmz1RAAAI"
+    },
+    {
+      "date": "2021-01-28T12:33:58.233Z",
+      "photoid": 1,
+      "word": {
+        "clue": "For making your shirt look nice",
+        "nl": {
+          "word": "de strijkplank",
+          "audio": "audio/nl/de-strijkplank.mp3"
+        }
+      },
+      "correct": 1,
+      "id": "QuPNUlxRf1Cfmz1RAAAI"
+    },
+    {
+      "date": "2021-01-28T12:41:17.788Z",
+      "photoid": 1,
+      "word": {
+        "clue": "It's very comfortable to sit on",
+        "nl": {
+          "word": "de stoel",
+          "audio": "audio/nl/de-stoel.mp3"
+        }
+      },
+      "guess": "het tafelkleed",
+      "id": "R6gKMN25w1a6_xtBAAAB"
+    },
+    {
+      "date": "2021-01-28T12:41:25.020Z",
+      "photoid": 1,
+      "word": {
+        "clue": "It's very comfortable to sit on",
+        "nl": {
+          "word": "de stoel",
+          "audio": "audio/nl/de-stoel.mp3"
+        }
+      },
+      "correct": 1,
+      "id": "R6gKMN25w1a6_xtBAAAB"
+    },
+    {
+      "date": "2021-01-28T12:53:23.086Z",
+      "photoid": 1,
+      "word": {
+        "clue": "It's somewhere on the desk...",
+        "nl": {
+          "word": "de mobiele telefoon",
+          "audio": "audio/nl/de-mobiele-telefoon.mp3"
+        },
+        "en": "cell phone"
+      },
+      "guess": "het handvat",
+      "id": "YDlcZHKu66-lNnEhAAAB"
+    },
+    {
+      "date": "2021-01-28T13:14:59.922Z",
+      "photoid": 1,
+      "word": {
+        "clue": "It's somewhere on the desk...",
+        "nl": {
+          "word": "de mobiele telefoon",
+          "audio": "audio/nl/de-mobiele-telefoon.mp3"
+        },
+        "en": "cell phone"
+      },
+      "guess": "het slot",
+      "id": "HbPwEt5OTi7ndUWRAAAA"
+    },
+    {
+      "date": "2021-01-28T13:15:14.308Z",
+      "photoid": 1,
+      "word": {
+        "clue": "It's somewhere on the desk...",
+        "nl": {
+          "word": "de mobiele telefoon",
+          "audio": "audio/nl/de-mobiele-telefoon.mp3"
+        },
+        "en": "cell phone"
+      },
+      "guess": "het stopcontact",
+      "id": "HbPwEt5OTi7ndUWRAAAA"
+    },
+    {
+      "date": "2021-01-28T15:42:05.482Z",
+      "photoId": 1,
+      "word": {
+        "clue": "Where you put what you wear",
+        "nl": {
+          "word": "de kledingkast",
+          "audio": "audio/nl/de-kledingkast.mp3"
+        },
+        "en": "wardrobe"
+      },
+      "correct": 1,
+      "attempt": 1,
+      "id": "kEAgIr94xlmSehxsAAAA"
+    },
+    {
+      "date": "2021-01-28T15:42:13.176Z",
+      "photoId": 1,
+      "word": {
+        "clue": "There are four in this room: all around you",
+        "nl": {
+          "word": "de muur",
+          "audio": "audio/nl/de-muur.mp3"
+        },
+        "en": "wall"
+      },
+      "correct": 1,
+      "attempt": 1,
+      "id": "kEAgIr94xlmSehxsAAAA"
+    },
+    {
+      "date": "2021-01-28T15:42:18.834Z",
+      "photoId": 1,
+      "word": {
+        "clue": "Don't forget to look up and down",
+        "nl": {
+          "word": "de vloer",
+          "audio": "audio/nl/de-vloer.mp3"
+        },
+        "en": "floor"
+      },
+      "guess": "de lade",
+      "attempt": 1,
+      "id": "kEAgIr94xlmSehxsAAAA"
+    },
+    {
+      "date": "2021-01-28T15:42:38.771Z",
+      "photoId": 1,
+      "word": {
+        "clue": "Don't forget to look up and down",
+        "nl": {
+          "word": "de vloer",
+          "audio": "audio/nl/de-vloer.mp3"
+        },
+        "en": "floor"
+      },
+      "guess": "de strijkplank",
+      "attempt": 2,
+      "id": "kEAgIr94xlmSehxsAAAA"
+    },
+    {
+      "date": "2021-01-28T16:27:18.972Z",
+      "photoId": 1,
+      "word": {
+        "clue": "Don't forget to look up and down",
+        "nl": {
+          "word": "de vloer",
+          "audio": "audio/nl/de-vloer.mp3"
+        },
+        "en": "floor"
+      },
+      "guess": "de bank",
+      "attempt": 3,
+      "id": "FS60YigoaOI5yjWNAAAA"
+    },
+    {
+      "date": "2021-01-28T16:27:31.248Z",
+      "photoId": 1,
+      "word": {
+        "clue": "Don't forget to look up and down",
+        "nl": {
+          "word": "de vloer",
+          "audio": "audio/nl/de-vloer.mp3"
+        },
+        "en": "floor"
+      },
+      "correct": 1,
+      "attempt": 4,
+      "id": "FS60YigoaOI5yjWNAAAA"
+    },
+    {
+      "date": "2021-01-28T16:50:09.952Z",
+      "photoId": 1,
+      "word": {
+        "clue": "There are four in this room: all around you",
+        "nl": {
+          "word": "de muur",
+          "audio": "audio/nl/de-muur.mp3"
+        },
+        "en": "wall"
+      },
+      "guess": "de deur",
+      "attempt": 1,
+      "id": "Da5K54dmhKaIcftrAAAB"
+    },
+    {
+      "date": "2021-01-28T16:50:13.556Z",
+      "photoId": 1,
+      "word": {
+        "clue": "There are four in this room: all around you",
+        "nl": {
+          "word": "de muur",
+          "audio": "audio/nl/de-muur.mp3"
+        },
+        "en": "wall"
+      },
+      "guess": "het handvat",
+      "attempt": 2,
+      "id": "Da5K54dmhKaIcftrAAAB"
+    },
+    {
+      "date": "2021-01-28T16:50:18.684Z",
+      "photoId": 1,
+      "word": {
+        "clue": "There are four in this room: all around you",
+        "nl": {
+          "word": "de muur",
+          "audio": "audio/nl/de-muur.mp3"
+        },
+        "en": "wall"
+      },
+      "correct": 1,
+      "attempt": 3,
+      "id": "Da5K54dmhKaIcftrAAAB"
+    },
+    {
+      "date": "2021-01-28T16:51:31.593Z",
+      "photoId": 1,
+      "word": {
+        "clue": "It lights up the desk",
+        "nl": {
+          "word": "de bureaulamp",
+          "audio": "audio/nl/de-bureaulamp.mp3"
+        },
+        "en": "desk lamp"
+      },
+      "guess": "de deur",
+      "attempt": 1,
+      "id": "n3hmCAapIW2ZeIBaAAAC"
+    },
+    {
+      "date": "2021-01-28T16:51:38.219Z",
+      "photoId": 1,
+      "word": {
+        "clue": "It lights up the desk",
+        "nl": {
+          "word": "de bureaulamp",
+          "audio": "audio/nl/de-bureaulamp.mp3"
+        },
+        "en": "desk lamp"
+      },
+      "guess": "het handvat",
+      "attempt": 2,
+      "id": "n3hmCAapIW2ZeIBaAAAC"
+    },
+    {
+      "date": "2021-01-28T16:51:47.435Z",
+      "photoId": 1,
+      "word": {
+        "clue": "It lights up the desk",
+        "nl": {
+          "word": "de bureaulamp",
+          "audio": "audio/nl/de-bureaulamp.mp3"
+        },
+        "en": "desk lamp"
+      },
+      "correct": 1,
+      "attempt": 3,
+      "id": "n3hmCAapIW2ZeIBaAAAC"
+    },
+    {
+      "date": "2021-01-28T18:10:11.134Z",
+      "photoId": 1,
+      "word": {
+        "clue": "Point and click",
+        "nl": {
+          "word": "de computermuis",
+          "audio": "audio/nl/de-computermuis.mp3"
+        },
+        "en": "computer mouse"
+      },
+      "guess": "het slot",
+      "attempt": 1,
+      "gameStart": "2021-01-28T18:10:04.169Z",
+      "wordNum": 1,
+      "id": "fYt13wWeJsGsjXHpAAAB"
+    },
+    {
+      "date": "2021-01-28T18:10:58.360Z",
+      "photoId": 1,
+      "word": {
+        "clue": "Point and click",
+        "nl": {
+          "word": "de computermuis",
+          "audio": "audio/nl/de-computermuis.mp3"
+        },
+        "en": "computer mouse"
+      },
+      "guess": "het stopcontact",
+      "attempt": 2,
+      "gameStart": "2021-01-28T18:10:04.169Z",
+      "wordNum": 1,
+      "id": "fYt13wWeJsGsjXHpAAAB"
+    },
+    {
+      "date": "2021-01-28T18:11:02.470Z",
+      "photoId": 1,
+      "word": {
+        "clue": "Point and click",
+        "nl": {
+          "word": "de computermuis",
+          "audio": "audio/nl/de-computermuis.mp3"
+        },
+        "en": "computer mouse"
+      },
+      "guess": "de lade",
+      "attempt": 3,
+      "gameStart": "2021-01-28T18:10:04.169Z",
+      "wordNum": 1,
+      "id": "fYt13wWeJsGsjXHpAAAB"
+    },
+    {
+      "date": "2021-01-28T18:11:09.131Z",
+      "photoId": 1,
+      "word": {
+        "clue": "Point and click",
+        "nl": {
+          "word": "de computermuis",
+          "audio": "audio/nl/de-computermuis.mp3"
+        },
+        "en": "computer mouse"
+      },
+      "correct": 1,
+      "attempt": 4,
+      "gameStart": "2021-01-28T18:10:04.169Z",
+      "wordNum": 1,
+      "id": "fYt13wWeJsGsjXHpAAAB"
+    },
+    {
+      "date": "2021-01-28T18:11:19.536Z",
+      "photoId": 1,
+      "word": {
+        "clue": "Do you really need illuminating?",
+        "nl": {
+          "word": "de lamp",
+          "audio": "audio/nl/de-lamp.mp3"
+        },
+        "en": "lamp"
+      },
+      "correct": 1,
+      "attempt": 1,
+      "gameStart": "2021-01-28T18:10:04.169Z",
+      "wordNum": 2,
+      "id": "fYt13wWeJsGsjXHpAAAB"
+    },
+    {
+      "date": "2021-01-28T18:19:03.479Z",
+      "photoId": 1,
+      "word": {
+        "clue": "Useful to get through the door",
+        "nl": {
+          "word": "het handvat",
+          "audio": "audio/nl/het-handvat.mp3"
+        },
+        "en": "handle"
+      },
+      "guess": "de deur",
+      "attempt": 1,
+      "gameStart": "2021-01-28T18:18:58.623Z",
+      "wordNum": 1,
+      "wordsPerGame": 1,
+      "gameMode": "Play",
+      "id": "9bmShvJHvGVVzHgnAAAB"
+    },
+    {
+      "date": "2021-01-28T18:19:23.529Z",
+      "photoId": 1,
+      "word": {
+        "clue": "Useful to get through the door",
+        "nl": {
+          "word": "het handvat",
+          "audio": "audio/nl/het-handvat.mp3"
+        },
+        "en": "handle"
+      },
+      "guess": "het stopcontact",
+      "attempt": 2,
+      "gameStart": "2021-01-28T18:18:58.623Z",
+      "wordNum": 1,
+      "wordsPerGame": 1,
+      "gameMode": "Play",
+      "id": "9bmShvJHvGVVzHgnAAAB"
+    },
+    {
+      "date": "2021-01-28T18:19:30.669Z",
+      "photoId": 1,
+      "word": {
+        "clue": "Useful to get through the door",
+        "nl": {
+          "word": "het handvat",
+          "audio": "audio/nl/het-handvat.mp3"
+        },
+        "en": "handle"
+      },
+      "guess": "het lichtknopje",
+      "attempt": 3,
+      "gameStart": "2021-01-28T18:18:58.623Z",
+      "wordNum": 1,
+      "wordsPerGame": 1,
+      "gameMode": "Play",
+      "id": "9bmShvJHvGVVzHgnAAAB"
+    },
+    {
+      "date": "2021-01-28T18:19:35.789Z",
+      "photoId": 1,
+      "word": {
+        "clue": "Useful to get through the door",
+        "nl": {
+          "word": "het handvat",
+          "audio": "audio/nl/het-handvat.mp3"
+        },
+        "en": "handle"
+      },
+      "guess": "het slot",
+      "attempt": 4,
+      "gameStart": "2021-01-28T18:18:58.623Z",
+      "wordNum": 1,
+      "wordsPerGame": 1,
+      "gameMode": "Play",
+      "id": "9bmShvJHvGVVzHgnAAAB"
+    },
+    {
+      "date": "2021-01-28T18:19:41.396Z",
+      "photoId": 1,
+      "word": {
+        "clue": "Useful to get through the door",
+        "nl": {
+          "word": "het handvat",
+          "audio": "audio/nl/het-handvat.mp3"
+        },
+        "en": "handle"
+      },
+      "correct": 1,
+      "attempt": 5,
+      "gameStart": "2021-01-28T18:18:58.623Z",
+      "wordNum": 1,
+      "wordsPerGame": 1,
+      "gameMode": "Play",
+      "id": "9bmShvJHvGVVzHgnAAAB"
+    },
+    {
+      "date": "2021-01-28T18:19:52.129Z",
+      "photoId": 1,
+      "word": {
+        "clue": "You sit on this, briefly",
+        "nl": {
+          "word": "de kruk",
+          "audio": "audio/nl/de-kruk.mp3"
+        },
+        "en": "stool"
+      },
+      "correct": 1,
+      "attempt": 1,
+      "gameStart": "2021-01-28T18:18:58.623Z",
+      "wordNum": 2,
+      "wordsPerGame": 2,
+      "gameMode": "Play",
+      "id": "9bmShvJHvGVVzHgnAAAB"
+    },
+    {
+      "date": "2021-01-28T18:20:37.322Z",
+      "photoId": 1,
+      "word": {
+        "clue": "Familiar word, have a look at the desk!",
+        "nl": {
+          "word": "de laptop",
+          "audio": "audio/nl/de-laptop.mp3"
+        },
+        "en": "laptop"
+      },
+      "guess": "de stoel",
+      "attempt": 1,
+      "gameStart": "2021-01-28T18:18:58.623Z",
+      "wordNum": 3,
+      "wordsPerGame": 3,
+      "gameMode": "Play",
+      "id": "9bmShvJHvGVVzHgnAAAB"
+    },
+    {
+      "date": "2021-01-28T18:41:43.656Z",
+      "photoId": 1,
+      "word": {
+        "clue": "It makes hard copies",
+        "nl": {
+          "word": "de printer",
+          "audio": "audio/nl/de-printer.mp3"
+        },
+        "en": "printer"
+      },
+      "guess": "de deur",
+      "attempt": 2,
+      "gameStart": "2021-01-28T18:41:38.828Z",
+      "wordNum": 1,
+      "wordsPerGame": 1,
+      "gameMode": "Play",
+      "id": "1GGVtuUQ6sQh3sRcAAAA"
+    },
+    {
+      "date": "2021-01-28T18:41:52.920Z",
+      "photoId": 1,
+      "word": {
+        "clue": "It makes hard copies",
+        "nl": {
+          "word": "de printer",
+          "audio": "audio/nl/de-printer.mp3"
+        },
+        "en": "printer"
+      },
+      "correct": 1,
+      "attempt": 3,
+      "gameStart": "2021-01-28T18:41:38.828Z",
+      "wordNum": 1,
+      "wordsPerGame": 1,
+      "gameMode": "Play",
+      "id": "1GGVtuUQ6sQh3sRcAAAA"
+    },
+    {
+      "date": "2021-01-28T18:41:56.509Z",
+      "photoId": 1,
+      "word": {
+        "clue": "How did you get into this room?",
+        "nl": {
+          "word": "de deur",
+          "audio": "audio/nl/de-deur.mp3"
+        },
+        "en": "door"
+      },
+      "guess": "de kruk",
+      "attempt": 1,
+      "gameStart": "2021-01-28T18:41:38.828Z",
+      "wordNum": 2,
+      "wordsPerGame": 2,
+      "gameMode": "Play",
+      "id": "1GGVtuUQ6sQh3sRcAAAA"
+    },
+    {
+      "date": "2021-01-28T18:42:00.750Z",
+      "photoId": 1,
+      "word": {
+        "clue": "How did you get into this room?",
+        "nl": {
+          "word": "de deur",
+          "audio": "audio/nl/de-deur.mp3"
+        },
+        "en": "door"
+      },
+      "guess": "het tafelkleed",
+      "attempt": 2,
+      "gameStart": "2021-01-28T18:41:38.828Z",
+      "wordNum": 2,
+      "wordsPerGame": 2,
+      "gameMode": "Play",
+      "id": "1GGVtuUQ6sQh3sRcAAAA"
+    },
+    {
+      "date": "2021-01-28T18:42:19.237Z",
+      "photoId": 1,
+      "word": {
+        "clue": "How did you get into this room?",
+        "nl": {
+          "word": "de deur",
+          "audio": "audio/nl/de-deur.mp3"
+        },
+        "en": "door"
+      },
+      "correct": 1,
+      "attempt": 3,
+      "gameStart": "2021-01-28T18:41:38.828Z",
+      "wordNum": 2,
+      "wordsPerGame": 2,
+      "gameMode": "Play",
+      "id": "1GGVtuUQ6sQh3sRcAAAA"
+    },
+    {
+      "date": "2021-01-28T19:00:05.915Z",
+      "photoId": 1,
+      "word": {
+        "clue": "You put things in one, behind the door",
+        "nl": {
+          "word": "de doos",
+          "audio": "audio/nl/de-doos.mp3"
+        },
+        "en": "box"
+      },
+      "guess": "het slot",
+      "attempt": 1,
+      "gameStart": "2021-01-28T18:41:38.828Z",
+      "wordNum": 3,
+      "wordsPerGame": 3,
+      "gameMode": "Play",
+      "id": "g7ow0pGVXyGev9YpAAAA"
+    },
+    {
+      "date": "2021-01-28T19:00:14.815Z",
+      "photoId": 1,
+      "word": {
+        "clue": "You put things in one, behind the door",
+        "nl": {
+          "word": "de doos",
+          "audio": "audio/nl/de-doos.mp3"
+        },
+        "en": "box"
+      },
+      "correct": 1,
+      "attempt": 2,
+      "gameStart": "2021-01-28T18:41:38.828Z",
+      "wordNum": 3,
+      "wordsPerGame": 3,
+      "gameMode": "Play",
+      "id": "g7ow0pGVXyGev9YpAAAA"
+    },
+    {
+      "date": "2021-01-28T19:05:36.647Z",
+      "photoId": 1,
+      "word": {
+        "clue": "There are four in this room: all around you",
+        "nl": {
+          "word": "de muur",
+          "audio": "audio/nl/de-muur.mp3"
+        },
+        "en": "wall"
+      },
+      "guess": "het lichtknopje",
+      "attempt": 1,
+      "gameStart": "2021-01-28T19:05:30.830Z",
+      "wordNum": 1,
+      "wordsPerGame": 1,
+      "gameMode": "Play",
+      "lang": "nl",
+      "id": "xa5m2U5z5CqEoelWAAAB"
+    },
+    {
+      "date": "2021-01-28T19:05:42.853Z",
+      "photoId": 1,
+      "word": {
+        "clue": "There are four in this room: all around you",
+        "nl": {
+          "word": "de muur",
+          "audio": "audio/nl/de-muur.mp3"
+        },
+        "en": "wall"
+      },
+      "correct": 1,
+      "attempt": 2,
+      "gameStart": "2021-01-28T19:05:30.830Z",
+      "wordNum": 1,
+      "wordsPerGame": 1,
+      "gameMode": "Play",
+      "lang": "nl",
+      "id": "xa5m2U5z5CqEoelWAAAB"
+    },
+    {
+      "date": "2021-01-28T19:07:14.767Z",
+      "photoId": 1,
+      "word": {
+        "clue": "Used to look outside when the blinds aren't down",
+        "nl": {
+          "word": "het raam",
+          "audio": "audio/nl/het-raam.mp3"
+        },
+        "en": "window"
+      },
+      "correct": 1,
+      "attempt": 1,
+      "gameStart": "2021-01-28T19:05:30.830Z",
+      "wordNum": 2,
+      "wordsPerGame": 2,
+      "gameMode": "Play",
+      "lang": "nl",
+      "id": "tb1rw8zFJGNzjFBHAAAA"
+    },
+    {
+      "date": "2021-01-28T19:07:44.571Z",
+      "photoId": 1,
+      "word": {
+        "clue": "It keeps the table nice and clean",
+        "nl": {
+          "word": "het tafelkleed",
+          "audio": "audio/nl/het-tafelkleed.mp3"
+        },
+        "en": "tablecloth"
+      },
+      "guess": "de radiator",
+      "attempt": 1,
+      "gameStart": "2021-01-28T19:05:30.830Z",
+      "wordNum": 3,
+      "wordsPerGame": 3,
+      "gameMode": "Play",
+      "lang": "nl",
+      "id": "tb1rw8zFJGNzjFBHAAAA"
+    },
+    {
+      "date": "2021-01-28T19:07:48.673Z",
+      "photoId": 1,
+      "word": {
+        "clue": "It keeps the table nice and clean",
+        "nl": {
+          "word": "het tafelkleed",
+          "audio": "audio/nl/het-tafelkleed.mp3"
+        },
+        "en": "tablecloth"
+      },
+      "guess": "het kussen",
+      "attempt": 2,
+      "gameStart": "2021-01-28T19:05:30.830Z",
+      "wordNum": 3,
+      "wordsPerGame": 3,
+      "gameMode": "Play",
+      "lang": "nl",
+      "id": "tb1rw8zFJGNzjFBHAAAA"
+    },
+    {
+      "date": "2021-01-28T19:07:54.338Z",
+      "photoId": 1,
+      "word": {
+        "clue": "It keeps the table nice and clean",
+        "nl": {
+          "word": "het tafelkleed",
+          "audio": "audio/nl/het-tafelkleed.mp3"
+        },
+        "en": "tablecloth"
+      },
+      "correct": 1,
+      "attempt": 3,
+      "gameStart": "2021-01-28T19:05:30.830Z",
+      "wordNum": 3,
+      "wordsPerGame": 3,
+      "gameMode": "Play",
+      "lang": "nl",
+      "id": "tb1rw8zFJGNzjFBHAAAA"
+    },
+    {
+      "date": "2021-01-28T19:08:08.850Z",
+      "photoId": 1,
+      "word": {
+        "clue": "Don't forget to look up and down",
+        "nl": {
+          "word": "de vloer",
+          "audio": "audio/nl/de-vloer.mp3"
+        },
+        "en": "floor"
+      },
+      "guess": "de stoel",
+      "attempt": 1,
+      "gameStart": "2021-01-28T19:05:30.830Z",
+      "wordNum": 4,
+      "wordsPerGame": 4,
+      "gameMode": "Play",
+      "lang": "nl",
+      "id": "tb1rw8zFJGNzjFBHAAAA"
     }
   ]
 }

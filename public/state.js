@@ -97,7 +97,8 @@ var vrVocabConfig = {
         },
         wordCorrect: (state, word) => {
           console.log('hotpot answered correct but do we need the element?');
-          state.hudTextTOP='Correct: ' + word.word;
+          state.hudTextTOP = '';
+//          state.hudText='Correct: ' + word.word;
         },
         changeMode: (state) => {
           let options = ['Learn','Play','Practice'];
@@ -109,7 +110,7 @@ var vrVocabConfig = {
           const options = ['5','15','25',"Unlimited"]
           state.wordsPerGame = vrVocabConfig.utils.nextOption(options,state.wordsPerGame);
           // temporary patch, unlimited = 999? What about on init?
-          gState.NUM_SPOTS = (state.wordsPerGame === 'Unlimited' ? 999: state.wordsPerGame) ;
+          gState.wordsPerGame = (state.wordsPerGame === 'Unlimited' ? 999: state.wordsPerGame) ;
         },
         changeUser: (state) => {
           state.userName = (state.userName === "Paul Cook" ? 'Guest' : 'Paul Cook');
@@ -127,7 +128,7 @@ var vrVocabConfig = {
             _newState[key] = value;
           });
           gState.gameMode = newState.gameMode;
-          gState.NUM_SPOTS = (newState.wordsPerGame === 'Unlimited' ? 999: newState.wordsPerGame) ;
+          gState.wordsPerGame = (newState.wordsPerGame === 'Unlimited' ? 999: newState.wordsPerGame) ;
         } else if (payload !== 'changeHudText') {
           const saveState = _.omit(newState,['location','sceneEl','uiText','homeFusable','targetWords','attempt','hudTextTOP', 'hudTextMID','hudTextBOT', 'photos']);
            gState.db.set('state',saveState).write();
