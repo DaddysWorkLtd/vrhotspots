@@ -24,8 +24,15 @@ var vrVocabConfig = {
         writeTarget: false,
         sayTarget: false
       },
-
-      },
+    },
+  LANGUAGES: {
+      nl: "Dutch",
+    fr:"French",
+    de:"German",
+    it:"Italian",
+    sp:"Spanish",
+    sv:"Swedish"
+  },
     utils: {
       // picks the next option in an array / if current not set then returns first, needs an array
       nextOption (options, current) {
@@ -41,6 +48,7 @@ var vrVocabConfig = {
     initialState: {
       location: 'home',
       lang: 'nl',
+      language: 'Dutch',
       gameMode: 'Play',
       wordsPerRound: 1,
       wordsPerGame: 15,
@@ -102,6 +110,8 @@ var vrVocabConfig = {
         },
         changeMode: (state) => {
           let options = ['Learn','Play','Practice'];
+          // todo: hard coded admin user for now
+          state.adminUser = true;
           if (state.adminUser) options.push('Edit');
           state.gameMode = vrVocabConfig.utils.nextOption(options,state.gameMode);
           gState.gameMode = state.gameMode;
@@ -110,12 +120,17 @@ var vrVocabConfig = {
           const options = ['5','15','25',"Unlimited"]
           state.wordsPerGame = vrVocabConfig.utils.nextOption(options,state.wordsPerGame);
           // temporary patch, unlimited = 999? What about on init?
-          gState.wordsPerGame = (state.wordsPerGame === 'Unlimited' ? 999: state.wordsPerGame) ;
+          gState.wordsPerGame = (state.wordsPerGame === 'Unlimited' ? 99: state.wordsPerGame) ;
         },
         changeUser: (state) => {
           state.userName = (state.userName === "Paul Cook" ? 'Guest' : 'Paul Cook');
           state.adminUser = !state.adminUser;
-        }
+        },
+        changeLanguage: (state) => {
+          state.lang = vrVocabConfig.utils.nextOption(_.keys(vrVocabConfig.LANGUAGES),state.lang);
+          gState.lang = state.lang;
+        },
+
       },
       // save state to local storage
       computeState: (newState,payload) => {
@@ -129,10 +144,12 @@ var vrVocabConfig = {
           });
           gState.gameMode = newState.gameMode;
           gState.wordsPerGame = (newState.wordsPerGame === 'Unlimited' ? 999: newState.wordsPerGame) ;
+          gState.lang = newState.lang;
         } else if (payload !== 'changeHudText') {
           const saveState = _.omit(newState,['location','sceneEl','uiText','homeFusable','targetWords','attempt','hudTextTOP', 'hudTextMID','hudTextBOT', 'photos']);
            gState.db.set('state',saveState).write();
         }
+        newState.language=vrVocabConfig.LANGUAGES[newState.lang];
       }
 
   }

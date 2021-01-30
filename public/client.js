@@ -66,9 +66,9 @@ var gState= {
         this.attempt += 1;
         // after 3 incorrect give a clue...
         if (this.attempt > 3 && this.word.clue) {
-            setHudText('top','Vind: ' + this.word[this.lang].word + ' (' + this.word.clue + ')' );
+            setHudText('top','Find: ' + this.word[this.lang].word + ' (' + this.word.clue + ')' );
         } else {
-            setHudText('top','Vind: ' + this.word[this.lang].word );
+            setHudText('top','Find: ' + this.word[this.lang].word );
         }
         // repeat word out loud
         this.playWord();
@@ -210,6 +210,16 @@ socket.on('words', function(data) {
 // THIS IS WHERE WE INIT THE GAME IF NOT ALREADY (eg socket reconnects)
 //    if ( _.isEmpty(gState.word) ) gState.initGame();
 });
+// get the current data from api
+fetch('api/words')
+  .then(response => response.json())
+  .then(data => gState.db.set('words',data).write());
+
+// get the current data from api
+fetch('api/photos')
+  .then(response => response.json())
+  .then(data => gState.db.set('photos',data).write());
+
 // this should really add or update a photo?
 /*socket.on('photo', function(data) {
     console.log('photo', data);

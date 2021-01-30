@@ -13,7 +13,8 @@ const express = require("express"),
     app = express(),
     requestIp = require('request-ip');
 //getting the IP address
-app.use(requestIp.mw())
+//
+ app.use(requestIp.mw());
 
 var server;
 // if on glitch dont create a secure server as their proxy does that and it will cause hang ups
@@ -58,27 +59,21 @@ app.use(express.static("public"));
 
 io.on("connection", socket => {
     console.log("made socket connection", socket.id);
-    // return first picture on connect - this should update a single photo client side
-    io.emit(
-        "photo",
-        db
-            .get("photos")
-            .find({ id: 1 })
-            .value()
-    );
     // send back the current database on connect
-    io.emit(
+    /*io.emit(
         "photos",
         db
             .get("photos")
             .value()
-    );
+    );*/
+    /* this causes the front end to keep reconnecting!
     io.emit(
-        "words",
-        db
-            .get("words")
-            .value()
-    );
+      "words",
+      db
+        .get("words")
+        .value()
+    );*/
+
     // handle logging send everything to db
     socket.on("log", function(entry) {
         entry.id=socket.id;
@@ -115,8 +110,20 @@ io.on("connection", socket => {
     });
 
 });
-
 io.on("connect_failed", function() {
     console.log("Connection Failed");
 });
+
+app.get('/api/ping', function(req,res,rrq) {  res.send('pong poo poo')});
+
+app.get('/api/words/:word/:lang', (req,res,rrq) => res.json( db.get('words').value()[req.params.word][req.params.lang] ));
+app.get('/api/words/:word', (req,res,rrq) => res.json( db.get('words').value()[req.params.word] ));
+app.get('/api/words', (req,res,rrq) => { console.log('words'); res.json( db.get('words').value() )});
+app.get('/api/photos/:id/wordspots', (req,res,rrq) => res.json( db.get('photos').find({id:req.params.id*1}).value().wordSpots ));
+app.get('/api/photos', (req,res,rrq) => res.json( db.get('photos').value() ));
+app.get('/api/photos/:id', (req,res,rrq) => res.json( db.get('photos').find({id:req.params.id*1}).value() ));
+
+// for current user todo implement
+app.get('/api/logs/', (req,res,rrq) => res.json( udb.get('logs').value() ));
+
 console.log('server.js complete')
