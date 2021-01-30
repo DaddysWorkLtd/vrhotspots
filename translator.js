@@ -1,4 +1,5 @@
 // example usage node translator.js -p 2 -l nl
+// node translator.js -l fr the mushroom
 
 // config, not sure why this is needed as
 // credentials are in GOOGLE_APPLICATION_CREDENTIALS environment variable
