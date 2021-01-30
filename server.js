@@ -4,6 +4,7 @@ const express = require("express"),
     SERVER_PORT = process.env.PORT || 3069,
     SERVER_NAME = process.env.PORT ? 'vr-vocab.glitch.me' : "daddydev",
     DATA_FILE = "./database/vrvocabdb.json",
+    PRIVATE_DATA = "./database/privatedb.json",
     fs = require("fs"),
     ip=require('ip'),
     protocol = process.env.PORT ? require("http") : require("https") , // non secure for glitch which has process.env defined
@@ -44,9 +45,11 @@ io = socket(server,{
 const low = require("lowdb"),
     // use synchronous file mode
     FileSync = require("lowdb/adapters/FileSync"),
-    db = low(new FileSync(DATA_FILE));
+    db = low(new FileSync(DATA_FILE)),
+    udb = low(new FileSync(PRIVATE_DATA));
 
-db.defaults({ photos: [], words: {}, log: [], uid: 0 }).write();
+db.defaults({ photos: [], words: {}, uid: 0 }).write();
+udb.defaults({ users: [], log: []}).write();
 
 
 //static root is public
@@ -80,7 +83,7 @@ io.on("connection", socket => {
     socket.on("log", function(entry) {
         entry.id=socket.id;
         // NEED TO IMPLEMENT SOCKET HANDLER AS MIDDLEWARE TO GET IP from clientIP entry.ip=requestIp.get
-        db.get("log").push(entry).write();
+        udb.get("log").push(entry).write();
     })
     // Handle add spot event by recording in database and broadcasting out
     socket.on("addSpot", function(data) {
