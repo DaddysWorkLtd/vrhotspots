@@ -485,6 +485,10 @@
       "nl": {
         "word": "de bank",
         "audio": "audio/nl/de-bank.mp3"
+      },
+      "fr": {
+        "word": "le canapé",
+        "audio": "audio/fr/le-canapé.mp3"
       }
     },
     "lock": {
@@ -492,6 +496,10 @@
       "nl": {
         "word": "het slot",
         "audio": "audio/nl/het-slot.mp3"
+      },
+      "fr": {
+        "word": "le verrou",
+        "audio": "audio/fr/le-verrou.mp3"
       }
     },
     "handle": {
@@ -499,6 +507,10 @@
       "nl": {
         "word": "het handvat",
         "audio": "audio/nl/het-handvat.mp3"
+      },
+      "fr": {
+        "word": "la poignée",
+        "audio": "audio/fr/la-poignée.mp3"
       }
     },
     "stool": {
@@ -506,6 +518,10 @@
       "nl": {
         "word": "de kruk",
         "audio": "audio/nl/de-kruk.mp3"
+      },
+      "fr": {
+        "word": "le tabouret",
+        "audio": "audio/fr/le-tabouret.mp3"
       }
     },
     "box": {
@@ -513,6 +529,10 @@
       "nl": {
         "word": "de doos",
         "audio": "audio/nl/de-doos.mp3"
+      },
+      "fr": {
+        "word": "la boîte",
+        "audio": "audio/fr/la-boîte.mp3"
       }
     },
     "painting": {
@@ -520,6 +540,10 @@
       "nl": {
         "word": "het schilderij",
         "audio": "audio/nl/het-schilderij.mp3"
+      },
+      "fr": {
+        "word": "la peinture",
+        "audio": "audio/fr/la-peinture.mp3"
       }
     },
     "candle": {
@@ -527,6 +551,10 @@
       "nl": {
         "word": "de kaars",
         "audio": "audio/nl/de-kaars.mp3"
+      },
+      "fr": {
+        "word": "la bougie",
+        "audio": "audio/fr/la-bougie.mp3"
       }
     },
     "vase": {
@@ -534,6 +562,10 @@
       "nl": {
         "word": "de vaas",
         "audio": "audio/nl/de-vaas.mp3"
+      },
+      "fr": {
+        "word": "le vase",
+        "audio": "audio/fr/le-vase.mp3"
       }
     },
     "chair": {
@@ -541,6 +573,10 @@
       "nl": {
         "word": "de stoel",
         "audio": "audio/nl/de-stoel.mp3"
+      },
+      "fr": {
+        "word": "la chaise",
+        "audio": "audio/fr/la-chaise.mp3"
       }
     },
     "cushion": {
@@ -548,6 +584,10 @@
       "nl": {
         "word": "het kussen",
         "audio": "audio/nl/het-kussen.mp3"
+      },
+      "fr": {
+        "word": "le coussin",
+        "audio": "audio/fr/le-coussin.mp3"
       }
     },
     "printer": {
@@ -555,6 +595,10 @@
       "nl": {
         "word": "de printer",
         "audio": "audio/nl/de-printer.mp3"
+      },
+      "fr": {
+        "word": "L'imprimante",
+        "audio": "audio/fr/L'imprimante.mp3"
       }
     },
     "ironing board": {
@@ -562,6 +606,10 @@
       "nl": {
         "word": "de strijkplank",
         "audio": "audio/nl/de-strijkplank.mp3"
+      },
+      "fr": {
+        "word": "la planche à repasser",
+        "audio": "audio/fr/la-planche-à-repasser.mp3"
       }
     },
     "drawer": {
@@ -569,6 +617,10 @@
       "nl": {
         "word": "de lade",
         "audio": "audio/nl/de-lade.mp3"
+      },
+      "fr": {
+        "word": "le tiroir",
+        "audio": "audio/fr/le-tiroir.mp3"
       }
     },
     "cabinet": {
@@ -576,6 +628,10 @@
       "nl": {
         "word": "de ladekast",
         "audio": "audio/nl/de-ladekast.mp3"
+      },
+      "fr": {
+        "word": "l'armoire",
+        "audio": "audio/fr/l'armoire.mp3"
       }
     },
     "lamp": {
@@ -583,6 +639,10 @@
       "nl": {
         "word": "de lamp",
         "audio": "audio/nl/de-lamp.mp3"
+      },
+      "fr": {
+        "word": "la lampe",
+        "audio": "audio/fr/la-lampe.mp3"
       }
     },
     "book": {
@@ -590,6 +650,10 @@
       "nl": {
         "word": "het boek",
         "audio": "audio/nl/het-boek.mp3"
+      },
+      "fr": {
+        "word": "le livre",
+        "audio": "audio/fr/le-livre.mp3"
       }
     },
     "laptop": {
@@ -597,6 +661,10 @@
       "nl": {
         "word": "de laptop",
         "audio": "audio/nl/de-laptop.mp3"
+      },
+      "fr": {
+        "word": "Le pc portable",
+        "audio": "audio/fr/Le-pc-portable.mp3"
       }
     },
     "calculator": {
@@ -604,6 +672,10 @@
       "nl": {
         "word": "de rekenmachine",
         "audio": "audio/nl/de-rekenmachine.mp3"
+      },
+      "fr": {
+        "word": "la calculatrice",
+        "audio": "audio/fr/la-calculatrice.mp3"
       }
     },
     "computer mouse": {
@@ -611,6 +683,10 @@
       "nl": {
         "word": "de computermuis",
         "audio": "audio/nl/de-computermuis.mp3"
+      },
+      "fr": {
+        "word": "la souris d'ordinateur",
+        "audio": "audio/fr/la-souris-d'ordinateur.mp3"
       }
     },
     "cell phone": {
@@ -618,6 +694,10 @@
       "nl": {
         "word": "de mobiele telefoon",
         "audio": "audio/nl/de-mobiele-telefoon.mp3"
+      },
+      "fr": {
+        "word": "le téléphone portable",
+        "audio": "audio/fr/le-téléphone-portable.mp3"
       }
     },
     "desk lamp": {
@@ -625,6 +705,10 @@
       "nl": {
         "word": "de bureaulamp",
         "audio": "audio/nl/de-bureaulamp.mp3"
+      },
+      "fr": {
+        "word": "la lampe de bureau",
+        "audio": "audio/fr/la-lampe-de-bureau.mp3"
       }
     },
     "desk": {
@@ -632,6 +716,10 @@
       "nl": {
         "word": "het bureau",
         "audio": "audio/nl/het-bureau.mp3"
+      },
+      "fr": {
+        "word": "le bureau",
+        "audio": "audio/fr/le-bureau.mp3"
       }
     },
     "door": {
@@ -639,6 +727,10 @@
       "nl": {
         "word": "de deur",
         "audio": "audio/nl/de-deur.mp3"
+      },
+      "fr": {
+        "word": "la porte",
+        "audio": "audio/fr/la-porte.mp3"
       }
     },
     "light switch": {
@@ -646,6 +738,10 @@
       "nl": {
         "word": "het lichtknopje",
         "audio": "audio/nl/het-lichtknopje.mp3"
+      },
+      "fr": {
+        "word": "l'interrupteur d'éclairage",
+        "audio": "audio/fr/l'interrupteur-d'éclairage.mp3"
       }
     },
     "floor": {
@@ -653,6 +749,10 @@
       "nl": {
         "word": "de vloer",
         "audio": "audio/nl/de-vloer.mp3"
+      },
+      "fr": {
+        "word": "le plancher",
+        "audio": "audio/fr/le-plancher.mp3"
       }
     },
     "carpet": {
@@ -660,6 +760,10 @@
       "nl": {
         "word": "het tapijt",
         "audio": "audio/nl/het-tapijt.mp3"
+      },
+      "fr": {
+        "word": "le tapis",
+        "audio": "audio/fr/le-tapis.mp3"
       }
     },
     "tablecloth": {
@@ -667,6 +771,10 @@
       "nl": {
         "word": "het tafelkleed",
         "audio": "audio/nl/het-tafelkleed.mp3"
+      },
+      "fr": {
+        "word": "La nappe",
+        "audio": "audio/fr/La-nappe.mp3"
       }
     },
     "ceiling": {
@@ -674,6 +782,10 @@
       "nl": {
         "word": "het plafond",
         "audio": "audio/nl/het-plafond.mp3"
+      },
+      "fr": {
+        "word": "le plafond",
+        "audio": "audio/fr/le-plafond.mp3"
       }
     },
     "curtain": {
@@ -681,6 +793,10 @@
       "nl": {
         "word": "het gordijn",
         "audio": "audio/nl/het-gordijn.mp3"
+      },
+      "fr": {
+        "word": "le rideau",
+        "audio": "audio/fr/le-rideau.mp3"
       }
     },
     "power outlet": {
@@ -688,6 +804,10 @@
       "nl": {
         "word": "het stopcontact",
         "audio": "audio/nl/het-stopcontact.mp3"
+      },
+      "fr": {
+        "word": "la prise de courant",
+        "audio": "audio/fr/la-prise-de-courant.mp3"
       }
     },
     "radiator": {
@@ -695,6 +815,10 @@
       "nl": {
         "word": "de radiator",
         "audio": "audio/nl/de-radiator.mp3"
+      },
+      "fr": {
+        "word": "le radiateur",
+        "audio": "audio/fr/le-radiateur.mp3"
       }
     },
     "wardrobe": {
@@ -702,6 +826,10 @@
       "nl": {
         "word": "de kledingkast",
         "audio": "audio/nl/de-kledingkast.mp3"
+      },
+      "fr": {
+        "word": "l'armoire",
+        "audio": "audio/fr/l'armoire.mp3"
       }
     },
     "window": {
@@ -709,6 +837,10 @@
       "nl": {
         "word": "het raam",
         "audio": "audio/nl/het-raam.mp3"
+      },
+      "fr": {
+        "word": "la fenêtre",
+        "audio": "audio/fr/la-fenêtre.mp3"
       }
     },
     "wall": {
@@ -716,6 +848,110 @@
       "nl": {
         "word": "de muur",
         "audio": "audio/nl/de-muur.mp3"
+      },
+      "fr": {
+        "word": "le mur",
+        "audio": "audio/fr/le-mur.mp3"
+      }
+    },
+    "sausage": {
+      "nl": {
+        "word": "de worst",
+        "audio": "audio/nl/de-worst.mp3"
+      },
+      "fr": {
+        "word": "la saucisse",
+        "audio": "audio/fr/la-saucisse.mp3"
+      }
+    },
+    "bread": {
+      "nl": {
+        "word": "het brood",
+        "audio": "audio/nl/het-brood.mp3"
+      },
+      "fr": {
+        "word": "le pain",
+        "audio": "audio/fr/le-pain.mp3"
+      }
+    },
+    "fruit bowl": {
+      "nl": {
+        "word": "de fruitschaal",
+        "audio": "audio/nl/de-fruitschaal.mp3"
+      },
+      "fr": {
+        "word": "le bol de fruits",
+        "audio": "audio/fr/le-bol-de-fruits.mp3"
+      }
+    },
+    "salt": {
+      "nl": {
+        "word": "het zout",
+        "audio": "audio/nl/het-zout.mp3"
+      },
+      "fr": {
+        "word": "le sel",
+        "audio": "audio/fr/le-sel.mp3"
+      }
+    },
+    "glass": {
+      "nl": {
+        "word": "het glas",
+        "audio": "audio/nl/het-glas.mp3"
+      },
+      "fr": {
+        "word": "le verre",
+        "audio": "audio/fr/le-verre.mp3"
+      }
+    },
+    "chicken": {
+      "nl": {
+        "word": "de kip",
+        "audio": "audio/nl/de-kip.mp3"
+      },
+      "fr": {
+        "word": "le poulet",
+        "audio": "audio/fr/le-poulet.mp3"
+      }
+    },
+    "mushrooms": {
+      "nl": {
+        "word": "de paddenstoelen",
+        "audio": "audio/nl/de-paddenstoelen.mp3"
+      },
+      "fr": {
+        "word": "les champignons",
+        "audio": "audio/fr/les-champignons.mp3"
+      }
+    },
+    "aubergine": {
+      "nl": {
+        "word": "de aubergine",
+        "audio": "audio/nl/de-aubergine.mp3"
+      },
+      "fr": {
+        "word": "l'aubergine",
+        "audio": "audio/fr/l'aubergine.mp3"
+      }
+    },
+    "bowl": {
+      "nl": {
+        "word": "de kom",
+        "audio": "audio/nl/de-kom.mp3"
+      },
+      "fr": {
+        "word": "le bol",
+        "audio": "audio/fr/le-bol.mp3"
+      }
+    },
+    "courgette": {
+      "nl": {
+        "word": "de courgette",
+        "audio": "audio/nl/de-courgette.mp3"
+      },
+      "fr": {
+        "word": "la courgette",
+        "audio": "audio/fr/la-courgette.mp3"
       }
     }
   },
