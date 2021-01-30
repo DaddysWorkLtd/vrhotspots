@@ -105,3 +105,6 @@ dist
 
 #Webstorm
 .idea/
+
+#private databes
+database/privatedb.json
