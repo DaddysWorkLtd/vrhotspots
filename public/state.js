@@ -43,7 +43,7 @@ var vrVocabConfig = {
     }
   },
   stateHandler = {
-    nonBindedStateKeys: ['fbToken','scEl', 'uiText','photos'],
+    nonBindedStateKeys: ['fbToken','scEl', 'uiText'],
     // Initial state of our application. We have the current environment and the active menu.
     initialState: {
       location: 'home',
@@ -61,7 +61,7 @@ var vrVocabConfig = {
       adminUser: false,
       fbUserId: '',
       fbToken: '',
-      photos: gState.db.get('photos').value(), // this needs to computed for the player....
+      photos: {}, // this needs to computed for the player....
       homeFusable: 'fusable', // class to control fusing of home page objects,
       photoFusable: '',
       uiText: {welcome: 'Welcome to VR Vocab!\n\nThe goal in every room is to locate the requested items. Select an object by pointing the gaze cursor at an orange hotspot. Find all the items to unlock the next level....'}
@@ -85,6 +85,11 @@ var vrVocabConfig = {
           state.location='home';
           state.homeFusable = 'fusable';
           state.photoFusable = '';
+          // as this can get changed during game then reset it every time we leave a game
+          gState.wordsPerGame = (state.wordsPerGame === 'Unlimited' ? 999: state.wordsPerGame);
+          // update user games data
+          state.photos=gState.getUserPhotoData();
+          state.photos.__dirty=true;
         },
         // really for setting HUD text and playing animations (animate:true) prop
         changeHudText: (state,what) => {
@@ -120,7 +125,7 @@ var vrVocabConfig = {
           const options = ['5','15','25',"Unlimited"]
           state.wordsPerGame = vrVocabConfig.utils.nextOption(options,state.wordsPerGame);
           // temporary patch, unlimited = 999? What about on init?
-          gState.wordsPerGame = (state.wordsPerGame === 'Unlimited' ? 99: state.wordsPerGame) ;
+          gState.wordsPerGame = (state.wordsPerGame === 'Unlimited' ? 999: state.wordsPerGame) ;
         },
         changeUser: (state) => {
           state.userName = (state.userName === "Paul Cook" ? 'Guest' : 'Paul Cook');
@@ -129,6 +134,8 @@ var vrVocabConfig = {
         changeLanguage: (state) => {
           state.lang = vrVocabConfig.utils.nextOption(_.keys(vrVocabConfig.LANGUAGES),state.lang);
           gState.lang = state.lang;
+          state.photos=gState.getUserPhotoData();
+          state.photos.__dirty=true;
         },
 
       },
@@ -145,11 +152,15 @@ var vrVocabConfig = {
           gState.gameMode = newState.gameMode;
           gState.wordsPerGame = (newState.wordsPerGame === 'Unlimited' ? 999: newState.wordsPerGame) ;
           gState.lang = newState.lang;
+          newState.photos=gState.getUserPhotoData();
+          newState.photos.__dirty=true;
         } else if (payload !== 'changeHudText') {
           const saveState = _.omit(newState,['location','sceneEl','uiText','homeFusable','targetWords','attempt','hudTextTOP', 'hudTextMID','hudTextBOT', 'photos']);
            gState.db.set('state',saveState).write();
         }
         newState.language=vrVocabConfig.LANGUAGES[newState.lang];
+        // need to trigger a refresh when language changes or when just played
+
       }
 
   }
