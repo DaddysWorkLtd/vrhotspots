@@ -236,21 +236,22 @@ AFRAME.registerComponent('vocab-room', {
             stars += 1;
           }
         });
+        this.el.addEventListener('fusing', evt => {
+          //scope?
+          this.el.sceneEl.emit('changeHudText', {target: 'bot', text: 'fusing: ' + evt.target.getAttribute('name')}); // this.photo.name
+        });
+        this.el.addEventListener('click', evt => {
+          // transition to 360photo
+          this.el.sceneEl.emit('enterPhoto');
+          gState.changePhoto(evt.target.getAttribute('photo-id'));
+        });
+        // only fusable if enabled..
+        el.setAttribute('bind__class','homeFusable');
+        sp.setAttribute('bind__class','homeFusable');
+        // needed for the event handler to work... I supose I could put these in a closure
+        sp.setAttribute('name', data.name);
+        sp.setAttribute('photo-id', data.photoId);
       }
-      this.el.addEventListener('fusing', evt => {
-        //scope?
-        this.el.sceneEl.emit('changeHudText', {target: 'bot', text: 'fusing: ' + evt.target.getAttribute('name')}); // this.photo.name
-      });
-      this.el.addEventListener('click', evt => {
-        // transition to 360photo
-        this.el.sceneEl.emit('enterPhoto');
-        gState.changePhoto(evt.target.getAttribute('photo-id'));
-      });
-      el.setAttribute('bind__class','homeFusable');
-      sp.setAttribute('bind__class','homeFusable');
-      // needed for the event handler to work... I supose I could put these in a closure
-      sp.setAttribute('name', data.name);
-      sp.setAttribute('photo-id', data.photoId);
     }
   }
 );
