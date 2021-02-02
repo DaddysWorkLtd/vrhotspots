@@ -69,7 +69,7 @@ const langConfig = {
       "name": "it-IT-Wavenet-B"
     }
   },
-  sp: {
+  es: {
     "audioConfig": {
       "audioEncoding": "LINEAR16",
       "effectsProfileId": [
@@ -195,7 +195,7 @@ if (argv.photoId) {
     let file = 'audio' + '/' + translation.replace(/\s/g, '-') + '.mp3';
     console.log(text,lang,translation);
     await generateAudio(translation, lang,file );
-    console.log('public/audio/file');
+    console.log('public/'+file);
   }
   transateText( argv._.join(' '),LANG);
 

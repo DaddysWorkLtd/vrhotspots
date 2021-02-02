@@ -1268,6 +1268,22 @@
       "fr": {
         "word": "le canapé",
         "audio": "audio/fr/le-canapé.mp3"
+      },
+      "de": {
+        "word": "das Sofa",
+        "audio": "audio/de/das-Sofa.mp3"
+      },
+      "es": {
+        "word": "el sofá",
+        "audio": "audio/es/el-sofá.mp3"
+      },
+      "it": {
+        "word": "il divano",
+        "audio": "audio/it/il-divano.mp3"
+      },
+      "sv": {
+        "word": "soffan",
+        "audio": "audio/sv/soffan.mp3"
       }
     },
     "lock": {
@@ -1279,6 +1295,22 @@
       "fr": {
         "word": "le verrou",
         "audio": "audio/fr/le-verrou.mp3"
+      },
+      "de": {
+        "word": "das Schloss",
+        "audio": "audio/de/das-Schloss.mp3"
+      },
+      "es": {
+        "word": "La cerradura",
+        "audio": "audio/es/La-cerradura.mp3"
+      },
+      "it": {
+        "word": "la serratura",
+        "audio": "audio/it/la-serratura.mp3"
+      },
+      "sv": {
+        "word": "låset",
+        "audio": "audio/sv/låset.mp3"
       }
     },
     "handle": {
@@ -1290,6 +1322,22 @@
       "fr": {
         "word": "la poignée",
         "audio": "audio/fr/la-poignée.mp3"
+      },
+      "de": {
+        "word": "der Griff",
+        "audio": "audio/de/der-Griff.mp3"
+      },
+      "es": {
+        "word": "la manija",
+        "audio": "audio/es/la-manija.mp3"
+      },
+      "it": {
+        "word": "la maniglia",
+        "audio": "audio/it/la-maniglia.mp3"
+      },
+      "sv": {
+        "word": "handtaget",
+        "audio": "audio/sv/handtaget.mp3"
       }
     },
     "stool": {
@@ -1301,6 +1349,22 @@
       "fr": {
         "word": "le tabouret",
         "audio": "audio/fr/le-tabouret.mp3"
+      },
+      "de": {
+        "word": "der Hocker",
+        "audio": "audio/de/der-Hocker.mp3"
+      },
+      "es": {
+        "word": "el taburete",
+        "audio": "audio/es/el-taburete.mp3"
+      },
+      "it": {
+        "word": "lo sgabello",
+        "audio": "audio/it/lo-sgabello.mp3"
+      },
+      "sv": {
+        "word": "avföringen",
+        "audio": "audio/sv/avföringen.mp3"
       }
     },
     "box": {
@@ -1312,6 +1376,22 @@
       "fr": {
         "word": "la boîte",
         "audio": "audio/fr/la-boîte.mp3"
+      },
+      "de": {
+        "word": "die Kiste",
+        "audio": "audio/de/die-Kiste.mp3"
+      },
+      "es": {
+        "word": "la caja",
+        "audio": "audio/es/la-caja.mp3"
+      },
+      "it": {
+        "word": "la scatola",
+        "audio": "audio/it/la-scatola.mp3"
+      },
+      "sv": {
+        "word": "lådan",
+        "audio": "audio/sv/lådan.mp3"
       }
     },
     "painting": {
@@ -1323,6 +1403,22 @@
       "fr": {
         "word": "la peinture",
         "audio": "audio/fr/la-peinture.mp3"
+      },
+      "de": {
+        "word": "Das Gemälde",
+        "audio": "audio/de/Das-Gemälde.mp3"
+      },
+      "es": {
+        "word": "la pintura",
+        "audio": "audio/es/la-pintura.mp3"
+      },
+      "it": {
+        "word": "il dipinto",
+        "audio": "audio/it/il-dipinto.mp3"
+      },
+      "sv": {
+        "word": "målningen",
+        "audio": "audio/sv/målningen.mp3"
       }
     },
     "candle": {
@@ -1334,6 +1430,22 @@
       "fr": {
         "word": "la bougie",
         "audio": "audio/fr/la-bougie.mp3"
+      },
+      "de": {
+        "word": "die Kerze",
+        "audio": "audio/de/die-Kerze.mp3"
+      },
+      "es": {
+        "word": "la vela",
+        "audio": "audio/es/la-vela.mp3"
+      },
+      "it": {
+        "word": "la candela",
+        "audio": "audio/it/la-candela.mp3"
+      },
+      "sv": {
+        "word": "ljuset",
+        "audio": "audio/sv/ljuset.mp3"
       }
     },
     "vase": {
@@ -1345,6 +1457,22 @@
       "fr": {
         "word": "le vase",
         "audio": "audio/fr/le-vase.mp3"
+      },
+      "de": {
+        "word": "die Vase",
+        "audio": "audio/de/die-Vase.mp3"
+      },
+      "es": {
+        "word": "el jarrón",
+        "audio": "audio/es/el-jarrón.mp3"
+      },
+      "it": {
+        "word": "il vaso",
+        "audio": "audio/it/il-vaso.mp3"
+      },
+      "sv": {
+        "word": "vasen",
+        "audio": "audio/sv/vasen.mp3"
       }
     },
     "chair": {
@@ -1356,6 +1484,22 @@
       "fr": {
         "word": "la chaise",
         "audio": "audio/fr/la-chaise.mp3"
+      },
+      "de": {
+        "word": "der Stuhl",
+        "audio": "audio/de/der-Stuhl.mp3"
+      },
+      "es": {
+        "word": "la silla",
+        "audio": "audio/es/la-silla.mp3"
+      },
+      "it": {
+        "word": "la sedia",
+        "audio": "audio/it/la-sedia.mp3"
+      },
+      "sv": {
+        "word": "stolen",
+        "audio": "audio/sv/stolen.mp3"
       }
     },
     "cushion": {
@@ -1367,6 +1511,22 @@
       "fr": {
         "word": "le coussin",
         "audio": "audio/fr/le-coussin.mp3"
+      },
+      "de": {
+        "word": "das Kissen",
+        "audio": "audio/de/das-Kissen.mp3"
+      },
+      "es": {
+        "word": "el cojín",
+        "audio": "audio/es/el-cojín.mp3"
+      },
+      "it": {
+        "word": "il cuscino",
+        "audio": "audio/it/il-cuscino.mp3"
+      },
+      "sv": {
+        "word": "kudden",
+        "audio": "audio/sv/kudden.mp3"
       }
     },
     "printer": {
@@ -1378,6 +1538,22 @@
       "fr": {
         "word": "L'imprimante",
         "audio": "audio/fr/L'imprimante.mp3"
+      },
+      "de": {
+        "word": "der Drucker",
+        "audio": "audio/de/der-Drucker.mp3"
+      },
+      "es": {
+        "word": "la impresora",
+        "audio": "audio/es/la-impresora.mp3"
+      },
+      "it": {
+        "word": "la stampante",
+        "audio": "audio/it/la-stampante.mp3"
+      },
+      "sv": {
+        "word": "skrivaren",
+        "audio": "audio/sv/skrivaren.mp3"
       }
     },
     "ironing board": {
@@ -1389,6 +1565,22 @@
       "fr": {
         "word": "la planche à repasser",
         "audio": "audio/fr/la-planche-à-repasser.mp3"
+      },
+      "de": {
+        "word": "das Bügelbrett",
+        "audio": "audio/de/das-Bügelbrett.mp3"
+      },
+      "es": {
+        "word": "la tabla de planchar",
+        "audio": "audio/es/la-tabla-de-planchar.mp3"
+      },
+      "it": {
+        "word": "l'asse da stiro",
+        "audio": "audio/it/l'asse-da-stiro.mp3"
+      },
+      "sv": {
+        "word": "strykbrädan",
+        "audio": "audio/sv/strykbrädan.mp3"
       }
     },
     "drawer": {
@@ -1400,6 +1592,22 @@
       "fr": {
         "word": "le tiroir",
         "audio": "audio/fr/le-tiroir.mp3"
+      },
+      "de": {
+        "word": "die Schublade",
+        "audio": "audio/de/die-Schublade.mp3"
+      },
+      "es": {
+        "word": "el cajón",
+        "audio": "audio/es/el-cajón.mp3"
+      },
+      "it": {
+        "word": "il cassetto",
+        "audio": "audio/it/il-cassetto.mp3"
+      },
+      "sv": {
+        "word": "lådan",
+        "audio": "audio/sv/lådan.mp3"
       }
     },
     "cabinet": {
@@ -1411,6 +1619,22 @@
       "fr": {
         "word": "l'armoire",
         "audio": "audio/fr/l'armoire.mp3"
+      },
+      "de": {
+        "word": "das Kabinett",
+        "audio": "audio/de/das-Kabinett.mp3"
+      },
+      "es": {
+        "word": "La cabina",
+        "audio": "audio/es/La-cabina.mp3"
+      },
+      "it": {
+        "word": "l'armadio",
+        "audio": "audio/it/l'armadio.mp3"
+      },
+      "sv": {
+        "word": "skåpet",
+        "audio": "audio/sv/skåpet.mp3"
       }
     },
     "lamp": {
@@ -1422,6 +1646,22 @@
       "fr": {
         "word": "la lampe",
         "audio": "audio/fr/la-lampe.mp3"
+      },
+      "de": {
+        "word": "die Lampe",
+        "audio": "audio/de/die-Lampe.mp3"
+      },
+      "es": {
+        "word": "la lámpara",
+        "audio": "audio/es/la-lámpara.mp3"
+      },
+      "it": {
+        "word": "la lampada",
+        "audio": "audio/it/la-lampada.mp3"
+      },
+      "sv": {
+        "word": "lampan",
+        "audio": "audio/sv/lampan.mp3"
       }
     },
     "book": {
@@ -1433,6 +1673,22 @@
       "fr": {
         "word": "le livre",
         "audio": "audio/fr/le-livre.mp3"
+      },
+      "de": {
+        "word": "das Buch",
+        "audio": "audio/de/das-Buch.mp3"
+      },
+      "es": {
+        "word": "el libro",
+        "audio": "audio/es/el-libro.mp3"
+      },
+      "it": {
+        "word": "il libro",
+        "audio": "audio/it/il-libro.mp3"
+      },
+      "sv": {
+        "word": "boken",
+        "audio": "audio/sv/boken.mp3"
       }
     },
     "laptop": {
@@ -1444,6 +1700,22 @@
       "fr": {
         "word": "Le pc portable",
         "audio": "audio/fr/Le-pc-portable.mp3"
+      },
+      "de": {
+        "word": "der Laptop",
+        "audio": "audio/de/der-Laptop.mp3"
+      },
+      "es": {
+        "word": "el portatil",
+        "audio": "audio/es/el-portatil.mp3"
+      },
+      "it": {
+        "word": "il laptop",
+        "audio": "audio/it/il-laptop.mp3"
+      },
+      "sv": {
+        "word": "den bärbara datorn",
+        "audio": "audio/sv/den-bärbara-datorn.mp3"
       }
     },
     "calculator": {
@@ -1455,6 +1727,22 @@
       "fr": {
         "word": "la calculatrice",
         "audio": "audio/fr/la-calculatrice.mp3"
+      },
+      "de": {
+        "word": "der Rechner",
+        "audio": "audio/de/der-Rechner.mp3"
+      },
+      "es": {
+        "word": "la calculadora",
+        "audio": "audio/es/la-calculadora.mp3"
+      },
+      "it": {
+        "word": "la calcolatrice",
+        "audio": "audio/it/la-calcolatrice.mp3"
+      },
+      "sv": {
+        "word": "miniräknaren",
+        "audio": "audio/sv/miniräknaren.mp3"
       }
     },
     "computer mouse": {
@@ -1466,6 +1754,22 @@
       "fr": {
         "word": "la souris d'ordinateur",
         "audio": "audio/fr/la-souris-d'ordinateur.mp3"
+      },
+      "de": {
+        "word": "die Computermaus",
+        "audio": "audio/de/die-Computermaus.mp3"
+      },
+      "es": {
+        "word": "el ratón de la computadora",
+        "audio": "audio/es/el-ratón-de-la-computadora.mp3"
+      },
+      "it": {
+        "word": "il mouse del computer",
+        "audio": "audio/it/il-mouse-del-computer.mp3"
+      },
+      "sv": {
+        "word": "datormusen",
+        "audio": "audio/sv/datormusen.mp3"
       }
     },
     "cell phone": {
@@ -1477,6 +1781,22 @@
       "fr": {
         "word": "le téléphone portable",
         "audio": "audio/fr/le-téléphone-portable.mp3"
+      },
+      "de": {
+        "word": "das Handy",
+        "audio": "audio/de/das-Handy.mp3"
+      },
+      "es": {
+        "word": "el celular",
+        "audio": "audio/es/el-celular.mp3"
+      },
+      "it": {
+        "word": "il cellulare",
+        "audio": "audio/it/il-cellulare.mp3"
+      },
+      "sv": {
+        "word": "mobiltelefonen",
+        "audio": "audio/sv/mobiltelefonen.mp3"
       }
     },
     "desk lamp": {
@@ -1488,6 +1808,22 @@
       "fr": {
         "word": "la lampe de bureau",
         "audio": "audio/fr/la-lampe-de-bureau.mp3"
+      },
+      "de": {
+        "word": "die Schreibtischlampe",
+        "audio": "audio/de/die-Schreibtischlampe.mp3"
+      },
+      "es": {
+        "word": "la lámpara de escritorio",
+        "audio": "audio/es/la-lámpara-de-escritorio.mp3"
+      },
+      "it": {
+        "word": "la lampada da tavolo",
+        "audio": "audio/it/la-lampada-da-tavolo.mp3"
+      },
+      "sv": {
+        "word": "skrivbordslampan",
+        "audio": "audio/sv/skrivbordslampan.mp3"
       }
     },
     "desk": {
@@ -1499,6 +1835,22 @@
       "fr": {
         "word": "le bureau",
         "audio": "audio/fr/le-bureau.mp3"
+      },
+      "de": {
+        "word": "der Schreibtisch",
+        "audio": "audio/de/der-Schreibtisch.mp3"
+      },
+      "es": {
+        "word": "el escritorio",
+        "audio": "audio/es/el-escritorio.mp3"
+      },
+      "it": {
+        "word": "la scrivania",
+        "audio": "audio/it/la-scrivania.mp3"
+      },
+      "sv": {
+        "word": "skrivbordet",
+        "audio": "audio/sv/skrivbordet.mp3"
       }
     },
     "door": {
@@ -1510,6 +1862,22 @@
       "fr": {
         "word": "la porte",
         "audio": "audio/fr/la-porte.mp3"
+      },
+      "de": {
+        "word": "die Tür",
+        "audio": "audio/de/die-Tür.mp3"
+      },
+      "es": {
+        "word": "la puerta",
+        "audio": "audio/es/la-puerta.mp3"
+      },
+      "it": {
+        "word": "la porta",
+        "audio": "audio/it/la-porta.mp3"
+      },
+      "sv": {
+        "word": "dörren",
+        "audio": "audio/sv/dörren.mp3"
       }
     },
     "light switch": {
@@ -1521,6 +1889,22 @@
       "fr": {
         "word": "l'interrupteur d'éclairage",
         "audio": "audio/fr/l'interrupteur-d'éclairage.mp3"
+      },
+      "de": {
+        "word": "der Lichtschalter",
+        "audio": "audio/de/der-Lichtschalter.mp3"
+      },
+      "es": {
+        "word": "el interruptor de la luz",
+        "audio": "audio/es/el-interruptor-de-la-luz.mp3"
+      },
+      "it": {
+        "word": "l'interruttore della luce",
+        "audio": "audio/it/l'interruttore-della-luce.mp3"
+      },
+      "sv": {
+        "word": "ljusströmbrytaren",
+        "audio": "audio/sv/ljusströmbrytaren.mp3"
       }
     },
     "floor": {
@@ -1532,6 +1916,22 @@
       "fr": {
         "word": "le plancher",
         "audio": "audio/fr/le-plancher.mp3"
+      },
+      "de": {
+        "word": "der Boden",
+        "audio": "audio/de/der-Boden.mp3"
+      },
+      "es": {
+        "word": "el piso",
+        "audio": "audio/es/el-piso.mp3"
+      },
+      "it": {
+        "word": "il pavimento",
+        "audio": "audio/it/il-pavimento.mp3"
+      },
+      "sv": {
+        "word": "golvet",
+        "audio": "audio/sv/golvet.mp3"
       }
     },
     "carpet": {
@@ -1543,6 +1943,22 @@
       "fr": {
         "word": "le tapis",
         "audio": "audio/fr/le-tapis.mp3"
+      },
+      "de": {
+        "word": "der Teppich",
+        "audio": "audio/de/der-Teppich.mp3"
+      },
+      "es": {
+        "word": "la alfombra",
+        "audio": "audio/es/la-alfombra.mp3"
+      },
+      "it": {
+        "word": "il tappeto",
+        "audio": "audio/it/il-tappeto.mp3"
+      },
+      "sv": {
+        "word": "mattan",
+        "audio": "audio/sv/mattan.mp3"
       }
     },
     "tablecloth": {
@@ -1554,6 +1970,22 @@
       "fr": {
         "word": "La nappe",
         "audio": "audio/fr/La-nappe.mp3"
+      },
+      "de": {
+        "word": "Die Tischdecke",
+        "audio": "audio/de/Die-Tischdecke.mp3"
+      },
+      "es": {
+        "word": "el mantel",
+        "audio": "audio/es/el-mantel.mp3"
+      },
+      "it": {
+        "word": "la tovaglia",
+        "audio": "audio/it/la-tovaglia.mp3"
+      },
+      "sv": {
+        "word": "duken",
+        "audio": "audio/sv/duken.mp3"
       }
     },
     "ceiling": {
@@ -1565,6 +1997,22 @@
       "fr": {
         "word": "le plafond",
         "audio": "audio/fr/le-plafond.mp3"
+      },
+      "de": {
+        "word": "die Decke",
+        "audio": "audio/de/die-Decke.mp3"
+      },
+      "es": {
+        "word": "el techo",
+        "audio": "audio/es/el-techo.mp3"
+      },
+      "it": {
+        "word": "il soffitto",
+        "audio": "audio/it/il-soffitto.mp3"
+      },
+      "sv": {
+        "word": "taket",
+        "audio": "audio/sv/taket.mp3"
       }
     },
     "curtain": {
@@ -1576,6 +2024,22 @@
       "fr": {
         "word": "le rideau",
         "audio": "audio/fr/le-rideau.mp3"
+      },
+      "de": {
+        "word": "der Vorhang",
+        "audio": "audio/de/der-Vorhang.mp3"
+      },
+      "es": {
+        "word": "la cortina",
+        "audio": "audio/es/la-cortina.mp3"
+      },
+      "it": {
+        "word": "la tenda",
+        "audio": "audio/it/la-tenda.mp3"
+      },
+      "sv": {
+        "word": "gardinen",
+        "audio": "audio/sv/gardinen.mp3"
       }
     },
     "power outlet": {
@@ -1587,6 +2051,22 @@
       "fr": {
         "word": "la prise de courant",
         "audio": "audio/fr/la-prise-de-courant.mp3"
+      },
+      "de": {
+        "word": "die Steckdose",
+        "audio": "audio/de/die-Steckdose.mp3"
+      },
+      "es": {
+        "word": "la toma de corriente",
+        "audio": "audio/es/la-toma-de-corriente.mp3"
+      },
+      "it": {
+        "word": "la presa di corrente",
+        "audio": "audio/it/la-presa-di-corrente.mp3"
+      },
+      "sv": {
+        "word": "eluttaget",
+        "audio": "audio/sv/eluttaget.mp3"
       }
     },
     "radiator": {
@@ -1598,6 +2078,22 @@
       "fr": {
         "word": "le radiateur",
         "audio": "audio/fr/le-radiateur.mp3"
+      },
+      "de": {
+        "word": "der Heizkörper",
+        "audio": "audio/de/der-Heizkörper.mp3"
+      },
+      "es": {
+        "word": "el radiador",
+        "audio": "audio/es/el-radiador.mp3"
+      },
+      "it": {
+        "word": "il radiatore",
+        "audio": "audio/it/il-radiatore.mp3"
+      },
+      "sv": {
+        "word": "kylaren",
+        "audio": "audio/sv/kylaren.mp3"
       }
     },
     "wardrobe": {
@@ -1609,6 +2105,22 @@
       "fr": {
         "word": "l'armoire",
         "audio": "audio/fr/l'armoire.mp3"
+      },
+      "de": {
+        "word": "der Kleiderschrank",
+        "audio": "audio/de/der-Kleiderschrank.mp3"
+      },
+      "es": {
+        "word": "el ropero",
+        "audio": "audio/es/el-ropero.mp3"
+      },
+      "it": {
+        "word": "l'armadio",
+        "audio": "audio/it/l'armadio.mp3"
+      },
+      "sv": {
+        "word": "garderoben",
+        "audio": "audio/sv/garderoben.mp3"
       }
     },
     "window": {
@@ -1620,6 +2132,22 @@
       "fr": {
         "word": "la fenêtre",
         "audio": "audio/fr/la-fenêtre.mp3"
+      },
+      "de": {
+        "word": "das Fenster",
+        "audio": "audio/de/das-Fenster.mp3"
+      },
+      "es": {
+        "word": "la ventana",
+        "audio": "audio/es/la-ventana.mp3"
+      },
+      "it": {
+        "word": "la finestra",
+        "audio": "audio/it/la-finestra.mp3"
+      },
+      "sv": {
+        "word": "fönstret",
+        "audio": "audio/sv/fönstret.mp3"
       }
     },
     "wall": {
@@ -1631,6 +2159,22 @@
       "fr": {
         "word": "le mur",
         "audio": "audio/fr/le-mur.mp3"
+      },
+      "de": {
+        "word": "die Wand",
+        "audio": "audio/de/die-Wand.mp3"
+      },
+      "es": {
+        "word": "la pared",
+        "audio": "audio/es/la-pared.mp3"
+      },
+      "it": {
+        "word": "il muro",
+        "audio": "audio/it/il-muro.mp3"
+      },
+      "sv": {
+        "word": "väggen",
+        "audio": "audio/sv/väggen.mp3"
       }
     },
     "sausage": {
@@ -1641,6 +2185,22 @@
       "fr": {
         "word": "la saucisse",
         "audio": "audio/fr/la-saucisse.mp3"
+      },
+      "de": {
+        "word": "die Wurst",
+        "audio": "audio/de/die-Wurst.mp3"
+      },
+      "es": {
+        "word": "la salchicha",
+        "audio": "audio/es/la-salchicha.mp3"
+      },
+      "it": {
+        "word": "la salsiccia",
+        "audio": "audio/it/la-salsiccia.mp3"
+      },
+      "sv": {
+        "word": "korven",
+        "audio": "audio/sv/korven.mp3"
       }
     },
     "bread": {
@@ -1651,6 +2211,22 @@
       "fr": {
         "word": "le pain",
         "audio": "audio/fr/le-pain.mp3"
+      },
+      "de": {
+        "word": "das Brot",
+        "audio": "audio/de/das-Brot.mp3"
+      },
+      "es": {
+        "word": "el pan",
+        "audio": "audio/es/el-pan.mp3"
+      },
+      "it": {
+        "word": "il pane",
+        "audio": "audio/it/il-pane.mp3"
+      },
+      "sv": {
+        "word": "brödet",
+        "audio": "audio/sv/brödet.mp3"
       }
     },
     "fruit bowl": {
@@ -1661,6 +2237,22 @@
       "fr": {
         "word": "le bol de fruits",
         "audio": "audio/fr/le-bol-de-fruits.mp3"
+      },
+      "de": {
+        "word": "die Obstschale",
+        "audio": "audio/de/die-Obstschale.mp3"
+      },
+      "es": {
+        "word": "el frutero",
+        "audio": "audio/es/el-frutero.mp3"
+      },
+      "it": {
+        "word": "la fruttiera",
+        "audio": "audio/it/la-fruttiera.mp3"
+      },
+      "sv": {
+        "word": "fruktskålen",
+        "audio": "audio/sv/fruktskålen.mp3"
       }
     },
     "salt": {
@@ -1671,6 +2263,22 @@
       "fr": {
         "word": "le sel",
         "audio": "audio/fr/le-sel.mp3"
+      },
+      "de": {
+        "word": "das Salz",
+        "audio": "audio/de/das-Salz.mp3"
+      },
+      "es": {
+        "word": "la sal",
+        "audio": "audio/es/la-sal.mp3"
+      },
+      "it": {
+        "word": "il sale",
+        "audio": "audio/it/il-sale.mp3"
+      },
+      "sv": {
+        "word": "saltet",
+        "audio": "audio/sv/saltet.mp3"
       }
     },
     "glass": {
@@ -1681,6 +2289,22 @@
       "fr": {
         "word": "le verre",
         "audio": "audio/fr/le-verre.mp3"
+      },
+      "de": {
+        "word": "das Glas",
+        "audio": "audio/de/das-Glas.mp3"
+      },
+      "es": {
+        "word": "el cristal",
+        "audio": "audio/es/el-cristal.mp3"
+      },
+      "it": {
+        "word": "il vetro",
+        "audio": "audio/it/il-vetro.mp3"
+      },
+      "sv": {
+        "word": "glaset",
+        "audio": "audio/sv/glaset.mp3"
       }
     },
     "chicken": {
@@ -1691,6 +2315,22 @@
       "fr": {
         "word": "le poulet",
         "audio": "audio/fr/le-poulet.mp3"
+      },
+      "de": {
+        "word": "das Hähnchen",
+        "audio": "audio/de/das-Hähnchen.mp3"
+      },
+      "es": {
+        "word": "el pollo",
+        "audio": "audio/es/el-pollo.mp3"
+      },
+      "it": {
+        "word": "il pollo",
+        "audio": "audio/it/il-pollo.mp3"
+      },
+      "sv": {
+        "word": "kycklingen",
+        "audio": "audio/sv/kycklingen.mp3"
       }
     },
     "mushrooms": {
@@ -1701,6 +2341,22 @@
       "fr": {
         "word": "les champignons",
         "audio": "audio/fr/les-champignons.mp3"
+      },
+      "de": {
+        "word": "die Pilze",
+        "audio": "audio/de/die-Pilze.mp3"
+      },
+      "es": {
+        "word": "Los champiñones",
+        "audio": "audio/es/Los-champiñones.mp3"
+      },
+      "it": {
+        "word": "i funghi",
+        "audio": "audio/it/i-funghi.mp3"
+      },
+      "sv": {
+        "word": "svamparna",
+        "audio": "audio/sv/svamparna.mp3"
       }
     },
     "aubergine": {
@@ -1711,6 +2367,22 @@
       "fr": {
         "word": "l'aubergine",
         "audio": "audio/fr/l'aubergine.mp3"
+      },
+      "de": {
+        "word": "die Aubergine",
+        "audio": "audio/de/die-Aubergine.mp3"
+      },
+      "es": {
+        "word": "la berenjena",
+        "audio": "audio/es/la-berenjena.mp3"
+      },
+      "it": {
+        "word": "la melanzana",
+        "audio": "audio/it/la-melanzana.mp3"
+      },
+      "sv": {
+        "word": "auberginen",
+        "audio": "audio/sv/auberginen.mp3"
       }
     },
     "bowl": {
@@ -1721,6 +2393,22 @@
       "fr": {
         "word": "le bol",
         "audio": "audio/fr/le-bol.mp3"
+      },
+      "de": {
+        "word": "die Schale",
+        "audio": "audio/de/die-Schale.mp3"
+      },
+      "es": {
+        "word": "el cuenco",
+        "audio": "audio/es/el-cuenco.mp3"
+      },
+      "it": {
+        "word": "la ciotola",
+        "audio": "audio/it/la-ciotola.mp3"
+      },
+      "sv": {
+        "word": "skålen",
+        "audio": "audio/sv/skålen.mp3"
       }
     },
     "courgette": {
@@ -1731,6 +2419,1998 @@
       "fr": {
         "word": "la courgette",
         "audio": "audio/fr/la-courgette.mp3"
+      },
+      "de": {
+        "word": "die Zucchini",
+        "audio": "audio/de/die-Zucchini.mp3"
+      },
+      "es": {
+        "word": "el calabacín",
+        "audio": "audio/es/el-calabacín.mp3"
+      },
+      "it": {
+        "word": "la zucchina",
+        "audio": "audio/it/la-zucchina.mp3"
+      },
+      "sv": {
+        "word": "zucchini",
+        "audio": "audio/sv/zucchini.mp3"
+      }
+    },
+    "coffee table": {
+      "nl": {
+        "word": "de koffietafel",
+        "audio": "audio/nl/de-koffietafel.mp3"
+      },
+      "de": {
+        "word": "der Kaffeetisch",
+        "audio": "audio/de/der-Kaffeetisch.mp3"
+      },
+      "fr": {
+        "word": "la table basse",
+        "audio": "audio/fr/la-table-basse.mp3"
+      },
+      "es": {
+        "word": "la mesa de café",
+        "audio": "audio/es/la-mesa-de-café.mp3"
+      },
+      "it": {
+        "word": "il tavolino da caffè",
+        "audio": "audio/it/il-tavolino-da-caffè.mp3"
+      },
+      "sv": {
+        "word": "soffbordet",
+        "audio": "audio/sv/soffbordet.mp3"
+      }
+    },
+    "pan": {
+      "nl": {
+        "word": "de pan",
+        "audio": "audio/nl/de-pan.mp3"
+      },
+      "de": {
+        "word": "die Pfanne",
+        "audio": "audio/de/die-Pfanne.mp3"
+      },
+      "fr": {
+        "word": "la poêle",
+        "audio": "audio/fr/la-poêle.mp3"
+      },
+      "es": {
+        "word": "el pan",
+        "audio": "audio/es/el-pan.mp3"
+      },
+      "it": {
+        "word": "padella",
+        "audio": "audio/it/padella.mp3"
+      },
+      "sv": {
+        "word": "pannan",
+        "audio": "audio/sv/pannan.mp3"
+      }
+    },
+    "head": {
+      "nl": {
+        "word": "het hoofd",
+        "audio": "audio/nl/het-hoofd.mp3"
+      },
+      "de": {
+        "word": "der Kopf",
+        "audio": "audio/de/der-Kopf.mp3"
+      },
+      "fr": {
+        "word": "la tête",
+        "audio": "audio/fr/la-tête.mp3"
+      },
+      "es": {
+        "word": "la cabeza",
+        "audio": "audio/es/la-cabeza.mp3"
+      },
+      "it": {
+        "word": "la testa",
+        "audio": "audio/it/la-testa.mp3"
+      },
+      "sv": {
+        "word": "huvudet",
+        "audio": "audio/sv/huvudet.mp3"
+      }
+    },
+    "t-shirt": {
+      "nl": {
+        "word": "het T-shirt",
+        "audio": "audio/nl/het-T-shirt.mp3"
+      },
+      "de": {
+        "word": "das T-Shirt",
+        "audio": "audio/de/das-T-Shirt.mp3"
+      },
+      "fr": {
+        "word": "le T-shirt",
+        "audio": "audio/fr/le-T-shirt.mp3"
+      },
+      "es": {
+        "word": "la remera",
+        "audio": "audio/es/la-remera.mp3"
+      },
+      "it": {
+        "word": "la maglietta",
+        "audio": "audio/it/la-maglietta.mp3"
+      },
+      "sv": {
+        "word": "t-shirten",
+        "audio": "audio/sv/t-shirten.mp3"
+      }
+    },
+    "bucket": {
+      "nl": {
+        "word": "de emmer",
+        "audio": "audio/nl/de-emmer.mp3"
+      },
+      "de": {
+        "word": "der Eimer",
+        "audio": "audio/de/der-Eimer.mp3"
+      },
+      "fr": {
+        "word": "le seau",
+        "audio": "audio/fr/le-seau.mp3"
+      },
+      "es": {
+        "word": "el cubo",
+        "audio": "audio/es/el-cubo.mp3"
+      },
+      "it": {
+        "word": "il secchio",
+        "audio": "audio/it/il-secchio.mp3"
+      },
+      "sv": {
+        "word": "hinken",
+        "audio": "audio/sv/hinken.mp3"
+      }
+    },
+    "tree": {
+      "nl": {
+        "word": "de boom",
+        "audio": "audio/nl/de-boom.mp3"
+      },
+      "de": {
+        "word": "der Baum",
+        "audio": "audio/de/der-Baum.mp3"
+      },
+      "fr": {
+        "word": "l'arbre",
+        "audio": "audio/fr/l'arbre.mp3"
+      },
+      "es": {
+        "word": "el árbol",
+        "audio": "audio/es/el-árbol.mp3"
+      },
+      "it": {
+        "word": "l'albero",
+        "audio": "audio/it/l'albero.mp3"
+      },
+      "sv": {
+        "word": "trädet",
+        "audio": "audio/sv/trädet.mp3"
+      }
+    },
+    "cheese": {
+      "nl": {
+        "word": "de kaas",
+        "audio": "audio/nl/de-kaas.mp3"
+      },
+      "de": {
+        "word": "der Käse",
+        "audio": "audio/de/der-Käse.mp3"
+      },
+      "fr": {
+        "word": "le fromage",
+        "audio": "audio/fr/le-fromage.mp3"
+      },
+      "es": {
+        "word": "el queso",
+        "audio": "audio/es/el-queso.mp3"
+      },
+      "it": {
+        "word": "il formaggio",
+        "audio": "audio/it/il-formaggio.mp3"
+      },
+      "sv": {
+        "word": "Osten",
+        "audio": "audio/sv/Osten.mp3"
+      }
+    },
+    "watch": {
+      "nl": {
+        "word": "het horloge",
+        "audio": "audio/nl/het-horloge.mp3"
+      },
+      "de": {
+        "word": "Die Uhr",
+        "audio": "audio/de/Die-Uhr.mp3"
+      },
+      "fr": {
+        "word": "la montre",
+        "audio": "audio/fr/la-montre.mp3"
+      },
+      "es": {
+        "word": "el reloj",
+        "audio": "audio/es/el-reloj.mp3"
+      },
+      "it": {
+        "word": "l'orologio",
+        "audio": "audio/it/l'orologio.mp3"
+      },
+      "sv": {
+        "word": "klockan",
+        "audio": "audio/sv/klockan.mp3"
+      }
+    },
+    "dog bowl": {
+      "nl": {
+        "word": "de hondenkom",
+        "audio": "audio/nl/de-hondenkom.mp3"
+      },
+      "de": {
+        "word": "die Hundenapf",
+        "audio": "audio/de/die-Hundenapf.mp3"
+      },
+      "fr": {
+        "word": "la gamelle pour chien",
+        "audio": "audio/fr/la-gamelle-pour-chien.mp3"
+      },
+      "es": {
+        "word": "el cuenco del perro",
+        "audio": "audio/es/el-cuenco-del-perro.mp3"
+      },
+      "it": {
+        "word": "la ciotola del cane",
+        "audio": "audio/it/la-ciotola-del-cane.mp3"
+      },
+      "sv": {
+        "word": "hundskålen",
+        "audio": "audio/sv/hundskålen.mp3"
+      }
+    },
+    "salad": {
+      "nl": {
+        "word": "de salade",
+        "audio": "audio/nl/de-salade.mp3"
+      },
+      "de": {
+        "word": "Der Salat",
+        "audio": "audio/de/Der-Salat.mp3"
+      },
+      "fr": {
+        "word": "la salade",
+        "audio": "audio/fr/la-salade.mp3"
+      },
+      "es": {
+        "word": "La ensalada",
+        "audio": "audio/es/La-ensalada.mp3"
+      },
+      "it": {
+        "word": "l'insalata",
+        "audio": "audio/it/l'insalata.mp3"
+      },
+      "sv": {
+        "word": "salladen",
+        "audio": "audio/sv/salladen.mp3"
+      }
+    },
+    "extension cable": {
+      "nl": {
+        "word": "de verlengkabel",
+        "audio": "audio/nl/de-verlengkabel.mp3"
+      },
+      "de": {
+        "word": "das Verlängerungskabel",
+        "audio": "audio/de/das-Verlängerungskabel.mp3"
+      },
+      "fr": {
+        "word": "le câble d'extension",
+        "audio": "audio/fr/le-câble-d'extension.mp3"
+      },
+      "es": {
+        "word": "el cable de extensión",
+        "audio": "audio/es/el-cable-de-extensión.mp3"
+      },
+      "it": {
+        "word": "il cavo di prolunga",
+        "audio": "audio/it/il-cavo-di-prolunga.mp3"
+      },
+      "sv": {
+        "word": "förlängningskabeln",
+        "audio": "audio/sv/förlängningskabeln.mp3"
+      }
+    },
+    "nose": {
+      "nl": {
+        "word": "de neus",
+        "audio": "audio/nl/de-neus.mp3"
+      },
+      "de": {
+        "word": "die Nase",
+        "audio": "audio/de/die-Nase.mp3"
+      },
+      "fr": {
+        "word": "le nez",
+        "audio": "audio/fr/le-nez.mp3"
+      },
+      "es": {
+        "word": "la nariz",
+        "audio": "audio/es/la-nariz.mp3"
+      },
+      "it": {
+        "word": "il naso",
+        "audio": "audio/it/il-naso.mp3"
+      },
+      "sv": {
+        "word": "näsan",
+        "audio": "audio/sv/näsan.mp3"
+      }
+    },
+    "basket": {
+      "nl": {
+        "word": "de mand",
+        "audio": "audio/nl/de-mand.mp3"
+      },
+      "de": {
+        "word": "der Korb",
+        "audio": "audio/de/der-Korb.mp3"
+      },
+      "fr": {
+        "word": "le panier",
+        "audio": "audio/fr/le-panier.mp3"
+      },
+      "es": {
+        "word": "la cesta",
+        "audio": "audio/es/la-cesta.mp3"
+      },
+      "it": {
+        "word": "il cestino",
+        "audio": "audio/it/il-cestino.mp3"
+      },
+      "sv": {
+        "word": "korgen",
+        "audio": "audio/sv/korgen.mp3"
+      }
+    },
+    "placemat": {
+      "nl": {
+        "word": "de placemat",
+        "audio": "audio/nl/de-placemat.mp3"
+      },
+      "de": {
+        "word": "das Tischset",
+        "audio": "audio/de/das-Tischset.mp3"
+      },
+      "fr": {
+        "word": "le napperon",
+        "audio": "audio/fr/le-napperon.mp3"
+      },
+      "es": {
+        "word": "el mantel",
+        "audio": "audio/es/el-mantel.mp3"
+      },
+      "it": {
+        "word": "la tovaglietta",
+        "audio": "audio/it/la-tovaglietta.mp3"
+      },
+      "sv": {
+        "word": "placemat",
+        "audio": "audio/sv/placemat.mp3"
+      }
+    },
+    "smile": {
+      "nl": {
+        "word": "de glimlach",
+        "audio": "audio/nl/de-glimlach.mp3"
+      },
+      "de": {
+        "word": "das Lächeln",
+        "audio": "audio/de/das-Lächeln.mp3"
+      },
+      "fr": {
+        "word": "le sourire",
+        "audio": "audio/fr/le-sourire.mp3"
+      },
+      "es": {
+        "word": "la sonrisa",
+        "audio": "audio/es/la-sonrisa.mp3"
+      },
+      "it": {
+        "word": "il sorriso",
+        "audio": "audio/it/il-sorriso.mp3"
+      },
+      "sv": {
+        "word": "leendet",
+        "audio": "audio/sv/leendet.mp3"
+      }
+    },
+    "television": {
+      "nl": {
+        "word": "de televisie",
+        "audio": "audio/nl/de-televisie.mp3"
+      },
+      "de": {
+        "word": "der Fernseher",
+        "audio": "audio/de/der-Fernseher.mp3"
+      },
+      "fr": {
+        "word": "la télévision",
+        "audio": "audio/fr/la-télévision.mp3"
+      },
+      "es": {
+        "word": "la televisión",
+        "audio": "audio/es/la-televisión.mp3"
+      },
+      "it": {
+        "word": "la televisione",
+        "audio": "audio/it/la-televisione.mp3"
+      },
+      "sv": {
+        "word": "tvn",
+        "audio": "audio/sv/tvn.mp3"
+      }
+    },
+    "brush": {
+      "nl": {
+        "word": "de borstel",
+        "audio": "audio/nl/de-borstel.mp3"
+      },
+      "de": {
+        "word": "die Bürste",
+        "audio": "audio/de/die-Bürste.mp3"
+      },
+      "fr": {
+        "word": "la brosse",
+        "audio": "audio/fr/la-brosse.mp3"
+      },
+      "es": {
+        "word": "el pincel",
+        "audio": "audio/es/el-pincel.mp3"
+      },
+      "it": {
+        "word": "la spazzola",
+        "audio": "audio/it/la-spazzola.mp3"
+      },
+      "sv": {
+        "word": "borsten",
+        "audio": "audio/sv/borsten.mp3"
+      }
+    },
+    "eye": {
+      "nl": {
+        "word": "het oog",
+        "audio": "audio/nl/het-oog.mp3"
+      },
+      "de": {
+        "word": "das Auge",
+        "audio": "audio/de/das-Auge.mp3"
+      },
+      "fr": {
+        "word": "l'oeil",
+        "audio": "audio/fr/l'oeil.mp3"
+      },
+      "es": {
+        "word": "el ojo",
+        "audio": "audio/es/el-ojo.mp3"
+      },
+      "it": {
+        "word": "l'occhio",
+        "audio": "audio/it/l'occhio.mp3"
+      },
+      "sv": {
+        "word": "ögat",
+        "audio": "audio/sv/ögat.mp3"
+      }
+    },
+    "apron": {
+      "nl": {
+        "word": "het schort",
+        "audio": "audio/nl/het-schort.mp3"
+      },
+      "de": {
+        "word": "die Schürze",
+        "audio": "audio/de/die-Schürze.mp3"
+      },
+      "fr": {
+        "word": "le tablier",
+        "audio": "audio/fr/le-tablier.mp3"
+      },
+      "es": {
+        "word": "el mandil",
+        "audio": "audio/es/el-mandil.mp3"
+      },
+      "it": {
+        "word": "il grembiule",
+        "audio": "audio/it/il-grembiule.mp3"
+      },
+      "sv": {
+        "word": "förklädet",
+        "audio": "audio/sv/förklädet.mp3"
+      }
+    },
+    "spotlight": {
+      "nl": {
+        "word": "het spotlicht",
+        "audio": "audio/nl/het-spotlicht.mp3"
+      },
+      "de": {
+        "word": "das Rampenlicht",
+        "audio": "audio/de/das-Rampenlicht.mp3"
+      },
+      "fr": {
+        "word": "le projecteur",
+        "audio": "audio/fr/le-projecteur.mp3"
+      },
+      "es": {
+        "word": "el centro de atención",
+        "audio": "audio/es/el-centro-de-atención.mp3"
+      },
+      "it": {
+        "word": "i riflettori",
+        "audio": "audio/it/i-riflettori.mp3"
+      },
+      "sv": {
+        "word": "rampljuset",
+        "audio": "audio/sv/rampljuset.mp3"
+      }
+    },
+    "glasses": {
+      "nl": {
+        "word": "de glazen",
+        "audio": "audio/nl/de-glazen.mp3"
+      },
+      "de": {
+        "word": "Die Brille",
+        "audio": "audio/de/Die-Brille.mp3"
+      },
+      "fr": {
+        "word": "les lunettes",
+        "audio": "audio/fr/les-lunettes.mp3"
+      },
+      "es": {
+        "word": "los lentes",
+        "audio": "audio/es/los-lentes.mp3"
+      },
+      "it": {
+        "word": "gli occhiali",
+        "audio": "audio/it/gli-occhiali.mp3"
+      },
+      "sv": {
+        "word": "glasen",
+        "audio": "audio/sv/glasen.mp3"
+      }
+    },
+    "bin": {
+      "nl": {
+        "word": "de prullenbak",
+        "audio": "audio/nl/de-prullenbak.mp3"
+      },
+      "de": {
+        "word": "der Mülleimer",
+        "audio": "audio/de/der-Mülleimer.mp3"
+      },
+      "fr": {
+        "word": "la corbeille",
+        "audio": "audio/fr/la-corbeille.mp3"
+      },
+      "es": {
+        "word": "deposito",
+        "audio": "audio/es/deposito.mp3"
+      },
+      "it": {
+        "word": "il cestino",
+        "audio": "audio/it/il-cestino.mp3"
+      },
+      "sv": {
+        "word": "soptunnan",
+        "audio": "audio/sv/soptunnan.mp3"
+      }
+    },
+    "oil": {
+      "nl": {
+        "word": "de olie",
+        "audio": "audio/nl/de-olie.mp3"
+      },
+      "de": {
+        "word": "das Öl",
+        "audio": "audio/de/das-Öl.mp3"
+      },
+      "fr": {
+        "word": "l'huile",
+        "audio": "audio/fr/l'huile.mp3"
+      },
+      "es": {
+        "word": "el aceite",
+        "audio": "audio/es/el-aceite.mp3"
+      },
+      "it": {
+        "word": "l'olio",
+        "audio": "audio/it/l'olio.mp3"
+      },
+      "sv": {
+        "word": "oljan",
+        "audio": "audio/sv/oljan.mp3"
+      }
+    },
+    "flowers": {
+      "nl": {
+        "word": "de bloemen",
+        "audio": "audio/nl/de-bloemen.mp3"
+      },
+      "de": {
+        "word": "die Blumen",
+        "audio": "audio/de/die-Blumen.mp3"
+      },
+      "fr": {
+        "word": "Les fleurs",
+        "audio": "audio/fr/Les-fleurs.mp3"
+      },
+      "es": {
+        "word": "las flores",
+        "audio": "audio/es/las-flores.mp3"
+      },
+      "it": {
+        "word": "i fiori",
+        "audio": "audio/it/i-fiori.mp3"
+      },
+      "sv": {
+        "word": "blommorna",
+        "audio": "audio/sv/blommorna.mp3"
+      }
+    },
+    "christmas card": {
+      "nl": {
+        "word": "de kerstkaart",
+        "audio": "audio/nl/de-kerstkaart.mp3"
+      },
+      "de": {
+        "word": "die Weihnachtskarte",
+        "audio": "audio/de/die-Weihnachtskarte.mp3"
+      },
+      "fr": {
+        "word": "la carte de noel",
+        "audio": "audio/fr/la-carte-de-noel.mp3"
+      },
+      "es": {
+        "word": "la tarjeta de navidad",
+        "audio": "audio/es/la-tarjeta-de-navidad.mp3"
+      },
+      "it": {
+        "word": "la cartolina di Natale",
+        "audio": "audio/it/la-cartolina-di-Natale.mp3"
+      },
+      "sv": {
+        "word": "julkortet",
+        "audio": "audio/sv/julkortet.mp3"
+      }
+    },
+    "cup": {
+      "nl": {
+        "word": "de beker",
+        "audio": "audio/nl/de-beker.mp3"
+      },
+      "de": {
+        "word": "die Tasse",
+        "audio": "audio/de/die-Tasse.mp3"
+      },
+      "fr": {
+        "word": "la tasse",
+        "audio": "audio/fr/la-tasse.mp3"
+      },
+      "es": {
+        "word": "la Copa",
+        "audio": "audio/es/la-Copa.mp3"
+      },
+      "it": {
+        "word": "La tazza",
+        "audio": "audio/it/La-tazza.mp3"
+      },
+      "sv": {
+        "word": "koppen",
+        "audio": "audio/sv/koppen.mp3"
+      }
+    },
+    "cage": {
+      "nl": {
+        "word": "de kooi",
+        "audio": "audio/nl/de-kooi.mp3"
+      },
+      "de": {
+        "word": "der Käfig",
+        "audio": "audio/de/der-Käfig.mp3"
+      },
+      "fr": {
+        "word": "la cage",
+        "audio": "audio/fr/la-cage.mp3"
+      },
+      "es": {
+        "word": "la caja",
+        "audio": "audio/es/la-caja.mp3"
+      },
+      "it": {
+        "word": "la gabbia",
+        "audio": "audio/it/la-gabbia.mp3"
+      },
+      "sv": {
+        "word": "buren",
+        "audio": "audio/sv/buren.mp3"
+      }
+    },
+    "mustard": {
+      "nl": {
+        "word": "de mosterd",
+        "audio": "audio/nl/de-mosterd.mp3"
+      },
+      "de": {
+        "word": "der Senf",
+        "audio": "audio/de/der-Senf.mp3"
+      },
+      "fr": {
+        "word": "la moutarde",
+        "audio": "audio/fr/la-moutarde.mp3"
+      },
+      "es": {
+        "word": "la mostaza",
+        "audio": "audio/es/la-mostaza.mp3"
+      },
+      "it": {
+        "word": "la senape",
+        "audio": "audio/it/la-senape.mp3"
+      },
+      "sv": {
+        "word": "senap",
+        "audio": "audio/sv/senap.mp3"
+      }
+    },
+    "egg": {
+      "nl": {
+        "word": "het ei",
+        "audio": "audio/nl/het-ei.mp3"
+      },
+      "de": {
+        "word": "das Ei",
+        "audio": "audio/de/das-Ei.mp3"
+      },
+      "fr": {
+        "word": "l'œuf",
+        "audio": "audio/fr/l'œuf.mp3"
+      },
+      "es": {
+        "word": "el huevo",
+        "audio": "audio/es/el-huevo.mp3"
+      },
+      "it": {
+        "word": "l'uovo",
+        "audio": "audio/it/l'uovo.mp3"
+      },
+      "sv": {
+        "word": "ägget",
+        "audio": "audio/sv/ägget.mp3"
+      }
+    },
+    "arm": {
+      "nl": {
+        "word": "de arm",
+        "audio": "audio/nl/de-arm.mp3"
+      },
+      "de": {
+        "word": "der Arm",
+        "audio": "audio/de/der-Arm.mp3"
+      },
+      "fr": {
+        "word": "le bras",
+        "audio": "audio/fr/le-bras.mp3"
+      },
+      "es": {
+        "word": "el brazo",
+        "audio": "audio/es/el-brazo.mp3"
+      },
+      "it": {
+        "word": "il braccio",
+        "audio": "audio/it/il-braccio.mp3"
+      },
+      "sv": {
+        "word": "armen",
+        "audio": "audio/sv/armen.mp3"
+      }
+    },
+    "foot stool": {
+      "nl": {
+        "word": "de voetenbank",
+        "audio": "audio/nl/de-voetenbank.mp3"
+      },
+      "de": {
+        "word": "der Fußschemel",
+        "audio": "audio/de/der-Fußschemel.mp3"
+      },
+      "fr": {
+        "word": "le tabouret",
+        "audio": "audio/fr/le-tabouret.mp3"
+      },
+      "es": {
+        "word": "el taburete",
+        "audio": "audio/es/el-taburete.mp3"
+      },
+      "it": {
+        "word": "il poggiapiedi",
+        "audio": "audio/it/il-poggiapiedi.mp3"
+      },
+      "sv": {
+        "word": "fotpallen",
+        "audio": "audio/sv/fotpallen.mp3"
+      }
+    },
+    "dustpan": {
+      "nl": {
+        "word": "het blik",
+        "audio": "audio/nl/het-blik.mp3"
+      },
+      "de": {
+        "word": "die Kehrschaufel",
+        "audio": "audio/de/die-Kehrschaufel.mp3"
+      },
+      "fr": {
+        "word": "la pelle à poussière",
+        "audio": "audio/fr/la-pelle-à-poussière.mp3"
+      },
+      "es": {
+        "word": "el recogedor",
+        "audio": "audio/es/el-recogedor.mp3"
+      },
+      "it": {
+        "word": "la paletta",
+        "audio": "audio/it/la-paletta.mp3"
+      },
+      "sv": {
+        "word": "dammsugaren",
+        "audio": "audio/sv/dammsugaren.mp3"
+      }
+    },
+    "bottle": {
+      "nl": {
+        "word": "de fles",
+        "audio": "audio/nl/de-fles.mp3"
+      },
+      "de": {
+        "word": "die Flasche",
+        "audio": "audio/de/die-Flasche.mp3"
+      },
+      "fr": {
+        "word": "la bouteille",
+        "audio": "audio/fr/la-bouteille.mp3"
+      },
+      "es": {
+        "word": "la botella",
+        "audio": "audio/es/la-botella.mp3"
+      },
+      "it": {
+        "word": "la bottiglia",
+        "audio": "audio/it/la-bottiglia.mp3"
+      },
+      "sv": {
+        "word": "flaskan",
+        "audio": "audio/sv/flaskan.mp3"
+      }
+    },
+    "father": {
+      "nl": {
+        "word": "de vader",
+        "audio": "audio/nl/de-vader.mp3"
+      },
+      "de": {
+        "word": "der Vater",
+        "audio": "audio/de/der-Vater.mp3"
+      },
+      "fr": {
+        "word": "le père",
+        "audio": "audio/fr/le-père.mp3"
+      },
+      "es": {
+        "word": "el padre",
+        "audio": "audio/es/el-padre.mp3"
+      },
+      "it": {
+        "word": "il padre",
+        "audio": "audio/it/il-padre.mp3"
+      },
+      "sv": {
+        "word": "fadern",
+        "audio": "audio/sv/fadern.mp3"
+      }
+    },
+    "jumper": {
+      "nl": {
+        "word": "de jumper",
+        "audio": "audio/nl/de-jumper.mp3"
+      },
+      "de": {
+        "word": "Der Springer",
+        "audio": "audio/de/Der-Springer.mp3"
+      },
+      "fr": {
+        "word": "le sauteur",
+        "audio": "audio/fr/le-sauteur.mp3"
+      },
+      "es": {
+        "word": "el saltador",
+        "audio": "audio/es/el-saltador.mp3"
+      },
+      "it": {
+        "word": "il saltatore",
+        "audio": "audio/it/il-saltatore.mp3"
+      },
+      "sv": {
+        "word": "bygeln",
+        "audio": "audio/sv/bygeln.mp3"
+      }
+    },
+    "raclette": {
+      "nl": {
+        "word": "de raclette",
+        "audio": "audio/nl/de-raclette.mp3"
+      },
+      "de": {
+        "word": "das Raclette",
+        "audio": "audio/de/das-Raclette.mp3"
+      },
+      "fr": {
+        "word": "la raclette",
+        "audio": "audio/fr/la-raclette.mp3"
+      },
+      "es": {
+        "word": "la raclette",
+        "audio": "audio/es/la-raclette.mp3"
+      },
+      "it": {
+        "word": "la raclette",
+        "audio": "audio/it/la-raclette.mp3"
+      },
+      "sv": {
+        "word": "raclette",
+        "audio": "audio/sv/raclette.mp3"
+      }
+    },
+    "fork": {
+      "nl": {
+        "word": "de vork",
+        "audio": "audio/nl/de-vork.mp3"
+      },
+      "de": {
+        "word": "die Gabel",
+        "audio": "audio/de/die-Gabel.mp3"
+      },
+      "fr": {
+        "word": "la fourchette",
+        "audio": "audio/fr/la-fourchette.mp3"
+      },
+      "es": {
+        "word": "El tenedor",
+        "audio": "audio/es/El-tenedor.mp3"
+      },
+      "it": {
+        "word": "la forchetta",
+        "audio": "audio/it/la-forchetta.mp3"
+      },
+      "sv": {
+        "word": "gaffeln",
+        "audio": "audio/sv/gaffeln.mp3"
+      }
+    },
+    "steak": {
+      "nl": {
+        "word": "de steak",
+        "audio": "audio/nl/de-steak.mp3"
+      },
+      "de": {
+        "word": "das Steak",
+        "audio": "audio/de/das-Steak.mp3"
+      },
+      "fr": {
+        "word": "le steak",
+        "audio": "audio/fr/le-steak.mp3"
+      },
+      "es": {
+        "word": "el filete",
+        "audio": "audio/es/el-filete.mp3"
+      },
+      "it": {
+        "word": "la bistecca",
+        "audio": "audio/it/la-bistecca.mp3"
+      },
+      "sv": {
+        "word": "steken",
+        "audio": "audio/sv/steken.mp3"
+      }
+    },
+    "cheese burger": {
+      "nl": {
+        "word": "de kaasburger",
+        "audio": "audio/nl/de-kaasburger.mp3"
+      },
+      "de": {
+        "word": "der Käseburger",
+        "audio": "audio/de/der-Käseburger.mp3"
+      },
+      "fr": {
+        "word": "le cheese burger",
+        "audio": "audio/fr/le-cheese-burger.mp3"
+      },
+      "es": {
+        "word": "la hamburguesa con queso",
+        "audio": "audio/es/la-hamburguesa-con-queso.mp3"
+      },
+      "it": {
+        "word": "l'hamburger di formaggio",
+        "audio": "audio/it/l'hamburger-di-formaggio.mp3"
+      },
+      "sv": {
+        "word": "ostburgaren",
+        "audio": "audio/sv/ostburgaren.mp3"
+      }
+    },
+    "stairs": {
+      "nl": {
+        "word": "de trap",
+        "audio": "audio/nl/de-trap.mp3"
+      },
+      "de": {
+        "word": "die Treppe",
+        "audio": "audio/de/die-Treppe.mp3"
+      },
+      "fr": {
+        "word": "les escaliers",
+        "audio": "audio/fr/les-escaliers.mp3"
+      },
+      "es": {
+        "word": "las escaleras",
+        "audio": "audio/es/las-escaleras.mp3"
+      },
+      "it": {
+        "word": "le scale",
+        "audio": "audio/it/le-scale.mp3"
+      },
+      "sv": {
+        "word": "trapporna",
+        "audio": "audio/sv/trapporna.mp3"
+      }
+    },
+    "spachuler": {
+      "nl": {
+        "word": "de spachuler",
+        "audio": "audio/nl/de-spachuler.mp3"
+      },
+      "de": {
+        "word": "der spachuler",
+        "audio": "audio/de/der-spachuler.mp3"
+      },
+      "fr": {
+        "word": "le spachuler",
+        "audio": "audio/fr/le-spachuler.mp3"
+      },
+      "es": {
+        "word": "el spachuler",
+        "audio": "audio/es/el-spachuler.mp3"
+      },
+      "it": {
+        "word": "lo spachuler",
+        "audio": "audio/it/lo-spachuler.mp3"
+      },
+      "sv": {
+        "word": "spakulatorn",
+        "audio": "audio/sv/spakulatorn.mp3"
+      }
+    },
+    "knife": {
+      "nl": {
+        "word": "het mes",
+        "audio": "audio/nl/het-mes.mp3"
+      },
+      "de": {
+        "word": "das Messer",
+        "audio": "audio/de/das-Messer.mp3"
+      },
+      "fr": {
+        "word": "le couteau",
+        "audio": "audio/fr/le-couteau.mp3"
+      },
+      "es": {
+        "word": "el cuchillo",
+        "audio": "audio/es/el-cuchillo.mp3"
+      },
+      "it": {
+        "word": "il coltello",
+        "audio": "audio/it/il-coltello.mp3"
+      },
+      "sv": {
+        "word": "kniven",
+        "audio": "audio/sv/kniven.mp3"
+      }
+    },
+    "serviette": {
+      "nl": {
+        "word": "de handdoek",
+        "audio": "audio/nl/de-handdoek.mp3"
+      },
+      "de": {
+        "word": "das Handtuch",
+        "audio": "audio/de/das-Handtuch.mp3"
+      },
+      "fr": {
+        "word": "the serviette",
+        "audio": "audio/fr/the-serviette.mp3"
+      },
+      "es": {
+        "word": "la toalla",
+        "audio": "audio/es/la-toalla.mp3"
+      },
+      "it": {
+        "word": "l'asciugamano",
+        "audio": "audio/it/l'asciugamano.mp3"
+      },
+      "sv": {
+        "word": "handduken",
+        "audio": "audio/sv/handduken.mp3"
+      }
+    },
+    "soap": {
+      "nl": {
+        "word": "de zeep",
+        "audio": "audio/nl/de-zeep.mp3"
+      },
+      "de": {
+        "word": "die Seife",
+        "audio": "audio/de/die-Seife.mp3"
+      },
+      "fr": {
+        "word": "le savon",
+        "audio": "audio/fr/le-savon.mp3"
+      },
+      "es": {
+        "word": "el jabon",
+        "audio": "audio/es/el-jabon.mp3"
+      },
+      "it": {
+        "word": "il sapone",
+        "audio": "audio/it/il-sapone.mp3"
+      },
+      "sv": {
+        "word": "tvålen",
+        "audio": "audio/sv/tvålen.mp3"
+      }
+    },
+    "toaster": {
+      "nl": {
+        "word": "de broodrooster",
+        "audio": "audio/nl/de-broodrooster.mp3"
+      },
+      "de": {
+        "word": "der Toaster",
+        "audio": "audio/de/der-Toaster.mp3"
+      },
+      "fr": {
+        "word": "le grille-pain",
+        "audio": "audio/fr/le-grille-pain.mp3"
+      },
+      "es": {
+        "word": "el tostador",
+        "audio": "audio/es/el-tostador.mp3"
+      },
+      "it": {
+        "word": "il tostapane",
+        "audio": "audio/it/il-tostapane.mp3"
+      },
+      "sv": {
+        "word": "brödrosten",
+        "audio": "audio/sv/brödrosten.mp3"
+      }
+    },
+    "saucepan": {
+      "nl": {
+        "word": "de pan",
+        "audio": "audio/nl/de-pan.mp3"
+      },
+      "de": {
+        "word": "der Topf",
+        "audio": "audio/de/der-Topf.mp3"
+      },
+      "fr": {
+        "word": "la casserole",
+        "audio": "audio/fr/la-casserole.mp3"
+      },
+      "es": {
+        "word": "la cacerola",
+        "audio": "audio/es/la-cacerola.mp3"
+      },
+      "it": {
+        "word": "la casseruola",
+        "audio": "audio/it/la-casseruola.mp3"
+      },
+      "sv": {
+        "word": "kastrullen",
+        "audio": "audio/sv/kastrullen.mp3"
+      }
+    },
+    "cook book": {
+      "nl": {
+        "word": "het kookboek",
+        "audio": "audio/nl/het-kookboek.mp3"
+      },
+      "de": {
+        "word": "Das Kochbuch",
+        "audio": "audio/de/Das-Kochbuch.mp3"
+      },
+      "fr": {
+        "word": "le livre de recettes",
+        "audio": "audio/fr/le-livre-de-recettes.mp3"
+      },
+      "es": {
+        "word": "el libro de cocina",
+        "audio": "audio/es/el-libro-de-cocina.mp3"
+      },
+      "it": {
+        "word": "Il Ricettario",
+        "audio": "audio/it/Il-Ricettario.mp3"
+      },
+      "sv": {
+        "word": "kokboken",
+        "audio": "audio/sv/kokboken.mp3"
+      }
+    },
+    "stove": {
+      "nl": {
+        "word": "de stoof",
+        "audio": "audio/nl/de-stoof.mp3"
+      },
+      "de": {
+        "word": "der Ofen",
+        "audio": "audio/de/der-Ofen.mp3"
+      },
+      "fr": {
+        "word": "le poêle",
+        "audio": "audio/fr/le-poêle.mp3"
+      },
+      "es": {
+        "word": "la estufa",
+        "audio": "audio/es/la-estufa.mp3"
+      },
+      "it": {
+        "word": "la stufa",
+        "audio": "audio/it/la-stufa.mp3"
+      },
+      "sv": {
+        "word": "spisen",
+        "audio": "audio/sv/spisen.mp3"
+      }
+    },
+    "tomato": {
+      "nl": {
+        "word": "de tomaat",
+        "audio": "audio/nl/de-tomaat.mp3"
+      },
+      "de": {
+        "word": "die Tomate",
+        "audio": "audio/de/die-Tomate.mp3"
+      },
+      "fr": {
+        "word": "la tomate",
+        "audio": "audio/fr/la-tomate.mp3"
+      },
+      "es": {
+        "word": "el tomate",
+        "audio": "audio/es/el-tomate.mp3"
+      },
+      "it": {
+        "word": "il pomodoro",
+        "audio": "audio/it/il-pomodoro.mp3"
+      },
+      "sv": {
+        "word": "tomaten",
+        "audio": "audio/sv/tomaten.mp3"
+      }
+    },
+    "herbs": {
+      "nl": {
+        "word": "de kruiden",
+        "audio": "audio/nl/de-kruiden.mp3"
+      },
+      "de": {
+        "word": "die Kräuter",
+        "audio": "audio/de/die-Kräuter.mp3"
+      },
+      "fr": {
+        "word": "les herbes",
+        "audio": "audio/fr/les-herbes.mp3"
+      },
+      "es": {
+        "word": "las hierbas",
+        "audio": "audio/es/las-hierbas.mp3"
+      },
+      "it": {
+        "word": "le erbe",
+        "audio": "audio/it/le-erbe.mp3"
+      },
+      "sv": {
+        "word": "örterna",
+        "audio": "audio/sv/örterna.mp3"
+      }
+    },
+    "larder": {
+      "nl": {
+        "word": "de voorraadkast",
+        "audio": "audio/nl/de-voorraadkast.mp3"
+      },
+      "de": {
+        "word": "die Speisekammer",
+        "audio": "audio/de/die-Speisekammer.mp3"
+      },
+      "fr": {
+        "word": "le garde-manger",
+        "audio": "audio/fr/le-garde-manger.mp3"
+      },
+      "es": {
+        "word": "la despensa",
+        "audio": "audio/es/la-despensa.mp3"
+      },
+      "it": {
+        "word": "la dispensa",
+        "audio": "audio/it/la-dispensa.mp3"
+      },
+      "sv": {
+        "word": "skafferiet",
+        "audio": "audio/sv/skafferiet.mp3"
+      }
+    },
+    "sink": {
+      "nl": {
+        "word": "de gootsteen",
+        "audio": "audio/nl/de-gootsteen.mp3"
+      },
+      "de": {
+        "word": "das Waschbecken",
+        "audio": "audio/de/das-Waschbecken.mp3"
+      },
+      "fr": {
+        "word": "l'évier",
+        "audio": "audio/fr/l'évier.mp3"
+      },
+      "es": {
+        "word": "el fregadero",
+        "audio": "audio/es/el-fregadero.mp3"
+      },
+      "it": {
+        "word": "il lavandino",
+        "audio": "audio/it/il-lavandino.mp3"
+      },
+      "sv": {
+        "word": "diskbänken",
+        "audio": "audio/sv/diskbänken.mp3"
+      }
+    },
+    "deer": {
+      "nl": {
+        "word": "het hert",
+        "audio": "audio/nl/het-hert.mp3"
+      },
+      "de": {
+        "word": "das Reh",
+        "audio": "audio/de/das-Reh.mp3"
+      },
+      "fr": {
+        "word": "le cerf",
+        "audio": "audio/fr/le-cerf.mp3"
+      },
+      "es": {
+        "word": "el ciervo",
+        "audio": "audio/es/el-ciervo.mp3"
+      },
+      "it": {
+        "word": "il cervo",
+        "audio": "audio/it/il-cervo.mp3"
+      },
+      "sv": {
+        "word": "Hjorten",
+        "audio": "audio/sv/Hjorten.mp3"
+      }
+    },
+    "blind": {
+      "nl": {
+        "word": "de blinde",
+        "audio": "audio/nl/de-blinde.mp3"
+      },
+      "de": {
+        "word": "Blinde",
+        "audio": "audio/de/Blinde.mp3"
+      },
+      "fr": {
+        "word": "les aveugles",
+        "audio": "audio/fr/les-aveugles.mp3"
+      },
+      "es": {
+        "word": "el ciego",
+        "audio": "audio/es/el-ciego.mp3"
+      },
+      "it": {
+        "word": "il cieco",
+        "audio": "audio/it/il-cieco.mp3"
+      },
+      "sv": {
+        "word": "den blinda",
+        "audio": "audio/sv/den-blinda.mp3"
+      }
+    },
+    "bag": {
+      "nl": {
+        "word": "de zak",
+        "audio": "audio/nl/de-zak.mp3"
+      },
+      "de": {
+        "word": "die Tasche",
+        "audio": "audio/de/die-Tasche.mp3"
+      },
+      "fr": {
+        "word": "le sac",
+        "audio": "audio/fr/le-sac.mp3"
+      },
+      "es": {
+        "word": "el bolso",
+        "audio": "audio/es/el-bolso.mp3"
+      },
+      "it": {
+        "word": "la borsa",
+        "audio": "audio/it/la-borsa.mp3"
+      },
+      "sv": {
+        "word": "påsen",
+        "audio": "audio/sv/påsen.mp3"
+      }
+    },
+    "notice board": {
+      "nl": {
+        "word": "het mededelingenbord",
+        "audio": "audio/nl/het-mededelingenbord.mp3"
+      },
+      "de": {
+        "word": "die Anschlagtafel",
+        "audio": "audio/de/die-Anschlagtafel.mp3"
+      },
+      "fr": {
+        "word": "le panneau d'affichage",
+        "audio": "audio/fr/le-panneau-d'affichage.mp3"
+      },
+      "es": {
+        "word": "el tablón de anuncios",
+        "audio": "audio/es/el-tablón-de-anuncios.mp3"
+      },
+      "it": {
+        "word": "la bacheca",
+        "audio": "audio/it/la-bacheca.mp3"
+      },
+      "sv": {
+        "word": "anslagstavlan",
+        "audio": "audio/sv/anslagstavlan.mp3"
+      }
+    },
+    "broccoli": {
+      "nl": {
+        "word": "de broccoli",
+        "audio": "audio/nl/de-broccoli.mp3"
+      },
+      "de": {
+        "word": "Der Brokkoli",
+        "audio": "audio/de/Der-Brokkoli.mp3"
+      },
+      "fr": {
+        "word": "le brocoli",
+        "audio": "audio/fr/le-brocoli.mp3"
+      },
+      "es": {
+        "word": "el brócoli",
+        "audio": "audio/es/el-brócoli.mp3"
+      },
+      "it": {
+        "word": "i broccoli",
+        "audio": "audio/it/i-broccoli.mp3"
+      },
+      "sv": {
+        "word": "broccoli",
+        "audio": "audio/sv/broccoli.mp3"
+      }
+    },
+    "knife block": {
+      "nl": {
+        "word": "het messenblok",
+        "audio": "audio/nl/het-messenblok.mp3"
+      },
+      "de": {
+        "word": "der Messerblock",
+        "audio": "audio/de/der-Messerblock.mp3"
+      },
+      "fr": {
+        "word": "le bloc de couteaux",
+        "audio": "audio/fr/le-bloc-de-couteaux.mp3"
+      },
+      "es": {
+        "word": "el bloque de cuchillos",
+        "audio": "audio/es/el-bloque-de-cuchillos.mp3"
+      },
+      "it": {
+        "word": "il ceppo di coltelli",
+        "audio": "audio/it/il-ceppo-di-coltelli.mp3"
+      },
+      "sv": {
+        "word": "knivblocket",
+        "audio": "audio/sv/knivblocket.mp3"
+      }
+    },
+    "coffee machine": {
+      "nl": {
+        "word": "de koffiemachine",
+        "audio": "audio/nl/de-koffiemachine.mp3"
+      },
+      "de": {
+        "word": "die Kaffeemaschine",
+        "audio": "audio/de/die-Kaffeemaschine.mp3"
+      },
+      "fr": {
+        "word": "la machine à café",
+        "audio": "audio/fr/la-machine-à-café.mp3"
+      },
+      "es": {
+        "word": "la maquina de cafe",
+        "audio": "audio/es/la-maquina-de-cafe.mp3"
+      },
+      "it": {
+        "word": "la macchina del caffè",
+        "audio": "audio/it/la-macchina-del-caffè.mp3"
+      },
+      "sv": {
+        "word": "kaffemaskinen",
+        "audio": "audio/sv/kaffemaskinen.mp3"
+      }
+    },
+    "hat": {
+      "nl": {
+        "word": "de hoed",
+        "audio": "audio/nl/de-hoed.mp3"
+      },
+      "de": {
+        "word": "der Hut",
+        "audio": "audio/de/der-Hut.mp3"
+      },
+      "fr": {
+        "word": "le chapeau",
+        "audio": "audio/fr/le-chapeau.mp3"
+      },
+      "es": {
+        "word": "el sombrero",
+        "audio": "audio/es/el-sombrero.mp3"
+      },
+      "it": {
+        "word": "il cappello",
+        "audio": "audio/it/il-cappello.mp3"
+      },
+      "sv": {
+        "word": "hatten",
+        "audio": "audio/sv/hatten.mp3"
+      }
+    },
+    "watering can": {
+      "nl": {
+        "word": "de gieter",
+        "audio": "audio/nl/de-gieter.mp3"
+      },
+      "de": {
+        "word": "die gießkanne",
+        "audio": "audio/de/die-gießkanne.mp3"
+      },
+      "fr": {
+        "word": "l'arrosoir",
+        "audio": "audio/fr/l'arrosoir.mp3"
+      },
+      "es": {
+        "word": "la regadera",
+        "audio": "audio/es/la-regadera.mp3"
+      },
+      "it": {
+        "word": "l'annaffiatoio",
+        "audio": "audio/it/l'annaffiatoio.mp3"
+      },
+      "sv": {
+        "word": "vattenkannan",
+        "audio": "audio/sv/vattenkannan.mp3"
+      }
+    },
+    "yellow pepper": {
+      "nl": {
+        "word": "de gele peper",
+        "audio": "audio/nl/de-gele-peper.mp3"
+      },
+      "de": {
+        "word": "der gelbe Pfeffer",
+        "audio": "audio/de/der-gelbe-Pfeffer.mp3"
+      },
+      "fr": {
+        "word": "le poivron jaune",
+        "audio": "audio/fr/le-poivron-jaune.mp3"
+      },
+      "es": {
+        "word": "el pimiento amarillo",
+        "audio": "audio/es/el-pimiento-amarillo.mp3"
+      },
+      "it": {
+        "word": "il peperone giallo",
+        "audio": "audio/it/il-peperone-giallo.mp3"
+      },
+      "sv": {
+        "word": "gulpeppar",
+        "audio": "audio/sv/gulpeppar.mp3"
+      }
+    },
+    "banana": {
+      "nl": {
+        "word": "de banaan",
+        "audio": "audio/nl/de-banaan.mp3"
+      },
+      "de": {
+        "word": "die Banane",
+        "audio": "audio/de/die-Banane.mp3"
+      },
+      "fr": {
+        "word": "la banane",
+        "audio": "audio/fr/la-banane.mp3"
+      },
+      "es": {
+        "word": "el plátano",
+        "audio": "audio/es/el-plátano.mp3"
+      },
+      "it": {
+        "word": "la banana",
+        "audio": "audio/it/la-banana.mp3"
+      },
+      "sv": {
+        "word": "bananen",
+        "audio": "audio/sv/bananen.mp3"
+      }
+    },
+    "lamp shade": {
+      "nl": {
+        "word": "de lampenkap",
+        "audio": "audio/nl/de-lampenkap.mp3"
+      },
+      "de": {
+        "word": "der Lampenschirm",
+        "audio": "audio/de/der-Lampenschirm.mp3"
+      },
+      "fr": {
+        "word": "l'abat-jour",
+        "audio": "audio/fr/l'abat-jour.mp3"
+      },
+      "es": {
+        "word": "la pantalla de la lámpara",
+        "audio": "audio/es/la-pantalla-de-la-lámpara.mp3"
+      },
+      "it": {
+        "word": "il paralume",
+        "audio": "audio/it/il-paralume.mp3"
+      },
+      "sv": {
+        "word": "lampskärmen",
+        "audio": "audio/sv/lampskärmen.mp3"
+      }
+    },
+    "glass mug": {
+      "nl": {
+        "word": "de glazen mok",
+        "audio": "audio/nl/de-glazen-mok.mp3"
+      },
+      "de": {
+        "word": "der Glasbecher",
+        "audio": "audio/de/der-Glasbecher.mp3"
+      },
+      "fr": {
+        "word": "la tasse en verre",
+        "audio": "audio/fr/la-tasse-en-verre.mp3"
+      },
+      "es": {
+        "word": "la taza de cristal",
+        "audio": "audio/es/la-taza-de-cristal.mp3"
+      },
+      "it": {
+        "word": "la tazza di vetro",
+        "audio": "audio/it/la-tazza-di-vetro.mp3"
+      },
+      "sv": {
+        "word": "glasmugg",
+        "audio": "audio/sv/glasmugg.mp3"
+      }
+    },
+    "freezer": {
+      "nl": {
+        "word": "de vriezer",
+        "audio": "audio/nl/de-vriezer.mp3"
+      },
+      "de": {
+        "word": "der Gefrierschrank",
+        "audio": "audio/de/der-Gefrierschrank.mp3"
+      },
+      "fr": {
+        "word": "le congélateur",
+        "audio": "audio/fr/le-congélateur.mp3"
+      },
+      "es": {
+        "word": "El congelador",
+        "audio": "audio/es/El-congelador.mp3"
+      },
+      "it": {
+        "word": "il congelatore",
+        "audio": "audio/it/il-congelatore.mp3"
+      },
+      "sv": {
+        "word": "frysen",
+        "audio": "audio/sv/frysen.mp3"
+      }
+    },
+    "refrigerator": {
+      "nl": {
+        "word": "de koelkast",
+        "audio": "audio/nl/de-koelkast.mp3"
+      },
+      "de": {
+        "word": "der Kühlschrank",
+        "audio": "audio/de/der-Kühlschrank.mp3"
+      },
+      "fr": {
+        "word": "le réfrigérateur",
+        "audio": "audio/fr/le-réfrigérateur.mp3"
+      },
+      "es": {
+        "word": "la nevera",
+        "audio": "audio/es/la-nevera.mp3"
+      },
+      "it": {
+        "word": "il frigorifero",
+        "audio": "audio/it/il-frigorifero.mp3"
+      },
+      "sv": {
+        "word": "kylskåpet",
+        "audio": "audio/sv/kylskåpet.mp3"
+      }
+    },
+    "oven": {
+      "nl": {
+        "word": "de oven",
+        "audio": "audio/nl/de-oven.mp3"
+      },
+      "de": {
+        "word": "der Ofen",
+        "audio": "audio/de/der-Ofen.mp3"
+      },
+      "fr": {
+        "word": "le four",
+        "audio": "audio/fr/le-four.mp3"
+      },
+      "es": {
+        "word": "el horno",
+        "audio": "audio/es/el-horno.mp3"
+      },
+      "it": {
+        "word": "il forno",
+        "audio": "audio/it/il-forno.mp3"
+      },
+      "sv": {
+        "word": "ugnen",
+        "audio": "audio/sv/ugnen.mp3"
+      }
+    },
+    "blender": {
+      "nl": {
+        "word": "de blender",
+        "audio": "audio/nl/de-blender.mp3"
+      },
+      "de": {
+        "word": "der Mixer",
+        "audio": "audio/de/der-Mixer.mp3"
+      },
+      "fr": {
+        "word": "le mixeur",
+        "audio": "audio/fr/le-mixeur.mp3"
+      },
+      "es": {
+        "word": "la licuadora",
+        "audio": "audio/es/la-licuadora.mp3"
+      },
+      "it": {
+        "word": "il frullatore",
+        "audio": "audio/it/il-frullatore.mp3"
+      },
+      "sv": {
+        "word": "mixern",
+        "audio": "audio/sv/mixern.mp3"
+      }
+    },
+    "christmas tree": {
+      "nl": {
+        "word": "de kerstboom",
+        "audio": "audio/nl/de-kerstboom.mp3"
+      },
+      "de": {
+        "word": "der Weihnachtsbaum",
+        "audio": "audio/de/der-Weihnachtsbaum.mp3"
+      },
+      "fr": {
+        "word": "l'arbre de Noël",
+        "audio": "audio/fr/l'arbre-de-Noël.mp3"
+      },
+      "es": {
+        "word": "el árbol de Navidad",
+        "audio": "audio/es/el-árbol-de-Navidad.mp3"
+      },
+      "it": {
+        "word": "l'albero di Natale",
+        "audio": "audio/it/l'albero-di-Natale.mp3"
+      },
+      "sv": {
+        "word": "julgranen",
+        "audio": "audio/sv/julgranen.mp3"
+      }
+    },
+    "dining table": {
+      "nl": {
+        "word": "de eettafel",
+        "audio": "audio/nl/de-eettafel.mp3"
+      },
+      "de": {
+        "word": "der Esstisch",
+        "audio": "audio/de/der-Esstisch.mp3"
+      },
+      "fr": {
+        "word": "la table à manger",
+        "audio": "audio/fr/la-table-à-manger.mp3"
+      },
+      "es": {
+        "word": "la mesa del comedor",
+        "audio": "audio/es/la-mesa-del-comedor.mp3"
+      },
+      "it": {
+        "word": "il tavolo da pranzo",
+        "audio": "audio/it/il-tavolo-da-pranzo.mp3"
+      },
+      "sv": {
+        "word": "matbordet",
+        "audio": "audio/sv/matbordet.mp3"
+      }
+    },
+    "dishwasher": {
+      "nl": {
+        "word": "de vaatwasser",
+        "audio": "audio/nl/de-vaatwasser.mp3"
+      },
+      "de": {
+        "word": "die Geschirrspülmaschine",
+        "audio": "audio/de/die-Geschirrspülmaschine.mp3"
+      },
+      "fr": {
+        "word": "le lave-vaisselle",
+        "audio": "audio/fr/le-lave-vaisselle.mp3"
+      },
+      "es": {
+        "word": "el lavavajillas",
+        "audio": "audio/es/el-lavavajillas.mp3"
+      },
+      "it": {
+        "word": "la lavastoviglie",
+        "audio": "audio/it/la-lavastoviglie.mp3"
+      },
+      "sv": {
+        "word": "diskmaskinen",
+        "audio": "audio/sv/diskmaskinen.mp3"
+      }
+    },
+    "shelf": {
+      "nl": {
+        "word": "de plank",
+        "audio": "audio/nl/de-plank.mp3"
+      },
+      "de": {
+        "word": "das Regal",
+        "audio": "audio/de/das-Regal.mp3"
+      },
+      "fr": {
+        "word": "l'étagère",
+        "audio": "audio/fr/l'étagère.mp3"
+      },
+      "es": {
+        "word": "el estante",
+        "audio": "audio/es/el-estante.mp3"
+      },
+      "it": {
+        "word": "la mensola",
+        "audio": "audio/it/la-mensola.mp3"
+      },
+      "sv": {
+        "word": "hyllan",
+        "audio": "audio/sv/hyllan.mp3"
+      }
+    },
+    "high chair": {
+      "nl": {
+        "word": "de hoge stoel",
+        "audio": "audio/nl/de-hoge-stoel.mp3"
+      },
+      "de": {
+        "word": "der Hochstuhl",
+        "audio": "audio/de/der-Hochstuhl.mp3"
+      },
+      "fr": {
+        "word": "la chaise haute",
+        "audio": "audio/fr/la-chaise-haute.mp3"
+      },
+      "es": {
+        "word": "la trona",
+        "audio": "audio/es/la-trona.mp3"
+      },
+      "it": {
+        "word": "il seggiolone",
+        "audio": "audio/it/il-seggiolone.mp3"
+      },
+      "sv": {
+        "word": "barnstolen",
+        "audio": "audio/sv/barnstolen.mp3"
+      }
+    },
+    "kettle": {
+      "nl": {
+        "word": "de waterkoker",
+        "audio": "audio/nl/de-waterkoker.mp3"
+      },
+      "de": {
+        "word": "der Wasserkocher",
+        "audio": "audio/de/der-Wasserkocher.mp3"
+      },
+      "fr": {
+        "word": "la bouilloire",
+        "audio": "audio/fr/la-bouilloire.mp3"
+      },
+      "es": {
+        "word": "La tetera",
+        "audio": "audio/es/La-tetera.mp3"
+      },
+      "it": {
+        "word": "il bollitore",
+        "audio": "audio/it/il-bollitore.mp3"
+      },
+      "sv": {
+        "word": "Vattenkokaren",
+        "audio": "audio/sv/Vattenkokaren.mp3"
+      }
+    },
+    "cupboard": {
+      "nl": {
+        "word": "de kast",
+        "audio": "audio/nl/de-kast.mp3"
+      },
+      "de": {
+        "word": "Der Schrank",
+        "audio": "audio/de/Der-Schrank.mp3"
+      },
+      "fr": {
+        "word": "le placard",
+        "audio": "audio/fr/le-placard.mp3"
+      },
+      "es": {
+        "word": "el armario",
+        "audio": "audio/es/el-armario.mp3"
+      },
+      "it": {
+        "word": "la credenza",
+        "audio": "audio/it/la-credenza.mp3"
+      },
+      "sv": {
+        "word": "skåpet",
+        "audio": "audio/sv/skåpet.mp3"
       }
     }
   },
