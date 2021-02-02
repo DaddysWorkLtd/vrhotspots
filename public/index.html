@@ -112,12 +112,12 @@
                           distance="-3"
                           scaling="2"
                           interval="500"
-                          bind-toggle__cursor-listen="gameMode != 'POOEdit'">
+                          bind-toggle__cursor-listen="gameMode != 'ALWAYS ON'">
             </a-gui-cursor>
         </a-entity>
         <a-entity id="hands" bind__visible="gameMode == 'Edit'">
             <!-- left hand with keyboard, no caster for now as was deleting things  !-->
-            <a-entity id="leftHand" laser-controls="hand: left" raycaster="showLine: false; far: 0;" bind-toggle__rayleft-ctrl="gameMode === 'Edit'">
+            <a-entity id="leftHand" laser-controls="hand: left" raycaster="show-line: false; far:0; enabled: false" bind-toggle__rayleft-ctrl="gameMode === 'Edit'">
                 <a-entity id="keyboard" super-keyboard="hand: #rightHand; multipleInputs: true; handOffsetX: .06; handOffsetY: .02" kb-ctrl position="0 0.1 0"
                           rotation="-90 0 0" scale="0.3 0.3 0.3"></a-entity>
             </a-entity>
