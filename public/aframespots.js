@@ -14,9 +14,21 @@ AFRAME.registerComponent('cursor-listen', {
       // disable for home screen, target object listens
       const word = evt.detail.intersectedEl.getAttribute('word');
       // word implies this is fushing into a hotspot - could just check what location we are in
+      // if in learning mode give the translation
+      let fword = evt.detail.intersectedEl.getAttribute('word'),
+        infoText = 'fusing: ' + fword;
+      if ( gState.gameMode==='Learn') {
+        //TODO should have the whole database rec for word not the text
+          let fusingWord = gState.db
+            .get('words')
+            .value()[fword];
+          if (fusingWord) {
+            infoText += '\n(' + (fusingWord[gState.lang].word || 'not found in dictionary') + ')';
+          }
+      }
       if (word) this.el.sceneEl.emit('changeHudText', {
         target: 'bot',
-        text: 'fusing: ' + evt.detail.intersectedEl.getAttribute('word')
+        text: infoText
       });
     });
     this.el.addEventListener('click', evt => {
@@ -177,6 +189,7 @@ AFRAME.registerComponent('vocab-room', {
       words: {type: 'number', default: 0},
       found: {type: 'number', default: 0},
       stars: {type: 'number', default: 0},
+      mastered: {type: 'number', default: 0}
     },
     init: function () {
       const data = this.data,
@@ -251,6 +264,8 @@ AFRAME.registerComponent('vocab-room', {
         // needed for the event handler to work... I supose I could put these in a closure
         sp.setAttribute('name', data.name);
         sp.setAttribute('photo-id', data.photoId);
+        el.setAttribute('sound','src','#change-photo');
+        el.setAttribute('sound','on','click');
       }
     }
   }

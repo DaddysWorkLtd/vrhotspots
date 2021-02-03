@@ -76,7 +76,6 @@ var gState = {
   },
   log: function (entry) {
     // we have a local history and a remote log db
-    console.log(entry);
     entry.attempt = this.attempt;
     entry.userId = this.userId;
     entry.gameStart = this.gameStart;
@@ -114,14 +113,16 @@ var gState = {
     if (_candidates.length) {
       // could just as well use
       // sampleSize to get multiple words
-      this.wordNum++;
-      nextWord = _.sample(_candidates);
-      // if in learning mode show text for all attempts, otherwise start without it
-      if (this.gameMode === 'Learn') {
-        setHudText('top', 'Vind: ' + nextWord[this.lang].word);
+      if (this.gameMode !== 'Practice' && this.gameMode !=='Edit') { // todo, create a dictionaty of options rather than hardcoding
+        this.wordNum++;
+        nextWord = _.sample(_candidates);
+        // if in learning mode show text for all attempts, otherwise start without it
+        if (this.gameMode === 'Learn') {
+          setHudText('top', 'Find: ' + nextWord[this.lang].word);
+        }
+        this.word = nextWord;
+        this.playWord();
       }
-      this.word = nextWord;
-      this.playWord();
     } else {
       this.endGame();
     }
@@ -139,8 +140,22 @@ var gState = {
     this.word = {};
     // make sure there have been words, otherwise when editing you get a broken message in top hud
     if (score.correct) {
-      setHudText('top', 'Accuracy: ' + Math.round(score.correct * 100 / score.attempts) + '% Completed in ' + _secShow(score.elapsed / 1000));
-      setHudText('mid', 'Follow the EXIT to return home');
+      const photoStats = _.find(this.getUserPhotoData(),{id:this.photo.id});
+      let roomMess = Math.round(photoStats.found*100/photoStats.words) + '% Found\n\n' +
+        Math.round(photoStats.mastered*100/photoStats.words) + '% Mastered';
+      if (photoStats.mastered === photoStats.words) {
+        roomMess = 'Room MASTERED\n\n' + roomMess;
+      } else if (photoStats.found === photoStats.words) {
+        roomMess = 'Room COMPLETE\n\n' + roomMess;
+      } else {
+        roomMess = 'Room Stats\n\n' + roomMess;
+      }
+      // avoid a race condition that prevents display
+      window.setTimeout(function () {
+        setHudText('top', 'Accuracy: ' + Math.round(score.correct * 100 / score.attempts) + '% Completed in ' + _secShow(score.elapsed / 1000));
+        setHudText('mid', roomMess);
+        setHudText('bot', 'Use exit to play again');
+      },100);
     }
   },
   playWord: function (wordOnly) {
@@ -245,7 +260,7 @@ var gState = {
       return photo;
     });
   },
-//TODO: Gametype needs to be play????
+//TODO: Gametype needs to be play???? --- maybe allow for a filter as an object
   getWordStats: function (photoId) {
     let stats = _.reduce(_.filter(this.db.get('log').filter({photoId: photoId}).value(),
       (filter) => {
@@ -261,7 +276,7 @@ var gState = {
 
       const word = row.word[this.lang].word,
         rowTime = new Date(row.date).getTime();
-
+      // initialise row for word if it doesnt already exists
       _initWord(word);
       cum[word].attempts.push(row.date);
       if (row.correct) {

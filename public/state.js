@@ -57,7 +57,6 @@ var vrVocabConfig = {
       hudTextTOP: '',
       hudTextBOT: '',
       hudTextMID: '',
-      editMode: false,
       adminUser: false,
       fbUserId: '',
       fbToken: '',
@@ -85,6 +84,10 @@ var vrVocabConfig = {
           state.location='home';
           state.homeFusable = 'fusable';
           state.photoFusable = '';
+          state.hudTextTOP = '';
+          state.hudTextMID = '';
+          state.hudTextBOT = '';
+
           // as this can get changed during game then reset it every time we leave a game
           gState.wordsPerGame = (state.wordsPerGame === 'Unlimited' ? 999: state.wordsPerGame);
           // update user games data
