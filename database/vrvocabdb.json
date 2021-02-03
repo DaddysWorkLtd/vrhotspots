@@ -1276,6 +1276,15 @@
       "src": "photos/viewpoint.jpg",
       "wordSpots": [],
       "navSpots": []
+    },
+    {
+      "id": 5,
+      "name": "Town Square",
+      "description": "Sunny day in small town",
+      "welcome": "",
+      "src": "photos/square-pano.jpg",
+      "wordSpots": [],
+      "navSpots": []
     }
   ],
   "words": {

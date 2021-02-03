@@ -207,7 +207,8 @@ AFRAME.registerComponent('vocab-room', {
       sp.setAttribute('render-order', 'object');
       sp.setAttribute('radius', .4)
       sp.setAttribute('position', '0 1 0');
-      sp.setAttribute('material', 'src: ' + data.src + ' ;')
+//      sp.setAttribute('material', 'src: ' + data.src + ' ;') Thumb should really be an attribute
+      sp.setAttribute('material', 'src: #thumb_' + data.photoId  );
       el.appendChild(sp);
 
       //if enabled
