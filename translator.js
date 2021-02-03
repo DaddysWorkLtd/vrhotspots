@@ -147,7 +147,7 @@ function undefWords( photoId) {
   const words = db.get('words').value();
   return _.reduce(db.get('photos').find({id:photoId}).value().wordSpots,function (res, row) {
     const wordRec=words[row.word];
-    if(!wordRec || !wordRec[LANG]) {
+    if(!wordRec || !wordRec[LANG] || !wordRec[LANG].audio) {
       res.push(row.word);
     }
     return res;
@@ -167,7 +167,8 @@ async function generateAudio(translation,target,filename) {
   console.log(`Audio content written to public/` + filename);
 }
 
-
+// if audio is not defined but the word is then it will by default say the word defined
+// this is how to get around mistranslations
 if (argv.photoId) {
   // this is only undefined words.... do we need a photoId? We could just do all of them
   _.forEach(undefWords(argv.photoId), async function (en) {
@@ -178,8 +179,8 @@ if (argv.photoId) {
       words[en][LANG] = {word: translation, audio: ''};
     }
     if (argv.replaceAudio || !words[en][LANG].audio) {
-      const filename = 'audio/' + LANG + '/' + translation.replace(/\s/g, '-') + '.mp3';
-      if (!argv.debug) await generateAudio(translation, LANG, filename);
+      const filename = 'audio/' + LANG + '/' + words[en][LANG].word.replace(/\s/g, '-') + '.mp3';
+      if (!argv.debug) await generateAudio(words[en][LANG].word, LANG, filename);
       words[en][LANG].audio = filename;
       //make it
     }
