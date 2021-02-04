@@ -208,7 +208,7 @@ AFRAME.registerComponent('vocab-room', {
       sp.setAttribute('radius', .4)
       sp.setAttribute('position', '0 1 0');
 //      sp.setAttribute('material', 'src: ' + data.src + ' ;') Thumb should really be an attribute
-      sp.setAttribute('material', 'src: #thumb_' + data.photoId  );
+      sp.setAttribute('material', 'src: #thumb_' + data.photoId);
       el.appendChild(sp);
 
       //if enabled
@@ -260,14 +260,20 @@ AFRAME.registerComponent('vocab-room', {
           gState.changePhoto(evt.target.getAttribute('photo-id'));
         });
         // only fusable if enabled..
-        el.setAttribute('bind__class','homeFusable');
-        sp.setAttribute('bind__class','homeFusable');
+        el.setAttribute('bind__class', 'homeFusable');
+        sp.setAttribute('bind__class', 'homeFusable');
         // needed for the event handler to work... I supose I could put these in a closure
         sp.setAttribute('name', data.name);
         sp.setAttribute('photo-id', data.photoId);
-        el.setAttribute('sound','src','#change-photo');
-        el.setAttribute('sound','on','click');
+        el.setAttribute('sound', 'src', '#change-photo');
+        el.setAttribute('sound', 'on', 'click');
       }
+    },
+    update: function (what) {
+      console.log('update vocab room', what);
+    },
+    updateSchema: function (what) {
+      console.log('updateSchema vocab room', what);
     }
   }
 );

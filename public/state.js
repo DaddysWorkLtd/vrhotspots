@@ -1,4 +1,4 @@
-var vrVocabConfig = {
+var VRVOCAB = {
     game: {
       "test": {
         WordsPerRound: 1,
@@ -40,6 +40,30 @@ var vrVocabConfig = {
         if ( currI === options.length-1 ) currI = -1;
         return options[currI + 1];
       }
+    },
+    setWhiteboardText (state) {
+      let wordStats=_.reduce(gState.getWordStats({gameMode: 'Play'}, {lang: state.lang}), (res, row) => {
+        if (row.correct) {
+          res.correct++;
+          if (row.firstTime) res.firstTime++;
+          res.attempts += row.attempts.length;
+          res.incorrectAttempts += row.attempts.length - row.correct; // when incorrect we double report the word that was the guess
+          res.elapsed += (row.elapsed || 0);
+        }
+        return res;
+      }, {correct:0, attempts:0, firstTime:0, incorrectAttempts: 0, languages:[],elapsed: 0 } );
+      let roomStats=_.reduce(state.photos, (res,row) => {
+        res.stars += (row.stars || 0);
+        if (row.enabled) res.enabled++;
+        return res;
+      }, {stars:0, enable:0});
+      // languages
+      state.whiteboardText = 'YOUR PROGRESS\n\nWords: ' + wordStats.correct;
+      state.whiteboardText += '\nMastered: ' + wordStats.firstTime;
+      state.whiteboardText += '\nPlay time: ' + gState.secShow(wordStats.elapsed);
+      if (wordStats.attempts) state.whiteboardText += '\nAccuracy: ' + Math.round((wordStats.attempts-wordStats.incorrectAttempts)*100/wordStats.attempts) + '%';
+      state.whiteboardText += '\nStars: ' + roomStats.stars;
+      state.whiteboardText += '\n\nKeep up the good work!';
     }
   },
   stateHandler = {
@@ -63,8 +87,9 @@ var vrVocabConfig = {
       photos: {}, // this needs to computed for the player....
       homeFusable: 'fusable', // class to control fusing of home page objects,
       photoFusable: '',
-      uiText: {welcome: 'Welcome to VR Vocab!\n\nThe goal in every room is to locate the requested items. Select an object by pointing the gaze cursor at an orange hotspot. Find all the items to unlock the next level....'}
-    },
+      uiText: {welcome: 'Welcome to VR Vocab!\n\nThe goal in every room is to locate the requested items. Select an object by pointing the gaze cursor at an orange hotspot. Find all the items to unlock the next level....'},
+      whiteBoardText: ''
+},
 
     // State changes are done via events and are handled here.
     handlers:
@@ -92,6 +117,7 @@ var vrVocabConfig = {
           gState.wordsPerGame = (state.wordsPerGame === 'Unlimited' ? 999: state.wordsPerGame);
           // update user games data
           state.photos=gState.getUserPhotoData();
+          VRVOCAB.setWhiteboardText(state);
           state.photos.__dirty=true;
         },
         // really for setting HUD text and playing animations (animate:true) prop
@@ -121,12 +147,12 @@ var vrVocabConfig = {
           // todo: hard coded admin user for now
           state.adminUser = true;
           if (state.adminUser) options.push('Edit');
-          state.gameMode = vrVocabConfig.utils.nextOption(options,state.gameMode);
+          state.gameMode = VRVOCAB.utils.nextOption(options,state.gameMode);
           gState.gameMode = state.gameMode;
         },
         changeWordsPerGame: (state) => {
           const options = ['5','15','25',"Unlimited"]
-          state.wordsPerGame = vrVocabConfig.utils.nextOption(options,state.wordsPerGame);
+          state.wordsPerGame = VRVOCAB.utils.nextOption(options,state.wordsPerGame);
           // temporary patch, unlimited = 999? What about on init?
           gState.wordsPerGame = (state.wordsPerGame === 'Unlimited' ? 999: state.wordsPerGame) ;
         },
@@ -135,9 +161,10 @@ var vrVocabConfig = {
           state.adminUser = !state.adminUser;
         },
         changeLanguage: (state) => {
-          state.lang = vrVocabConfig.utils.nextOption(_.keys(vrVocabConfig.LANGUAGES),state.lang);
+          state.lang = VRVOCAB.utils.nextOption(_.keys(VRVOCAB.LANGUAGES),state.lang);
           gState.lang = state.lang;
           state.photos=gState.getUserPhotoData();
+          VRVOCAB.setWhiteboardText(state);
           state.photos.__dirty=true;
         },
 
@@ -156,14 +183,14 @@ var vrVocabConfig = {
           gState.wordsPerGame = (newState.wordsPerGame === 'Unlimited' ? 999: newState.wordsPerGame) ;
           gState.lang = newState.lang;
           newState.photos=gState.getUserPhotoData();
+          VRVOCAB.setWhiteboardText(newState);
           newState.photos.__dirty=true;
         } else if (payload !== 'changeHudText') {
           const saveState = _.omit(newState,['location','sceneEl','uiText','homeFusable','targetWords','attempt','hudTextTOP', 'hudTextMID','hudTextBOT', 'photos']);
            gState.db.set('state',saveState).write();
         }
-        newState.language=vrVocabConfig.LANGUAGES[newState.lang];
+        newState.language=VRVOCAB.LANGUAGES[newState.lang];
         // need to trigger a refresh when language changes or when just played
-
       }
 
   }

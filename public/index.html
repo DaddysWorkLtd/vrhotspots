@@ -149,7 +149,7 @@
     <!-- Home interface -->
     <a-entity id="environment" environment="preset: forest;" bind__environment="active: location == 'home'"></a-entity>
     <!-- rooms -->
-    <a-entity bind__visible="location == 'home'" layout="type: circle; radius: 4; angle: 25" position="0 1 0"
+    <a-entity id="rooms" bind__visible="location == 'home'" layout="type: circle; radius: 4; angle: 25" position="0 1 0"
               rotation="90 40 0" bind-for="for: item; in: photos; key: id; updateInPlace: true">
         <template>
             <a-vocab-room enabled="{{words}}" photo-id="{{id}}" name="{{name}}" src="{{src}}" found="{{found}}" words="{{words}}" stars="{{stars}} "></a-vocab-room>
@@ -157,9 +157,9 @@
     </a-entity>
 
 
-    <a-light bind__visible="location == 'home'" type="spot" position="0.69554 2.43826 -0.75504" color="white"
-             target="#text_kitchen" distance="10" intensity="0.7" light="target: #text_kitchen"></a-light>
-
+    <!--<a-light bind__visible="location == 'home'" type="spot" position="0.69554 2.43826 -0.75504" color="white"
+             distance="10" intensity="0.7"></a-light>-->
+    <a-light bind__visible="location == 'home'" type="point" position="0.03281 2.60449 2.16869" color="white" distance="10" intensity="0.7" light="type: point; intensity: 0.5; decay: 0.5" visible=""></a-light>
 
     <!--- black board , slice 9 for a rounded panel and then text / buttons on top-->
     <a-entity position="1.9 3.2 -5.5" mixin="slice" slice9="height: 4; width: 3.5; color: #171717; opacity:0.9"
@@ -203,6 +203,7 @@
             <a-gui-button
                     bind__class="homeFusable" width="1.2" height="0.35" font-family="Signika" font-size="100px"
                     margin="0.4 0 0 0" sound="src: #change-option; on: click"
+                    border-color="#8f4f00" hover-color="#331c00" background-color="#111111" active-color="#FF8C00"
                     border-color="#027F00" hover-color="#3c3c3c" active-color="#03b800" background-color="#333333"
                     bind__value="wordsPerGame" proxy-event="event: click; to: a-scene; as: changeWordsPerGame">
             </a-gui-button>
@@ -216,6 +217,7 @@
             <a-gui-button
                     bind__class="homeFusable" width="1.2" height="0.35" font-family="Signika" font-size="100px"
                     margin="0.4 0 0 0" sound="src: #change-option; on: click"
+                    border-color="#8f4f00" hover-color="#331c00" background-color="#111111" active-color="#FF8C00"
                     border-color="#666666" hover-color="#333333" background-color="#111111" active-color="#FF8C00"
                     proxy-event="event: click; to: a-scene; as: changeLanguage"
                     bind__value="language">
@@ -230,9 +232,8 @@
     <a-plane bind__visible="location == 'home'" id="wbtext" material="color: #FFFFFF; shader: flat" scale="1.9 1.1 1"
              position="-3.4048 1.49655 -0.47111" rotation="0 65 0"
              mixin="whiteboard-font"
-             text="width: 1; color: navy; align: center; lineHeight:55;
-             value: YOUR PROGRESS\n\nItems Discovered: 15\nLevels unlocked: 0\nNumber of Stars: 1\nBest Time: 01:35s\nWorld Rank: 11,248\n\nKeep up the good work!; wrapCount: 30">
-    </a-plane>
+             text="width: 1; color: navy; align: center; lineHeight:55; wrapCount: 30"
+            bind__text="value: whiteboardText"></a-plane>
 
     <!-- logo -->
     <a-entity bind__visible="location == 'home'" id="logo" rotation="0 20 0" position="-5.1448 0.5 -4.49608"
@@ -252,7 +253,7 @@
     <a-gui-button bind__visible="location == 'photo'"
                   bind__class="photoFusable" width="1.2" height="0.35" font-family="Signika" font-size="100px"
                   margin="0.4 0 0 0" position="0 3.5 -4" rotation="10 0 0"
-                  border-color="#03b800" hover-color="#FFE4C1" background-color="#eeeeee" font-color="#03b800"
+                  border-color="#FF8C00" hover-color="#FFE4C1" background-color="#eeeeee" font-color="#03b800"
                   value="EXIT" proxy-event="event: click; to: a-scene; as: goHome" sound="src: #change-photo; on: click">
     </a-gui-button>
 </a-scene>

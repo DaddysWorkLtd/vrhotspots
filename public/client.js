@@ -129,12 +129,6 @@ var gState = {
 
   },
   endGame: function () {
-    function _secShow(secs) {
-      let basedate = new Date(0);
-      if (!secs) return '';
-      basedate.setSeconds(secs);// specify value for SECONDS here
-      return basedate.toISOString().substr(14, 5) + 's';
-    }
 
     let score = this.getScore();
     this.word = {};
@@ -152,7 +146,7 @@ var gState = {
       }
       // avoid a race condition that prevents display
       window.setTimeout(function () {
-        setHudText('top', 'Accuracy: ' + Math.round(score.correct * 100 / score.attempts) + '% Completed in ' + _secShow(score.elapsed / 1000));
+        setHudText('top', 'Accuracy: ' + Math.round(score.correct * 100 / score.attempts) + '% Completed in ' + gState.secShow(score.elapsed / 1000));
         setHudText('mid', roomMess);
         setHudText('bot', 'Use exit to play again');
       },100);
@@ -242,7 +236,7 @@ var gState = {
   getUserPhotoData: function () {
     const _this = this;
     return _.map(this.getPhotoSums(), photo => {
-      let words = _this.getWordStats(photo.id, _this.lang);
+      let words = _this.getWordStats({photoId:photo.id, gameMode: 'Play', lang: _this.lang});
       photo.seen = _.size(words);
       photo.found = _.countBy(words, word => word.correct>0 ).true || 0;
       photo.mastered = _.countBy(words, word => word.firstTime > 0).true || 0;
@@ -260,21 +254,18 @@ var gState = {
       return photo;
     });
   },
-//TODO: Gametype needs to be play???? --- maybe allow for a filter as an object
-  getWordStats: function (photoId) {
-    let stats = _.reduce(_.filter(this.db.get('log').filter({photoId: photoId}).value(),
-      (filter) => {
-        //filters out log entries for current language
-        return !!filter.word[this.lang];
-      }), (cum, row) => { // language
 
+//  eg ({photoId:1, gameMode: 'Play', lang: 'nl'});
+  getWordStats: function (inFilter) {
+    let fil=inFilter || {};
+    fil.lang = fil.lang || this.lang;
+    let stats = _.reduce(this.db.get('log').filter(inFilter).value(), (cum, row) => { // language
       function _initWord(word) {
         if (!cum[word]) {
           cum[word] = {attempts: [], correct: 0, incorrect: 0, elapsed: 0, firstTime: 0};
         }
       }
-
-      const word = row.word[this.lang].word,
+      const word = row.word[fil.lang].word,
         rowTime = new Date(row.date).getTime();
       // initialise row for word if it doesnt already exists
       _initWord(word);
@@ -303,6 +294,12 @@ var gState = {
     delete stats.lastTime; // might want these numbers actuall for macro-analysis
     delete stats.games; //just returning one key per word for now
     return stats;
+  },
+  secShow: function (secs) {
+    let basedate = new Date(0);
+    if (!secs) return '';
+    basedate.setSeconds(secs);// specify value for SECONDS here
+    return basedate.toISOString().substr(14, 5) + 's';
   }
 };
 gState.db.defaults({photos: [], words: {}, log: [], state: {}}).write();
