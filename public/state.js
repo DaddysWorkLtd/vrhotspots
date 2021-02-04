@@ -60,7 +60,18 @@ var VRVOCAB = {
       if (wordStats.attempts) state.whiteboardText += '\nAccuracy: ' + Math.round((wordStats.attempts-wordStats.incorrectAttempts)*100/wordStats.attempts) + '%';
       state.whiteboardText += '\nStars: ' + roomStats.stars;
       state.whiteboardText += '\n\nKeep up the good work!';
-    }
+    },
+  refreshRooms(state) {
+    // manuallly update rooms as not worked out how the bindings work
+    _.forEach(document.getElementsByTagName('a-vocab-room'), vrRoom => {
+      photo=_.find(state.photos,{id: vrRoom.getAttribute('photo-id')*1});
+      vrRoom.setAttribute('name', photo.name);
+      vrRoom.setAttribute('words', photo.words);
+      vrRoom.setAttribute('found', photo.found);
+      vrRoom.setAttribute('stars', photo.stars);
+      vrRoom.setAttribute('enabled', (photo.enabled || state.gameMode === 'Edit'));
+    });
+  }
   },
   stateHandler = {
     nonBindedStateKeys: ['fbToken','scEl', 'uiText'],
@@ -113,6 +124,7 @@ var VRVOCAB = {
           gState.wordsPerGame = (state.wordsPerGame === 'Unlimited' ? 999: state.wordsPerGame);
           // update user games data
           state.photos=gState.getUserPhotoData();
+          VRVOCAB.refreshRooms(state);
           VRVOCAB.setWhiteboardText(state);
           state.photos.__dirty=true;
         },
@@ -144,6 +156,7 @@ var VRVOCAB = {
           state.adminUser = true;
           if (state.adminUser) options.push('Edit');
           state.gameMode = VRVOCAB.utils.nextOption(options,state.gameMode);
+          if (state.adminUser) VRVOCAB.refreshRooms(state); // admins can change room info in edit mode
           gState.gameMode = state.gameMode;
         },
         changeWordsPerGame: (state) => {
@@ -161,6 +174,8 @@ var VRVOCAB = {
           gState.lang = state.lang;
           state.photos=gState.getUserPhotoData();
           VRVOCAB.setWhiteboardText(state);
+          // habing to manually refresh the rooms
+          VRVOCAB.refreshRooms(state);
           state.photos.__dirty=true;
         },
 
@@ -180,6 +195,7 @@ var VRVOCAB = {
           gState.lang = newState.lang;
           newState.photos=gState.getUserPhotoData();
           VRVOCAB.setWhiteboardText(newState);
+          VRVOCAB.refreshRooms(newState); // because edit mode unlocks rooms
           newState.photos.__dirty=true;
         } else if (payload !== 'changeHudText') {
           const saveState = _.omit(newState,['location','sceneEl','uiText','homeFusable','targetWords','attempt','hudTextTOP', 'hudTextMID','hudTextBOT', 'photos']);

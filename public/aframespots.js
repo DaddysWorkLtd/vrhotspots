@@ -201,56 +201,38 @@ AFRAME.registerComponent('vocab-room', {
       // first the box
       el.setAttribute('render-order', 'object');
       el.setAttribute('look-at', '#boxfaces');
-      el.setAttribute('geometry', 'primitve:box; width:1; height:1.3; depth:.5;');
+      el.setAttribute('geometry', 'primitive:box; width:1; height:1.3; depth:.5;');
       el.setAttribute('material', 'src:#cardboard; normal-map: #cardboard-NRM;');
 
       let sp = document.createElement("a-sphere");
+      this.sphere = sp;
       sp.setAttribute('render-order', 'object');
       sp.setAttribute('radius', .4)
       sp.setAttribute('position', '0 1 0');
 //      sp.setAttribute('material', 'src: ' + data.src + ' ;') Thumb should really be an attribute
       sp.setAttribute('material', 'src: #thumb_' + data.photoId);
-      el.appendChild(sp);
-
       //if enabled
-      animation__enter = "property: rotation; from: 0 0 0; to: 0 360 0; dur: 15000; easing: linear; loop:false; autoplay: false; startEvents: mouseenter;"
+      sp.setAttribute('animation__enter' ,'property: rotation; from: 0 0 0; to: 0 360 0; dur: 15000; easing: linear; loop:false; autoplay: false; startEvents: mouseenter;');
+      el.appendChild(sp);
 
 
       let tr = document.createElement('a-troika-text');
-      tr.setAttribute('render-order', 'text');
+      this.troikaText = tr;
       tr.setAttribute('position', '0 0 0.27');
+      tr.setAttribute('render-order', 'text');
       tr.setAttribute('font', 'assets/font-kit/Signika-Regular.ttf');
       tr.setAttribute('font-size', .1);
       tr.setAttribute('line-height', 1.1);
       tr.setAttribute('baseline', 'bottom');
       tr.setAttribute('align', 'center');
       tr.setAttribute('color', 'black');
-      tr.setAttribute('value', data.name.toUpperCase() + '\n\n words: ' + data.words + '\nfound: ' + data.found);
+      this.setText();
       el.appendChild(tr);
-
       if (!data.enabled) {
-        // another troika text element
-        tr = document.createElement('a-troika-text');
-        tr.setAttribute('render-order', 'text');
-        tr.setAttribute('position', '0 0.2 0.3');
-        tr.setAttribute('font', 'assets/font-kit/PermanentMarker-Regular.ttf');
-        tr.setAttribute('font-size', .2);
-        tr.setAttribute('rotation', '0 0 50');
-        tr.setAttribute('color', 'white');
-        tr.setAttribute('value', 'LOCKED');
-        el.appendChild(tr);
+        this.setLocked();
       } else {
         // stars
-        let stars = 0;
-        _.forEach([-.285, .01, .29], (x) => {
-          if (stars < data.stars) {
-            let st = document.createElement('a-entity');
-            st.setAttribute('position', x + ' -.82 .9');
-            st.setAttribute('gltf-model', 'assets/star.glb');
-            el.appendChild(st);
-            stars += 1;
-          }
-        });
+        this.setStars();
         this.el.addEventListener('fusing', evt => {
           //scope?
           this.el.sceneEl.emit('changeHudText', {target: 'bot', text: 'fusing: ' + evt.target.getAttribute('name')}); // this.photo.name
@@ -263,18 +245,80 @@ AFRAME.registerComponent('vocab-room', {
         // only fusable if enabled..
         el.setAttribute('bind__class', 'homeFusable');
         sp.setAttribute('bind__class', 'homeFusable');
-        // needed for the event handler to work... I supose I could put these in a closure
-        sp.setAttribute('name', data.name);
-        sp.setAttribute('photo-id', data.photoId);
-        el.setAttribute('sound', 'src', '#change-photo');
-        el.setAttribute('sound', 'on', 'click');
+      }
+      // needed for the event handler to work... I supose I could put these in a closure
+      sp.setAttribute('name', data.name);
+      sp.setAttribute('photo-id', data.photoId);
+      el.setAttribute('sound', 'src', '#change-photo');
+      el.setAttribute('sound', 'on', 'click');
+    },
+    update: function (oldData) {
+      if (oldData.words !== this.data.words || oldData.found !== this.data.found || oldData.name !== this.data.name) {
+        this.setText();
+      }
+      if (oldData.stars!== this.data.stars) {
+        this.setStars();
+      }
+      if (oldData.enabled!== this.data.enabled) {
+        this.setLocked();
       }
     },
-    update: function (what) {
-      console.log('update vocab room', what);
+    setStars: function ()  {
+      //remove existing
+      if ( this.stars) {
+        _.forEach(this.stars, starEl => starEl.remove());
+      }
+      let stars = 0;
+      this.stars = [];
+      _.forEach([-.285, .01, .29], (x) => {
+        if (stars < this.data.stars) {
+          let st = document.createElement('a-entity');
+          st.classList.add('star');
+          st.setAttribute('position', x + ' -.82 .9');
+          st.setAttribute('gltf-model', 'assets/star.glb');
+          this.stars.push (st);
+          this.el.appendChild(st);
+          stars += 1;
+        }
+      });
     },
-    updateSchema: function (what) {
-      console.log('updateSchema vocab room', what);
+    setText: function () {
+      let data = this.data;
+      this.troikaText.setAttribute('value', data.name.toUpperCase() + '\n\n words: ' + data.words + '\nfound: ' + data.found);
+    },
+  // this is a toggle as only called when changed
+    setLocked: function () {
+      const el=this.el,
+        sp=this.sphere;
+      if (this.lockedText && this.data.enabled) {
+        this.lockedText.remove();
+        delete this.lockedText; // could reappend if it exists... could always create it too.
+      } else if (!this.data.enabled && !this.lockedText) {
+        // another troika text element
+        let ltr = document.createElement('a-troika-text');
+        ltr.setAttribute('render-order', 'text');
+        ltr.setAttribute('position', '0 0.2 0.3');
+        ltr.setAttribute('font', 'assets/font-kit/PermanentMarker-Regular.ttf');
+        ltr.setAttribute('font-size', .2);
+        ltr.setAttribute('rotation', '0 0 50');
+        ltr.setAttribute('color', 'white');
+        ltr.setAttribute('value', 'LOCKED');
+        this.lockedText = ltr;
+        el.appendChild(ltr);
+      }
+      if (this.data.enabled) {
+        el.setAttribute('bind__class', 'homeFusable');
+        sp.setAttribute('bind__class', 'homeFusable');
+        // allows you into edit a photo
+        el.addEventListener('click', evt => {
+          // transition to 360photo
+          this.el.sceneEl.emit('enterPhoto');
+          gState.changePhoto(evt.target.getAttribute('photo-id'));
+        });
+      } else {
+        el.setAttribute('bind__class', 'Disabled');
+        sp.setAttribute('bind__class', 'Disabled');
+      }
     }
   }
 );

@@ -252,6 +252,8 @@ var gState = {
       } else {
         photo.stars = 0;
       }
+      // enabled is just set to whether words are defined
+      photo.enabled = !!photo.words;
       return photo;
     });
   },

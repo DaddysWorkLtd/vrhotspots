@@ -152,7 +152,7 @@
     <a-entity id="rooms" bind__visible="location == 'home'" layout="type: circle; radius: 4; angle: 25" position="0 1 0"
               rotation="90 40 0" bind-for="for: item; in: photos; key: id; updateInPlace: true">
         <template>
-            <a-vocab-room enabled="{{words}}" photo-id="{{id}}" name="{{name}}" src="{{src}}" found="{{found}}" words="{{words}}" stars="{{stars}} "></a-vocab-room>
+           <a-vocab-room enabled="{{enabled}}" photo-id="{{id}}" name="{{name}}" src="{{src}}" found="{{found}}" words="{{words}}" stars="{{stars}} "></a-vocab-room>
         </template>
     </a-entity>
 
