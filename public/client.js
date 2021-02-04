@@ -20,9 +20,9 @@ var gState = {
   // how many attempts on current word
   attempt: 1,
   wordsPerGame: 15,
-  gameMode: 'Play', // learning - written word on 1st attempt, testing - on 2nd attempt, practice - pick any spot, reads out word
+  gameMode: 'Play', // learning - written word on 1st attempt, testing - on 2nd attempt, Flashcard - pick any spot, reads out word
   // might only what wordsPerGame in testing mode otherwise do all of them
-  // learning mode - single word, testing mode multiple words, practice mode - all words
+  // learning mode - single word, testing mode multiple words, Flashcard mode - all words
   setPhoto: function (photo) {
     if (photo) {
       this.photo = photo;
@@ -113,15 +113,16 @@ var gState = {
     if (_candidates.length) {
       // could just as well use
       // sampleSize to get multiple words
-      if (this.gameMode !== 'Practice' && this.gameMode !=='Edit') { // todo, create a dictionaty of options rather than hardcoding
+      if (VRVOCAB.modes[this.gameMode].wordsPerRound) {
         this.wordNum++;
         nextWord = _.sample(_candidates);
         // if in learning mode show text for all attempts, otherwise start without it
-        if (this.gameMode === 'Learn') {
-          setHudText('top', 'Find: ' + nextWord[this.lang].word);
+        if (VRVOCAB.modes[this.gameMode].writeNewTarget) {
+          setTimeout( ()=> setHudText('top', 'Find: ' + nextWord[this.lang].word),50);
+          // gets overwritten otherwise
         }
         this.word = nextWord;
-        this.playWord();
+        if (VRVOCAB.modes[this.gameMode].sayTarget) this.playWord();
       }
     } else {
       this.endGame();
@@ -133,7 +134,7 @@ var gState = {
     let score = this.getScore();
     this.word = {};
     // make sure there have been words, otherwise when editing you get a broken message in top hud
-    if (score.correct) {
+    if (score.correct && VRVOCAB.modes[this.gameMode].gameStats) {
       const photoStats = _.find(this.getUserPhotoData(),{id:this.photo.id});
       let roomMess = Math.round(photoStats.found*100/photoStats.words) + '% Found\n\n' +
         Math.round(photoStats.mastered*100/photoStats.words) + '% Mastered';
@@ -296,10 +297,15 @@ var gState = {
     return stats;
   },
   secShow: function (secs) {
-    let basedate = new Date(0);
-    if (!secs) return '';
-    basedate.setSeconds(secs);// specify value for SECONDS here
-    return basedate.toISOString().substr(14, 5) + 's';
+    const pad = function(num, size) { return ('000' + num).slice(size * -1); },
+      time = parseFloat(secs).toFixed(3),
+      hours = Math.floor(time / 60 / 60),
+      minutes = Math.floor(time / 60) % 60,
+      seconds = Math.floor(time - minutes * 60);
+    let out = pad(seconds, 2) + 's';
+    if (minutes || hours) out = pad(minutes, 2) + ':' + out;
+    if (hours) out = pad(hours, 2) + ':' + out;
+    return out;
   }
 };
 gState.db.defaults({photos: [], words: {}, log: [], state: {}}).write();

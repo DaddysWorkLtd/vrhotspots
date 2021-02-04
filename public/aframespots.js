@@ -49,7 +49,8 @@ AFRAME.registerComponent('cursor-listen', {
           text: el.getAttribute('word') + ': not found in dictionary'
         });
       } else {
-        if (gState.gameMode === 'Practice') {
+        if (!VRVOCAB.modes[gState.gameMode].wordsPerRound) {
+          // in flashcard mode there are no words to find so add the current one as a correct answer
           gState.word = fusedWord;
           gState.playWord(true);
           evt.detail.intersectedEl.remove();

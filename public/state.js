@@ -1,29 +1,25 @@
 var VRVOCAB = {
-    game: {
-      "test": {
-        WordsPerRound: 1,
-        wordsPerGame: 15,
+    modes: {
+      "Play": {
+        wordsPerRound: 1,
         clues: true,
-        laserControls: false,
-        sayCorrect: false,
         writeTarget: true,
-        writeNewTarget: false,
+        sayTarget: true,
+        gameStats: true
       },
-      "learn": {
-        WordsPerRound: 1,
-        wordsPerGame: false,
+      "Learn": {
+        wordsPerRound: 1,
+        writeTarget: true,
+        sayTarget: true,
         writeTarget: true,
         writeNewTarget: true,
+        translateFusing: true
       },
-      "practice": {
-        WordsPerRound: 0,
-        wordsPerGame: false,
+      "Flashcard": { // should maybe give an english target?
+        wordsPerRound: 0,
         clues: true,
-        laserControls: false,
-        sayCorrect: true,
-        writeTarget: false,
-        sayTarget: false
-      },
+        sayCorrect: true
+      }
     },
   LANGUAGES: {
       nl: "Dutch",
@@ -60,7 +56,7 @@ var VRVOCAB = {
       // languages
       state.whiteboardText = 'YOUR PROGRESS\n\nWords: ' + wordStats.correct;
       state.whiteboardText += '\nMastered: ' + wordStats.firstTime;
-      state.whiteboardText += '\nPlay time: ' + gState.secShow(wordStats.elapsed);
+      state.whiteboardText += '\nPlay time: ' + gState.secShow(wordStats.elapsed/1000);
       if (wordStats.attempts) state.whiteboardText += '\nAccuracy: ' + Math.round((wordStats.attempts-wordStats.incorrectAttempts)*100/wordStats.attempts) + '%';
       state.whiteboardText += '\nStars: ' + roomStats.stars;
       state.whiteboardText += '\n\nKeep up the good work!';
@@ -143,7 +139,7 @@ var VRVOCAB = {
 //          state.hudText='Correct: ' + word.word;
         },
         changeMode: (state) => {
-          let options = ['Learn','Play','Practice'];
+          let options = ['Learn','Play','Flashcard'];
           // todo: hard coded admin user for now
           state.adminUser = true;
           if (state.adminUser) options.push('Edit');
