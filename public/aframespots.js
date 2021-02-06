@@ -228,29 +228,15 @@ AFRAME.registerComponent('vocab-room', {
       tr.setAttribute('color', 'black');
       this.setText();
       el.appendChild(tr);
-      if (!data.enabled) {
-        this.setLocked();
-      } else {
-        // stars
-        this.setStars();
-        this.el.addEventListener('fusing', evt => {
-          //scope?
-          this.el.sceneEl.emit('changeHudText', {target: 'bot', text: 'fusing: ' + evt.target.getAttribute('name')}); // this.photo.name
-        });
-        this.el.addEventListener('click', evt => {
-          // transition to 360photo
-          this.el.sceneEl.emit('enterPhoto');
-          gState.changePhoto(evt.target.getAttribute('photo-id'));
-        });
-        // only fusable if enabled..
-        el.setAttribute('bind__class', 'homeFusable');
-        sp.setAttribute('bind__class', 'homeFusable');
-      }
-      // needed for the event handler to work... I supose I could put these in a closure
+
+      // needed for the event handler to work
       sp.setAttribute('name', data.name);
       sp.setAttribute('photo-id', data.photoId);
       el.setAttribute('sound', 'src', '#change-photo');
       el.setAttribute('sound', 'on', 'click');
+      // manageges click handler
+      this.setLocked();
+      this.setStars();
     },
     update: function (oldData) {
       if (oldData.words !== this.data.words || oldData.found !== this.data.found || oldData.name !== this.data.name) {
@@ -286,7 +272,7 @@ AFRAME.registerComponent('vocab-room', {
       let data = this.data;
       this.troikaText.setAttribute('value', data.name.toUpperCase() + '\n\n words: ' + data.words + '\nfound: ' + data.found);
     },
-  // this is a toggle as only called when changed
+  // sets the click handler and displays status
     setLocked: function () {
       const el=this.el,
         sp=this.sphere;
@@ -306,15 +292,17 @@ AFRAME.registerComponent('vocab-room', {
         this.lockedText = ltr;
         el.appendChild(ltr);
       }
+      this._clickHandler = this._clickHandler || function(evt) {
+        // transition to 360photo
+        evt.srcElement.sceneEl.emit('enterPhoto');
+        gState.changePhoto(evt.target.getAttribute('photo-id'));
+      };
+      el.removeEventListener('click',this._clickHandler);
       if (this.data.enabled) {
         el.setAttribute('bind__class', 'homeFusable');
         sp.setAttribute('bind__class', 'homeFusable');
         // allows you into edit a photo
-        el.addEventListener('click', evt => {
-          // transition to 360photo
-          this.el.sceneEl.emit('enterPhoto');
-          gState.changePhoto(evt.target.getAttribute('photo-id'));
-        });
+        el.addEventListener('click',this._clickHandler);
       } else {
         el.setAttribute('bind__class', 'Disabled');
         sp.setAttribute('bind__class', 'Disabled');

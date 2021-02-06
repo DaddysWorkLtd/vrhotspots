@@ -17,10 +17,10 @@ var VRVOCAB = {
       },
       "Flashcard": { // should maybe give an english target?
         wordsPerRound: 0,
-        clues: true,
-        sayCorrect: true
-      }
-    },
+        sayCorrect: true},
+      "Edit": {}
+    }
+    ,
   LANGUAGES: {
       nl: "Dutch",
     fr:"French",
