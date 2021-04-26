@@ -5,13 +5,18 @@ const express = require("express"),
     SERVER_NAME = process.env.PORT ? 'vr-vocab.glitch.me' : "daddydev",
     DATA_FILE = "./database/vrvocabdb.json",
     PRIVATE_DATA = "./database/privatedb.json",
+    TRANS_DATA = "./database/transdb.json",
     fs = require("fs"),
     ip=require('ip'),
     protocol = process.env.PORT ? require("http") : require("https") , // non secure for glitch which has process.env defined
     key = fs.readFileSync("./config/devkey.pem"),
     cert = fs.readFileSync("./config/devcert.pem"),
     app = express(),
-    requestIp = require('request-ip');
+    requestIp = require('request-ip'),
+    bodyParser = require('body-parser');
+
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: true }));
 //getting the IP address
 //
  app.use(requestIp.mw());
@@ -47,16 +52,18 @@ const low = require("lowdb"),
     // use synchronous file mode
     FileSync = require("lowdb/adapters/FileSync"),
     db = low(new FileSync(DATA_FILE)),
-    udb = low(new FileSync(PRIVATE_DATA));
+    udb = low(new FileSync(PRIVATE_DATA))
+    tdb = low(new FileSync(TRANS_DATA))
 
 db.defaults({ photos: [], words: {}, uid: 0 }).write();
 udb.defaults({ users: [], log: []}).write();
-
+tdb.defaults({en_nl:[], nl_en:[]});
 
 //static root is public
 app.use(express.static("public"));
 // start photo hard coded to 1 in connect.
 
+// socket io stuff
 io.on("connection", socket => {
     console.log("made socket connection", socket.id);
     // send back the current database on connect
@@ -122,6 +129,26 @@ app.get('/api/words', (req,res,rrq) => { console.log('words'); res.json( db.get(
 app.get('/api/photos/:id/wordspots', (req,res,rrq) => res.json( db.get('photos').find({id:req.params.id*1}).value().wordSpots ));
 app.get('/api/photos', (req,res,rrq) => res.json( db.get('photos').value() ));
 app.get('/api/photos/:id', (req,res,rrq) => res.json( db.get('photos').find({id:req.params.id*1}).value() ));
+
+const {Translate} = require('@google-cloud/translate').v2;
+const projectId = 'vr-vocab-123';
+const translater = new Translate({projectId});
+
+app.get('/api/translate/:from/:to/:text', async (req,res,rrq) => {
+    let [translation] = await translater.translate(req.params.text, {to: req.params.to,from: req.params.from});
+    const coll = req.params.from + "_" + req.params.to;
+    tdb.get(coll).push({in: req.params.text, out: translation, ts: new Date()}).write()
+    res.json( translation )
+});
+
+app.post('/api/translate/:from/:to', async (req,res,rrq) => {
+    let [translation] = await translater.translate(req.body.text, {to: req.params.to,from: req.params.from});
+    const coll = req.params.from + "_" + req.params.to;
+    tdb.get(coll).push({in: req.params.text, out: translation, ts: new Date()}).write()
+    res.json( translation )
+});
+
+
 
 // for current user todo implement
 app.get('/api/logs/', (req,res,rrq) => res.json( udb.get('logs').value() ));

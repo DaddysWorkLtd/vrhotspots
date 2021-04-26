@@ -818,7 +818,7 @@ AFRAME.registerComponent('gui-cursor', {
             this.cursorVerticalTop = cursorVerticalTop;
 
             var cursorVerticalBottom = document.createElement("a-entity");
-            cursorVerticalBottom.setAttribute('geometry', 'primitive: plane; width:0.0035; height:0.01875');
+            cursorVerticalBottom.setAttribute('geometry', 'primitive: box; width:0.0035; height:0.01875');
             cursorVerticalBottom.setAttribute('material', 'color: ' + data.color + '; shader: flat; opacity:1;');
             cursorVerticalBottom.setAttribute('position', '0 -0.028125 0');
             cursorVerticalBottom.setAttribute('animation__widthIn', 'property: geometry.width; from: 0.0035; to: 0.007; dur:' + fuseAnimationDuration + '; easing:linear; startEvents: hovergui');
