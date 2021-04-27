@@ -57,7 +57,7 @@ const low = require("lowdb"),
 
 db.defaults({ photos: [], words: {}, uid: 0 }).write();
 udb.defaults({ users: [], log: []}).write();
-tdb.defaults({en_nl:[], nl_en:[]});
+tdb.defaults({en_nl:[], nl_en:[]}).write();
 
 //static root is public
 app.use(express.static("public"));
