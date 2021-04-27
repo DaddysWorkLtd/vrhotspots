@@ -144,7 +144,7 @@ app.get('/api/translate/:from/:to/:text', async (req,res,rrq) => {
 app.post('/api/translate/:from/:to', async (req,res,rrq) => {
     let [translation] = await translater.translate(req.body.text, {to: req.params.to,from: req.params.from});
     const coll = req.params.from + "_" + req.params.to;
-    tdb.get(coll).push({in: req.params.text, out: translation, ts: new Date()}).write()
+    tdb.get(coll).push({in: req.body.text, out: translation, ts: new Date()}).write()
     res.json( translation )
 });
 
