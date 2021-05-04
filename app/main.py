@@ -17,6 +17,8 @@ NEW_LANG = "nl"
 # pattr
 # splattr
 # smartr
+# vocabby
+# vocabie
 class MainApp(App):
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
