@@ -12,9 +12,11 @@ const express = require("express"),
     key = fs.readFileSync("../privkey.pem"),
     cert = fs.readFileSync("../cert.pem"),
     app = express(),
+    cors = require("cors")
     requestIp = require('request-ip'),
     bodyParser = require('body-parser');
 
+app.use(cors())
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 //getting the IP address
@@ -141,8 +143,8 @@ app.get('/api/translate/:from/:to/:text', async (req,res,rrq) => {
     res.json( translation )
 });
 
-app.post('/api/translate/:from/:to', async (req,res,rrq) => {
-    let [translation] = await translater.translate(req.body.text, {to: req.params.to,from: req.params.from});
+app.post('/api/translate', async (req,res,rrq) => {
+    let [translation] = await translater.translate(req.body.text, {to: req.body.to,from: req.body.from});
     const coll = req.params.from + "_" + req.params.to;
     tdb.get(coll).push({in: req.body.text, out: translation, ts: new Date()}).write()
     res.json( translation )
