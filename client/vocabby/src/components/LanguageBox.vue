@@ -1,5 +1,4 @@
 <template>
-  <button @click="translate">translate</button>
   <textarea class="langBox" :placeholder="lang" :value="boxText" @input="(event)=> $emit ('update:boxText',event.target.value)" @change="translate"></textarea>
 </template>
 
