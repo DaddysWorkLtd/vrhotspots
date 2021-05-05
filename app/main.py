@@ -130,9 +130,11 @@ class MainApp(App):
                     self.cache[from_text] = args[1]
 
                 self.to_req = UrlRequest(
-                    url=f"https://home.daddyswork.com:3069/api/translate/{BASE_LANG}/{NEW_LANG}",
+                    url=f"https://home.daddyswork.com:3069/api/translate",
                     req_headers={"Content-Type": "application/json"},
-                    req_body=json.dumps({"text": from_text}),
+                    req_body=json.dumps(
+                        {"text": from_text, "from": BASE_LANG, "to": NEW_LANG}
+                    ),
                     on_success=to_success,
                     on_error=lambda *args: print("error:", args),
                     on_failure=lambda *args: print("fail:", args),
@@ -154,16 +156,18 @@ class MainApp(App):
                     setattr(self.fromText, "text", args[1])
                     self.cache[args[1]] = to_text
 
-                    self.from_req = UrlRequest(
-                        url=f"https://home.daddyswork.com:3069/api/translate/{NEW_LANG}/{BASE_LANG}",
-                        req_headers={"Content-Type": "application/json"},
-                        req_body=json.dumps({"text": to_text}),
-                        verify=False,
-                        on_success=from_success,
-                        on_error=lambda *args: print("error:", args),
-                        on_failure=lambda *args: print("fail:", args),
-                        on_redirect=lambda *args: print("redir:", args),
-                    )
+                self.from_req = UrlRequest(
+                    url=f"https://home.daddyswork.com:3069/api/translate",
+                    req_headers={"Content-Type": "application/json"},
+                    req_body=json.dumps(
+                        {"text": to_text, "from": NEW_LANG, "to": BASE_LANG}
+                    ),
+                    verify=False,
+                    on_success=from_success,
+                    on_error=lambda *args: print("error:", args),
+                    on_failure=lambda *args: print("fail:", args),
+                    on_redirect=lambda *args: print("redir:", args),
+                )
 
 
 if __name__ == "__main__":
