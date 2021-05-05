@@ -144,9 +144,10 @@ app.get('/api/translate/:from/:to/:text', async (req,res,rrq) => {
 });
 
 app.post('/api/translate', async (req,res,rrq) => {
-    let [translation] = await translater.translate(req.body.text, {to: req.body.to,from: req.body.from});
-    const coll = req.params.from + "_" + req.params.to;
-    tdb.get(coll).push({in: req.body.text, out: translation, ts: new Date()}).write()
+    let [translation] = await translater.translate(req.body.text.trim(), {to: req.body.to,from: req.body.from});
+    const coll = req.body.from + "_" + req.body.to;
+    console.log(coll,{in: req.body.text.trim(), out: translation, ts: new Date()});
+    tdb.get(coll).push({in: req.body.text.trim(), out: translation, ts: new Date()}).write()
     res.json( translation )
 });
 
