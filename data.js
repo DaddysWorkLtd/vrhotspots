@@ -58,7 +58,7 @@ async function processLog(from,to) {
     .filter(rec => {
       return !maxTime || Date(rec.ts) < Date(maxTime)
     }).value()
-  recs.forEach( trans => {
+  for (const trans of recs) {
     translation = Translation.create({user_id: USER_ID,
       timestamp: trans.ts,
       fromLang: from,
@@ -67,10 +67,10 @@ async function processLog(from,to) {
       toText: trans.out})
       // replace punctuation
       inText = trans.in.replace(/[.,\/#!$%\^&\*;:{}=\-_`~()]/g,"");
-      inText.split(/\s+/).forEach( inWord => {
+      for (const inWord of inText.split(/\s+/)) {
         // cant upsert as not sure on indexining strategy (language and word, think there is an insert or create
         console.log('searching for',inWord)
-        Word.findOne({ where: { fromLang: from, toLang: to, fromText: inWord } })
+        await Word.findOne({ where: { fromLang: from, toLang: to, fromText: inWord } })
           .then( word => {
             if (word) {
               return word.update({lastTimestamp: trans.ts, occurances: word.occurances + 1})
@@ -85,13 +85,12 @@ async function processLog(from,to) {
                 occurances: 1
               }
               console.log('created', inWord)
-              return word = Word.create(wordDef)
+              word = Word.create(wordDef)
             }
           })
           .catch(e => {console.error("table not created yet?",e) })
-      })
-
-  })
+      }
+  }
 }
 
 
