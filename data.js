@@ -67,27 +67,28 @@ async function processLog(from,to) {
       toText: trans.out})
       // replace punctuation
       inText = trans.in.replace(/[.,\/#!$%\^&\*;:{}=\-_`~()]/g,"");
-      inText.split(/\s+/).forEach( async inWord => {
+      inText.split(/\s+/).forEach( inWord => {
         // cant upsert as not sure on indexining strategy (language and word, think there is an insert or create
-        try {
-          var word = await Word.findOne({ where: { fromLang: from, toLang: to, fromText: inWord } });
-        } catch(e) {
-          console.error("table not created yet?",e)
-        }
-        if (word) {
-          await word.update( {lastTimestamp: trans.ts, occurances: word.occurances+1} )
-        } else {
-            const wordDef={
-              userId: USER_ID,
-              fromLang: from,
-              toLang: to,
-              fromText: inWord,
-              firstTimestamp: trans.ts,
-              lastTimestamp: trans.ts,
-              occurances: 1
+        console.log('searching for',inWord)
+        Word.findOne({ where: { fromLang: from, toLang: to, fromText: inWord } })
+          .then( word => {
+            if (word) {
+              return word.update({lastTimestamp: trans.ts, occurances: word.occurances + 1})
+            } else {
+              const wordDef = {
+                userId: USER_ID,
+                fromLang: from,
+                toLang: to,
+                fromText: inWord,
+                firstTimestamp: trans.ts,
+                lastTimestamp: trans.ts,
+                occurances: 1
+              }
+              console.log('created', inWord)
+              return word = Word.create(wordDef)
             }
-            word = await Word.create(wordDef)
-        }
+          })
+          .catch(e => {console.error("table not created yet?",e) })
       })
 
   })
