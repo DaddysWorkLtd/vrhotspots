@@ -45,8 +45,8 @@ async function bootstrap() {
 }
 
 async function processLog(from,to) {
-  await sequelize.sync();
-  const coll = from + "_" + to;
+  await sequelize.sync()
+  const coll = from + "_" + to
   // check the last entry time in the database and query after that time
   try {
     var maxTime = await Translation.max('timestamp')
@@ -86,7 +86,7 @@ async function processLog(from,to) {
               lastTimestamp: trans.ts,
               occurances: 1
             }
-            word = Word.create(wordDef)
+            word = await Word.create(wordDef)
         }
       })
 
