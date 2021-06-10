@@ -5,7 +5,7 @@ const sequelize = new Sequelize('sqlite:database/transdb.sqlite');
 const low = require("lowdb"),
   // use synchronous file mode
   FileSync = require("lowdb/adapters/FileSync"),
-  TRANS_DATA = "./database/transdb.json.old",
+  TRANS_DATA = "./database/transdb.json",
   USER_ID = "1"
   tdb = low(new FileSync(TRANS_DATA))
 
