@@ -1,60 +1,30 @@
 // script moves data from transdb.json to sqllite database
 const { Sequelize, Model, DataTypes } = require('sequelize');
 const sequelize = new Sequelize('sqlite:database/transdb.sqlite');
+// todo rename this to something meaningful
+
 // routes
 const low = require("lowdb"),
   // use synchronous file mode
   FileSync = require("lowdb/adapters/FileSync"),
   TRANS_DATA = "./database/transdb.json",
-  USER_ID = "1"
-  tdb = low(new FileSync(TRANS_DATA))
-
-class Translation extends Model {}
-Translation.init({
-  translationId: {type: DataTypes.INTEGER, primaryKey: true, autoIncrement:true},
-  userId: DataTypes.TEXT('tiny'),
-  timestamp: DataTypes.DATE,
-  fromLang: DataTypes.TEXT('tiny'),
-  toLang: DataTypes.TEXT('tiny'),
-  fromText: DataTypes.TEXT('tiny'),
-  toText: DataTypes.TEXT('tiny')
-}, {sequelize,modelName:"translation",underscored: true, timestamps: false})
-
-class Word extends Model {}
-Word.init({
-  wordId: {type: DataTypes.INTEGER,primaryKey:true,autoIncrement:true},
-  userId: DataTypes.TEXT('tiny'),
-  fromLang: DataTypes.TEXT('tiny'),
-  toLang: DataTypes.TEXT('tiny'),
-  fromText: DataTypes.TEXT('tiny'),
-  toText: DataTypes.TEXT('tiny'),
-  firstTimestamp: DataTypes.DATE,
-  lastTimestamp:DataTypes.DATE,
-  occurances:DataTypes.INTEGER
-}, {sequelize,modelName:"word",underscored: true, timestamps: false})
-
-async function bootstrap() {
-  try {
-    const trans = await Translation.create({user_id: "1",from_lang: "eng"})
-    // is this even needed?
-    await sequelize.sync();
-    console.log(trans.toJSON());
-  } catch (e) {
-    console.error(e.message)
-  }
-}
+  USER_ID = "1",
+  tdb = low(new FileSync(TRANS_DATA)),
+  models= require('./models.js'),
+  Word = models.Word,
+  Translation = models.Translation
 
 async function processLog(from,to) {
   await sequelize.sync()
   const coll = from + "_" + to
   // check the last entry time in the database and query after that time
   try {
-    var maxTime = await Translation.max('timestamp')
+    var maxTime = await Translation.max('timestamp',{where: {fromLang: from,toLang: to}})
   } catch (e) {
     console.log('dropped table?')
     maxTime = 0 // table doesn't exist
   }
-  recs=tdb.get("en_nl")
+  recs=tdb.get(coll)
     .filter(rec => {
       return !maxTime || Date(rec.ts) < Date(maxTime)
     }).value()
@@ -66,9 +36,10 @@ async function processLog(from,to) {
       fromText: trans.in,
       toText: trans.out})
       // replace punctuation
-      inText = trans.in.replace(/[.,\/#!$%\^&\*;:{}=\-_`~()]/g,"");
-      for (const inWord of inText.split(/\s+/)) {
+      inText = trans.in.replace(/[.,\/#!$%\^&\*;:{}=\-_`~()]/g,"").toLowerCase();
+      for (inWord of inText.split(/\s+/)) {
         // cant upsert as not sure on indexining strategy (language and word, think there is an insert or create
+        if (!inWord.trim()) continue
         console.log('searching for',inWord)
         await Word.findOne({ where: { fromLang: from, toLang: to, fromText: inWord } })
           .then( word => {
@@ -95,6 +66,8 @@ async function processLog(from,to) {
 
 
 processLog('en','nl')
+processLog('nl','en')
+
 
 /*
 const sqlite = require ("sqlite-async")
