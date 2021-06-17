@@ -15,7 +15,8 @@ const express = require("express"),
     cors = require("cors")
     requestIp = require('request-ip'),
     bodyParser = require('body-parser'),
-    models = require('./models');
+    models = require('./models'),
+     _ = require('lodash');
 
 app.use(cors())
 app.use(bodyParser.json());
@@ -236,6 +237,35 @@ app.put('/api/vocably/words/:wordId', async (req,res) => {
 
 // create question - can either give choice of answers or give answer and distractors, probably prefer to keep that back. Any hints? These could be keyed b word
 // todo api/question/new?distractors=5
+app.get('/api/vocably/question/new', async (req,res) => {
+    // default 3 distractors, can get more
+    const distractors = req.query.distractors || 3
+    words = await models.Word.findAll({ where: {
+            wordId : { [models.Sequelize.Op.notIn]: [models.sequelize.literal('select word_id from questions')]}
+        },
+        order: models.sequelize.random(),
+        limit:distractors+1 });
+    question = await models.Question.create( {wordId: words[0].wordId, distractors: distractors, reverse: false})
+
+    let answerList = words.map(function(word){
+        return { wordId: word.wordId, word: word.toText };
+    });
+    const returnObj = { questionId: question.questionId,
+        word: words[0].fromText, // if not reverse
+        choices: _.shuffle(answerList) }
+
+    res.json(returnObj)
+})
+
+app.get('/api/vocably/question/repeat', async (req,res) => {
+    // get a due question - if no repeat questions return none or maybe a flag to override
+    res.send("TBD")
+})
+app.post('/api/vocably/answer/:questionId', async (req,res) => {
+    // include confidence upto don't test again
+    res.send("TBD")
+})
+
 // todo api/answer/:questionId
 
 // todo api/question/repeat?distractors=5

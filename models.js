@@ -26,6 +26,15 @@ Word.init({
   occurances:DataTypes.INTEGER
 }, {sequelize,modelName:"word",underscored: true, timestamps: false})
 
+class Question extends Model {}
+Question.init({
+  questionId: { type: DataTypes.INTEGER, primaryKey: true, autoIncrement: true},
+  wordId: DataTypes.INTEGER,
+  reverse: DataTypes.BOOLEAN,
+  distractors: DataTypes.INTEGER,
+  answer_wordId: DataTypes.INTEGER
+}, {sequelize,modelName:"question",underscored: true, timestamps: true})
+
 async function createTables() {
   try {
     await sequelize.sync();
@@ -36,5 +45,5 @@ async function createTables() {
 
 createTables()
 
-module.exports = { Word: Word, Translation: Translation }
+module.exports = { Word: Word, Translation: Translation, sequelize: sequelize, Question: Question, Sequelize: Sequelize }
 
