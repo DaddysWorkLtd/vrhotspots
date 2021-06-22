@@ -246,22 +246,23 @@ app.get('/api/vocably/question/new', async (req,res) => {
     const distractors = req.query.distractors || 3
     // get them all in one go but want word to be const choice = Math.floor((Math.random() ** 1.5) * 100) (top biased)
     // and distractors (tail biased) -       const choice = Math.floor((Math.random() ** 0.75) * 100)
-    /* completely random approach, beautifully concise
     words = await models.Word.findAll({ where: {
             wordId : { [models.Sequelize.Op.notIn]: [models.sequelize.literal('select word_id from questions')]}
         },
-        order: models.sequelize.random(),
-        limit:distractors+1 });
-*/
-
-    question = await models.Question.create( {wordId: words[0].wordId, distractors: distractors, reverse: false})
-
-    let answerList = words.map(function(word){
-        return { wordId: word.wordId, word: word.toText };
+        order: [["occurances","DESC"]]
     });
+    let answers = [];
+    let choice = randy(0,words.length-1,1.5) // 1.5 top biases
+    let word = words[choice]
+    answers.push( { wordId: word.wordId, word: word.toText} )
+    for ( let i=0; i< ( req.query.distractors || 3); i++ ) {
+        choice = randy(0,words.length-1,.75) // .75 tail biases, more difficult ones
+        answers.push( { wordId: words[choice].wordId, word: words[choice].toText} )
+    }
+    question = await models.Question.create( {wordId: answers[0].wordId, distractors: distractors, reverse: false})
     const returnObj = { questionId: question.questionId,
-        word: words[0].fromText, // if not reverse
-        choices: _.shuffle(answerList) }
+        word: word.fromText, // if not reverse
+        choices: _.shuffle(answers) }
     res.json(returnObj)
 })
 
