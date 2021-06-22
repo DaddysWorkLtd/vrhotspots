@@ -238,13 +238,22 @@ app.put('/api/vocably/words/:wordId', async (req,res) => {
 // create question - can either give choice of answers or give answer and distractors, probably prefer to keep that back. Any hints? These could be keyed b word
 // todo api/question/new?distractors=5
 app.get('/api/vocably/question/new', async (req,res) => {
+    function randy(min,max,factor = 1) {
+        const rand=(Math.random() ** factor)
+        return min + Math.floor( rand * (max - min) )
+    }
     // default 3 distractors, can get more
     const distractors = req.query.distractors || 3
+    // get them all in one go but want word to be const choice = Math.floor((Math.random() ** 1.5) * 100) (top biased)
+    // and distractors (tail biased) -       const choice = Math.floor((Math.random() ** 0.75) * 100)
+    /* completely random approach, beautifully concise
     words = await models.Word.findAll({ where: {
             wordId : { [models.Sequelize.Op.notIn]: [models.sequelize.literal('select word_id from questions')]}
         },
         order: models.sequelize.random(),
         limit:distractors+1 });
+*/
+
     question = await models.Question.create( {wordId: words[0].wordId, distractors: distractors, reverse: false})
 
     let answerList = words.map(function(word){
@@ -253,17 +262,55 @@ app.get('/api/vocably/question/new', async (req,res) => {
     const returnObj = { questionId: question.questionId,
         word: words[0].fromText, // if not reverse
         choices: _.shuffle(answerList) }
-
     res.json(returnObj)
 })
 
 app.get('/api/vocably/question/repeat', async (req,res) => {
     // get a due question - if no repeat questions return none or maybe a flag to override
-    res.send("TBD")
+
+    // default 3 distractors, can get more
+    const distractors = req.query.distractors || 3
+    // todo: not going to have enoughd distractors, these can be from anywhere
+    words = await models.WordLearning.findAll({ where: {
+            wordId : { [models.Sequelize.Op.in]: [models.sequelize.literal('select word_id from questions')]}
+        },
+        order: [[ 'nextRepetition', 'ASC']],
+//        order: models.sequelize.random(),
+        limit:distractors+1 })
+
+    question = await models.Question.create( {wordId: words[0].wordId, distractors: distractors, reverse: false})
+
+    let answerList = words.map(function(word){
+        return { wordId: word.wordId, word: word.toText };
+    });
+    const returnObj = { questionId: question.questionId,
+        word: words[0].fromText, // if not reverse
+        choices: _.shuffle(answerList) }
+    res.json(returnObj)
 })
-app.post('/api/vocably/answer/:questionId', async (req,res) => {
-    // include confidence upto don't test again
-    res.send("TBD")
+app.put('/api/vocably/answer/:questionId', async (req,res) => {
+    const question = await models.Question.findByPk( req.params.questionId )
+    if (!question) {
+        res.status(404)
+        return res.json({"QUESTION NOT FOUND": req.params.questionId})
+    }
+    // todo: should we allow a question to be answered twice?
+    if (!req.body.wordId) {
+        res.status(400)
+        return res.json({"REQUIRED": "wordId"})
+    }
+    let confidence = req.body.confidence || .5
+    // todo: do not allow old questions to be updated, as PKs are guessable
+    const word = await models.Word.findByPk(  req.body.wordId )
+    if (!word) {
+        res.status(404)
+        return res.json({"ANSWER NOT FOUND": req.body.wordId})
+    }
+    // could deal with the answer using a class method - https://sequelize.org/master/manual/model-basics.html#taking-advantage-of-models-being-classes
+    question.answerWordId = req.body.wordId
+    let correct = question.processAnswer( req.body.wordId , confidence)
+    res.status(correct ? 200: 400)
+    return res.json({"correct": correct})
 })
 
 // todo api/answer/:questionId
