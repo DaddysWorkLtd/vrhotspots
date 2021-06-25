@@ -89,6 +89,26 @@
       "in": "",
       "out": "",
       "ts": "2021-06-07T10:27:52.004Z"
+    },
+    {
+      "in": "boneless chicken thighs",
+      "out": "kippendijen zonder been",
+      "ts": "2021-06-11T10:27:50.929Z"
+    },
+    {
+      "in": "vinegar",
+      "out": "azijn",
+      "ts": "2021-06-11T10:36:32.080Z"
+    },
+    {
+      "in": "kosher",
+      "out": "koosjer",
+      "ts": "2021-06-13T10:42:10.152Z"
+    },
+    {
+      "in": "kosher salt",
+      "out": "koosjer zout",
+      "ts": "2021-06-13T10:42:17.655Z"
     }
   ],
   "nl_en": [
@@ -346,6 +366,46 @@
       "in": "Door af te ronden ga ik akkoord dat mijn lidmaatschap per direct ingaat. Binnen de wettelijke bedenktermijn van 14 dagen kan ik mijn lidmaatschap ontbinden mits geen gebruik gemaakt is van de faciliteiten.",
       "out": "By completing I agree that my membership is effective immediately. I can cancel my membership within the statutory cooling-off period of 14 days, provided that the facilities have not been used.",
       "ts": "2021-06-07T10:27:57.084Z"
+    },
+    {
+      "in": "keuze",
+      "out": "choice",
+      "ts": "2021-06-11T08:06:21.694Z"
+    },
+    {
+      "in": "tijdelijk",
+      "out": "temporary",
+      "ts": "2021-06-16T13:08:00.413Z"
+    },
+    {
+      "in": "tijdelijk vergood",
+      "out": "temporarily repented",
+      "ts": "2021-06-16T13:08:07.197Z"
+    },
+    {
+      "in": "facruur en betaalbewijs",
+      "out": "invoice and proof of payment",
+      "ts": "2021-06-16T13:31:35.732Z"
+    },
+    {
+      "in": "koopzending",
+      "out": "purchase shipment",
+      "ts": "2021-06-16T13:33:46.810Z"
+    },
+    {
+      "in": "geschenkending",
+      "out": "gift thing",
+      "ts": "2021-06-16T13:34:13.798Z"
+    },
+    {
+      "in": "wens de zending niet aan te nemen",
+      "out": "do not wish to accept the shipment",
+      "ts": "2021-06-16T13:34:58.853Z"
+    },
+    {
+      "in": "afgerond",
+      "out": "rounded",
+      "ts": "2021-06-24T14:32:01.086Z"
     }
   ]
 }
