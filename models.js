@@ -23,7 +23,8 @@ Word.init({
   toText: DataTypes.TEXT('tiny'),
   firstTimestamp: DataTypes.DATE,// first tested, used for ensuring data is not imported twice
   lastTimestamp:DataTypes.DATE,// last tested... next test due?
-  occurances:DataTypes.INTEGER // that's how many times seen in translation requests - uniqueness/difficulty?
+  occurances:DataTypes.INTEGER, // that's how many times seen in translation requests - uniqueness/difficulty?
+  disabled: DataTypes.DATE
 }, {sequelize,modelName:"word",underscored: true, timestamps: false})
 
 class WordLearning extends Model {} // maybe WordPerformance
@@ -98,10 +99,9 @@ class Question extends Model {
         }
         distracted.save()
         return false
-      } else {
-        return correct
       }
     }
+    return correct
   }
 }
 Question.init({

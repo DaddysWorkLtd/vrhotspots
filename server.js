@@ -244,8 +244,7 @@ app.get('/api/vocably/question/new', async (req,res) => {
     }
     // default 3 distractors, can get more
     const distractors = req.query.distractors || 3
-    // get them all in one go but want word to be const choice = Math.floor((Math.random() ** 1.5) * 100) (top biased)
-    // and distractors (tail biased) -       const choice = Math.floor((Math.random() ** 0.75) * 100)
+    //todo - can only have distractors etc for same language so may need from and to in the url
     words = await models.Word.findAll({ where: {
             wordId : { [models.Sequelize.Op.notIn]: [models.sequelize.literal('select word_id from questions')]}
         },
@@ -307,17 +306,30 @@ app.put('/api/vocably/answer/:questionId', async (req,res) => {
         res.status(404)
         return res.json({"ANSWER NOT FOUND": req.body.wordId})
     }
-    // could deal with the answer using a class method - https://sequelize.org/master/manual/model-basics.html#taking-advantage-of-models-being-classes
     question.answerWordId = req.body.wordId
-    let correct = question.processAnswer( req.body.wordId , confidence)
+    let correct = await question.processAnswer( req.body.wordId , confidence)
     res.status(correct ? 200: 400)
-    return res.json({"correct": correct})
+    let correctWrong = correct ? "correct" : "incorrect"
+    console.log('correct',correct,correctWrong)
+    const returnValue={}
+    returnValue[correctWrong]=question.wordId
+    return res.json(returnValue)
 })
-
-// todo api/answer/:questionId
-
-// todo api/question/repeat?distractors=5
-
+// deletes question and disables word so it's not asked again
+app.delete('/api/vocably/question/:questionId', async (req,res) => {
+    question=await models.Question.findByPk(req.params.questionId)
+    if (!question) {
+        res.status(404)
+        return res.json({"QUESTION NOT FOUND": req.params.questionId})
+    } else {
+        word=await models.Word.findByPk(question.wordId)
+        word.disabled = new Date()
+        word.save()
+        question.destroy()
+        res.status(204)
+        res.end()
+    }
+});
 
 // for current user todo implement
 app.get('/api/logs', (req,res,rrq) => res.json( udb.get('logs').value() ));

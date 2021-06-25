@@ -1,7 +1,8 @@
+// this is a script for transferring data from json to sqllite, it translates as it goes - could do with a better name!
+
 // script moves data from transdb.json to sqllite database
 const { Sequelize, Model, DataTypes } = require('sequelize');
 const sequelize = new Sequelize('sqlite:database/transdb.sqlite');
-// todo rename this to something meaningful
 
 // routes
 const low = require("lowdb"),
@@ -13,6 +14,10 @@ const low = require("lowdb"),
   models= require('./models.js'),
   Word = models.Word,
   Translation = models.Translation
+
+const {Translate} = require('@google-cloud/translate').v2;
+const projectId = 'vr-vocab-123';
+const translater = new Translate({projectId});
 
 async function processLog(from,to) {
   await sequelize.sync()
@@ -35,12 +40,12 @@ async function processLog(from,to) {
       toLang: to,
       fromText: trans.in,
       toText: trans.out})
-      // replace punctuation
+      // replace punctuation - - strip off de/het?
       inText = trans.in.replace(/[.,\/#!$%\^&\*;:{}=\-_`~()]/g,"").toLowerCase();
       for (inWord of inText.split(/\s+/)) {
         // cant upsert as not sure on indexining strategy (language and word, think there is an insert or create
         if (!inWord.trim()) continue
-        console.log('searching for',inWord)
+//        console.log('searching for',inWord)
         await Word.findOne({ where: { fromLang: from, toLang: to, fromText: inWord } })
           .then( word => {
             if (word) {
@@ -63,10 +68,30 @@ async function processLog(from,to) {
       }
   }
 }
+async function lookupWords() {
+  words = await Word.findAll({ where: { toText:null } })
+  words.forEach(async word => {
+    try {
+      // getting socket hangup errors so slowing it down
+      await new Promise(resolve => setTimeout(resolve, 500));
+      let [toText] = await translater.translate(word.fromText, {to: word.toLang, from: word.fromLang});
+      if (toText) {
+        word.toText = toText
+        console.log('translated', word.fromText, word.toText)
+        word.save()
+      }
+    } catch(e) {
+      console.log("translation error", word.fromText, word.totext, e)
+    }
+  })
+}
 
 
 processLog('en','nl')
 processLog('nl','en')
+// todo: lookup from cache where possible
+// we look up everything again even if we have it in the json db just because its small at the moment
+lookupWords()
 
 
 /*
