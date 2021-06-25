@@ -273,27 +273,28 @@ app.get('/api/vocably/question/:fromLang/:toLang/repeat', async (req,res) => {
     // default 3 distractors, can get more
     const distractors = req.query.distractors || 3
     // todo: not going to have enoughd distractors, these can be from anywhere
-    words = await models.WordLearning.findAll({ where: {
+    wordsLearn = await models.WordLearning.findAll({ where: {
             wordId : {
                 [models.Sequelize.Op.in]: [models.sequelize.literal("SELECT words.word_id FROM questions,words \
                                                     WHERE words.word_id=questions.word_id \
-                                                    AND word.disabled is NULL \
-                                                    AND from_Lang='" + req.params.fromLang + "' \
-                                                    AND to_Lang='" + req.params.toLang + "'")]
+                                                    AND words.disabled is NULL \
+                                                    AND from_lang='" + req.params.fromLang + "' \
+                                                    AND to_lang='" + req.params.toLang + "'")]
             },
         },
         order: [[ 'nextRepetition', 'ASC']],
 //        order: models.sequelize.random(),
         limit:distractors+1 })
 
-    question = await models.Question.create( {wordId: words[0].wordId, distractors: distractors, reverse: false})
-
-    let answerList = words.map(function(word){
-        return { wordId: word.wordId, word: word.toText };
-    });
+    question = await models.Question.create( {wordId: wordsLearn[0].wordId, distractors: distractors, reverse: false})
+    var _questionWord
+    let answerList = await Promise.all(wordsLearn.map(async function(wordLearn){
+        word = await models.Word.findByPk(wordLearn.wordId)
+        return { wordId: word.wordId, word: word.toText, fromText: word.fromText };
+    }));
     const returnObj = { questionId: question.questionId,
-        word: words[0].fromText, // if not reverse
-        choices: _.shuffle(answerList) }
+        word: _.find(answerList,{wordId: question.wordId}).fromText, // if not reverse
+        choices: _.shuffle(_.omit(answerList,'fromText')) }
     res.json(returnObj)
 })
 app.put('/api/vocably/answer/:questionId', async (req,res) => {
