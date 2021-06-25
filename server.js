@@ -247,6 +247,7 @@ app.get('/api/vocably/question/:fromLang/:toLang/new', async (req,res) => {
     //todo - can only have distractors etc for same language so may need from and to in the url
     words = await models.Word.findAll({ where: {
             wordId : { [models.Sequelize.Op.notIn]: [models.sequelize.literal('select word_id from questions where answer_word_id is not null')]},
+            disabled: null,
             fromLang: req.params.fromLang,
             toLang: req.params.toLang
         },
@@ -269,16 +270,16 @@ app.get('/api/vocably/question/:fromLang/:toLang/new', async (req,res) => {
 
 app.get('/api/vocably/question/:fromLang/:toLang/repeat', async (req,res) => {
     // get a due question - if no repeat questions return none or maybe a flag to override
-
     // default 3 distractors, can get more
     const distractors = req.query.distractors || 3
     // todo: not going to have enoughd distractors, these can be from anywhere
     words = await models.WordLearning.findAll({ where: {
             wordId : {
-                [models.Sequelize.Op.in]: [models.sequelize.literal("select words.word_id from questions,words \
-                                                    where words.word_id=questions.word_id \
-                                                    and from_Lang='" + req.params.fromLang + "' \
-                                                    and to_Lang='" + req.params.toLang + "'")]
+                [models.Sequelize.Op.in]: [models.sequelize.literal("SELECT words.word_id FROM questions,words \
+                                                    WHERE words.word_id=questions.word_id \
+                                                    AND word.disabled is NULL \
+                                                    AND from_Lang='" + req.params.fromLang + "' \
+                                                    AND to_Lang='" + req.params.toLang + "'")]
             },
         },
         order: [[ 'nextRepetition', 'ASC']],

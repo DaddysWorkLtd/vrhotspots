@@ -1,4 +1,6 @@
 // this is a script for transferring data from json to sqllite, it translates as it goes - could do with a better name!
+// lowercase
+// strip out all punctuation and non letters except apostrophe
 
 // script moves data from transdb.json to sqllite database
 const { Sequelize, Model, DataTypes } = require('sequelize');
@@ -40,8 +42,8 @@ async function processLog(from,to) {
       toLang: to,
       fromText: trans.in,
       toText: trans.out})
-      // replace punctuation - - strip off de/het?
-      inText = trans.in.replace(/[.,\/#!$%\^&\*;:{}=\-_`~()]/g,"").toLowerCase();
+      // replace punctuation and numbers - - strip off de/het?
+      inText = trans.in.replace(/[[^A-z\s']/gm,"").toLowerCase();
       for (inWord of inText.split(/\s+/)) {
         // cant upsert as not sure on indexining strategy (language and word, think there is an insert or create
         if (!inWord.trim()) continue
@@ -55,7 +57,7 @@ async function processLog(from,to) {
                 userId: USER_ID,
                 fromLang: from,
                 toLang: to,
-                fromText: inWord,
+                fromText: inWord.trim(),
                 firstTimestamp: trans.ts,
                 lastTimestamp: trans.ts,
                 occurances: 1
@@ -76,8 +78,12 @@ async function lookupWords() {
       await new Promise(resolve => setTimeout(resolve, 500));
       let [toText] = await translater.translate(word.fromText, {to: word.toLang, from: word.fromLang});
       if (toText) {
-        word.toText = toText
+        word.toText = toText.toLowerCase().trim()
         console.log('translated', word.fromText, word.toText)
+        // this happens when word is not valid for language, disable incase it appears again
+        if (word.fromText == word.toText) {
+          word.disabled = new Date()
+        }
         word.save()
       }
     } catch(e) {
@@ -92,36 +98,7 @@ processLog('nl','en')
 // todo: lookup from cache where possible
 // we look up everything again even if we have it in the json db just because its small at the moment
 lookupWords()
-
-
-/*
-const sqlite = require ("sqlite-async")
-var db
-sqlite.open('./database/transdb.sqlite')
-  .then(_db => {
-    db = _db
-  })
-  .catch(err => {
-    console.log(err.message)
-  })
-async function getDatabase() {
-  try {
-    // probably don't need to do this, you'd hope there is connection caching.
-    if (!db) db = await sqlite.open('./database/transdb.sqlite')
-    return db
-  } catch (e) {
-    console.error(e)
-  }
-}
-//(async(dbs) => dbs=await sqlite.open('./database/test.dbs'))(dbs);
-getDatabase()
-  .then(_db=> {
-    console.log('then',db)
-  }
-)
-  .then( getDatabase )
-  .then( processTranslations ) // do this as a one off?
-function processTranslations(db) {
-  console.log('process translations', db)
-}
-*/
+// what about the audio?
+// get audio getAudio(language)
+// google image search? word hippo example?
+// crossword

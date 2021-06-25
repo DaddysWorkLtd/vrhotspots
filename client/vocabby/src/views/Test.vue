@@ -3,7 +3,7 @@
     <div class="row">
       <div class="options">Testing <span @click="toggleQuestionType">{{questionType}} words</span> <span @click="toggleLanguage">from {{languages}}</span>:</div>
       <div class="question">
-        &ldquo; {{ question.word }} &rdquo;
+        &ldquo;{{ question.word }}&rdquo;
       </div>
       <div class="disable"><button @click="disableQuestion">Delete</button></div>
     </div>
@@ -22,8 +22,8 @@
               @click="clickAnswer(choice.wordId)">{{choice.word}}</button>
    </div>
     <!-- this should also be a component + all time stats-->
-    <div class="score">
-      {{correct}}/{{questions}} = {{Math.round(correct*100/questions)}}%
+    <div class="score" v-if="questions">
+      {{correct}} / {{questions}} = {{Math.round(correct*100/questions)}}%
     </div>
   </div>
 </template>
