@@ -1,7 +1,7 @@
 <template>
   <div class="container">
     <div class="row">
-      <div class="options">Translate from Dutch to English:</div>
+      <div class="options">Testing from <span @click="toggleLanguage">{{languages}}</span>:</div>
       <div class="question">
         &ldquo; {{ question.word }} &rdquo;
       </div>
@@ -40,16 +40,31 @@ export default {
       questions:0,
       correctTrigger:false,
       incorrectTrigger: false,
-      clickLatch: false
+      clickLatch: false,
+      languages: "Dutch to English",
+      fromLang: "nl",
+      toLang: "en"
     }
   },
   methods: {
+    toggleLanguage() {
+      if (this.fromLang == "nl") {
+        this.fromLang="en"
+        this.toLang="nl"
+        this.languages="English to Dutch"
+      } else {
+        this.fromLang="nl"
+        this.toLang="en"
+        this.languages="Dutch to English"
+      }
+      this.getQuestion()
+    },
     setConfidence(level) {
       this.confidence = level
     },
     getQuestion() {
       return axios
-          .get('https://127.0.0.1:3069/api/vocably/question/new')
+          .get('https://127.0.0.1:3069/api/vocably/question/'+ this.fromLang + '/' + this.toLang + '/new')
           .then(res => {
             this.question = res.data
             this.clickLatch = false
@@ -72,7 +87,7 @@ export default {
             // set the status of different rows, just do status bar for now
             this.correctTrigger=wordId
             console.log(res)
-            setTimeout(this.getQuestion,2500)
+            setTimeout(this.getQuestion,1500)
           })
           .catch( error => {
             if (error.response.status == 400) {

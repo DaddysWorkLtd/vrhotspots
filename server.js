@@ -237,7 +237,7 @@ app.put('/api/vocably/words/:wordId', async (req,res) => {
 
 // create question - can either give choice of answers or give answer and distractors, probably prefer to keep that back. Any hints? These could be keyed b word
 // todo api/question/new?distractors=5
-app.get('/api/vocably/question/new', async (req,res) => {
+app.get('/api/vocably/question/:fromLang/:toLang/new', async (req,res) => {
     function randy(min,max,factor = 1) {
         const rand=(Math.random() ** factor)
         return min + Math.floor( rand * (max - min) )
@@ -246,7 +246,9 @@ app.get('/api/vocably/question/new', async (req,res) => {
     const distractors = req.query.distractors || 3
     //todo - can only have distractors etc for same language so may need from and to in the url
     words = await models.Word.findAll({ where: {
-            wordId : { [models.Sequelize.Op.notIn]: [models.sequelize.literal('select word_id from questions')]}
+            wordId : { [models.Sequelize.Op.notIn]: [models.sequelize.literal('select word_id from questions where answer_word_id is not null')]},
+            fromLang: req.params.fromLang,
+            toLang: req.params.toLang
         },
         order: [["occurances","DESC"]]
     });
