@@ -267,14 +267,19 @@ app.get('/api/vocably/question/:fromLang/:toLang/new', async (req,res) => {
     res.json(returnObj)
 })
 
-app.get('/api/vocably/question/repeat', async (req,res) => {
+app.get('/api/vocably/question/:fromLang/:toLang/repeat', async (req,res) => {
     // get a due question - if no repeat questions return none or maybe a flag to override
 
     // default 3 distractors, can get more
     const distractors = req.query.distractors || 3
     // todo: not going to have enoughd distractors, these can be from anywhere
     words = await models.WordLearning.findAll({ where: {
-            wordId : { [models.Sequelize.Op.in]: [models.sequelize.literal('select word_id from questions')]}
+            wordId : {
+                [models.Sequelize.Op.in]: [models.sequelize.literal("select words.word_id from questions,words \
+                                                    where words.word_id=questions.word_id \
+                                                    and from_Lang='" + req.params.fromLang + "' \
+                                                    and to_Lang='" + req.params.toLang + "'")]
+            },
         },
         order: [[ 'nextRepetition', 'ASC']],
 //        order: models.sequelize.random(),

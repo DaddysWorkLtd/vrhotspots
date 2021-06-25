@@ -1,7 +1,7 @@
 <template>
   <div class="container">
     <div class="row">
-      <div class="options">Testing from <span @click="toggleLanguage">{{languages}}</span>:</div>
+      <div class="options">Testing <span @click="toggleQuestionType">{{questionType}} words</span> <span @click="toggleLanguage">from {{languages}}</span>:</div>
       <div class="question">
         &ldquo; {{ question.word }} &rdquo;
       </div>
@@ -43,7 +43,8 @@ export default {
       clickLatch: false,
       languages: "Dutch to English",
       fromLang: "nl",
-      toLang: "en"
+      toLang: "en",
+      questionType: "new"
     }
   },
   methods: {
@@ -59,12 +60,20 @@ export default {
       }
       this.getQuestion()
     },
+    toggleQuestionType() {
+      if (this.questionType == "new") {
+        this.questionType = "repeat"
+      } else {
+        this.questionType = "new"
+      }
+      this.getQuestion()
+    },
     setConfidence(level) {
       this.confidence = level
     },
     getQuestion() {
       return axios
-          .get('https://127.0.0.1:3069/api/vocably/question/'+ this.fromLang + '/' + this.toLang + '/new')
+          .get('https://127.0.0.1:3069/api/vocably/question/'+ this.fromLang + '/' + this.toLang + '/' + this.questionType)
           .then(res => {
             this.question = res.data
             this.clickLatch = false
