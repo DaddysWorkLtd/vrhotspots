@@ -73,7 +73,7 @@ export default {
     },
     getQuestion() {
       return axios
-          .get( 'https://home.daddyswork.com:3069/api/vocably/question/'+ this.fromLang + '/' + this.toLang + '/' + this.questionType)
+          .get( this.$apiHost + '/api/vocably/question/'+ this.fromLang + '/' + this.toLang + '/' + this.questionType)
           .then(res => {
             this.question = res.data
             this.clickLatch = false
@@ -88,7 +88,7 @@ export default {
       this.correctTrigger = false;
       this.incorrectTrigger = false;
       axios
-          .put( 'https://home.daddyswork.com:3069/api/vocably/answer/' + this.question.questionId, {wordId: wordId})
+          .put( this.$apiHost + '/api/vocably/answer/' + this.question.questionId, {wordId: wordId})
           .then(res => {
             // call for next question, would this work?
             this.correct++
@@ -113,7 +113,7 @@ export default {
     async disableQuestion() {
       console.log('deleting')
       try {
-        var res = await axios.delete( 'https://home.daddyswork.com:3069/api/vocably/question/' + this.question.questionId)
+        var res = await axios.delete( this.$apiHost + 'api/vocably/question/' + this.question.questionId)
         console.log("deleted question and disabled word", res)
       } catch ( error) {
         alert("Issue.." + error)
