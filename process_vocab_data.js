@@ -1,7 +1,6 @@
-// this is a script for transferring data from json to sqllite, it translates as it goes - could do with a better name!
+// this is a script for transferring data from json logs to sqllite database, it translates as it goes - could do with a better name!
 // lowercase
-// strip out all punctuation and non letters except apostrophe
-
+// strips out all punctuation and non letters except apostrophe
 // script moves data from transdb.json to sqllite database
 const { Sequelize, Model, DataTypes } = require('sequelize');
 const sequelize = new Sequelize('sqlite:database/transdb.sqlite');
@@ -27,14 +26,21 @@ async function processLog(from,to) {
   // check the last entry time in the database and query after that time
   try {
     var maxTime = await Translation.max('timestamp',{where: {fromLang: from,toLang: to}})
+    console.log("processing after",maxTime,from,to)
+    if (maxTime) {
+      maxTime=Date.parse(maxTime)
+    }
   } catch (e) {
     console.log('dropped table?')
     maxTime = 0 // table doesn't exist
   }
   recs=tdb.get(coll)
     .filter(rec => {
-      return !maxTime || Date(rec.ts) < Date(maxTime)
+      // the ms get shaved off by the db so easiest thing is to just add a second. Otherwise last record gets reprocessed each time batch runs
+      // as it is ms past last time
+      return !maxTime || Date.parse(rec.ts) >maxTime+1000
     }).value()
+  console.log("new records",recs.length,from,to)
   for (const trans of recs) {
     translation = Translation.create({user_id: USER_ID,
       timestamp: trans.ts,
@@ -43,11 +49,11 @@ async function processLog(from,to) {
       fromText: trans.in,
       toText: trans.out})
       // replace punctuation and numbers - - strip off de/het?
-      inText = trans.in.replace(/[[^A-z\s']/gm,"").toLowerCase();
+      inText = trans.in.replace(/[^A-z\s']/gm,"").toLowerCase();
       for (inWord of inText.split(/\s+/)) {
         // cant upsert as not sure on indexining strategy (language and word, think there is an insert or create
         if (!inWord.trim()) continue
-//        console.log('searching for',inWord)
+        console.log('processing',inWord)
         await Word.findOne({ where: { fromLang: from, toLang: to, fromText: inWord } })
           .then( word => {
             if (word) {
@@ -62,7 +68,7 @@ async function processLog(from,to) {
                 lastTimestamp: trans.ts,
                 occurances: 1
               }
-              console.log('created', inWord)
+              console.log('first occurance of', inWord)
               word = Word.create(wordDef)
             }
           })
@@ -72,6 +78,7 @@ async function processLog(from,to) {
 }
 async function lookupWords() {
   words = await Word.findAll({ where: { toText:null } })
+  console.log('translating',words.length,' new words')
   words.forEach(async word => {
     try {
       // getting socket hangup errors so slowing it down
@@ -81,6 +88,7 @@ async function lookupWords() {
         word.toText = toText.toLowerCase().trim()
         console.log('translated', word.fromText, word.toText)
         // this happens when word is not valid for language, disable incase it appears again
+        // or if its the same in both but generally it means not found.
         if (word.fromText == word.toText) {
           word.disabled = new Date()
         }
@@ -93,11 +101,18 @@ async function lookupWords() {
 }
 
 
-processLog('en','nl')
-processLog('nl','en')
+//#processLog('en','nl').then ( ()=> {
+//  processLog('nl','en');
+//})
+Promise.all([processLog('en','nl'),
+  processLog('nl','en')]).then( () => {
+      lookupWords()
+    }
+)
+
 // todo: lookup from cache where possible
 // we look up everything again even if we have it in the json db just because its small at the moment
-lookupWords()
+//lookupWords()
 // what about the audio?
 // get audio getAudio(language)
 // google image search? word hippo example?
