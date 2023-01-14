@@ -146,11 +146,15 @@ app.get('/api/translate/:from/:to/:text', async (req,res,rrq) => {
 });
 
 app.post('/api/translate', async (req,res,rrq) => {
-    let [translation] = await translater.translate(req.body.text.trim(), {to: req.body.to,from: req.body.from});
-    const coll = req.body.from + "_" + req.body.to;
-    console.log(coll,{in: req.body.text.trim(), out: translation, ts: new Date()});
-    tdb.get(coll).push({in: req.body.text.trim(), out: translation, ts: new Date()}).write()
-    res.json( translation )
+    if (req.body.text) {
+        let [translation] = await translater.translate(req.body.text.trim(), {to: req.body.to, from: req.body.from});
+        const coll = req.body.from + "_" + req.body.to;
+        console.log(coll, {in: req.body.text.trim(), out: translation, ts: new Date()});
+        tdb.get(coll).push({in: req.body.text.trim(), out: translation, ts: new Date()}).write()
+        res.json(translation)
+    } else {
+        res.json({error:'no in text found'})
+    }
 });
 
 // api/translate/history/from/to

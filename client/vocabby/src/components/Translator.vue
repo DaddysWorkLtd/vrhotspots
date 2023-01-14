@@ -49,7 +49,7 @@ export default {
         text: text
       };
 
-      axios.post("https://home.daddyswork.com:3069/api/translate", data)
+      axios.post(this.$apiHost+"/api/translate", data)
           .then(response => box.text = response.data);
     }
   },
