@@ -78,7 +78,7 @@ async function processLog(from,to) {
 }
 async function lookupWords() {
   words = await Word.findAll({ where: { toText:null } })
-  console.log('translating',words.length,' new words')
+  console.log('translating',words.length,' new/null words')
   words.forEach(async word => {
     try {
       // getting socket hangup errors so slowing it down
