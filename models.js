@@ -153,5 +153,6 @@ module.exports = { Word: Word,
   sequelize: sequelize,
   Question: Question,
   Sequelize: Sequelize,
+  Op: Sequelize.Op,
   WordLearning: WordLearning }
 

@@ -57,6 +57,7 @@ const low = require("lowdb"),
     FileSync = require("lowdb/adapters/FileSync"),
     db = low(new FileSync(DATA_FILE)),
     udb = low(new FileSync(PRIVATE_DATA))
+const {Sequelize} = require("sequelize");
     tdb = low(new FileSync(TRANS_DATA))
 
 db.defaults({ photos: [], words: {}, uid: 0 }).write();
@@ -248,10 +249,13 @@ app.get('/api/vocably/question/:fromLang/:toLang/new', async (req,res) => {
     }
     // default 3 distractors, can get more
     const distractors = req.query.distractors || 3
+    // number of attempts to find unique distactors
+    const maxAttempts = 50
     //todo - can only have distractors etc for same language so may need from and to in the url
     words = await models.Word.findAll({ where: {
             wordId : { [models.Sequelize.Op.notIn]: [models.sequelize.literal('select word_id from questions where answer_word_id is not null')]},
             disabled: null,
+            to_text: {[models.Op.ne] : null},
             fromLang: req.params.fromLang,
             toLang: req.params.toLang
         },
@@ -261,9 +265,16 @@ app.get('/api/vocably/question/:fromLang/:toLang/new', async (req,res) => {
     let choice = randy(0,words.length-1,1.5) // 1.5 top biases
     let word = words[choice]
     answers.push( { wordId: word.wordId, word: word.toText} )
+    let crashCheck=0
     for ( let i=0; i< ( req.query.distractors || 3); i++ ) {
         choice = randy(0,words.length-1,.75) // .75 tail biases, more difficult ones
-        answers.push( { wordId: words[choice].wordId, word: words[choice].toText} )
+        // don't include the same word twice unless we're out of words
+        if ( crashCheck < maxAttempts && _.find(answers,{wordId:words[choice].wordId})) {
+            i--
+            crashCheck++
+        } else {
+            answers.push({wordId: words[choice].wordId, word: words[choice].toText})
+        }
     }
     question = await models.Question.create( {wordId: answers[0].wordId, distractors: distractors, reverse: false})
     const returnObj = { questionId: question.questionId,
@@ -282,6 +293,7 @@ app.get('/api/vocably/question/:fromLang/:toLang/repeat', async (req,res) => {
                 [models.Sequelize.Op.in]: [models.sequelize.literal("SELECT words.word_id FROM questions,words \
                                                     WHERE words.word_id=questions.word_id \
                                                     AND words.disabled is NULL \
+                                                    AND words.to_text is not NULL\
                                                     AND from_lang='" + req.params.fromLang + "' \
                                                     AND to_lang='" + req.params.toLang + "'")]
             },
