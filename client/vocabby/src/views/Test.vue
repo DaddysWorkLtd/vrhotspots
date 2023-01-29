@@ -1,7 +1,7 @@
 <template>
   <div class="container">
     <div class="row">
-      <div class="options">Testing <span @click="toggleQuestionType">{{questionType}} words</span> <span @click="toggleLanguage">from {{languages}}</span>:</div>
+      <div class="options">Testing <span @click="toggleQuestionType" class="clickable">{{questionType}} words</span> from <span @click="toggleLanguage" class="clickable">{{languages}}</span>:</div>
       <div class="question">
         &ldquo;{{ question.word }}&rdquo;
       </div>
@@ -10,10 +10,10 @@
     <div>&nbsp;</div>
     <div class="confidence">
       <button style="color:darkred" @click="setConfidence(0)" :class="confidence==0 ? 'active' : 0">No Scooby</button>
-      <button style="color:darkorange" @click="setConfidence(25)" :class="confidence==25 ? 'active' : 0">Tricky Dicky</button>
-      <button style="color:goldenrod" @click="setConfidence(50)" :class="confidence==50 ? 'active' : 0">Whatever</button>
-      <button style="color:yellowgreen" @click="setConfidence(75)" :class="confidence==75 ? 'active' : 0">Easy Peasy</button>
-      <button style="color:seagreen" @click="confidence=100" :class="confidence==100 ? 'active' : 0">Piece of Cake</button>
+      <button style="color:darkorange" @click="setConfidence(.25)" :class="confidence==.25 ? 'active' : 0">Tricky Dicky</button>
+      <button style="color:goldenrod" @click="setConfidence(.5)" :class="confidence==.5 ? 'active' : 0">Whatever</button>
+      <button style="color:yellowgreen" @click="setConfidence(.75)" :class="confidence==.75 ? 'active' : 0">Easy Peasy</button>
+      <button style="color:seagreen" @click="setConfidence(1)" :class="confidence==1 ? 'active' : 0">Piece of Cake</button>
     </div>
     <div>&nbsp;</div>
     <div class="answers">
@@ -87,8 +87,9 @@ export default {
       // remoce the last one applied, event loop runs before callback from axios
       this.correctTrigger = false;
       this.incorrectTrigger = false;
+      const _confidence = this.confidence
       axios
-          .put( this.$apiHost + '/api/vocably/answer/' + this.question.questionId, {wordId: wordId})
+          .put( this.$apiHost + '/api/vocably/answer/' + this.question.questionId, {wordId: wordId, confidence: _confidence})
           .then(res => {
             // call for next question, would this work?
             this.correct++
