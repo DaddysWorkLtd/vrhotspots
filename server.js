@@ -346,6 +346,10 @@ app.put('/api/vocably/answer/:questionId', async (req, res) => {
         return res.json({"REQUIRED": "wordId"})
     }
     let confidence = req.body.confidence || .5
+    if (confidence<0 || confidence>1) {
+        res.status(400)
+        return res.json({"INVALID RANGE": "confidence " + confidence + " should be 0-1 "})
+    }
     // todo: do not allow old questions to be updated, as PKs are guessable
     const word = await models.Word.findByPk(req.body.wordId)
     if (!word) {

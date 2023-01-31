@@ -35,7 +35,7 @@ export default {
   data() {
     return {
       question:{},
-      confidence: 50,
+      confidence: .5,
       correct: 0,
       questions:0,
       correctTrigger:false,
@@ -87,7 +87,7 @@ export default {
       // remoce the last one applied, event loop runs before callback from axios
       this.correctTrigger = false;
       this.incorrectTrigger = false;
-      const _confidence = this.confidence
+      const _confidence = this.confidence;
       axios
           .put( this.$apiHost + '/api/vocably/answer/' + this.question.questionId, {wordId: wordId, confidence: _confidence})
           .then(res => {
@@ -100,13 +100,14 @@ export default {
             setTimeout(this.getQuestion,1500)
           })
           .catch( error => {
-            if (error.response.status == 400) {
-              //alert("Wat een domoor! Fout")
+            console.log("answer error",error.response)
+            if (error.response && error.response.status
+                && error.response.status == 400) {
               this.incorrectTrigger = error.response.data.incorrect
               // todo: we need to indicate correct answer
-              console.log("answer should be: ",error.response.data.incorrect)
-            } else {
-              alert("Oops:", error.data)
+              if (error.response.data.incorrect) {
+                  console.log("answer should be: ",error.response.data.incorrect)
+              }
             }
             setTimeout(this.getQuestion,2500)
           })

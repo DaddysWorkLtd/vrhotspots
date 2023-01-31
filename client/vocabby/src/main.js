@@ -3,7 +3,7 @@ import App from './App.vue'
 import router from './router'
 
 const app = createApp(App)
-// this should be done somewhere else I think!
+// todo: this should be done somewhere else I think!
 if (location.hostname == 'localhost') {
     app.config.globalProperties.$apiHost='https://localhost:3069' // development comment in to use, comment out for git
 } else {

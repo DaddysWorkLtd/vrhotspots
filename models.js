@@ -52,6 +52,7 @@ class Question extends Model {
     async processAnswer(answerWordId, confidence = .5) {
         // todo: random element, from time elapsed based on relative (z score), also cumulative correct
         // not sure what the profile is of this.
+        // this needs to be exposed for unit testing
         function _getNextInterval(lastInterval, confidence, correct) {
             // interval = 3 ^ (offset + confidence)*2
             const offset = correct ? -0.35 : -1
@@ -110,7 +111,6 @@ class Question extends Model {
                     distracted.nextRepetition = distracted.lastTested + _getNextInterval(oldPeriod, distracted.lastConfidence, false)
                 }
                 distracted.save()
-                return false
             }
         }
         wordTested.save()
