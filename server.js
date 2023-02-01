@@ -272,10 +272,10 @@ app.get('/api/vocably/question/:fromLang/:toLang/new', async (req, res) => {
         },
         order: [["occurances", "DESC"]]
     });
-    let answers = [];
-    if (!answers.length) {
+    if (!words.length) {
         res.json("No new (untested) words found")
     } else {
+    let answers = [];
         let choice = randy(0, words.length - 1, 1.5) // 1.5 top biases
         let word = words[choice]
         answers.push({wordId: word.wordId, word: word.toText})
