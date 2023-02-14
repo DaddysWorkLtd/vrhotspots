@@ -1,7 +1,8 @@
 <template>
   <div class="container">
     <div class="row">
-      <div class="options">Testing <span @click="toggleQuestionType" class="clickable">{{questionType}} words</span> from <span @click="toggleLanguage" class="clickable">{{languages}}</span>:</div>
+      <div class="options">Testing <span @click="toggleQuestionType" class="clickable">{{questionType}} words</span> from <span @click="toggleLanguage" class="clickable">{{languages}}</span>:
+        <br />({{question.remaining}} remaining)</div>
       <div class="question">
         &ldquo;{{ question.word }}&rdquo;
       </div>
