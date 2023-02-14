@@ -256,12 +256,11 @@ app.get('/api/vocably/question/:fromLang/:toLang/new', async (req, res) => {
         const rand = (Math.random() ** factor)
         return min + Math.floor(rand * (max - min))
     }
-
     // default 3 distractors, can get more
     const distractors = req.query.distractors || 3
-    // number of attempts to find unique distactors
+    // number of attempts to find unique distactors (crash protection)
     const maxAttempts = 50
-    //todo - can only have distractors etc for same language so may need from and to in the url
+    //can only have distractors etc for same language so may need from and to in the url
     words = await models.Word.findAll({
         where: {
             wordId: {[models.Sequelize.Op.notIn]: [models.sequelize.literal('select word_id from questions where answer_word_id is not null')]},
@@ -273,7 +272,12 @@ app.get('/api/vocably/question/:fromLang/:toLang/new', async (req, res) => {
         order: [["occurances", "DESC"]]
     });
     if (!words.length) {
-        res.json("No new (untested) words found")
+        res.json({
+            questionId: 0,
+            word: "Finished :)",
+            choices: [],
+            remaining: 0
+        })
     } else {
     let answers = [];
         let choice = randy(0, words.length - 1, 1.5) // 1.5 top biases
@@ -294,7 +298,8 @@ app.get('/api/vocably/question/:fromLang/:toLang/new', async (req, res) => {
         const returnObj = {
             questionId: question.questionId,
             word: word.fromText, // if not reverse
-            choices: _.shuffle(answers)
+            choices: _.shuffle(answers),
+            remaining: words.length
         }
         res.json(returnObj)
     }
@@ -304,10 +309,17 @@ app.get('/api/vocably/question/:fromLang/:toLang/repeat', async (req, res) => {
     // get a due question - if no repeat questions return none or maybe a flag to override
     // default 3 distractors, can get more
     const distractors = req.query.distractors || 3
+    let returnObj = {
+            questionId: 0,
+            word: "Finished :)",
+            choices: [],
+            remaining: 0
+        }
     // todo: not going to have enoughd distractors, these can be from anywhere
     wordsLearn = await models.WordLearning.findAll({
         where: {
             wordId: {
+            // todo: is that really how you do a join?
                 [models.Sequelize.Op.in]: [models.sequelize.literal("SELECT words.word_id FROM questions,words \
                                                     WHERE words.word_id=questions.word_id \
                                                     AND words.disabled is NULL \
@@ -315,22 +327,33 @@ app.get('/api/vocably/question/:fromLang/:toLang/repeat', async (req, res) => {
                                                     AND from_lang='" + req.params.fromLang + "' \
                                                     AND to_lang='" + req.params.toLang + "'")]
             },
+            nextRepetition: {
+                [models.Sequelize.Op.lte] : new Date()
+            }
+            // todo: need to add next_repetition < now
         },
-        order: [['nextRepetition', 'ASC']],
-//        order: models.sequelize.random(),
-        limit: distractors + 1
+//        order: [['nextRepetition', 'ASC']],
+        order: models.sequelize.random(),
+// should really limit as randomising whole is inefficient       limit: distractors + 1
     })
-
-    question = await models.Question.create({wordId: wordsLearn[0].wordId, distractors: distractors, reverse: false})
-    var _questionWord
-    let answerList = await Promise.all(wordsLearn.map(async function (wordLearn) {
-        word = await models.Word.findByPk(wordLearn.wordId)
-        return {wordId: word.wordId, word: word.toText, fromText: word.fromText};
-    }));
-    const returnObj = {
-        questionId: question.questionId,
-        word: _.find(answerList, {wordId: question.wordId}).fromText, // if not reverse
-        choices: _.shuffle(_.omit(answerList, 'fromText'))
+    if (wordsLearn.length) {
+        question = await models.Question.create({
+            wordId: wordsLearn[0].wordId,
+            distractors: distractors,
+            reverse: false
+        })
+        var _questionWord
+        // slice the first 1+ distractors off - this was done with a limit clause
+        let answerList = await Promise.all(wordsLearn.slice(0,distractors+1).map(async function (wordLearn) {
+            word = await models.Word.findByPk(wordLearn.wordId)
+            return {wordId: word.wordId, word: word.toText, fromText: word.fromText};
+        }));
+        returnObj = {
+            questionId: question.questionId,
+            word: _.find(answerList, {wordId: question.wordId}).fromText, // if not reverse
+            choices: _.shuffle(_.omit(answerList, 'fromText')),
+            remaining: wordsLearn.length
+        }
     }
     res.json(returnObj)
 })

@@ -7,12 +7,12 @@ class Translation extends Model {
 
 Translation.init({
     translationId: {type: DataTypes.INTEGER, primaryKey: true, autoIncrement: true},
-    userId: DataTypes.TEXT('tiny'),
+    userId: DataTypes.TEXT,
     timestamp: DataTypes.DATE,
-    fromLang: DataTypes.TEXT('tiny'),
-    toLang: DataTypes.TEXT('tiny'),
-    fromText: DataTypes.TEXT('tiny'),
-    toText: DataTypes.TEXT('tiny')
+    fromLang: DataTypes.TEXT,
+    toLang: DataTypes.TEXT,
+    fromText: DataTypes.TEXT,
+    toText: DataTypes.TEXT
 }, {sequelize, modelName: "translation", underscored: true, timestamps: false})
 
 class Word extends Model {
@@ -20,11 +20,11 @@ class Word extends Model {
 
 Word.init({
     wordId: {type: DataTypes.INTEGER, primaryKey: true, autoIncrement: true},
-    userId: DataTypes.TEXT('tiny'),
-    fromLang: DataTypes.TEXT('tiny'),
-    toLang: DataTypes.TEXT('tiny'),
-    fromText: DataTypes.TEXT('tiny'),
-    toText: DataTypes.TEXT('tiny'),
+    userId: DataTypes.TEXT,
+    fromLang: DataTypes.TEXT,
+    toLang: DataTypes.TEXT,
+    fromText: DataTypes.TEXT,
+    toText: DataTypes.TEXT,
     firstTimestamp: DataTypes.DATE,// first tested, used for ensuring data is not imported twice
     lastTimestamp: DataTypes.DATE,// last tested... next test due?
     occurances: DataTypes.INTEGER, // that's how many times seen in translation requests - uniqueness/difficulty?
@@ -48,16 +48,30 @@ WordLearning.init({
 }, {sequelize, modelName: "wordLearning", underscored: true, timestamps: false})
 
 
+function calcNextInterval(lastInterval, confidence, correct) {
+    // interval = 3 ^ (offset + confidence)*2
+    const halfyear = 180 * 24 * 60 * 60 * 1000,
+        offset = correct ? -0.35 : -1,
+        interval = (3 ** ((offset + confidence) * 2)) * lastInterval;
+    // remove ms? prevents minor discrepencies between date fields.
+    if (interval > 0) {
+        if (interval > halfyear) {
+            return halfyear
+        } else {
+            return Math.floor(interval / 1000) * 1000
+        }
+    } else {
+        // at least 1 hour if correct
+        return correct ? 3600000 * (1 + confidence) ** 5 : 0;
+    }
+}
+
 class Question extends Model {
     async processAnswer(answerWordId, confidence = .5) {
         // todo: random element, from time elapsed based on relative (z score), also cumulative correct
         // not sure what the profile is of this.
         // this needs to be exposed for unit testing
-        function _getNextInterval(lastInterval, confidence, correct) {
-            // interval = 3 ^ (offset + confidence)*2
-            const offset = correct ? -0.35 : -1
-            return (3 ** ((offset + confidence) * 2)) * lastInterval
-        }
+        const _getNextInterval = calcNextInterval
 
         const now = new Date()
         this.answerWordId = answerWordId
@@ -76,7 +90,7 @@ class Question extends Model {
         if (firstTest) {
             wordTested.correctRate = correct ? 100 : 0
             // last period is a day in ms
-            var lastPeriod = 1 * 60 * 60 * 24 * 1000
+            var lastPeriod = 0
         } else {
             const totalCorrect = Math.round(wordTested.correctRate * wordTested.repetitions / 100, 0)
             if (correct) {
@@ -106,9 +120,17 @@ class Question extends Model {
                 // if last answer was correct then now recalculate
                 distracted.lastDistracted = now
                 if (distracted.consecutiveCorrect) {
+                    // should you lose your streak, it's the translation not the word that was selected
                     distracted.consecutiveCorrect = 0;
-                    let oldPeriod = Math.round(wordTested.nextRepetition - wordTested.lastTested)
-                    distracted.nextRepetition = distracted.lastTested + _getNextInterval(oldPeriod, distracted.lastConfidence, false)
+                    // todo was getting negative milliseconds so have used abs to ensure positive
+                    // nextRepetition and last tested should virtually never be the same so suggests a bug
+                    // this is being set above it was looking at the target word, if incorrect can be close
+                    // did says oldPeriod=wordTested.distracted etc
+                    let oldPeriod = Math.abs(distracted.nextRepetition - distracted.lastTested),
+                    //    nextInterval = _getNextInterval(oldPeriod, distracted.lastConfidence, false);
+                        //    just using half the last period
+                        nextInterval = Math.floor(oldPeriod / 2)
+                    distracted.nextRepetition = new Date(distracted.lastTested.getTime() + nextInterval)
                 }
                 distracted.save()
             }
@@ -163,6 +185,7 @@ createTables()
 
 // todo, can i just require s/Sequelize when it is used
 module.exports = {
+    testing: { calcNextInterval: calcNextInterval},
     Word: Word,
     Translation: Translation,
     sequelize: sequelize,

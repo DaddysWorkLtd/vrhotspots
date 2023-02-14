@@ -4,10 +4,10 @@
   "engines": {
     "node": "14.15.x"
   },
-  "description": "experiment with aframe collaboration with socketio",
+  "description": "experiment with aframe collaboration with socketio + language learning tools / games",
   "main": "server.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "test": "jest --verbose",
     "start": "node server.js"
   },
   "repository": {
@@ -21,6 +21,7 @@
   },
   "homepage": "https://github.com/DaddysWorkLtd/vrhotspots#readme",
   "devDependencies": {
+    "jest": "^29.4.2",
     "nodemon": "^2.0.6"
   },
   "dependencies": {
