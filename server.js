@@ -13,10 +13,17 @@ const express = require("express"),
     cert = fs.readFileSync("../cert.pem"),
     app = express(),
     cors = require("cors")
-requestIp = require('request-ip'),
+    requestIp = require('request-ip'),
     bodyParser = require('body-parser'),
     models = require('./models'),
     _ = require('lodash');
+
+const { Configuration, OpenAIApi } = require('openai'),
+    //OpenApi = require('openapi'),
+    gptKey=fs.readFileSync("../gptapi.key", 'utf8').trim(),
+    gptConf = new Configuration ( {apiKey: gptKey} ),
+    openai = new OpenAIApi(gptConf);
+
 
 app.use(cors())
 app.use(bodyParser.json());
@@ -125,6 +132,8 @@ io.on("connection", socket => {
 io.on("connect_failed", function () {
     console.log("Connection Failed");
 });
+
+// API STUFF
 
 app.get('/api/ping', function (req, res, rrq) {
     res.send('pong poo poo')
@@ -407,4 +416,21 @@ app.delete('/api/vocably/question/:questionId', async (req, res) => {
 // for current user todo implement
 app.get('/api/logs', (req, res, rrq) => res.json(udb.get('logs').value()));
 
-console.log('server.js complete')
+// Handle POST requests to the /chat endpoint
+app.post('/api/gpt/chat', async (req, res) => {
+  try {
+    const prompt = req.body.prompt;
+    const response = await openai.createCompletion({
+        prompt: prompt,
+        max_tokens: 50,
+//        temperature: 1,
+        model: 'text-davinci-003'});
+    res.json( response.data );
+  } catch (err) {
+    console.error(err);
+    res.status(500).json({ error: 'Something went wrong', err: JSON.stringify(err) });
+  }
+});
+
+// Answer - "Tell me if my answer is gramatically correct: "
+// Check not chat - "Ask me a random question in {lang}"
