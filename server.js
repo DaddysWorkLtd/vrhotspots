@@ -16,6 +16,7 @@ const express = require("express"),
 requestIp = require('request-ip'),
     bodyParser = require('body-parser'),
     models = require('./models'),
+    gpt = require('./gpt'),
     _ = require('lodash');
 
 const {Configuration, OpenAIApi} = require('openai'),
@@ -437,14 +438,31 @@ app.post('/api/gpt/question/:lang/:baselang', async (req, res) => {
     try {
         let prompt = "Ask me a random question in [" + req.params.lang + "]"
         //
-        if (req.body.seed && req.body.seed=="word_learnings") {
-            // cut and paste from the code that gets questions :(
-
-
-            // todo add support to find a tricky word to go in there
-            prompt += " that contains \"" + word + "\","
+        if (req.body.seed && req.body.seed == "word_learnings") {
+            const fromLang = 'nl'
+            const toLang = 'en'
+            wordsLearn = await models.WordLearning.findOne({
+                where: {
+                    wordId: {
+                        [models.Sequelize.Op.in]: [models.sequelize.literal("SELECT words.word_id FROM questions,words \
+                                                    WHERE words.word_id=questions.word_id \
+                                                    AND words.disabled is NULL \
+                                                    AND words.to_text is not NULL\
+                                                    AND from_lang='" + fromLang + "' \
+                                                    AND to_lang='" + toLang + "'")]
+                    },
+                    nextRepetition: {
+                        [models.Sequelize.Op.lte]: new Date()
+                    }
+                },
+                order: models.sequelize.random(),
+            })
+            if (wordsLearn) {
+                word = await models.Word.findByPk(wordsLearn.wordId)
+                prompt += " that contains \"" + word.fromText + "\","
+            }
         }
-        prompt += " followed by a translation of the question in [" + req.params.baselang + "] translation. Label your reply [language]: text"
+        prompt += " followed by a translation of the question in [" + req.params.baselang + "] translation. Label languages first."// Label your reply [language]: text"
 
         const response = await openai.createCompletion({
             prompt: prompt,
@@ -454,13 +472,16 @@ app.post('/api/gpt/question/:lang/:baselang', async (req, res) => {
             best_of: 1,
             model: 'text-davinci-003'
         });
-        const regex = /:.(.*)\?/g;
-        const match = response.data.choices[0].text.match(regex);
+        match = gpt.matchQuestion(response.data.choices[0].text)
         if (match) {
-            res.json({question: match[0].substring(2) ,
-                translation: match[1].substring(2)});
+            res.json({
+                question_lang: match[0],
+                question: match[1],
+                translation_lang: match[2],
+                translation: match[3]
+            });
         } else {
-            throw new Error("no regex match on choice 0", + response.data.choices[0].text)
+            throw new Error("no regex match on choice 0" + response.data.choices[0].text)
         }
     } catch (err) {
         console.error(err);
@@ -480,13 +501,12 @@ app.post('/api/gpt/answer', async (req, res) => {
             best_of: 1,
             model: 'text-davinci-003'
         });
-        res.json({ text: response.data.choices[0].text});
+        res.json({text: response.data.choices[0].text});
     } catch (err) {
         console.error(err);
         res.status(500).json({error: 'Something went wrong', message: err.message});
     }
 });
-
 
 
 // Answer - "Tell me if my answer is gramatically correct: "

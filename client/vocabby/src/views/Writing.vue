@@ -40,7 +40,7 @@ export default {
               this.console += res.data.text + "<br />"
               console.log(res.data.text)
               //call for a new question if correct
-              if (res.data.text.indexOf('Yes,')) {
+              if (res.data.text.indexOf('Yes,') > -1) {
                 this.getQuestion()
               }
               _chatbox.focus()
