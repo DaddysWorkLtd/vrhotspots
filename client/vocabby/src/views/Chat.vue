@@ -17,7 +17,7 @@ export default {
   data() {
     return {
       prompt:"",
-      console:"Hello,type message and press enter to send...",
+      console:"Hello, type message and press enter to send...",
     }
   },
   methods: {

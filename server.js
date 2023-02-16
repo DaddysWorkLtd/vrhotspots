@@ -13,15 +13,15 @@ const express = require("express"),
     cert = fs.readFileSync("../cert.pem"),
     app = express(),
     cors = require("cors")
-    requestIp = require('request-ip'),
+requestIp = require('request-ip'),
     bodyParser = require('body-parser'),
     models = require('./models'),
     _ = require('lodash');
 
-const { Configuration, OpenAIApi } = require('openai'),
+const {Configuration, OpenAIApi} = require('openai'),
     //OpenApi = require('openapi'),
-    gptKey=fs.readFileSync("../gptapi.key", 'utf8').trim(),
-    gptConf = new Configuration ( {apiKey: gptKey} ),
+    gptKey = fs.readFileSync("../gptapi.key", 'utf8').trim(),
+    gptConf = new Configuration({apiKey: gptKey}),
     openai = new OpenAIApi(gptConf);
 
 
@@ -265,6 +265,7 @@ app.get('/api/vocably/question/:fromLang/:toLang/new', async (req, res) => {
         const rand = (Math.random() ** factor)
         return min + Math.floor(rand * (max - min))
     }
+
     // default 3 distractors, can get more
     const distractors = req.query.distractors || 3
     // number of attempts to find unique distactors (crash protection)
@@ -288,7 +289,7 @@ app.get('/api/vocably/question/:fromLang/:toLang/new', async (req, res) => {
             remaining: 0
         })
     } else {
-    let answers = [];
+        let answers = [];
         let choice = randy(0, words.length - 1, 1.5) // 1.5 top biases
         let word = words[choice]
         answers.push({wordId: word.wordId, word: word.toText})
@@ -319,16 +320,16 @@ app.get('/api/vocably/question/:fromLang/:toLang/repeat', async (req, res) => {
     // default 3 distractors, can get more
     const distractors = req.query.distractors || 3
     let returnObj = {
-            questionId: 0,
-            word: "Finished :)",
-            choices: [],
-            remaining: 0
-        }
+        questionId: 0,
+        word: "Finished :)",
+        choices: [],
+        remaining: 0
+    }
     // todo: not going to have enoughd distractors, these can be from anywhere
     wordsLearn = await models.WordLearning.findAll({
         where: {
             wordId: {
-            // todo: is that really how you do a join?
+                // todo: is that really how you do a join?
                 [models.Sequelize.Op.in]: [models.sequelize.literal("SELECT words.word_id FROM questions,words \
                                                     WHERE words.word_id=questions.word_id \
                                                     AND words.disabled is NULL \
@@ -337,7 +338,7 @@ app.get('/api/vocably/question/:fromLang/:toLang/repeat', async (req, res) => {
                                                     AND to_lang='" + req.params.toLang + "'")]
             },
             nextRepetition: {
-                [models.Sequelize.Op.lte] : new Date()
+                [models.Sequelize.Op.lte]: new Date()
             }
             // todo: need to add next_repetition < now
         },
@@ -353,7 +354,7 @@ app.get('/api/vocably/question/:fromLang/:toLang/repeat', async (req, res) => {
         })
         var _questionWord
         // slice the first 1+ distractors off - this was done with a limit clause
-        let answerList = await Promise.all(wordsLearn.slice(0,distractors+1).map(async function (wordLearn) {
+        let answerList = await Promise.all(wordsLearn.slice(0, distractors + 1).map(async function (wordLearn) {
             word = await models.Word.findByPk(wordLearn.wordId)
             return {wordId: word.wordId, word: word.toText, fromText: word.fromText};
         }));
@@ -378,7 +379,7 @@ app.put('/api/vocably/answer/:questionId', async (req, res) => {
         return res.json({"REQUIRED": "wordId"})
     }
     let confidence = req.body.confidence || .5
-    if (confidence<0 || confidence>1) {
+    if (confidence < 0 || confidence > 1) {
         res.status(400)
         return res.json({"INVALID RANGE": "confidence " + confidence + " should be 0-1 "})
     }
@@ -418,19 +419,78 @@ app.get('/api/logs', (req, res, rrq) => res.json(udb.get('logs').value()));
 
 // Handle POST requests to the /chat endpoint
 app.post('/api/gpt/chat', async (req, res) => {
-  try {
-    const prompt = req.body.prompt;
-    const response = await openai.createCompletion({
-        prompt: prompt,
-        max_tokens: 50,
+    try {
+        const prompt = req.body.prompt;
+        const response = await openai.createCompletion({
+            prompt: prompt,
+            max_tokens: 50,
 //        temperature: 1,
-        model: 'text-davinci-003'});
-    res.json( response.data );
-  } catch (err) {
-    console.error(err);
-    res.status(500).json({ error: 'Something went wrong', err: JSON.stringify(err) });
-  }
+            model: 'text-davinci-003'
+        });
+        res.json(response.data);
+    } catch (err) {
+        console.error(err);
+        res.status(500).json({error: 'Something went wrong', err: JSON.stringify(err)});
+    }
 });
+app.post('/api/gpt/question/:lang/:baselang', async (req, res) => {
+    try {
+        let prompt = "Ask me a random question in [" + req.params.lang + "]"
+        //
+        if (req.body.seed && req.body.seed=="word_learnings") {
+            // cut and paste from the code that gets questions :(
+
+
+            // todo add support to find a tricky word to go in there
+            prompt += " that contains \"" + word + "\","
+        }
+        prompt += " followed by a translation of the question in [" + req.params.baselang + "] translation. Label your reply [language]: text"
+
+        const response = await openai.createCompletion({
+            prompt: prompt,
+            max_tokens: 64, // roughly 4 characters
+            temperature: .7,
+            top_p: 1,
+            best_of: 1,
+            model: 'text-davinci-003'
+        });
+        const regex = /:.(.*)\?/g;
+        const match = response.data.choices[0].text.match(regex);
+        if (match) {
+            res.json({question: match[0].substring(2) ,
+                translation: match[1].substring(2)});
+        } else {
+            throw new Error("no regex match on choice 0", + response.data.choices[0].text)
+        }
+    } catch (err) {
+        console.error(err);
+        res.status(500).json({error: 'Something went wrong', message: err.message});
+    }
+});
+// this will only work one person at a time! You need your own chatgpt api key
+app.post('/api/gpt/answer', async (req, res) => {
+    try {
+        if (!req.body.prompt) throw new Error("prompt not found in request body or empty")
+        const prompt = "Is this answer to your question grammatically correct and if not why? \n\n" + req.body.prompt
+        const response = await openai.createCompletion({
+            prompt: prompt,
+            max_tokens: 256, // roughly 4 characters so 512 characters - is that enough?
+            temperature: .7,
+            top_p: 1,
+            best_of: 1,
+            model: 'text-davinci-003'
+        });
+        res.json({ text: response.data.choices[0].text});
+    } catch (err) {
+        console.error(err);
+        res.status(500).json({error: 'Something went wrong', message: err.message});
+    }
+});
+
+
 
 // Answer - "Tell me if my answer is gramatically correct: "
 // Check not chat - "Ask me a random question in {lang}"
+// make up a question in dutch with vlichtuig in it and translate to en
+// Ask me a random question in nl that contains "opgaan", followed by a translation of the question in en. Label each with [language]: text.
+//  Ik heb hoofpij gehad

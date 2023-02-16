@@ -2,7 +2,8 @@
   <div id="nav">
     <router-link to="/">Translate</router-link> |
     <router-link to="/test">Test</router-link> |
-    <router-link to="/chat">Chat</router-link>
+    <router-link to="/writing">Writing</router-link> |
+    <router-link to="/chat">ChatGPT</router-link>
   </div>
   <router-view/>
 </template>
