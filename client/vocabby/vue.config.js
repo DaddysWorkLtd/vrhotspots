@@ -7,7 +7,4 @@ module.exports = {
     // got a problem on myass, needs to be false. Should set environment variable
     https: os.hostname() == 'my-ass' ? false : true
   },
-  disableHostCheck: false,
-  // done by apache
-  https: false
 }
