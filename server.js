@@ -436,7 +436,8 @@ app.post('/api/gpt/chat', async (req, res) => {
 });
 app.post('/api/gpt/question/:lang/:baselang', async (req, res) => {
     try {
-        let prompt = "Ask me a random question in [" + req.params.lang + "]"
+        let prompt = "Ask me a random open-ended question in [" + req.params.lang + "]",
+            word = ""
         //
         if (req.body.seed && req.body.seed == "word_learnings") {
             const fromLang = 'nl'
@@ -478,7 +479,8 @@ app.post('/api/gpt/question/:lang/:baselang', async (req, res) => {
                 question_lang: match[0],
                 question: match[1],
                 translation_lang: match[2],
-                translation: match[3]
+                translation: match[3],
+                seed: word
             });
         } else {
             throw new Error("no regex match on choice 0" + response.data.choices[0].text)
@@ -492,11 +494,11 @@ app.post('/api/gpt/question/:lang/:baselang', async (req, res) => {
 app.post('/api/gpt/answer', async (req, res) => {
     try {
         if (!req.body.prompt) throw new Error("prompt not found in request body or empty")
-        const prompt = "Is this answer to your question grammatically correct and if not why? \n\n" + req.body.prompt
+        const prompt = "Is this answer below grammatically correct and if not then why not? Give a detailed grammatical explanation and a corrected version.\n\n" + req.body.prompt
         const response = await openai.createCompletion({
             prompt: prompt,
             max_tokens: 256, // roughly 4 characters so 512 characters - is that enough?
-            temperature: .7,
+            temperature: .4,
             top_p: 1,
             best_of: 1,
             model: 'text-davinci-003'

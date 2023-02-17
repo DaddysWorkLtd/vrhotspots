@@ -14,7 +14,10 @@ describe('matchQuestion', () => {
             ['NL', 'Heeft u een kat?', 'EN', 'Do you have a cat?']],
         ["\n[nl] Heeft u een kat?\n[en] Do you have a cat?", expected],
         ["[NL] Wat is je favoriete kleur? [EN] What is your favorite color?",
-            ["NL", "Wat is je favoriete kleur?", "EN", "What is your favorite color?"]]
+            ["NL", "Wat is je favoriete kleur?", "EN", "What is your favorite color?"]],
+        ["[NL] Wat is volgens jou de meest essentiële eigenschap van een goede leraar? [EN] What do you think is the most essential trait of a good teacher?",
+            ["NL", "Wat is volgens jou de meest essentiële eigenschap van een goede leraar?",
+                "EN", "What do you think is the most essential trait of a good teacher?"]]
     ])("when the input is '%s'", (text, expected) => {
         expect(matchQuestion(text)).toEqual(expected)
     })

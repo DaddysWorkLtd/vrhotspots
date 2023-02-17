@@ -1,7 +1,10 @@
 function matchQuestion(text) {
-    const regex = /([\w\ ]+)/g
+//    const regex = /([\w\ ]+)/g
+    // you can use the \p{L} property to match any letter character, regardless of whether it is ASCII or not.
+    const regex = /([\p{L} ]+)/gu
     try {
         let matches = text.match(regex)
+
         matches = matches.map(str => str.trim())
         // i'm too lazy to fix the regex, can end up with blank fragments. This removes ""
         matches = matches.filter(String)
