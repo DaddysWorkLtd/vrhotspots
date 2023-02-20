@@ -510,6 +510,53 @@ app.post('/api/gpt/answer', async (req, res) => {
     }
 });
 
+app.get('/api/gptbot/question/:lang/:baselang', async (req, res) => {
+    try {
+        let wordList = "",
+            listLen = 25
+        //
+
+        const fromLang = req.params.lang || 'nl'
+        const toLang = req.params.baselang || 'en'
+        const langs = {
+            en: 'English',
+            nl: 'Dutch'
+        }
+        wordsLearn = await models.WordLearning.findAll({
+            where: {
+                wordId: {
+                    [models.Sequelize.Op.in]: [models.sequelize.literal("SELECT words.word_id FROM questions,words \
+                                                    WHERE words.word_id=questions.word_id \
+                                                    AND words.disabled is NULL \
+                                                    AND words.to_text is not NULL\
+                                                    AND from_lang='" + fromLang + "' \
+                                                    AND to_lang='" + toLang + "'")]
+                },
+                nextRepetition: {
+                    [models.Sequelize.Op.lte]: new Date()
+                }
+            },
+            order: models.sequelize.random(),
+            limit: listLen
+        })
+        // todo: sort this out using a join
+        for (const el of wordsLearn) {
+            // or could use wordid in
+            let word = await models.Word.findByPk(el.wordId);
+            wordList += `,${word.fromText}`
+        }
+        wordList = wordList.substr(1)
+        res.json({text: `Pick a word from ${wordList}. Make a ${langs[fromLang]} open-ended question with the chosen word. Check my answer is grammatically correct.`})
+
+    } catch (err) {
+        console.error(err);
+        res.status(500).json({error: 'Something went wrong', message: err.message});
+    }
+});
+
+
+//
+
 
 // Answer - "Tell me if my answer is gramatically correct: "
 // Check not chat - "Ask me a random question in {lang}"

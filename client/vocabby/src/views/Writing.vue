@@ -14,6 +14,11 @@
       </button>
     </div>
     <div class="seed clickable"><span @click="toggleSeed()" class="clickable">seed: {{ seed }}</span></div>
+    <div class="row"><input style="color: lightgrey; font-size: 1em; height: 25px; width:100%" type="text"
+                            ref="gptScript" v-model="gptScript">
+      <span>&nbsp;</span>
+      <button style="color:darkgrey; border-color: black; " @click="copyGptScript()">copy</button>
+    </div>
   </div>
 </template>
 <script>
@@ -28,7 +33,8 @@ export default {
       seed: "random",
       prompt: "",
       console: "",
-      busy: true
+      busy: true,
+      gptScript: ""
     }
   },
   methods: {
@@ -80,10 +86,25 @@ export default {
     toggleSeed() {
       this.seed = (this.seed === "random") ? "word_learnings" : "random"
       this.getQuestion()
+    },
+    getGptScript() {
+      return axios
+          .get(this.$apiHost + '/api/gptbot/question/' + this.lang + '/' + this.baseLang)
+          .then(res => {
+            this.gptScript = res.data.text
+          })
+    },
+    copyGptScript() {
+      this.$refs.gptScript.select()
+      this.$refs.gptScript.setSelectionRange(0, 9999)
+      // unlikely to work
+      navigator.clipboard.writeText(this.$refs.gptScript.value)
+      alert('text copied')
     }
   },
   created: function () {
     this.getQuestion()
+    this.getGptScript()
   }
 }
 </script>
