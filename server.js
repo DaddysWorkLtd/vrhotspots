@@ -25,7 +25,10 @@ const {Configuration, OpenAIApi} = require('openai'),
     gptConf = new Configuration({apiKey: gptKey}),
     openai = new OpenAIApi(gptConf);
 
-
+const GPT_MODEL = 'gpt-3.5-turbo-0301'
+//const GPT_MODEL='text-davinci-003'
+//const GPT_MODEL='gpt-3.5-turbo'
+//
 app.use(cors())
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: true}));
@@ -422,11 +425,9 @@ app.get('/api/logs', (req, res, rrq) => res.json(udb.get('logs').value()));
 app.post('/api/gpt/chat', async (req, res) => {
     try {
         const prompt = req.body.prompt;
-        const response = await openai.createCompletion({
-            prompt: prompt,
-            max_tokens: 50,
-//        temperature: 1,
-            model: 'text-davinci-003'
+        const response = await openai.createChatCompletion({
+            messages: [{role: 'user', content: prompt}],
+            model: GPT_MODEL
         });
         res.json(response.data);
     } catch (err) {
@@ -465,15 +466,11 @@ app.post('/api/gpt/question/:lang/:baselang', async (req, res) => {
         }
         prompt += " followed by a translation of the question in [" + req.params.baselang + "] translation. Label languages first."// Label your reply [language]: text"
 
-        const response = await openai.createCompletion({
-            prompt: prompt,
-            max_tokens: 64, // roughly 4 characters
-            temperature: .7,
-            top_p: 1,
-            best_of: 1,
-            model: 'text-davinci-003'
+        const response = await openai.createChatCompletion({
+            messages: [{role: 'user', content: prompt}],
+            model: GPT_MODEL
         });
-        match = gpt.matchQuestion(response.data.choices[0].text)
+        match = gpt.matchQuestion(response.data.choices[0].message.content)
         if (match) {
             res.json({
                 question_lang: match[0],
@@ -495,15 +492,11 @@ app.post('/api/gpt/answer', async (req, res) => {
     try {
         if (!req.body.prompt) throw new Error("prompt not found in request body or empty")
         const prompt = "Is this answer below grammatically correct and if not then why not? Give a detailed grammatical explanation and a corrected version.\n\n" + req.body.prompt
-        const response = await openai.createCompletion({
-            prompt: prompt,
-            max_tokens: 256, // roughly 4 characters so 512 characters - is that enough?
-            temperature: .4,
-            top_p: 1,
-            best_of: 1,
-            model: 'text-davinci-003'
+        const response = await openai.createChatCompletion({
+            messages: [{role: 'user', content: prompt}],
+            model: GPT_MODEL
         });
-        res.json({text: response.data.choices[0].text});
+        res.json({text: response.data.choices[0].message.content});
     } catch (err) {
         console.error(err);
         res.status(500).json({error: 'Something went wrong', message: err.message});
@@ -546,8 +539,7 @@ app.get('/api/gptbot/question/:lang/:baselang', async (req, res) => {
             wordList += `,${word.fromText}`
         }
         wordList = wordList.substr(1)
-        res.json({text: `Pick a word from ${wordList}. Make a ${langs[fromLang]} open-ended question with the chosen word. Check my answer is grammatically correct.`})
-
+        res.json({text: `Pick a word from ${wordList}. Ask an open-ended question in  ${langs[fromLang]} with the chosen word. Check my subsequent answer is grammatically correct. Ask all further questions in Dutch.`})
     } catch (err) {
         console.error(err);
         res.status(500).json({error: 'Something went wrong', message: err.message});

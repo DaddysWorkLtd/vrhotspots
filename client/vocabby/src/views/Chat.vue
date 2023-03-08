@@ -32,7 +32,7 @@ export default {
             console.log(res.data)
             // should check there is no code in the returned text to guard
             // against injection attacks
-            this.console += "<br />" + res.data.choices[0].text
+            this.console += "<br />" + res.data.choices[0].message.content
             _chatbox.focus()
           })
     },
