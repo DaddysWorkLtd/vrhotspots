@@ -3,7 +3,7 @@
     <div class="row" @click="getTranslation()">
       Writing practice, answer question (click for translation).
     </div>
-    <div v-html="console" @click="getTranslation()"></div>
+    <pre><div v-html="console" @click="getTranslation()"></div></pre>
     <div>
       <textarea class="chatbox" ref="chatbox" @keydown.enter="sendAnswer()" v-model="prompt"></textarea>
     </div>

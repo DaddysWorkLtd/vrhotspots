@@ -438,31 +438,13 @@ app.post('/api/gpt/chat', async (req, res) => {
 app.post('/api/gpt/question/:lang/:baselang', async (req, res) => {
     try {
         let prompt = "Ask me a random open-ended question in [" + req.params.lang + "]",
-            word = ""
+            wordList = ""
         //
         if (req.body.seed && req.body.seed == "word_learnings") {
             const fromLang = 'nl'
             const toLang = 'en'
-            wordsLearn = await models.WordLearning.findOne({
-                where: {
-                    wordId: {
-                        [models.Sequelize.Op.in]: [models.sequelize.literal("SELECT words.word_id FROM questions,words \
-                                                    WHERE words.word_id=questions.word_id \
-                                                    AND words.disabled is NULL \
-                                                    AND words.to_text is not NULL\
-                                                    AND from_lang='" + fromLang + "' \
-                                                    AND to_lang='" + toLang + "'")]
-                    },
-                    nextRepetition: {
-                        [models.Sequelize.Op.lte]: new Date()
-                    }
-                },
-                order: models.sequelize.random(),
-            })
-            if (wordsLearn) {
-                word = await models.Word.findByPk(wordsLearn.wordId)
-                prompt += " that contains \"" + word.fromText + "\","
-            }
+            wordList = await getRandomWordList(fromLang, toLang, 1)
+            if (wordList) prompt += ` that contains "${wordList}",`
         }
         prompt += " followed by a translation of the question in [" + req.params.baselang + "] translation. Label languages first."// Label your reply [language]: text"
 
@@ -477,7 +459,7 @@ app.post('/api/gpt/question/:lang/:baselang', async (req, res) => {
                 question: match[1],
                 translation_lang: match[2],
                 translation: match[3],
-                seed: word
+                seed: wordList
             });
         } else {
             throw new Error("no regex match on choice 0" + response.data.choices[0].text)
@@ -503,42 +485,48 @@ app.post('/api/gpt/answer', async (req, res) => {
     }
 });
 
+async function getRandomWordList(fromLang, toLang, listLen) {
+    let wordList = ""
+    const langs = {
+        en: 'English',
+        nl: 'Dutch'
+    }
+    const wordsLearn = await models.WordLearning.findAll({
+        where: {
+            wordId: {
+                [models.Sequelize.Op.in]: [models.sequelize.literal("SELECT words.word_id FROM questions,words \
+                                                WHERE words.word_id=questions.word_id \
+                                                AND words.disabled is NULL \
+                                                AND words.to_text is not NULL\
+                                                AND from_lang='" + fromLang + "' \
+                                                AND to_lang='" + toLang + "'")]
+            },
+            nextRepetition: {
+                [models.Sequelize.Op.lte]: new Date()
+            }
+        },
+        order: models.sequelize.random(),
+        limit: listLen
+    })
+    // todo: sort this out using a join
+    for (const el of wordsLearn) {
+        // or could use wordid in
+        let word = await models.Word.findByPk(el.wordId);
+        wordList += `,${word.fromText}`
+    }
+    return wordList.substr(1) //remove leading comma
+}
+
 app.get('/api/gptbot/question/:lang/:baselang', async (req, res) => {
     try {
         let wordList = "",
             listLen = 25
-        //
 
         const fromLang = req.params.lang || 'nl'
         const toLang = req.params.baselang || 'en'
-        const langs = {
-            en: 'English',
-            nl: 'Dutch'
-        }
-        wordsLearn = await models.WordLearning.findAll({
-            where: {
-                wordId: {
-                    [models.Sequelize.Op.in]: [models.sequelize.literal("SELECT words.word_id FROM questions,words \
-                                                    WHERE words.word_id=questions.word_id \
-                                                    AND words.disabled is NULL \
-                                                    AND words.to_text is not NULL\
-                                                    AND from_lang='" + fromLang + "' \
-                                                    AND to_lang='" + toLang + "'")]
-                },
-                nextRepetition: {
-                    [models.Sequelize.Op.lte]: new Date()
-                }
-            },
-            order: models.sequelize.random(),
-            limit: listLen
-        })
-        // todo: sort this out using a join
-        for (const el of wordsLearn) {
-            // or could use wordid in
-            let word = await models.Word.findByPk(el.wordId);
-            wordList += `,${word.fromText}`
-        }
-        wordList = wordList.substr(1)
+
+        wordList = await getRandomWordList(fromLang, toLang, listLen)
+
         res.json({text: `Pick a word from ${wordList}. Ask an open-ended question in  ${langs[fromLang]} with the chosen word. Check my subsequent answer is grammatically correct. Ask all further questions in Dutch.`})
     } catch (err) {
         console.error(err);
