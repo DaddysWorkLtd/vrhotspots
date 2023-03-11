@@ -186,6 +186,7 @@ export default {
   display: flex;
   flex-direction: column;
   width: 100%;
+  font-family: 'Comic Sans MS', 'Chalkboard SE', 'Comic Neue', sans-serif;
 }
 
 .answers button {

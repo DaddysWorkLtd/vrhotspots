@@ -487,10 +487,6 @@ app.post('/api/gpt/answer', async (req, res) => {
 
 async function getRandomWordList(fromLang, toLang, listLen) {
     let wordList = ""
-    const langs = {
-        en: 'English',
-        nl: 'Dutch'
-    }
     const wordsLearn = await models.WordLearning.findAll({
         where: {
             wordId: {
@@ -519,8 +515,12 @@ async function getRandomWordList(fromLang, toLang, listLen) {
 
 app.get('/api/gptbot/question/:lang/:baselang', async (req, res) => {
     try {
-        let wordList = "",
-            listLen = 25
+        let wordList = ""
+        const listLen = 25
+        const langs = {
+            en: 'English',
+            nl: 'Dutch'
+        }
 
         const fromLang = req.params.lang || 'nl'
         const toLang = req.params.baselang || 'en'

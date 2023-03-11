@@ -3,7 +3,7 @@
     <div class="row" @click="getTranslation()">
       Writing practice, answer question (click for translation).
     </div>
-    <pre><div v-html="console" @click="getTranslation()"></div></pre>
+    <div class="console" v-html="console" @click="getTranslation()"></div>
     <div>
       <textarea class="chatbox" ref="chatbox" @keydown.enter="sendAnswer()" v-model="prompt"></textarea>
     </div>
@@ -14,11 +14,7 @@
       </button>
     </div>
     <div class="seed clickable"><span @click="toggleSeed()" class="clickable">seed: {{ seed }}</span></div>
-    <div class="row"><input style="color: lightgrey; font-size: 1em; height: 25px; width:100%" type="text"
-                            ref="gptScript" v-model="gptScript">
-      <span>&nbsp;</span>
-      <button style="color:darkgrey; border-color: black; " @click="copyGptScript()">copy</button>
-    </div>
+
   </div>
 </template>
 <script>
@@ -30,7 +26,7 @@ export default {
     return {
       baseLang: "en",
       lang: "nl",
-      seed: "random",
+      seed: "word_learnings",
       prompt: "",
       console: "",
       busy: true,
@@ -86,25 +82,11 @@ export default {
     toggleSeed() {
       this.seed = (this.seed === "random") ? "word_learnings" : "random"
       this.getQuestion()
-    },
-    getGptScript() {
-      return axios
-          .get(this.$apiHost + '/api/gptbot/question/' + this.lang + '/' + this.baseLang)
-          .then(res => {
-            this.gptScript = res.data.text
-          })
-    },
-    copyGptScript() {
-      this.$refs.gptScript.select()
-      this.$refs.gptScript.setSelectionRange(0, 9999)
-      // unlikely to work
-      navigator.clipboard.writeText(this.$refs.gptScript.value)
-      alert('text copied')
     }
+
   },
   created: function () {
     this.getQuestion()
-    this.getGptScript()
   }
 }
 </script>
@@ -168,6 +150,10 @@ button {
   100% {
     transform: rotate(360deg);
   }
+}
+
+.console {
+  font-family: Courier, monospace;
 }
 
 </style>
