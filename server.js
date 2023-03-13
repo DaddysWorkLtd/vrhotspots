@@ -12,12 +12,15 @@ const express = require("express"),
     key = fs.readFileSync("../privkey.pem"),
     cert = fs.readFileSync("../cert.pem"),
     app = express(),
-    cors = require("cors")
-requestIp = require('request-ip'),
+    cors = require("cors"),
+    Busboy = require("busboy"),
+    requestIp = require('request-ip'),
     bodyParser = require('body-parser'),
     models = require('./models'),
     gpt = require('./gpt'),
-    _ = require('lodash');
+    _ = require('lodash')
+Memfs = require('memfs'),
+    mfs = Memfs.fs
 
 const {Configuration, OpenAIApi} = require('openai'),
     //OpenApi = require('openapi'),
@@ -528,6 +531,37 @@ app.get('/api/gptbot/question/:lang/:baselang', async (req, res) => {
         wordList = await getRandomWordList(fromLang, toLang, listLen)
 
         res.json({text: `Pick a word from ${wordList}. Ask an open-ended question in  ${langs[fromLang]} with the chosen word. Check my subsequent answer is grammatically correct. Ask all further questions in Dutch.`})
+    } catch (err) {
+        console.error(err);
+        res.status(500).json({error: 'Something went wrong', message: err.message});
+    }
+});
+
+app.post('/api/transcribe', async (req, res) => {
+    try {
+        const busboy = Busboy({headers: req.headers})
+        busboy.on('file', (fieldname, file, filename, encoding, mimetype) => {
+            // save stream?
+            console.log(fieldname, file, filename, encoding, mimetype)
+            file.pipe(mfs.createWriteStream('/tempfile.mp3'))
+            /*
+            file.on('data', (data) => {
+               fileData += data
+           })
+            file.on('end', () => {
+               console.log('ended',fileData.length)
+           })*/
+        })
+        busboy.on('finish', async () => {
+            const file = mfs.createReadStream('/tempfile.mp3')
+            const response = await openai.createTranscription(file, "whisper-1",
+                undefined,
+                undefined,
+                undefined,
+                req.body.language || undefined)
+            res.json({text: response.data.text});
+        })
+        return req.pipe(busboy)
     } catch (err) {
         console.error(err);
         res.status(500).json({error: 'Something went wrong', message: err.message});
