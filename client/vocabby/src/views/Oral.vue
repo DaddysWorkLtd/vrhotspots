@@ -3,12 +3,12 @@
     <div class="row">
       Oral
     </div>
-    <div v-html="console"></div>
+    <div class="console" v-html="console"></div>
     <div>
-      <a id="record" @click="startRecording()">Record</a> |
+      <a id="record" @click="startRecording()" v-bind:class="{ 'flash': isRecording }">Record</a> |
       <a id="stop" @click="stopRecording()">Stop</a> |
       <a id="play" @click="playRecording()">Play</a> |
-      <a id="send" @click="sendRecording()">Send</a>
+      <a id="send" @click="sendRecording()" v-bind:class="{ 'flash': isSending }">Send</a>
     </div>
   </div>
 </template>
@@ -22,9 +22,11 @@ export default {
       prompt: "",
       chunks: [],
       mediaRecorder: null,
-      console: "Record the phrase, send when happy...",
+      console: "",
       audioUrl: "",
-      audioBlob: 0
+      audioBlob: 0,
+      isRecording: false,
+      isSending: false
     }
   },
   methods: {
@@ -32,6 +34,7 @@ export default {
       const _this = this
       navigator.mediaDevices.getUserMedia({audio: true})
           .then(stream => {
+            _this.isRecording = true
             // reset old recording
             _this.chunks = []
             _this.mediaRecorder = new MediaRecorder(stream);
@@ -46,6 +49,7 @@ export default {
           .catch(err => alert(err))
     },
     stopRecording() {
+      this.isRecording = false
       this.mediaRecorder.stop();
       this.audioBlob = new Blob(this.chunks, {type: "mp3"})//{type: "audio/ogg; codecs=opus"});
       this.audioUrl = URL.createObjectURL(this.audioBlob);
@@ -63,6 +67,7 @@ export default {
         // lets hope this is syncronous :)
         this.stopRecording()
       }
+      this.isSending = true
       const audioFile = new File([this.audioBlob], "recording.mp3",
           {type: "audio/mpeg"})
       let formData = new FormData();
@@ -75,11 +80,12 @@ export default {
             headers: {"Content-Type": "multipart/form-data"},
           }
       ).then(response => {
-        console.log(response.data.text)
-      })
-          .catch(error => {
-            console.error("Error sending audio to API:", error)
-          });
+        this.console += response.data.text + "<br />"
+        this.isSending = false
+      }).catch(error => {
+        console.error("Error sending audio to API:", error)
+        this.isSending = false
+      });
     }
   }
 }
@@ -102,8 +108,24 @@ export default {
   justify-content: space-between;
 }
 
-.chatbox {
-  width: 90%;
+.flash {
+  animation: flash 1s infinite;
+}
+
+@keyframes flash {
+  0% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.5;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+.console {
+  font-family: Courier, monospace;
 }
 
 </style>
