@@ -18,9 +18,16 @@ const express = require("express"),
     bodyParser = require('body-parser'),
     models = require('./models'),
     gpt = require('./gpt'),
-    _ = require('lodash')
-Memfs = require('memfs'),
-    mfs = Memfs.fs
+    _ = require('lodash'),
+    Memfs = require('memfs'),
+    mfs = Memfs.fs,
+    speech = require('@google-cloud/speech');
+
+const {GoogleAuth} = require('google-auth-library');
+const GOOGLE_AUTH = new GoogleAuth({
+    keyFile: process.env.GOOGLE_APPLICATION_CREDENTIALS,
+    scopes: ['https://www.googleapis.com/auth/cloud-platform']
+});
 
 const {Configuration, OpenAIApi} = require('openai'),
     //OpenApi = require('openapi'),
@@ -540,28 +547,57 @@ app.get('/api/gptbot/question/:lang/:baselang', async (req, res) => {
 app.post('/api/transcribe', async (req, res) => {
     try {
         const busboy = Busboy({headers: req.headers})
-        busboy.on('file', (fieldname, file, filename, encoding, mimetype) => {
+        let fileData = null
+        busboy.on('file', (fieldname, upload, filename, encoding, mimetype) => {
             // save stream?
-            console.log(fieldname, file, filename, encoding, mimetype)
-            file.pipe(mfs.createWriteStream('/tempfile.mp3'))
-            /*
-            file.on('data', (data) => {
-               fileData += data
-           })
-            file.on('end', () => {
-               console.log('ended',fileData.length)
-           })*/
+            console.log(fieldname, upload, filename, encoding, mimetype)
+            upload.on('data', (data) => {
+                if (fileData === null) {
+                    fileData = data
+                } else
+                    fileData = Buffer.concat([fileData, data])
+            })
+//            file.pipe(mfs.createWriteStream('/tempfile.flac'))
         })
+        const reqBody = {}
+        busboy.on('field', (name, val, info) => {
+            reqBody[name] = val;
+        });
         busboy.on('finish', async () => {
-            const file = mfs.createReadStream('/tempfile.mp3')
+            //          const file = mfs.readFileSync('/tempfile.flac')
+            const audio = {
+                content: fileData.toString('base64')
+            };
+            /*
             const response = await openai.createTranscription(file, "whisper-1",
                 undefined,
                 undefined,
                 undefined,
                 req.body.language || undefined)
             res.json({text: response.data.text});
+          */
+            // Google Cloud - todo: can I reduce the sampleRate on media recorder?
+            const client = new speech.SpeechClient()
+//todo despite my attempts it is coming through as webm at 48kHz. The config is in the file header so this is ignored. Couldn't workout how to use flac.js
+            const config = {
+                encoding: 'flac',
+//              sampleRateHertz: 16000,
+                languageCode: reqBody.language || 'en-GB',
+            };
+            const [op] = await client.longRunningRecognize({config: config, audio: audio}).catch(err => {
+                console.log("setup", err)
+            })
+            const [response] = await op.promise().catch(err => {
+                console.log("waiting", err)
+            });
+            const transcription = response.results
+                .map(result => result.alternatives[0].transcript)
+                .join('\n');
+            console.log(`Transcription: ${transcription}`);
+            res.json({text: transcription})
         })
         return req.pipe(busboy)
+
     } catch (err) {
         console.error(err);
         res.status(500).json({error: 'Something went wrong', message: err.message});

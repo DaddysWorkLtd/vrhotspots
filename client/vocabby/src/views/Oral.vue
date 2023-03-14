@@ -1,22 +1,37 @@
 <template>
   <div class="container">
-    <div class="row">
-      Oral
-    </div>
     <div class="console" v-html="console"></div>
     <div>
       <a id="record" @click="startRecording()" v-bind:class="{ 'flash': isRecording }">Record</a> |
-      <a id="stop" @click="stopRecording()">Stop</a> |
-      <a id="play" @click="playRecording()">Play</a> |
+<!--      <a id="stop" @click="stopRecording()">Stop</a> |
+      <a id="play" @click="playRecording()">Play</a> | -->
       <a id="send" @click="sendRecording()" v-bind:class="{ 'flash': isSending }">Send</a>
     </div>
   </div>
 </template>
+
 <script>
-import axios from "axios";
+import axios from "axios"
+//import FlacEncoder from 'flac.js';
 
 export default {
-  name: "Chat",
+  name: "Oral",
+  mounted() {
+    /*
+    const plugin = document.createElement("script");
+    plugin.setAttribute(
+      "src",
+      "../assets/aurora.js"
+    );
+    document.head.appendChild(plugin);
+    const plugin2 = document.createElement("script");
+    plugin2.setAttribute(
+      "src",
+      "../assets/flac.js"
+    );
+    document.head.appendChild(plugin2);
+    */
+  },
   data() {
     return {
       prompt: "",
@@ -37,7 +52,8 @@ export default {
             _this.isRecording = true
             // reset old recording
             _this.chunks = []
-            _this.mediaRecorder = new MediaRecorder(stream);
+            _this.mediaRecorder = new MediaRecorder(stream, {audioBitsPerSecond: 16000})
+
             // had to specify chunks as chrome was losing the last chunk, alway 0 size and only fired on stop
             _this.mediaRecorder.start(100);
             _this.mediaRecorder.addEventListener("dataavailable", event => {
@@ -51,8 +67,14 @@ export default {
     stopRecording() {
       this.isRecording = false
       this.mediaRecorder.stop();
-      this.audioBlob = new Blob(this.chunks, {type: "mp3"})//{type: "audio/ogg; codecs=opus"});
+      this.audioBlob = new Blob(this.chunks, {type: "audio/flac; codecs=flac"})//{type: "audio/ogg; codecs=opus"});
       this.audioUrl = URL.createObjectURL(this.audioBlob);
+      /*
+      const flacEncoder = new FlacEncoder(16000, 1, 16);
+      flacEncoder.encode([this.audioBlob], (flacBlob) => {
+        this.flacUrl = URL.createObjectURL(flacBlob);
+        // Do something with the flacUrl, such as download or play it
+      });*/
       this.playRecording()
     },
     playRecording() {
@@ -68,15 +90,15 @@ export default {
         this.stopRecording()
       }
       this.isSending = true
-      const audioFile = new File([this.audioBlob], "recording.mp3",
-          {type: "audio/mpeg"})
+      const audioFile = new File([this.audioBlob], "recording.flac",
+          {type: "audio/flac"})
       let formData = new FormData();
       formData.append("file", audioFile);
+      formData.append('language', "nl-NL")
       axios({
             method: 'POST',
             url: this.$apiHost + "/api/transcribe",
             data: formData,
-            language: 'nl',
             headers: {"Content-Type": "multipart/form-data"},
           }
       ).then(response => {
