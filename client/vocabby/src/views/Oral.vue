@@ -81,7 +81,7 @@ export default {
               _this.chunks.push(event.data);
               console.log('audio captured', event.data.size)
             });
-            _this.mediaRecorder?.addEventListener('stop', (event) => {
+            _this.mediaRecorder?.addEventListener('stop', () => {
               _this.audioBlob = new Blob(this.chunks, {type: "audio/flac; codecs=flac"})//{type: "audio/ogg; codecs=opus"});
               _this.audioUrl = URL.createObjectURL(this.audioBlob)
               _this.isRecording = false
