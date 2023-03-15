@@ -2,7 +2,7 @@
   <div class="container">
     <div class="console" v-html="console" @click="getTranslation()"></div>
     <div class="row">
-      <button style="color:darkred; border-color:darkred; padding: 5px" @click="startRecording()"
+      <button style="color:darkred; border-color:darkred;" @click="startRecording()"
               v-bind:class="{ 'flash': isRecording }">Record
       </button>
       <button style="color:darkgreen; border-color:darkgreen" @click="sendRecording()"
