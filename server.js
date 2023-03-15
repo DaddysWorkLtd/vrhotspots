@@ -70,6 +70,10 @@ io = socket(server,{
     methods: ["GET", "POST"]
   }
 });*/
+// getting errors in firefox, this does not fic it chatgpt
+app.use(cors({
+    origin: '*'
+}))
 
 // routes
 const low = require("lowdb"),

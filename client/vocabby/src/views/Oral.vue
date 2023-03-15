@@ -2,12 +2,12 @@
   <div class="container">
     <div class="console" v-html="console" @click="getTranslation()"></div>
     <div class="row">
-      <span>&nbsp;
-        <a id="record" @click="startRecording()" v-bind:class="{ 'flash': isRecording }">Record</a> |
-        <!--      <a id="stop" @click="stopRecording()">Stop</a> |
-              <a id="play" @click="playRecording()">Play</a> | -->
-        <a id="send" @click="sendRecording()" v-bind:class="{ 'flash': isSending }">Send</a>
-      </span>
+      <button style="color:darkred; border-color:darkred; padding: 5px" @click="startRecording()"
+              v-bind:class="{ 'flash': isRecording }">Record
+      </button>
+      <button style="color:darkgreen; border-color:darkgreen" @click="sendRecording()"
+              v-bind:class="{ 'flash': isSending }">Send
+      </button>
       <span class="loading-spinner" v-show="busy" style="width: 25px"></span>
       <button style="color:darkorange; border-color:darkorange" @click="getStatement()">New</button>
     </div>
@@ -85,13 +85,13 @@ export default {
               _this.audioBlob = new Blob(this.chunks, {type: "audio/flac; codecs=flac"})//{type: "audio/ogg; codecs=opus"});
               _this.audioUrl = URL.createObjectURL(this.audioBlob)
               _this.isRecording = false
+              console.log('blobbed')
             })
             console.log('recording')
           })
           .catch(err => alert(err))
     },
     stopRecording() {
-      this.isRecording = false
       this.mediaRecorder.stop();
       /*
       const flacEncoder = new FlacEncoder(16000, 1, 16);
@@ -136,6 +136,7 @@ export default {
         // its not so call back in abit
         setTimeout(this.sendRecording, 25)
       } else {
+        console.log('sending')
         this.isSending = true
         this.playRecording()
         // so far my attempts to change the audio have failed and its webm
