@@ -1,4 +1,4 @@
-function matchQuestion(text) {
+function matchQuestion(text, question = true) {
 //    const regex = /([\w\ ]+)/g
     // you can use the \p{L} property to match any letter character, regardless of whether it is ASCII or not.
     const regex = /([\p{L} ]+)/gu
@@ -11,8 +11,8 @@ function matchQuestion(text) {
         if (matches.length == 4 &&
             matches[0].length == 2 &&
             matches[2].length == 2) {
-            matches[1] += '?'
-            matches[3] += '?'
+            matches[1] += question ? '?' : '.'
+            matches[3] += question ? '?' : '.'
             return matches
         } else {
             return false

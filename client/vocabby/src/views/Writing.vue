@@ -8,10 +8,10 @@
       <textarea class="chatbox" ref="chatbox" @keydown.enter="sendAnswer()" v-model="prompt"></textarea>
     </div>
     <div class="row">
-      <button style="color:darkred; border-color:darkred" @click="getQuestion()">new</button>
-      <span class="loading-spinner" v-show="busy"></span>
       <button style="color:darkgreen; border-color: darkgreen" @click="sendAnswer()" v-bind:disabled="busy">send
       </button>
+      <span class="loading-spinner" v-show="busy"></span>
+      <button style="color:darkorange; border-color:darkorange" @click="getQuestion()">new</button>
     </div>
     <div class="seed clickable"><span @click="toggleSeed()" class="clickable">seed: {{ seed }}</span></div>
 
@@ -73,16 +73,30 @@ export default {
             this.busy = false
           })
     },
+    textToSpeech(text, lang) {
+      return axios
+          .post(this.$apiHost + '/api/tts',
+              {
+                text: text,
+                language: lang
+              })
+          .then(res => {
+            const audio = new Audio(res.data.file);
+            audio.play();
+          })
+    },
     getTranslation() {
       if (this.translation) {
         this.console += "(" + this.translation + ")<br />"
         this.translation = ""
       }
+      this.textToSpeech(this.question, this.lang)
     },
     toggleSeed() {
       this.seed = (this.seed === "random") ? "word_learnings" : "random"
       this.getQuestion()
-    }
+    },
+
 
   },
   created: function () {

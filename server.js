@@ -523,21 +523,35 @@ async function getRandomWordList(fromLang, toLang, listLen) {
     return wordList.substr(1) //remove leading comma
 }
 
-app.get('/api/gptbot/question/:lang/:baselang', async (req, res) => {
+app.post('/api/gpt/statement/:lang/:baselang', async (req, res) => {
     try {
-        let wordList = ""
-        const listLen = 25
-        const langs = {
-            en: 'English',
-            nl: 'Dutch'
+        let prompt = "Create a sentence in [" + req.params.lang + "]",
+            wordList = "",
+            seeds = req.body.seeds || 1
+        //
+        if (req.body.seed && req.body.seed == "word_learnings") {
+            const fromLang = 'nl'
+            const toLang = 'en'
+            wordList = await getRandomWordList(fromLang, toLang, seeds)
+            if (wordList) prompt += ` using the words [${wordList}],`
         }
-
-        const fromLang = req.params.lang || 'nl'
-        const toLang = req.params.baselang || 'en'
-
-        wordList = await getRandomWordList(fromLang, toLang, listLen)
-
-        res.json({text: `Pick a word from ${wordList}. Ask an open-ended question in  ${langs[fromLang]} with the chosen word. Check my subsequent answer is grammatically correct. Ask all further questions in Dutch.`})
+        prompt += " followed by a translation in [" + req.params.baselang + "]. Label languages first."
+        const response = await openai.createChatCompletion({
+            messages: [{role: 'user', content: prompt}],
+            model: GPT_MODEL
+        });
+        match = gpt.matchQuestion(response.data.choices[0].message.content, false)
+        if (match) {
+            res.json({
+                statement_lang: match[0],
+                statement: match[1],
+                translation_lang: match[2],
+                translation: match[3],
+                seeds: wordList
+            });
+        } else {
+            throw new Error("no regex match on choice 0" + response.data.message.content)
+        }
     } catch (err) {
         console.error(err);
         res.status(500).json({error: 'Something went wrong', message: err.message});
@@ -598,6 +612,111 @@ app.post('/api/transcribe', async (req, res) => {
         })
         return req.pipe(busboy)
 
+    } catch (err) {
+        console.error(err);
+        res.status(500).json({error: 'Something went wrong', message: err.message});
+    }
+});
+
+const langConfig = {
+    nl: {
+        "audioConfig": {
+            "audioEncoding": "MP3",
+            "effectsProfileId": [
+                "headphone-class-device"
+            ],
+            "pitch": -5,
+            "speakingRate": 0.9
+        },
+        "voice": {
+            "languageCode": "nl-NL",
+            "name": "nl-NL-Wavenet-B"
+        }
+    },
+    fr: {
+        "audioConfig": {
+            "audioEncoding": "MP3",
+            "effectsProfileId": [
+                "headphone-class-device"
+            ],
+            "pitch": 0,
+            "speakingRate": 0.9
+        },
+        "voice": {
+            "languageCode": "fr-FR",
+            "name": "fr-FR-Wavenet-C"
+        }
+    },
+    sv: {
+        "audioConfig": {
+            "audioEncoding": "MP3",
+            "effectsProfileId": [
+                "headphone-class-device"
+            ],
+            "pitch": 0,
+            "speakingRate": 0.9
+        },
+        "voice": {
+            "languageCode": "sv-SE",
+            "name": "sv-SE-Wavenet-A"
+        }
+    },
+    it: {
+        "audioConfig": {
+            "audioEncoding": "MP3",
+            "effectsProfileId": [
+                "headphone-class-device"
+            ],
+            "pitch": 0,
+            "speakingRate": 0.9
+        },
+        "voice": {
+            "languageCode": "it-IT",
+            "name": "it-IT-Wavenet-B"
+        }
+    },
+    es: {
+        "audioConfig": {
+            "audioEncoding": "MP3",
+            "effectsProfileId": [
+                "headphone-class-device"
+            ],
+            "pitch": 0,
+            "speakingRate": 0.9
+        },
+        "voice": {
+            "languageCode": "es-ES",
+            "name": "es-ES-Wavenet-B"
+        }
+    },
+    de: {
+        "audioConfig": {
+            "audioEncoding": "MP3",
+            "effectsProfileId": [
+                "headphone-class-device"
+            ],
+            "pitch": 0,
+            "speakingRate": 0.9
+        },
+        "voice": {
+            "languageCode": "de-DE",
+            "name": "de-DE-Wavenet-B"
+        }
+    }
+}
+const textToSpeech = require('@google-cloud/text-to-speech');
+const util = require("util");
+const ttsClient = new textToSpeech.TextToSpeechClient();
+
+app.post('/api/tts', async (req, res) => {
+    try {
+        // Construct the request
+        const request = langConfig[req.body.language]
+        request.input = {text: req.body.text}
+        // Performs the text-to-speech request
+        const [gresponse] = await ttsClient.synthesizeSpeech(request)
+        const audioBuff = Buffer.from(gresponse.audioContent)
+        res.send({file: 'data:audio/mpeg;base64,' + audioBuff.toString('base64')})
     } catch (err) {
         console.error(err);
         res.status(500).json({error: 'Something went wrong', message: err.message});

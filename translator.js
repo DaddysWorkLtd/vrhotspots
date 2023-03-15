@@ -15,12 +15,12 @@ const _ = require('lodash');
 const langConfig = {
   nl: {
     "audioConfig": {
-      "audioEncoding": "LINEAR16",
+      "audioEncoding": "MP3",
       "effectsProfileId": [
         "headphone-class-device"
       ],
       "pitch": -5,
-      "speakingRate": 0.7
+      "speakingRate": 0.9
     },
     "voice": {
       "languageCode": "nl-NL",
@@ -29,12 +29,12 @@ const langConfig = {
   },
   fr: {
     "audioConfig": {
-      "audioEncoding": "LINEAR16",
+      "audioEncoding": "MP3",
       "effectsProfileId": [
         "headphone-class-device"
       ],
       "pitch": 0,
-      "speakingRate": 0.7
+      "speakingRate": 0.9
     },
     "voice": {
       "languageCode": "fr-FR",
@@ -43,12 +43,12 @@ const langConfig = {
   },
   sv: {
     "audioConfig": {
-      "audioEncoding": "LINEAR16",
+      "audioEncoding": "MP3",
       "effectsProfileId": [
         "headphone-class-device"
       ],
       "pitch": 0,
-      "speakingRate": 0.7
+      "speakingRate": 0.9
     },
     "voice": {
       "languageCode": "sv-SE",
@@ -57,12 +57,12 @@ const langConfig = {
   },
   it: {
     "audioConfig": {
-      "audioEncoding": "LINEAR16",
+      "audioEncoding": "MP3",
       "effectsProfileId": [
         "headphone-class-device"
       ],
       "pitch": 0,
-      "speakingRate": 0.7
+      "speakingRate": 0.9
     },
     "voice": {
       "languageCode": "it-IT",
@@ -71,12 +71,12 @@ const langConfig = {
   },
   es: {
     "audioConfig": {
-      "audioEncoding": "LINEAR16",
+      "audioEncoding": "MP3",
       "effectsProfileId": [
         "headphone-class-device"
       ],
       "pitch": 0,
-      "speakingRate": 0.7
+      "speakingRate": 0.9
     },
     "voice": {
       "languageCode": "es-ES",
@@ -85,12 +85,12 @@ const langConfig = {
   },
   de: {
     "audioConfig": {
-      "audioEncoding": "LINEAR16",
+      "audioEncoding": "MP3",
       "effectsProfileId": [
         "headphone-class-device"
       ],
       "pitch": 0,
-      "speakingRate": 0.7
+      "speakingRate": 0.9
     },
     "voice": {
       "languageCode": "de-DE",
