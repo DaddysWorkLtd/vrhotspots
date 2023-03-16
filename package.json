@@ -49,6 +49,7 @@
     "sqlite-async": "^1.1.1",
     "sqlite3": "^5.0.2",
     "stream": "0.0.2",
+    "update": "^0.7.4",
     "vue-facebook-login-component": "^3.0.0",
     "vue-google-login": "^2.0.5",
     "yargs": "^16.2.0"

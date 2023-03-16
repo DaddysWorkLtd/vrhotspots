@@ -21,7 +21,10 @@ describe('matchQuestion', () => {
         ["\n\n[nl] Trouwens, moet je wel een beetje opletten dat je de juiste afslag neemt.\n[en] By the way, you should pay attention to take the right exit.",
             ["nl", "Trouwens, moet je wel een beetje opletten dat je de juiste afslag neemt.",
                 "en", "By the way, you should pay attention to take the right exit."
-            ]]
+            ]],
+        ["\n\n[nl] Ik ga niet naar het feest vanavond, ik heb teveel hoofdpijn.\n[en] I'm not going to the party tonight, I have too much headache.",
+            ["nl", "Ik ga niet naar het feest vanavond, ik heb teveel hoofdpijn.",
+                "en", "I'm not going to the party tonight, I have too much headache."]]
     ])("when the input is '%s'", (text, expected,) => {
         const question = (text.slice(-1) === "?")
         expect(matchQuestion(text, question)).toEqual(expected)

@@ -1,7 +1,7 @@
 <template>
   <div class="container">
     <div class="row" @click="getTranslation()">
-      Writing practice, repeat phrase (click for audio).
+      Speaking practice, repeat phrase (click for audio).
     </div>
     <div class="row">&nbsp;</div>
     <div class="console" v-html="console" @click="getTranslation()"></div>
@@ -158,6 +158,7 @@ export default {
         ).then(response => {
           this.console += "> " + response.data.text + "<br />"
           // check the response, with locales handled
+          console.log('comparing', removePunctuation(response.data.text), removePunctuation(this.statement))
           if (ciEquals(removePunctuation(response.data.text), removePunctuation(this.statement))) {
             this.correct = true
             console.log('pronounciation correct')

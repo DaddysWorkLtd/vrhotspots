@@ -21,6 +21,7 @@ const express = require("express"),
     _ = require('lodash'),
     Memfs = require('memfs'),
     mfs = Memfs.fs,
+    mvol = Memfs.vol,
     speech = require('@google-cloud/speech');
 
 const {GoogleAuth} = require('google-auth-library');
@@ -562,7 +563,7 @@ app.post('/api/gpt/statement/:lang/:baselang', async (req, res) => {
     }
 });
 
-app.post('/api/transcribe', async (req, res) => {
+async function googleTTS(req, res) {
     try {
         const busboy = Busboy({headers: req.headers})
         let fileData = null
@@ -575,14 +576,12 @@ app.post('/api/transcribe', async (req, res) => {
                 } else
                     fileData = Buffer.concat([fileData, data])
             })
-//            file.pipe(mfs.createWriteStream('/tempfile.flac'))
         })
         const reqBody = {}
         busboy.on('field', (name, val, info) => {
             reqBody[name] = val;
         });
         busboy.on('finish', async () => {
-            //          const file = mfs.readFileSync('/tempfile.flac')
             const audio = {
                 content: fileData.toString('base64')
             };
@@ -620,7 +619,50 @@ app.post('/api/transcribe', async (req, res) => {
         console.error(err);
         res.status(500).json({error: 'Something went wrong', message: err.message});
     }
-});
+}
+
+async function whisperTTS(req, res) {
+    try {
+        const busboy = Busboy({headers: req.headers})
+        let fileData = null
+        const reqBody = {}
+        busboy.on('field', (name, val, info) => {
+            reqBody[name] = val;
+        });
+        busboy.on('file', (fieldname, upload, filename, encoding, mimetype) => {
+            // create a virtual filestream
+            upload.pipe(mfs.createWriteStream('/speechfile.mp3'))
+        })
+        busboy.on('finish', async () => {
+            const file = mfs.createReadStream('/speechfile.mp3')
+//            file.path = 'speechfile.mp3'
+            // shorten code for openai
+            if (reqBody.language) {
+                reqBody.language = reqBody.language.substring(0, 2)
+            }
+            const response = await openai.createTranscription(file, 'whisper-1', undefined, undefined, undefined, reqBody.language)
+                .catch(error => {
+                    if (error.response) {
+                        console.log(error.response.status);
+                        console.log(error.response.data);
+                    } else {
+                        console.log(error.message);
+                    }
+                })
+
+            res.json({text: response.data.text})
+        })
+        return req.pipe(busboy)
+
+    } catch (err) {
+        console.error(err);
+        res.status(500).json({error: 'Something went wrong', message: err.message});
+    }
+}
+
+//app.post('/api/transcribe', googleTTS)
+app.post('/api/transcribe', whisperTTS)
+
 
 const langConfig = {
     nl: {
