@@ -134,6 +134,19 @@ export default {
             : a === b;
       }
 
+      // should be an object
+      function compareWords(target, candidate) {
+        if (target && candidate) {
+          const target_arr = removePunctuation(target).split(' ')
+          const candi_arr = removePunctuation(candidate).split(' ')
+          const target_found = target_arr.filter(word => candi_arr.includes(word))
+          return target_found.length / target_arr.length
+        } else {
+          return 0
+        }
+
+      }
+
       if (this.mediaRecorder.state === 'recording' || this.isRecording) {
         // lets hope this is syncronous :)
         this.stopRecording()
@@ -164,6 +177,8 @@ export default {
             console.log('pronounciation correct')
             this.playSuccess()
             setTimeout(this.getStatement, 5000)
+          } else {
+            console.log(compareWords(this.statement, response.data.text))
           }
           this.isSending = false
         }).catch(error => {
