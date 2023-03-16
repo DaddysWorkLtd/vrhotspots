@@ -554,7 +554,7 @@ app.post('/api/gpt/statement/:lang/:baselang', async (req, res) => {
                 seeds: wordList
             });
         } else {
-            throw new Error("no regex match on choice 0" + response.data.message.content)
+            throw new Error("no regex match on gpt response: " + response.data.choices[0].message.content)
         }
     } catch (err) {
         console.error(err);

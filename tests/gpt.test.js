@@ -17,9 +17,14 @@ describe('matchQuestion', () => {
             ["NL", "Wat is je favoriete kleur?", "EN", "What is your favorite color?"]],
         ["[NL] Wat is volgens jou de meest essentiële eigenschap van een goede leraar? [EN] What do you think is the most essential trait of a good teacher?",
             ["NL", "Wat is volgens jou de meest essentiële eigenschap van een goede leraar?",
-                "EN", "What do you think is the most essential trait of a good teacher?"]]
-    ])("when the input is '%s'", (text, expected) => {
-        expect(matchQuestion(text)).toEqual(expected)
+                "EN", "What do you think is the most essential trait of a good teacher?"]],
+        ["\n\n[nl] Trouwens, moet je wel een beetje opletten dat je de juiste afslag neemt.\n[en] By the way, you should pay attention to take the right exit.",
+            ["nl", "Trouwens, moet je wel een beetje opletten dat je de juiste afslag neemt.",
+                "en", "By the way, you should pay attention to take the right exit."
+            ]]
+    ])("when the input is '%s'", (text, expected,) => {
+        const question = (text.slice(-1) === "?")
+        expect(matchQuestion(text, question)).toEqual(expected)
     })
 })
 test('matchQuestion no valid matched', () => {

@@ -1,6 +1,12 @@
 <template>
   <div class="container">
+    <div class="row" @click="getTranslation()">
+      Writing practice, repeat phrase (click for audio).
+    </div>
+    <div class="row">&nbsp;</div>
     <div class="console" v-html="console" @click="getTranslation()"></div>
+    <div class="row">&nbsp;
+    </div>
     <div class="row">
       <button style="color:darkred; border-color:darkred;" @click="startRecording()"
               v-bind:class="{ 'flash': isRecording }">Record
@@ -10,8 +16,6 @@
       </button>
       <span class="loading-spinner" v-show="busy" style="width: 25px"></span>
       <button style="color:darkorange; border-color:darkorange" @click="getStatement()">New</button>
-    </div>
-    <div class="row">
     </div>
   </div>
   <audio>

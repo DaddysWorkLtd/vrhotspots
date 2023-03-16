@@ -1,7 +1,7 @@
 function matchQuestion(text, question = true) {
 //    const regex = /([\w\ ]+)/g
     // you can use the \p{L} property to match any letter character, regardless of whether it is ASCII or not.
-    const regex = /([\p{L} ]+)/gu
+    const regex = /([\p{L} ,;]+)/gu
     try {
         let matches = text.match(regex)
 
