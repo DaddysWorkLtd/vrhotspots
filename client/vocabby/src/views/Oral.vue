@@ -146,7 +146,6 @@ export default {
         }
 
       }
-
       if (this.mediaRecorder.state === 'recording' || this.isRecording) {
         // lets hope this is syncronous :)
         this.stopRecording()
@@ -169,7 +168,8 @@ export default {
               headers: {"Content-Type": "multipart/form-data"},
             }
         ).then(response => {
-          this.console += "> " + response.data.text + "<br />"
+          const score = Math.round(compareWords(this.statement, response.data.text) * 100)
+          this.console += "> " + response.data.text + ` (${score})% <br />`
           // check the response, with locales handled
           console.log('comparing', removePunctuation(response.data.text), removePunctuation(this.statement))
           if (ciEquals(removePunctuation(response.data.text), removePunctuation(this.statement))) {
@@ -177,8 +177,6 @@ export default {
             console.log('pronounciation correct')
             this.playSuccess()
             setTimeout(this.getStatement, 5000)
-          } else {
-            console.log(compareWords(this.statement, response.data.text))
           }
           this.isSending = false
         }).catch(error => {
