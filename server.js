@@ -563,6 +563,43 @@ app.post('/api/gpt/statement/:lang/:baselang', async (req, res) => {
     }
 });
 
+app.post('/api/gpt/clue/:lang/:baselang', async (req, res) => {
+    try {
+        let prompt = "Create a clue in [" + req.params.lang + "]"
+
+        //
+        const fromLang = 'nl'
+        const toLang = 'en'
+        wordList = await getRandomWordList(fromLang, toLang, 1)
+        if (wordList) {
+            prompt += ` for the word [${wordList}],`
+            prompt += " followed by a translation in [" + req.params.baselang + "]. Label languages first."
+            const response = await openai.createChatCompletion({
+                messages: [{role: 'user', content: prompt}],
+                model: GPT_MODEL
+            });
+            match = gpt.matchQuestion(response.data.choices[0].message.content, false)
+            if (match) {
+                res.json({
+                    clue_lang: match[0],
+                    clue: match[1],
+                    translation_lang: match[2],
+                    translation: match[3],
+                    answer: wordList
+                });
+            } else {
+                res.status(404).send('No clue what happened: response.data.choices[0].message.content')
+            }
+        } else {
+            throw new Error("no regex match on gpt response: " + response.data.choices[0].message.content)
+        }
+    } catch (err) {
+        console.error(err);
+        res.status(500).json({error: 'Something went wrong', message: err.message});
+    }
+});
+
+
 async function googleTTS(req, res) {
     try {
         const busboy = Busboy({headers: req.headers})

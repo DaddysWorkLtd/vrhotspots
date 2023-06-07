@@ -29,6 +29,16 @@ const routes = [
     path: '/oral',
     name: 'Oral',
     component: () => import('../views/Oral.vue')
+  },
+  {
+    path: '/dialogie',
+    name: 'Dialogue',
+    component: () => import('../views/Dialogue.vue')
+  },
+  {
+    path: '/spelling',
+    name: 'Spelling',
+    component: () => import('../views/Spelling.vue')
   }
 ]
 

@@ -67,7 +67,7 @@ export default {
           .then(res => {
             this.question = res.data.question
             this.translation = res.data.translation
-            this.console += this.question + "<br />"
+            this.console = this.question + "<br />"
             console.log(res.data.question, res.data.translation)
             this.prompt = ""
             this.busy = false
