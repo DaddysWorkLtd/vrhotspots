@@ -108,10 +108,8 @@ class Question extends Model {
         let interval = _getNextInterval(lastPeriod, confidence, correct)
         wordTested.nextRepetition = new Date(now.getTime() + interval)
         if (correct) {
-            // why is this property not found
             wordTested.consecutiveCorrect += 1
         } else {
-            // why is this property not found
             wordTested.consecutiveCorrect = 0
             // process incorrect distractor, alter what? lastDistracted?
             const distracted = await WordLearning.findByPk(answerWordId)

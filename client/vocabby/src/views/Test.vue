@@ -10,11 +10,17 @@
     </div>
     <div>&nbsp;</div>
     <div class="confidence">
-      <button style="color:darkred" @click="setConfidence(0)" :class="confidence==0 ? 'active' : 0">No Scooby</button>
-      <button style="color:darkorange" @click="setConfidence(.25)" :class="confidence==.25 ? 'active' : 0">Tricky Dicky</button>
-      <button style="color:goldenrod" @click="setConfidence(.5)" :class="confidence==.5 ? 'active' : 0">Whatever</button>
-      <button style="color:yellowgreen" @click="setConfidence(.75)" :class="confidence==.75 ? 'active' : 0">Easy Peasy</button>
-      <button style="color:seagreen" @click="setConfidence(1)" :class="confidence==1 ? 'active' : 0">Piece of Cake</button>
+      <button style="color:darkred" @click="setConfidence(0.1)" :class="confidence==0.1 ? 'active' : 0">No Scooby
+      </button>
+      <button style="color:darkorange" @click="setConfidence(.35)" :class="confidence==.35 ? 'active' : 0">Tricky
+        Dicky
+      </button>
+      <button style="color:goldenrod" @click="setConfidence(.6)" :class="confidence==.6 ? 'active' : 0">Whatever
+      </button>
+      <button style="color:yellowgreen" @click="setConfidence(.85)" :class="confidence==.85 ? 'active' : 0">Easy Peasy
+      </button>
+      <button style="color:seagreen" @click="setConfidence(1.1)" :class="confidence==1.1 ? 'active' : 0">Piece of Cake
+      </button>
     </div>
     <div>&nbsp;</div>
     <div class="answers">

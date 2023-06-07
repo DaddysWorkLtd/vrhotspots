@@ -8,6 +8,10 @@
     |
     <router-link to="/oral">Oral</router-link>
     |
+    <router-link to="/dialogue">Dialogue</router-link>
+    |
+    <router-link to="/spelling">Spelling</router-link>
+    |
     <router-link to="/chat">ChatGPT</router-link>
   </div>
   <router-view/>

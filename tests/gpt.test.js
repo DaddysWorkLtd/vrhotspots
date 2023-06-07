@@ -6,6 +6,7 @@ const {matchQuestion} = require('../gpt')
 //\n[NL]: Gaat deze opgaande trend nog lang door?
 //\n[nl] Wat zijn enkele krachtige argumenten voor het behoud van oude gebouwen?
 //expect(models.testing.calcNextInterval(0, 0, false)).toBe(0)
+// todo: {"error":"Something went wrong","message":"no regex match on gpt response: \n\n[nl] Vervolgens hadden we tevoren afgesproken om om 18.00 uur bij het restaurant te zijn. \n[en] Then we had agreed beforehand to be at the restaurant at 6:00 pm."}
 describe('matchQuestion', () => {
     let expected = ['nl', 'Heeft u een kat?', 'en', 'Do you have a cat?']
     it.each([
