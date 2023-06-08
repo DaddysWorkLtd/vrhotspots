@@ -31,7 +31,7 @@ const routes = [
     component: () => import('../views/Oral.vue')
   },
   {
-    path: '/dialogie',
+    path: '/dialogue',
     name: 'Dialogue',
     component: () => import('../views/Dialogue.vue')
   },

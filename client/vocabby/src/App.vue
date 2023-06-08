@@ -2,17 +2,17 @@
   <div id="nav">
     <router-link to="/">Translate</router-link>
     |
-    <router-link to="/test">Test</router-link>
+    <router-link to="/test">Learn</router-link>
     |
-    <router-link to="/writing">Writing</router-link>
+    <router-link to="/oral">Speak</router-link>
     |
-    <router-link to="/oral">Oral</router-link>
+    <router-link to="/spelling">Spell</router-link>
     |
-    <router-link to="/dialogue">Dialogue</router-link>
+    <router-link to="/writing">Write</router-link>
     |
-    <router-link to="/spelling">Spelling</router-link>
+    <router-link to="/dialogue">Play</router-link>
     |
-    <router-link to="/chat">ChatGPT</router-link>
+    <router-link to="/chat">Debug</router-link>
   </div>
   <router-view/>
 </template>

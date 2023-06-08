@@ -599,6 +599,30 @@ app.post('/api/gpt/clue/:lang/:baselang', async (req, res) => {
     }
 });
 
+app.post('/api/gpt/roleplay/:lang/:baselang', async (req, res) => {
+    try {
+        let sysPrompt = "You are pretending to be " + req.body.who +
+                " for a role play in [" + req.params.lang + "]." +
+                " Reply in less than 50 words. Use the most common thousand words in Dutch.",
+            prompt = req.body.prompt,
+            history = req.body.history
+
+        const response = await openai.createChatCompletion({
+            messages: [{role: 'system', content: sysPrompt},
+                {role: 'user', content: prompt}],
+            model: GPT_MODEL
+        });
+        // return the history?
+        res.json({
+            message: response.data.choices[0].message.content,
+            message_lang: req.params.lang
+        })
+    } catch (err) {
+        console.error(err);
+        res.status(500).json({error: 'Something went wrong', message: err.message});
+    }
+});
+
 
 async function googleTTS(req, res) {
     try {
