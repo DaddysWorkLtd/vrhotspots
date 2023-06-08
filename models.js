@@ -67,11 +67,13 @@ function calcNextInterval(lastInterval, confidence, correct) {
 }
 
 class Question extends Model {
-    async processAnswer(answerWordId, confidence = .5) {
+    async processAnswer(answerWordId, confidence) {
         // todo: random element, from time elapsed based on relative (z score), also cumulative correct
         // not sure what the profile is of this.
         // this needs to be exposed for unit testing
         const _getNextInterval = calcNextInterval
+
+        if (!confidence) throw new Error('confidence required to processAnswer')
 
         const now = new Date()
         this.answerWordId = answerWordId
@@ -100,6 +102,12 @@ class Question extends Model {
             }
             var lastPeriod = Math.round(wordTested.nextRepetition - wordTested.lastTested)
         }
+
+        //logging for debugging
+        function getDays(ms) {
+            return Math.round(ms / 86400000, 1)
+        }
+
         wordTested.lastTested = now
         wordTested.lastConfidence = confidence
         wordTested.repetitions++
@@ -107,6 +115,7 @@ class Question extends Model {
         wordTested.lastTime = now - this.createdAt
         let interval = _getNextInterval(lastPeriod, confidence, correct)
         wordTested.nextRepetition = new Date(now.getTime() + interval)
+        console.log(now, this.wordId, confidence, correct, getDays(lastPeriod), getDays(interval), wordTested.nextRepetition)
         if (correct) {
             wordTested.consecutiveCorrect += 1
         } else {

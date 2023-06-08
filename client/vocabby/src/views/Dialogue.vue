@@ -1,7 +1,7 @@
 <template>
   <div class="container">
     <div class="row" @click="getTranslation()">
-      Roleplay.
+      Roleplay with...
     </div>
     <input type="text" v-model="who" class="text-center" @keydown.enter="startConversation"/>
 
@@ -76,7 +76,7 @@ export default {
               })
           .then(res => {
             this.history.push({role: "user", content: message})
-            this.history.push({role: "assistant", content: res.message})
+            this.history.push({role: "assistant", content: res.data.message})
             this.textToSpeech(res.data.message, res.data.message_lang)
             console.log(res)
             this.console += res.data.message + "<br />"
@@ -113,11 +113,6 @@ export default {
     stopRecording() {
       this.mediaRecorder.stop();
     },
-    playRecording() {
-      const audio = new Audio(this.audioUrl);
-      console.log('playing')
-      audio.play();
-    },
     sendReply() {
       if (this.mediaRecorder.state === 'recording' || this.isRecording) {
         // lets hope this is syncronous :)
@@ -127,7 +122,6 @@ export default {
       } else {
         console.log('sending')
         this.isSending = true
-        this.playRecording()
         // so far my attempts to change the audio have failed and its webm
         const audioFile = new File([this.audioBlob], "recording.flac",
             {type: "audio/flac"})

@@ -398,9 +398,9 @@ app.put('/api/vocably/answer/:questionId', async (req, res) => {
         return res.json({"REQUIRED": "wordId"})
     }
     let confidence = req.body.confidence || .5
-    if (confidence < 0 || confidence > 1) {
+    if (confidence < 0 || confidence > 1.5) {
         res.status(400)
-        return res.json({"INVALID RANGE": "confidence " + confidence + " should be 0-1 "})
+        return res.json({"INVALID RANGE": "confidence " + confidence + " should be 0-1.5 "})
     }
     // todo: do not allow old questions to be updated, as PKs are guessable
     const word = await models.Word.findByPk(req.body.wordId)
@@ -601,15 +601,16 @@ app.post('/api/gpt/clue/:lang/:baselang', async (req, res) => {
 
 app.post('/api/gpt/roleplay/:lang/:baselang', async (req, res) => {
     try {
-        let sysPrompt = "You are pretending to be " + req.body.who +
+        const sysPrompt = "You are pretending to be " + req.body.who +
                 " for a role play in [" + req.params.lang + "]." +
                 " Reply in less than 50 words. Use the most common thousand words in Dutch.",
             prompt = req.body.prompt,
-            history = req.body.history
-
+            history = req.body.history,
+            convoSeed = [{role: 'system', content: sysPrompt}]
+        // add on history and new message
+        let messages = convoSeed.concat(history, [{role: 'user', content: prompt}])
         const response = await openai.createChatCompletion({
-            messages: [{role: 'system', content: sysPrompt},
-                {role: 'user', content: prompt}],
+            messages: messages,
             model: GPT_MODEL
         });
         // return the history?
@@ -696,7 +697,7 @@ async function whisperTTS(req, res) {
         })
         busboy.on('finish', async () => {
             const file = mfs.createReadStream('/speechfile.mp3')
-//            file.path = 'speechfile.mp3'
+            file.path = 'speechfile.mp3'
             // shorten code for openai
             if (reqBody.language) {
                 reqBody.language = reqBody.language.substring(0, 2)

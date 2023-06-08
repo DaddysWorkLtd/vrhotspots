@@ -17,9 +17,9 @@
       </button>
       <button style="color:goldenrod" @click="setConfidence(.6)" :class="confidence==.6 ? 'active' : 0">Whatever
       </button>
-      <button style="color:yellowgreen" @click="setConfidence(.85)" :class="confidence==.85 ? 'active' : 0">Easy Peasy
+      <button style="color:yellowgreen" @click="setConfidence(.8)" :class="confidence==.8 ? 'active' : 0">Easy Peasy
       </button>
-      <button style="color:seagreen" @click="setConfidence(1.1)" :class="confidence==1.1 ? 'active' : 0">Piece of Cake
+      <button style="color:seagreen" @click="setConfidence(1)" :class="confidence==1 ? 'active' : 0">Piece of Cake
       </button>
     </div>
     <div>&nbsp;</div>

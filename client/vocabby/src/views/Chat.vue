@@ -1,7 +1,7 @@
 <template>
   <div class="container">
     <div class="row">
-      Chat example
+      Send raw prompts to ChatGPT API.
     </div>
     <div v-html="console"></div>
     <div>

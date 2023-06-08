@@ -12,7 +12,7 @@
     |
     <router-link to="/dialogue">Play</router-link>
     |
-    <router-link to="/chat">Debug</router-link>
+    <router-link to="/chat">Chat</router-link>
   </div>
   <router-view/>
 </template>
