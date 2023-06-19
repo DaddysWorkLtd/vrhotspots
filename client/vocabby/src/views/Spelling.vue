@@ -12,8 +12,8 @@
           <input v-for="(input, index) in inputArr" :key="index" v-model="input.value" type="text" />
         </div> -->
     <div class="row">
-      <input type="text" v-model="guess" :placeholder="placeholder" class="text-center" @keydown.enter="newClue()"
-             @keyup="checkProgress"/>
+      <input type="text" :value="guess" class="text-center"
+             @input="checkProgress" :placeholder="placeholder" @keydown.enter="newClue()"/>
       <span> Progress: {{ progressStr }} </span>
     </div>
     <div class="row">&nbsp;
@@ -65,9 +65,9 @@ export default {
             // am i doing an array of characters?
             this.inputArr = this.answer.split("")
             this.inputArr.fill("")
-            // or just a box
-            this.placeholder = ""
-            for (var i = 0; i < this.answer.length; i++) {
+            // give the first letter as a clue
+            this.placeholder = `${this.answer[0]} `
+            for (var i = 1; i < this.answer.length; i++) {
               this.placeholder += '_ '
             }
             // reset guess from last word
@@ -100,7 +100,7 @@ export default {
       }
       this.textToSpeech(this.answer, this.lang)
     },
-    checkProgress() {
+    checkProgress(e) {
       function compareWords(word1, word2) {
         var count = 0;
         const minLength = Math.min(word1.length, word2.length);
@@ -113,6 +113,9 @@ export default {
 
         return count;
       }
+
+      // due to mobile bug have to bind manually
+      this.guess = e.target.value
 
       console.log(this.guess, this.answer, this.guess == this.answer)
 
@@ -132,7 +135,6 @@ export default {
       this.progressStr += ' (' + this.guess.length + ')'
     },
     newClue: function () {
-      console.log('dog style')
       if (this.done) this.getClue()
     },
   },
