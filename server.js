@@ -87,7 +87,7 @@ tdb = low(new FileSync(TRANS_DATA))
 
 db.defaults({photos: [], words: {}, uid: 0}).write();
 udb.defaults({users: [], log: []}).write();
-tdb.defaults({en_nl: [], nl_en: []}).write();
+tdb.defaults({en_nl: [], nl_en: [], nl_es: [], es_nl: []}).write();
 
 //static root is public
 app.use(express.static("public"));
@@ -456,8 +456,8 @@ app.post('/api/gpt/question/:lang/:baselang', async (req, res) => {
             wordList = ""
         //
         if (req.body.seed && req.body.seed == "word_learnings") {
-            const fromLang = 'nl'
-            const toLang = 'en'
+            const fromLang = req.params.baselang
+            const toLang = req.params.lang
             wordList = await getRandomWordList(fromLang, toLang, 1)
             if (wordList) prompt += ` that contains "${wordList}",`
         }
@@ -488,7 +488,7 @@ app.post('/api/gpt/question/:lang/:baselang', async (req, res) => {
 app.post('/api/gpt/answer', async (req, res) => {
     try {
         if (!req.body.prompt) throw new Error("prompt not found in request body or empty")
-        const prompt = "Is this answer below grammatically correct and if not then why not? Give a detailed grammatical explanation and a corrected version.\n\n" + req.body.prompt
+        const prompt = "Is dit antwoord hieronder grammaticaal correct en zo niet, waarom niet? Geef een gedetailleerde grammaticale uitleg en een gecorrigeerde versie.\n\n" + req.body.prompt
         const response = await openai.createChatCompletion({
             messages: [{role: 'user', content: prompt}],
             model: GPT_MODEL
@@ -502,15 +502,17 @@ app.post('/api/gpt/answer', async (req, res) => {
 
 async function getRandomWordList(fromLang, toLang, listLen) {
     let wordList = ""
-    const wordsLearn = await models.WordLearning.findAll({
-        where: {
-            wordId: {
-                [models.Sequelize.Op.in]: [models.sequelize.literal("SELECT words.word_id FROM questions,words \
+    const query = "SELECT words.word_id FROM questions,words \
                                                 WHERE words.word_id=questions.word_id \
                                                 AND words.disabled is NULL \
                                                 AND words.to_text is not NULL\
                                                 AND from_lang='" + fromLang + "' \
-                                                AND to_lang='" + toLang + "'")]
+                                                AND to_lang='" + toLang + "'"
+    console.log(query);
+    const wordsLearn = await models.WordLearning.findAll({
+        where: {
+            wordId: {
+                [models.Sequelize.Op.in]: [models.sequelize.literal(query)]
             },
             nextRepetition: {
                 [models.Sequelize.Op.lte]: new Date()
@@ -535,8 +537,8 @@ app.post('/api/gpt/statement/:lang/:baselang', async (req, res) => {
             seeds = req.body.seeds || 1
         //
         if (req.body.seed && req.body.seed == "word_learnings") {
-            const fromLang = 'nl'
-            const toLang = 'en'
+            const fromLang = req.params.baselang;
+            const toLang = req.params.lang;
             wordList = await getRandomWordList(fromLang, toLang, seeds)
             if (wordList) prompt += ` using the words [${wordList}],`
         }
@@ -565,15 +567,15 @@ app.post('/api/gpt/statement/:lang/:baselang', async (req, res) => {
 
 app.post('/api/gpt/clue/:lang/:baselang', async (req, res) => {
     try {
-        let prompt = "Create a clue in [" + req.params.lang + "]"
+        let prompt = "Maak een aanwijzing in [" + req.params.lang + "]"
 
         //
-        const fromLang = 'nl'
-        const toLang = 'en'
+        const fromLang = req.params.baselang;
+        const toLang = req.params.lang;
         wordList = await getRandomWordList(fromLang, toLang, 1)
         if (wordList) {
-            prompt += ` for the word [${wordList}],`
-            prompt += " followed by a translation in [" + req.params.baselang + "]. Label languages first."
+            prompt += ` voor de woord[${wordList}],`
+            prompt += " gevolgd door een vertaling in [" + req.params.baselang + "]. Label de talen."
             const response = await openai.createChatCompletion({
                 messages: [{role: 'user', content: prompt}],
                 model: GPT_MODEL
@@ -603,7 +605,7 @@ app.post('/api/gpt/roleplay/:lang/:baselang', async (req, res) => {
     try {
         const sysPrompt = "You are pretending to be " + req.body.who +
                 " for a role play in [" + req.params.lang + "]." +
-                " Reply in less than 50 words. Use the most common thousand words in Dutch.",
+                " Reply in less than 50 words. Use the most common two hundred words in " + req.params.lang,
             prompt = req.body.prompt,
             history = req.body.history,
             convoSeed = [{role: 'system', content: sysPrompt}]

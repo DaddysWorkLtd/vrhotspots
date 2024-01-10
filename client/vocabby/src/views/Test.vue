@@ -48,22 +48,22 @@ export default {
       correctTrigger:false,
       incorrectTrigger: false,
       clickLatch: false,
-      languages: "Dutch to English",
-      fromLang: "nl",
-      toLang: "en",
+      languages: "Spaans naar Nederlands",
+      fromLang: "es",
+      toLang: "nl",
       questionType: "new"
     }
   },
   methods: {
     toggleLanguage() {
       if (this.fromLang == "nl") {
-        this.fromLang="en"
+        this.fromLang = "es"
         this.toLang="nl"
-        this.languages="English to Dutch"
+        this.languages = "Spaans to Nederlands"
       } else {
         this.fromLang="nl"
-        this.toLang="en"
-        this.languages="Dutch to English"
+        this.toLang = "es"
+        this.languages = "Nederlands to Spans"
       }
       this.getQuestion()
     },

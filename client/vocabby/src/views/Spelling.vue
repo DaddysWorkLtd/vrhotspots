@@ -36,8 +36,8 @@ export default {
   name: "Dialogue",
   data() {
     return {
-      baseLang: "en",
-      lang: "nl",
+      baseLang: "nl",
+      lang: "es",
       clue: '',
       translation: '',
       answer: '',
@@ -63,9 +63,6 @@ export default {
             this.console = this.clue + "<br />"
             this.busy = false
             // am i doing an array of characters?
-            this.inputArr = this.answer.split("")
-            this.inputArr.fill("")
-            // give the first letter as a clue
             this.placeholder = `${this.answer[0]} `
             for (var i = 1; i < this.answer.length; i++) {
               this.placeholder += '_ '
@@ -113,7 +110,6 @@ export default {
 
         return count;
       }
-
       // due to mobile bug have to bind manually
       this.guess = e.target.value
 

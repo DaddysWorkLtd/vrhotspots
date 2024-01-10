@@ -24,8 +24,8 @@ export default {
   name: "Writing",
   data() {
     return {
-      baseLang: "en",
-      lang: "nl",
+      baseLang: "nl",
+      lang: "es",
       seed: "word_learnings",
       prompt: "",
       console: "",

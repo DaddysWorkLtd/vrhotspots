@@ -24,7 +24,9 @@ export default {
   props: {baseText: String},
   data() {
     return {
-      langs: [{name: "English", code: "en", text: ""}, {name: "Dutch", code: "nl", text: ""}],
+//      langs: [{name: "English", code: "en", text: ""}, {name: "Dutch", code: "nl", text: ""}],      langs: [{name: "English", code: "en", text: ""}, {name: "Dutch", code: "nl", text: ""}],
+      langs: [{name: "Nederlands", code: "nl", text: ""}, {name: "Spaans", code: "es", text: ""}],
+
     };
   },
   methods: {

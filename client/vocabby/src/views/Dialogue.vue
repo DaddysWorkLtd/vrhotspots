@@ -32,9 +32,9 @@ export default {
   name: "Dialogue",
   data() {
     return {
-      who: "a bike shop owner",
-      lang: "nl",
-      baselang: "en",
+      who: "een matador",
+      lang: "es",
+      baselang: "nl",
       console: "",
       isSending: false,
       isRecording: false,
