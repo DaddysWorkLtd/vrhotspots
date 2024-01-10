@@ -580,6 +580,7 @@ app.post('/api/gpt/clue/:lang/:baselang', async (req, res) => {
                 messages: [{role: 'user', content: prompt}],
                 model: GPT_MODEL
             });
+            console.log(response.data.choices[0].message.content)
             match = gpt.matchQuestion(response.data.choices[0].message.content, false)
             if (match) {
                 res.json({
