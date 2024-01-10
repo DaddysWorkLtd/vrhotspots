@@ -104,7 +104,7 @@ async function lookupWords() {
 //#processLog('en','nl').then ( ()=> {
 //  processLog('nl','en');
 //})
-Promise.all([processLog('nl', 'es'),
+Promise.all([processLog('es', 'nl'),
   processLog('nl', 'es')]).then(() => {
       lookupWords()
     }
