@@ -565,7 +565,7 @@ app.post('/api/gpt/statement/:lang/:baselang', async (req, res) => {
     }
 });
 
-app.get('/api/gpt/clue/:lang/:baselang', async (req, res) => {
+app.post('/api/gpt/clue/:lang/:baselang', async (req, res) => {
     try {
         let prompt = "Maak een aanwijzing in [" + req.params.lang + "]"
 
