@@ -36,8 +36,8 @@ export default {
   name: "Dialogue",
   data() {
     return {
-      baseLang: "nl",
-      lang: "es",
+      baseLang: "es",
+      lang: "nl",
       clue: '',
       translation: '',
       answer: '',
