@@ -514,9 +514,9 @@ async function getRandomWordList(fromLang, toLang, listLen) {
             wordId: {
                 [models.Sequelize.Op.in]: [models.sequelize.literal(query)]
             },
-            nextRepetition: {
-                [models.Sequelize.Op.lte]: new Date()
-            }
+//            nextRepetition: {
+//                [models.Sequelize.Op.lte]: new Date()
+//            }
         },
         order: models.sequelize.random(),
         limit: listLen
@@ -565,7 +565,7 @@ app.post('/api/gpt/statement/:lang/:baselang', async (req, res) => {
     }
 });
 
-app.post('/api/gpt/clue/:lang/:baselang', async (req, res) => {
+app.get('/api/gpt/clue/:lang/:baselang', async (req, res) => {
     try {
         let prompt = "Maak een aanwijzing in [" + req.params.lang + "]"
 
@@ -575,7 +575,7 @@ app.post('/api/gpt/clue/:lang/:baselang', async (req, res) => {
         wordList = await getRandomWordList(fromLang, toLang, 1)
 	console.log(wordList)
         if (wordList) {
-            prompt += ` voor de woord[${wordList}],`
+            prompt += ` voor de woord [${wordList}],`
             prompt += " gevolgd door een vertaling in [" + req.params.baselang + "]. Label de talen."
 	    console.log(prompt)
             const response = await openai.createChatCompletion({
@@ -596,7 +596,7 @@ app.post('/api/gpt/clue/:lang/:baselang', async (req, res) => {
                 res.status(404).send('No clue what happened: response.data.choices[0].message.content')
             }
         } else {
-            throw new Error("no regex match on gpt response: " + response.data.choices[0].message.content)
+            throw new Error("word list is empty");
         }
     } catch (err) {
         console.error(err);
