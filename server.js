@@ -452,16 +452,16 @@ app.post('/api/gpt/chat', async (req, res) => {
 });
 app.post('/api/gpt/question/:lang/:baselang', async (req, res) => {
     try {
-        let prompt = "Ask me a random open-ended question in [" + req.params.lang + "]",
+        let prompt = "Stel mij een willekeurige open vraag in [" + req.params.lang + "]",
             wordList = ""
         //
         if (req.body.seed && req.body.seed == "word_learnings") {
             const fromLang = req.params.baselang
             const toLang = req.params.lang
             wordList = await getRandomWordList(fromLang, toLang, 1)
-            if (wordList) prompt += ` that contains "${wordList}",`
+            if (wordList) prompt += ` dat bezit "${wordList}",`
         }
-        prompt += " followed by a translation of the question in [" + req.params.baselang + "] translation. Label languages first."// Label your reply [language]: text"
+        prompt += " gevolgd door een vertaling van de vraag in [" + req.params.baselang + "] vertaling. Label eerst talen."// Label your reply [language]: text"
 
         const response = await openai.createChatCompletion({
             messages: [{role: 'user', content: prompt}],
@@ -508,7 +508,7 @@ async function getRandomWordList(fromLang, toLang, listLen) {
                                                 AND words.to_text is not NULL\
                                                 AND from_lang='" + fromLang + "' \
                                                 AND to_lang='" + toLang + "'"
-    console.log(query);
+    //console.log(query);
     const wordsLearn = await models.WordLearning.findAll({
         where: {
             wordId: {
@@ -532,7 +532,7 @@ async function getRandomWordList(fromLang, toLang, listLen) {
 
 app.post('/api/gpt/statement/:lang/:baselang', async (req, res) => {
     try {
-        let prompt = "Create a sentence in [" + req.params.lang + "]",
+        let prompt = "Maak een zin in [" + req.params.lang + "]",
             wordList = "",
             seeds = req.body.seeds || 1
         //
@@ -540,9 +540,9 @@ app.post('/api/gpt/statement/:lang/:baselang', async (req, res) => {
             const fromLang = req.params.baselang;
             const toLang = req.params.lang;
             wordList = await getRandomWordList(fromLang, toLang, seeds)
-            if (wordList) prompt += ` using the words [${wordList}],`
+            if (wordList) prompt += ` het gebruik van de woorden [${wordList}],`
         }
-        prompt += " followed by a translation in [" + req.params.baselang + "]. Label languages first."
+        prompt += " gevolgd door een vertaling in [" + req.params.baselang + "]. Label eerst talen."
         const response = await openai.createChatCompletion({
             messages: [{role: 'user', content: prompt}],
             model: GPT_MODEL
@@ -606,9 +606,9 @@ app.post('/api/gpt/clue/:lang/:baselang', async (req, res) => {
 
 app.post('/api/gpt/roleplay/:lang/:baselang', async (req, res) => {
     try {
-        const sysPrompt = "You are pretending to be " + req.body.who +
-                " for a role play in [" + req.params.lang + "]." +
-                " Reply in less than 50 words. Use the most common two hundred words in " + req.params.lang,
+        const sysPrompt = "Je doet alsof '" + req.body.who +
+                "' voor een rollenspel in [" + req.params.lang + "]." +
+                "antwoord in minder dan 50 woorden. Gebruik de meest voorkomende tweehonderd woorden in " + req.params.lang,
             prompt = req.body.prompt,
             history = req.body.history,
             convoSeed = [{role: 'system', content: sysPrompt}]
