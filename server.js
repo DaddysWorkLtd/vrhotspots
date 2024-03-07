@@ -573,9 +573,11 @@ app.post('/api/gpt/clue/:lang/:baselang', async (req, res) => {
         const fromLang = req.params.baselang;
         const toLang = req.params.lang;
         wordList = await getRandomWordList(fromLang, toLang, 1)
+	console.log(wordList)
         if (wordList) {
             prompt += ` voor de woord[${wordList}],`
             prompt += " gevolgd door een vertaling in [" + req.params.baselang + "]. Label de talen."
+	    console.log(prompt)
             const response = await openai.createChatCompletion({
                 messages: [{role: 'user', content: prompt}],
                 model: GPT_MODEL
